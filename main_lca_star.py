@@ -128,8 +128,20 @@ def main(argv):
 
     for contig in taxadict.keys():
        taxon = lcastar.lca_star(taxadict[contig])
-       print contig + ' ' + taxon
-       sys.exit(0)
+       print 'LCA Star ' + contig + ' ' + taxon
+       taxon = lcastar.lca_majority(taxadict[contig])
+       print 'LCA Majority ' + contig + ' ' + taxon
+       taxon = lcastar.getTaxonomy([taxadict[contig]] )
+       print 'LCA Square ' + contig + ' ' + taxon
+
+    sys.exit(-1)
+
+
+
+# the main function of metapaths
+if __name__ == "__main__":
+    main(sys.argv[1:])
+
 
     sys.exit(-1)
 

@@ -333,6 +333,21 @@ class LCAStar:
         # find the taxon with the highest count but also has count higher than the 
         # majority threshold
  
+    def lca_majority(self, taxalist):
+        taxalist = self.filter_taxa_list(taxalist)
+
+        majority = 'all'
+        if taxalist==None:
+           return majority
+
+        majority = self.__lca_majority(taxalist)
+
+        if majority==None:
+           return 'all'
+
+        return majority
+        
+
     def __lca_majority(self, taxalist):
 
         # create the read counts
@@ -373,15 +388,9 @@ class LCAStar:
 
 
     def __decolor_tree(self):
-        found = 0
-        count = 0
         S = ['1']
         while len(S) >0:
             id = S.pop()
-            if id in self.id_to_R:
-               found+=1
-               count += self.id_to_R[id]
-               self.id_to_R[id] = 0
 
             C = []
             if id in self.ptaxid_to_taxid:
@@ -392,7 +401,6 @@ class LCAStar:
                   self.ptaxid_to_taxid[id][child] = False
                   S.append(child)
 
-        print 'found : ' + str(found) + ' ' + str(count)
            
     def __create_majority(self, root, read_name_counts):
         read_counts = {}
@@ -448,6 +456,12 @@ class LCAStar:
                     Stack.append(child)
         return candidate[0] 
 
+    def __clear_lca_star_data_structure(self):
+        self.id_to_R={}
+        self.id_to_S={}
+        self.id_to_L={}
+        self.id_to_H={}
+        self.id_to_V={}
 
         
     def lca_star(self, taxalist):
@@ -464,12 +478,11 @@ class LCAStar:
         read_counts, Total = self.__read_counts(taxalist)
 #        for key, value in read_counts.iteritems():
 #           print key + ' ' + str(value) 
-        print 'num taxons ' + str(len(read_counts.keys())) + ' ' + str(Total)
 
         self.__annotate_tree_counts(read_counts)
         self.__color_tree(read_counts)
         resultid = self.__create_majority('1', read_counts) 
+        self.__clear_lca_star_data_structure()
         resulttaxon = self.translateIdToName( str(resultid ))
-
         self.__decolor_tree()
         return resulttaxon
