@@ -199,7 +199,36 @@ class LCAStar:
          consensus = self.get_lca(IDs)
          self.clear_cells(IDs)
          return consensus
+    
 
+    # given an ID gets the lineage
+    def get_lineage(self, id):
+           tid = id
+           lineage = []
+           lineage.append(id)
+           while( tid in self.taxid_to_ptaxid and tid !='1' ):
+               lineage.append(self.taxid_to_ptaxid[tid][0])
+               tid = self.taxid_to_ptaxid[tid][0]
+           return lineage
+    
+    # given two names calculates the distance on the tree
+    def get_distance(self, taxa1, taxa2):
+        id1 = self.get_a_Valid_ID([taxa1])
+        id2 = self.get_a_Valid_ID([taxa2])
+        lin1 = self.get_lineage(id1)
+        lin2 = self.get_lineage(id2)
+        large = None
+        if len(lin1) <= len(lin2):
+           large = lin2
+           small = lin1
+        else:
+           large = lin1
+           small = lin2
+        for i in range(len(large)):
+           for j in range(len(small)):
+               if large[i] == small[j]:
+                  return i + j
+        return None
 
     # extracts taxon names for a refseq annotation
     def get_species(self, hit):
