@@ -10,7 +10,7 @@ __maintainer__ = "Kishori M Konwar"
 __status__ = "Release"
 
 try:
-     import pickle
+     import cPickle
      from cStringIO import StringIO
      import os
      from os import  makedirs, sys, remove, path
@@ -69,12 +69,13 @@ def read_list_file_to_list(filename,list):
 
 
 def read_taxonomy_list(filename, taxadict):
+    """  """
     try:
        namefile = open(filename, 'r')
     except:
        print "ERROR : Could not open file  " + filename
        sys.exit(1)
-  
+    
     line = True
     while line:
        line = namefile.readline()
@@ -104,28 +105,20 @@ def check_arguments(opts):
 
 
 def main(argv): 
-
+    # parse and check arguments
     (opts, args) = parser.parse_args()
     argv = check_arguments(opts)
-
-
-    try:
-       storagefileh = open('ncbi_tree_serialized', 'wb') 
-    except:
-       print 'ERROR : cannot open file to searialize the ncbi tree'
-       sys.exit(-1)
-
-    #p = pickle.Pickler(storagefileh)
-
-    taxadict = {}
+    
+    taxadict = {} # dictionary of contigs to ACTUAL taxonomies
     read_taxonomy_list(opts.taxa_list, taxadict)
-
+    
+    # Load NCBI Tree and LCA Star object
     lcastar = LCAStar(opts.ncbi_tree_file)
+    print 'Done initializing LCA Star'
+    
+    # Set appropreate parameters
     lcastar.setLCAStarParameters(min_depth = opts.min_depth, alpha = opts.alpha, min_reads = opts.min_reads )
-    #p.dump(lcastar)
-
-    print 'done instatiating the lcastar'
-
+    
     for contig in taxadict.keys():
        taxon = lcastar.lca_star(taxadict[contig])
        print 'LCA Star ' + contig + ' ' + taxon

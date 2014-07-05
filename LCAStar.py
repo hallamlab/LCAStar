@@ -4,7 +4,7 @@ try:
      import sys, traceback
      import re
      import sys
-     from math import log
+     from math import log, pow
 except:
      print """ Could not load some user defined  module functions"""
      print """ Make sure your typed \"source MetaPathwaysrc\""""
@@ -17,51 +17,78 @@ except:
 def copyList(a, b): 
     [ b.append(x) for x in a ] 
 
-class LCAStar:
-    begin_pattern = re.compile("#")
+class LCAStar(object):
+    # begin_pattern = re.compile("#")
 
     # a readable taxon name to numeric string id map as ncbi
-    name_to_id={}
+    
 
     # a readable taxon ncbi tax id to name map
-    id_to_name={}
+    # id_to_name={}
 
     # this is the tree structure in a id to parent map, you can traverse it to go to the root
-    taxid_to_ptaxid = {}
+    # taxid_to_ptaxid = {}
 
     # this is the tree structure in a parent to child id map, you can use it to traverse the tree downwards
     # ptaxid_to_taxid[ptaxid] = [ cid1, cid2, ...cidk]
-    ptaxid_to_taxid = {}
+    # ptaxid_to_taxid = {}
 
     # a map from id to value, which has the S = sum n,  value for each id
-    id_to_R={}
+    # id_to_R={}
     # a map from id to value, which has the S = sum n,  value for each id
-    id_to_S={}
+    # id_to_S={}
     # a map from id to value, which has the L = sum n log n,  value for each id
-    id_to_L={}
+    # id_to_L={}
     # a map from id to value, which has the entropy H value for each id
-    id_to_H={}
+    # id_to_H={}
 
     # a map to keep track of visited nodes
-    id_to_V={}
+    # id_to_V={}
 
 
-    lca_min_score = 50   # an LCA parameter for min score for a hit to be considered
-    lca_top_percent = 10    # an LCA param to confine the hits to within the top hits score upto the top_percent% 
-    lca_min_support = 5   # a minimum number of reads in the sample to consider a taxon to be present
+    # lca_min_score = 50   # an LCA parameter for min score for a hit to be considered
+    # lca_top_percent = 10    # an LCA param to confine the hits to within the top hits score upto the top_percent% 
+    # lca_min_support = 5   # a minimum number of reads in the sample to consider a taxon to be present
 
-    lca_star_min_reads = 10
-    lca_star_min_depth = 3
-    lca_star_alpha = 0.53
-
-    results_dictionary = None
-
+    # lca_star_min_reads = 10
+    # lca_star_min_depth = 3
+    # lca_star_alpha = 0.53
+    # results_dictionary = None
     # initialize with the ncbi tree file 
     def __init__(self, filename):
+       
+       # initialize class variables
+       self.begin_pattern = re.compile("#")
+       self.name_to_id = {} # a readable taxon name to ncbi id 
+       self.id_to_name = {} # a readable taxon ncbi taxid to name
+       self.taxid_to_ptaxid = {} # this is the tree structure in a id to parent map, you can traverse it to go to the root
+       # this is the tree structure in a parent to child id map, you can use it to traverse the tree downwards
+       # ptaxid_to_taxid[ptaxid] = [ cid1, cid2, ...cidk]
+       self.ptaxid_to_taxid = {}
+       # a map from id to value, which has the S = sum n,  value for each id
+       self.id_to_R={}
+       # a map from id to value, which has the S = sum n,  value for each id
+       self.id_to_S={}
+       # a map from id to value, which has the L = sum n log n,  value for each id
+       self.id_to_L={}
+       # a map from id to value, which has the entropy H value for each id
+       self.id_to_H={}
+       # a map to keep track of visited nodes
+       self.id_to_V={}
+       self.lca_min_score = 50   # an LCA parameter for min score for a hit to be considered
+       self.lca_top_percent = 10    # an LCA param to confine the hits to within the top hits score upto the top_percent% 
+       self.lca_min_support = 5   # a minimum number of reads in the sample to consider a taxon to be present
+       
+       self.lca_star_min_reads = 10
+       self.lca_star_min_depth = 3
+       self.lca_star_alpha = 0.53
+       
+       self.results_dictionary = None
+       
        taxonomy_file = open(filename, 'r')
        lines = taxonomy_file.readlines()
        taxonomy_file.close()
-
+       
        for line in lines:
           if self.begin_pattern.search(line):
               continue
@@ -134,15 +161,15 @@ class LCAStar:
        return self.taxid_to_ptaxid[ID][0]
 
 
-    # given a set of ids it returns the lowest common ancenstor 
-    # without caring about min support
-    # here LCA for a set of ids are computed as follows
-    # first we consider one ID at a time
+    #   given a set of ids it returns the lowest common ancenstor 
+    #   without caring about min support
+    #   here LCA for a set of ids are computed as follows
+    #   first we consider one ID at a time
     #   for each id we traverse up the ncbi tree using the id to parent id map
     #   at the same time increasing the count on the second value of the 3-tuple 
     #   note that at the node where all the of the individual ids ( limit in number)
     #   converges the counter matches the limit for the first time, while climbing up. 
-    #   This also this enables us to  make the selection of id arbitrary 
+    #   This also this enables us to make the selection of id arbitrary 
     def get_lca(self, IDs):
         limit = len(IDs)
         for id in IDs:
@@ -186,7 +213,7 @@ class LCAStar:
         return ""
 
 
-    #given a set of sets of names it computes an lca 
+    # given a set of sets of names it computes an lca 
     # in the format [ [name1, name2], [name3, name4,....namex] ...]
     # here name1 and name2 are synonyms and so are name3 through namex
     def getTaxonomy(self, name_groups):
@@ -214,7 +241,7 @@ class LCAStar:
     # given two names calculates the distance on the tree
     def get_distance(self, taxa1, taxa2):
         id1 = self.get_a_Valid_ID([taxa1])
-        id2 = self.get_a_Valid_ID([taxa2])
+        id2 = self.get_a_Valid_ID([taxa2]) # real 
         lin1 = self.get_lineage(id1)
         lin2 = self.get_lineage(id2)
         large = None
@@ -430,7 +457,7 @@ class LCAStar:
                   self.ptaxid_to_taxid[id][child] = False
                   S.append(child)
 
-           
+    
     def __create_majority(self, root, read_name_counts):
         read_counts = {}
         Total = 0
@@ -438,9 +465,8 @@ class LCAStar:
             id = self.translateNameToID(taxon)
             read_counts[id] = count
             Total += count
-
+        
         candidate = ['1', 10000000.00 ]
-
         Stack = [root]
         while len(Stack) >0:
             id = Stack.pop()
@@ -451,27 +477,28 @@ class LCAStar:
                   C = self.ptaxid_to_taxid[id].keys()
                # I am coming up
                self.id_to_H[id] = 0
-
+               
                if id in read_counts:
                   self.id_to_S[id] = float(read_counts[id])
                   self.id_to_L[id] = float(read_counts[id])*log(float(read_counts[id]))
                else:
-                  self.id_to_S[id] = 0 
-                  self.id_to_L[id] = 0 
-
+                  self.id_to_S[id] = 0
+                  self.id_to_L[id] = 0
+               
                for child in C:
                  if self.ptaxid_to_taxid[id][child]:
                    self.id_to_S[id] += self.id_to_S[child] 
                    self.id_to_L[id] += self.id_to_L[child] 
-
-               self.id_to_H[id] = -(self.id_to_L[id]/self.id_to_S[id] - log(self.id_to_S[id]))
-
+               #print id, self.id_to_S[id], self.taxid_to_ptaxid[id]
+               try:
+                 self.id_to_H[id] = -(self.id_to_L[id]/self.id_to_S[id] - log(self.id_to_S[id]))
+               except:
+                 print "ID: " + str(id)
+                 exit(-1)
                if self.id_to_S[id] > Total*self.lca_star_alpha:
                    if candidate[1] > self.id_to_H[id]:
                       candidate[0] = id
                       candidate[1] = self.id_to_H[id]
-
-               #compute entropy calculation with S[id]
 
             else: # going down
                self.id_to_V[id] = True
@@ -492,26 +519,74 @@ class LCAStar:
         self.id_to_H={}
         self.id_to_V={}
 
-        
-    def lca_star(self, taxalist):
-        taxalist = self.filter_taxa_list(taxalist)
+    # monotonicly decreasing function of depth of divergence d
+    def step_cost(self, d):
+        return 1 / pow(2,d)
 
+    
+    def wtd_distance(self, exp, obs):
+        """ weighted taxonomic distance calculates the distance between 
+            observed and expected positions on the NCBI Taxonomy Database
+            weighting each step by a cost function step_cost base in the 
+            depth in the tree.
+        """
+        exp_id = self.get_a_Valid_ID([exp])
+        obs_id = self.get_a_Valid_ID([obs])
+        exp_lin = self.get_lineage(exp_id)
+        obs_lin = self.get_lineage(obs_id)
+        print "Expected ID: ", exp_id
+        print "Observed ID: ", obs_id
+        print "Expected:", exp_lin
+        print "Observed:", obs_lin
+        sign = -1
+
+        # check to see if expected in observed lineage
+        # if so distance sign is positive
+        if exp_id in obs_lin:
+            sign = 1
+        large = None
+        if len(obs_lin) <= len(exp_lin):
+            # expected longer than observed
+            large = exp_lin
+            small = obs_lin
+        else:
+            large = obs_lin
+            small = exp_lin
+
+        # calculate cost
+        a_cost = 0
+        b_cost = 0
+        for i in range(len(large)):
+            if i > 0:
+                a_cost += self.step_cost(len(large)-i-1)
+            b_cost = 0
+            for j in range(len(small)):
+                if j > 0:
+                    b_cost += self.step_cost(len(small)-j-1)
+                if large[i] == small[j]:
+                    return ((a_cost + b_cost) * sign)
+        return None # did not find lineages
+
+    def lca_star(self, taxalist):
+        # filter taxa dist by depth
+        taxalist = self.filter_taxa_list(taxalist)
+        
         if taxalist==None:
            return 'all'
         
         majority = self.__lca_majority(taxalist) 
-
+        
         if majority != None:
            return majority 
-
+        
         read_counts, Total = self.__read_counts(taxalist)
 #        for key, value in read_counts.iteritems():
 #           print key + ' ' + str(value) 
 
         self.__annotate_tree_counts(read_counts)
         self.__color_tree(read_counts)
-        resultid = self.__create_majority('1', read_counts) 
+        result_id = self.__create_majority('1', read_counts) 
         self.__clear_lca_star_data_structure()
-        resulttaxon = self.translateIdToName( str(resultid ))
+        result_taxon = self.translateIdToName( str( result_id ) )
         self.__decolor_tree()
-        return resulttaxon
+        return result_taxon

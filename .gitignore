@@ -36,3 +36,7 @@ nosetests.xml
 .pydevproject
 
 ncbi_taxonomy_tree.txt
+lca_star_test/
+ncbi_taxonomy_tree*
+test.out.txt
+lca_star_test2*
