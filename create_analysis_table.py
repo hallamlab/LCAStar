@@ -22,9 +22,10 @@ try:
      import argparse
      import glob
      import random
+     import functools
      from os import makedirs, sys, remove
      from sys import path
-     from LCAStar import *
+     from python_resources.LCAStar import *
 except:
      print """ Could not load some modules """
      print """ """
@@ -41,6 +42,8 @@ parser.add_argument('--sum_table', dest='sum_table', type=str, nargs='?',
              required=False, help='NCBI Genomes table: summary.txt', default=None)
 parser.add_argument('--ncbi_tree', dest='ncbi_tree', type=str, nargs='?',
              required=False, help='MetaPathways: NCBI tree file', default=None)
+parser.add_argument('--ncbi_megan_map', dest='ncbi_megan_map', type=str, nargs='?',
+             required=False, help='Preferred mapping for NCBI names', default=None)
 parser.add_argument('-o', dest='output', type=str, nargs='?',
              required=False, help='output file', default=None)
 
@@ -117,6 +120,18 @@ class FastaReader():
 
      return FastaRecord(self.name, self.sequence)
 
+def translate_to_prefered_name(id, ncbi_megan_map, lcastar):
+    id_str = str(id)
+    if id_str in ncbi_megan_map:
+        return ncbi_megan_map[id_str] + " (" + id_str + ")"
+    else:
+        res = lcastar.translateIdToName(id)
+        if res:
+            return res + " (" + id_str + ")"
+        else:
+            return "Unknown (" + id_str + ")"
+
+
 def main(argv):
     args = vars(parser.parse_args())
     
@@ -124,6 +139,14 @@ def main(argv):
     fh = open(args["input_mapping"], "r")
     lines = fh.readlines()
     fh.close()
+    
+    # create preferred megan mapping
+    ncbi_megan_map = {}
+    with open(args["ncbi_megan_map"], 'r') as meganfile:
+        for line in meganfile:
+             fields = line.split("\t")
+             fields = map(str.strip, fields)
+             ncbi_megan_map[fields[0]] = fields[1]
 
     read2origin = {} # hash mapping input sequences to their original header
     
@@ -184,7 +207,7 @@ def main(argv):
     print "Done."
     
     # set LCAStar parameters
-    lcastar.setLCAStarParameters(min_depth = 2, alpha = 0.5, min_reads = 3 )
+    lcastar.setLCAStarParameters(min_depth = 1, alpha = 0.5, min_reads = 1 )
     
     # small helper to translate the list
     def get_orfs_taxa(orfs):
@@ -205,14 +228,17 @@ def main(argv):
              lca_list.append([ t ])
         taxon = lcastar.lca_star(taxa_list)
         real_lineage = lcastar.get_lineage(lcastar.get_a_Valid_ID([real]))
-        real_lineage = map( str, map(lcastar.translateIdToName, real_lineage))
-        line = "\t".join([contig, real, taxon, "LCA_Star", str(lcastar.get_distance(taxon, real)), str(lcastar.wtd_distance(real, taxon))] + real_lineage[::-1])
+        lineage = []
+        for id in real_lineage:
+            lineage.append(translate_to_prefered_name(id, ncbi_megan_map, lcastar))
+        real_lineage = lineage
+        line = "\t".join([contig, real, translate_to_prefered_name(lcastar.get_a_Valid_ID([taxon]),ncbi_megan_map, lcastar), "LCA_Star", str(lcastar.get_distance(taxon, real)), str(lcastar.wtd_distance(real, taxon)), ";".join(real_lineage[::-1])])
         output.write(line + "\n")
         taxon = lcastar.lca_majority(taxa_list) 
-        line = "\t".join([contig, real, taxon, "Majority", str(lcastar.get_distance(taxon, real)), str(lcastar.wtd_distance(real, taxon))] + real_lineage[::-1])
+        line = "\t".join([contig, real, translate_to_prefered_name(lcastar.get_a_Valid_ID([taxon]),ncbi_megan_map, lcastar), "Majority", str(lcastar.get_distance(taxon, real)), str(lcastar.wtd_distance(real, taxon)), ";".join(real_lineage[::-1])])
         output.write(line + "\n")
         taxon = lcastar.getTaxonomy(lca_list) 
-        line = "\t".join([contig, real, taxon, "LCA_Squared", str(lcastar.get_distance(taxon, real)), str(lcastar.wtd_distance(real, taxon))] + real_lineage[::-1])
+        line = "\t".join([contig, real, translate_to_prefered_name(lcastar.get_a_Valid_ID([taxon]),ncbi_megan_map, lcastar), "LCA_Squared", str(lcastar.get_distance(taxon, real)), str(lcastar.wtd_distance(real, taxon)), ";".join(real_lineage[::-1])])
         output.write(line + "\n")
 
     output.close()
