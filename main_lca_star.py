@@ -1,9 +1,15 @@
 #!/usr/bin/python
-# File created on Nov 27 Jan 2012
+"""
+create_analysis_table.py
+
+Created by Niels Hanson
+Copyright (c) 2014 Steven J. Hallam Laboratory. All rights reserved.
+"""
+
 from __future__ import division
 
-__author__ = "Kishori M Konwar"
-__copyright__ = "Copyright 2010, The metapaths Project"
+__author__ = "Niels W. Hanson, Kishori M. Konwar"
+__copyright__ = "Copyright 2014 "
 __credits__ = ["r"]
 __version__ = "1.0"
 __maintainer__ = "Kishori M Konwar"
