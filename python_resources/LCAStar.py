@@ -4,7 +4,7 @@ try:
      import sys, traceback
      import re
      import sys
-     from math import log, pow
+     from math import log, pow, erf
 except:
      print """ Could not load some user defined  module functions"""
      print """ Make sure your typed \"source MetaPathwaysrc\""""
@@ -15,6 +15,23 @@ except:
 
 def copyList(a, b): 
     [ b.append(x) for x in a ] 
+
+
+
+# Class to estimate and cumulative distribution functions
+class CDF:
+
+    def __init__(self, obs):
+        self.obs = obs
+
+    def __call__(self, x):
+        counter = 0.0
+        for obs in self.obs:
+            if obs <= x:
+                counter += 1
+        return counter / len(self.obs)
+
+
 
 class LCAStar(object):
     # begin_pattern = re.compile("#")
@@ -370,7 +387,7 @@ class LCAStar(object):
         else:
             return newlist
 
-    def setLCAStarParameters(self,  min_depth = 3, alpha = 0.53,  min_reads = 10 ):
+    def setLCAStarParameters(self,  min_depth = 3, alpha = 0.51,  min_reads = 5 ):
         self.lca_star_min_reads = min_reads
         self.lca_star_min_depth = min_depth
         self.lca_star_alpha = alpha
@@ -590,3 +607,38 @@ class LCAStar(object):
         result_taxon = self.translateIdToName( str( result_id ) )
         self.__decolor_tree()
         return result_taxon
+
+    # Chi-squared with one degree of freedom
+    def chi_squared(self, x):
+        return math.erf(math.sqrt(x/2))
+
+    def calculate_pvalue(self, taxa_list, taxa):
+        if taxa not in taxa_list:
+            print "Error: Tried to calculate a p-value for a taxa not in taxa_list."
+            exit()
+        if len(taxa_list) <= 1:
+            print "Warning: p-value not defined for taxa lists of 1"
+
+        X = {} # hash of taxa counts
+        M = 0 # maximum
+
+        for t in taxa_list:
+            if not t in X:
+                X[t] = 0
+
+        X_k = X[taxa] # taxa count for test statistic
+        for t in X:
+            if t != taxa:
+                if X[t] > M:
+                    M = X[t]
+
+        T = 0 # test statistic
+
+        if X_k <= M:
+            # trivial case
+            return T
+        else:
+            first = M * math.log( (2 * M) / (M + X_k) )
+            second = X_k * math.log( (X_k / (M + X_k))  )
+            T = 2 (first + second)
+

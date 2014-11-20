@@ -22,6 +22,8 @@ try:
      import glob
      import random
      import functools
+     import itertools
+     import operator
      from os import makedirs, sys, remove
      from sys import path
      from python_resources.LCAStar import *
@@ -46,6 +48,8 @@ parser.add_argument('--ncbi_megan_map', dest='ncbi_megan_map', type=str, nargs='
     help='Preferred mapping for NCBI names (map.ncbi)', default=None)
 parser.add_argument('-o', '--output', dest='output', type=str, nargs='?', required=False,
     help='output file of predicted taxonomies', default=None)
+parser.add_argument('--orf_summary', dest='orf_summary', type=str, nargs='?', choices=['lca', 'besthit', 'orf_majority'], required=False,
+    default='lca', help='ORF Summarization rule.')
 
 def translate_to_prefered_name(id, ncbi_megan_map, lcastar):
     id_str = str(id)
@@ -64,6 +68,29 @@ def clean_tab_lines(line):
     fields = map(str.strip, fields)
     fields = map(str.strip, fields, "\n")
     return fields
+
+
+
+# Calculate the most common taxa in a given list
+def most_common(L):
+    if len(L) == 0:
+        return "root"
+    # get an iterable of (item, iterable) pairs
+    SL = sorted((x, i) for i, x in enumerate(L))
+    # print 'SL:', SL
+    groups = itertools.groupby(SL, key=operator.itemgetter(0))
+    # auxiliary function to get "quality" for an item
+    def _auxfun(g):
+        item, iterable = g
+        count = 0
+        min_index = len(L)
+        for _, where in iterable:
+            count += 1
+            min_index = min(min_index, where)
+        # print 'item %r, count %r, minind %r' % (item, count, min_index)
+        return count, -min_index
+    # pick the highest-count/earliest item
+    return max(groups, key=_auxfun)[0]
 
 def main(argv):
     args = vars(parser.parse_args())
@@ -107,19 +134,21 @@ def main(argv):
                         contig_to_taxa[contig] = {}
                     if orf not in contig_to_taxa[contig]:
                         contig_to_taxa[contig][orf] = []
-
-
                     # pull taxonomy out of annotation
                     taxa_hits = taxonomy_pattern.search(fields[9])
                     if taxa_hits:
                         taxa = taxa_hits.group(1)
-                        contig_to_taxa[contig][orf].append([taxa])
+                        bitscore = fields[3]
+                        contig_to_taxa[contig][orf].append( (taxa, int(bitscore)) )
                     else:
                         continue
                 else:
                     continue
 
-
+    # for contig in contig_to_taxa:
+    #     for orf in contig_to_taxa[contig]:
+    #
+    #         print my_taxas
 
     ## Build the LCA Star NCBI Tree
     print "Loading LCAStar:"
@@ -130,34 +159,55 @@ def main(argv):
     ## Calculate LCA for each ORF
     contig_to_lca = {}
     for contig in contig_to_taxa:
+        print contig
         for orf in contig_to_taxa[contig]:
+            print "\t", orf
             if contig not in contig_to_lca:
                 contig_to_lca[contig] = {}
             if orf not in contig_to_lca[contig]:
                 contig_to_lca[contig][orf] = None
-            #TODO: Think about a way to best-hit here as an alternative
-            contig_to_lca[contig][orf] = lcastar.getTaxonomy(contig_to_taxa[contig][orf])
+            contig_taxas = contig_to_taxa[contig][orf]
+            if len(contig_taxas) == 0:
+                contig_to_lca[contig][orf] = "root"
+            else:
+                if args['orf_summary'] == 'besthit':
+                    contig_taxas.sort(key=operator.itemgetter(1), reverse=True)
+                    best_blast_taxa = contig_taxas[0][0]
+                    contig_to_lca[contig][orf] = best_blast_taxa
+                elif args['orf_summary'] == 'orf_majority':
+                    majority_list = []
+                    for t in contig_taxas:
+                        majority_list.append(t[0])
+                    #TODO Update most common to check for alterantive taxonomy names
+                    contig_to_lca[contig][orf] = most_common(majority_list)
+                else:
+                    lca_list = [] # create a list of lists for LCA calculation
+                    for t in contig_taxas:
+                        lca_list.append([t[0]])
+                    contig_to_lca[contig][orf] = lcastar.getTaxonomy(lca_list)
 
     ## calculate taxonomy statistics LCA,  for each ORF
     # contig_to_taxa = {}
+
+    ## LCA^2, Majority, and LCA* for each ORF
+
+    print "\t".join(["Contig", "LCAStar", "Majority", "LCASquared"])
+
     for contig in contig_to_lca:
         orf_lcas = []
         simple_list = []
-        print contig
         for orf in contig_to_lca[contig]:
             lca = contig_to_lca[contig][orf]
             orf_lcas.append( [ lca ] )
             simple_list.append( lca )
-            print "\t", orf, lca
         lca_squared = lcastar.getTaxonomy( orf_lcas )
-        majority = lcastar.lca_majority( simple_list )
+        majority = most_common( simple_list )
         lca_star = lcastar.lca_star( simple_list )
-        print simple_list
-        print contig, lca_squared, majority, lca_star
+        print "\t".join(map(str, [contig, lca_star, majority, lca_squared]))
+
+    exit()
 
 
-
-    ## LCA^2, Majority, and LCA* for each ORF
 
 
 

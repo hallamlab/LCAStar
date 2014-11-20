@@ -124,7 +124,9 @@ def main(argv):
     
     # Set appropreate parameters
     lcastar.setLCAStarParameters(min_depth = opts.min_depth, alpha = opts.alpha, min_reads = opts.min_reads )
-    
+
+    print ["Contig", "LCAStar", "Majority", "LCASquared"]
+
     for contig in taxadict.keys():
        taxon = lcastar.lca_star(taxadict[contig])
        print 'LCA Star ' + contig + ' ' + taxon
