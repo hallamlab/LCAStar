@@ -1,17 +1,24 @@
 #!/usr/bin/python
 
-try:
-     import sys, traceback
-     import re
-     import sys
-     from math import log, pow, erf
-except:
-     print """ Could not load some user defined  module functions"""
-     print """ Make sure your typed \"source MetaPathwaysrc\""""
-     print """ """
-     print traceback.print_exc(10)
-     sys.exit(3)
+from __future__ import division
 
+try:
+    import sys, traceback
+    import re
+    import sys
+    from math import log, pow, sqrt
+except:
+    print """ Could not load some user defined  module functions"""
+    print """ Make sure your typed \"source MetaPathwaysrc\""""
+    print """ """
+    print traceback.print_exc(10)
+    sys.exit(3)
+
+try:
+    print "P-value: Trying to import libraries for p-value."
+    from math import erf # only available in Python 2.7
+except:
+    print "Warning: Could not import required modules for p-value calculation, will not calculate p-values."
 
 def copyList(a, b): 
     [ b.append(x) for x in a ] 
@@ -30,8 +37,6 @@ class CDF:
             if obs <= x:
                 counter += 1
         return counter / len(self.obs)
-
-
 
 class LCAStar(object):
     # begin_pattern = re.compile("#")
@@ -72,62 +77,65 @@ class LCAStar(object):
     # results_dictionary = None
     # initialize with the ncbi tree file 
     def __init__(self, filename):
-       
-       # initialize class variables
-       self.begin_pattern = re.compile("#")
-       self.name_to_id = {} # a readable taxon name to ncbi id 
-       self.id_to_name = {} # a readable taxon ncbi taxid to name
-       self.taxid_to_ptaxid = {} # this is the tree structure in a id to parent map, you can traverse it to go to the root
-       # this is the tree structure in a parent to child id map, you can use it to traverse the tree downwards
-       # ptaxid_to_taxid[ptaxid] = [ cid1, cid2, ...cidk]
-       self.ptaxid_to_taxid = {}
-       # a map from id to value, which has the S = sum n,  value for each id
-       self.id_to_R={}
-       # a map from id to value, which has the S = sum n,  value for each id
-       self.id_to_S={}
-       # a map from id to value, which has the L = sum n log n,  value for each id
-       self.id_to_L={}
-       # a map from id to value, which has the entropy H value for each id
-       self.id_to_H={}
-       # a map to keep track of visited nodes
-       self.id_to_V={}
-       self.lca_min_score = 50   # an LCA parameter for min score for a hit to be considered
-       self.lca_top_percent = 10    # an LCA param to confine the hits to within the top hits score upto the top_percent% 
-       self.lca_min_support = 5   # a minimum number of reads in the sample to consider a taxon to be present
-       
-       self.lca_star_min_reads = 10
-       self.lca_star_min_depth = 3
-       self.lca_star_alpha = 0.53
-       
-       self.results_dictionary = None
-       
-       taxonomy_file = open(filename, 'r')
-       lines = taxonomy_file.readlines()
-       taxonomy_file.close()
-       
-       for line in lines:
-          if self.begin_pattern.search(line):
-              continue
-          fields =  [ str(x.strip())  for x in line.rstrip().split('\t')]
-          if len(fields) !=3:
-              continue
-          self.name_to_id[fields[0]] = fields[1]
-          self.id_to_name[fields[1]] = fields[0]
-          # the taxid to ptax map has for each taxid a corresponding 3-tuple
-          # the first location is the pid, the second is used as a counter for 
-          # lca while a search is traversed up the tree and the third is used for
-          # the min support
-          self.taxid_to_ptaxid[fields[1]] = [fields[2], 0, 0]
 
-          if not fields[2] in self.ptaxid_to_taxid:
-              self.ptaxid_to_taxid[fields[2]]={}
+        # initialize class variables
+        self.begin_pattern = re.compile("#")
+        self.name_to_id = {} # a readable taxon name to ncbi id
+        self.id_to_name = {} # a readable taxon ncbi taxid to name
+        self.taxid_to_ptaxid = {} # this is the tree structure in a id to parent map, you can traverse it to go to the root
+        # this is the tree structure in a parent to child id map, you can use it to traverse the tree downwards
+        # ptaxid_to_taxid[ptaxid] = [ cid1, cid2, ...cidk]
+        self.ptaxid_to_taxid = {}
+        # a map from id to value, which has the S = sum n,  value for each id
+        self.id_to_R={}
+        # a map from id to value, which has the S = sum n,  value for each id
+        self.id_to_S={}
+        # a map from id to value, which has the L = sum n log n,  value for each id
+        self.id_to_L={}
+        # a map from id to value, which has the entropy H value for each id
+        self.id_to_H={}
+        # a map to keep track of visited nodes
+        self.id_to_V={}
+        self.lca_min_score = 50   # an LCA parameter for min score for a hit to be considered
+        self.lca_top_percent = 10    # an LCA param to confine the hits to within the top hits score upto the top_percent%
+        self.lca_min_support = 5   # a minimum number of reads in the sample to consider a taxon to be present
 
-          if not (fields[2]=='1' and fields[1]=='1'):
-             if fields[1]==fields[2]:
-                 print "ERROR what did you just do!. You should  have never  gotten here!"
-                 sys.exit(0)
+        self.lca_star_min_reads = 10
+        self.lca_star_min_depth = 3
+        self.lca_star_alpha = 0.53
 
-             self.ptaxid_to_taxid[fields[2]][fields[1]] = False
+        self.results_dictionary = None
+        self.chi_squared_cdf = None
+
+        taxonomy_file = open(filename, 'r')
+        lines = taxonomy_file.readlines()
+        taxonomy_file.close()
+
+        for line in lines:
+            if self.begin_pattern.search(line):
+                continue
+            fields =  [ str(x.strip())  for x in line.rstrip().split('\t')]
+            if len(fields) !=3:
+                continue
+            self.name_to_id[fields[0]] = fields[1]
+            self.id_to_name[fields[1]] = fields[0]
+            # the taxid to ptax map has for each taxid a corresponding 3-tuple
+            # the first location is the pid, the second is used as a counter for
+            # lca while a search is traversed up the tree and the third is used for
+            # the min support
+            self.taxid_to_ptaxid[fields[1]] = [fields[2], 0, 0]
+
+            if not fields[2] in self.ptaxid_to_taxid:
+                self.ptaxid_to_taxid[fields[2]]={}
+
+            if not (fields[2]=='1' and fields[1]=='1'):
+                if fields[1]==fields[2]:
+                    print "ERROR what did you just do!. You should  have never  gotten here!"
+                    sys.exit(0)
+
+                self.ptaxid_to_taxid[fields[2]][fields[1]] = False
+
+
 
 
     def setParameters(self, min_score, top_percent, min_support):
@@ -355,7 +363,6 @@ class LCAStar(object):
            print "ERROR : Cannot read annotated gff file "
           
 
-    
     def taxon_depth(self, taxon):
         id = self.translateNameToID(taxon)
         if id==None:
@@ -610,21 +617,23 @@ class LCAStar(object):
 
     # Chi-squared with one degree of freedom
     def chi_squared(self, x):
-        return math.erf(math.sqrt(x/2))
+        return erf(sqrt(x/2))
 
     def calculate_pvalue(self, taxa_list, taxa):
         if taxa not in taxa_list:
             print "Error: Tried to calculate a p-value for a taxa not in taxa_list."
-            exit()
+            return None
         if len(taxa_list) <= 1:
             print "Warning: p-value not defined for taxa lists of 1"
+            return None
 
         X = {} # hash of taxa counts
-        M = 0 # maximum
+        M = 0  # maximum count
 
         for t in taxa_list:
             if not t in X:
                 X[t] = 0
+            X[t] += 1
 
         X_k = X[taxa] # taxa count for test statistic
         for t in X:
@@ -636,9 +645,17 @@ class LCAStar(object):
 
         if X_k <= M:
             # trivial case
-            return T
+            return 1 - self.chi_squared(T)
         else:
-            first = M * math.log( (2 * M) / (M + X_k) )
-            second = X_k * math.log( (X_k / (M + X_k))  )
-            T = 2 (first + second)
+            print "M:", M
+            print "X_k:", X_k
+            first = 0
+            if M > 0:
+                first = M * log( (2 * M) / (M + X_k) )
+            print "first:", first
+            second = X_k * log( (2 * X_k) / (M + X_k) )
+            print "second:", second
+            T = 2 * (first + second)
+            print "T:", T
+            return 1 - self.chi_squared(T)
 

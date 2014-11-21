@@ -49,7 +49,9 @@ parser.add_argument('--ncbi_megan_map', dest='ncbi_megan_map', type=str, nargs='
 parser.add_argument('-o', '--output', dest='output', type=str, nargs='?', required=False,
     help='output file of predicted taxonomies', default=None)
 parser.add_argument('--orf_summary', dest='orf_summary', type=str, nargs='?', choices=['lca', 'besthit', 'orf_majority'], required=False,
-    default='lca', help='ORF Summarization rule.')
+    default='lca', help='ORF Summary method')
+parser.add_argument('--contig_taxa_ref', dest='contig_taxa_ref', type=str, nargs='?', required=False,
+    default=None, help='List of contig reference taxonomies (i.e., the known taxonomy)')
 
 def translate_to_prefered_name(id, ncbi_megan_map, lcastar):
     id_str = str(id)
@@ -145,10 +147,17 @@ def main(argv):
                 else:
                     continue
 
-    # for contig in contig_to_taxa:
-    #     for orf in contig_to_taxa[contig]:
-    #
-    #         print my_taxas
+    # read contig taxa reference if applicable
+    contig_to_taxa_ref = {}
+    if args["contig_taxa_ref"]:
+        with open(args["contig_taxa_ref"], "r") as fh:
+            for l in fh:
+                fields = clean_tab_lines(l)
+                contig_id = fields[0]
+                contig_origin = fields[1]
+                contig_to_taxa_ref[contig_id] = contig_origin
+
+
 
     ## Build the LCA Star NCBI Tree
     print "Loading LCAStar:"
@@ -190,12 +199,11 @@ def main(argv):
     # contig_to_taxa = {}
 
     ## LCA^2, Majority, and LCA* for each ORF
-
     print "\t".join(["Contig", "LCAStar", "Majority", "LCASquared"])
-
     for contig in contig_to_lca:
         orf_lcas = []
         simple_list = []
+        sample = re.sub("\_[0-9]+$", "", contig)
         for orf in contig_to_lca[contig]:
             lca = contig_to_lca[contig][orf]
             orf_lcas.append( [ lca ] )
@@ -203,7 +211,11 @@ def main(argv):
         lca_squared = lcastar.getTaxonomy( orf_lcas )
         majority = most_common( simple_list )
         lca_star = lcastar.lca_star( simple_list )
-        print "\t".join(map(str, [contig, lca_star, majority, lca_squared]))
+        # print out results
+        print "\t".join(map(str, [contig, lca_star, majority, lca_squared, contig_to_taxa_ref[sample]]))
+        print simple_list
+        print majority
+        print lcastar.calculate_pvalue(simple_list, majority)
 
     exit()
 
