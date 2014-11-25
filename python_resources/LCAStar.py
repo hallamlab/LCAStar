@@ -6,6 +6,8 @@ try:
     import sys, traceback
     import re
     import sys
+    import itertools
+    import operator
     from math import log, pow, sqrt
 except:
     print """ Could not load some user defined  module functions"""
@@ -15,10 +17,9 @@ except:
     sys.exit(3)
 
 try:
-    print "P-value: Trying to import libraries for p-value."
     from math import erf # only available in Python 2.7
 except:
-    print "Warning: Could not import required modules for p-value calculation, will not calculate p-values."
+    print "Warning: Could not import math.erf, will use interpolation for p-values."
 
 def copyList(a, b): 
     [ b.append(x) for x in a ] 
@@ -612,12 +613,13 @@ class LCAStar(object):
         taxalist = self.filter_taxa_list(taxalist)
         
         if taxalist==None:
-           return 'all'
+           return ('all', None)
         
         majority = self.__lca_majority(taxalist) 
         
         if majority != None:
-           return majority
+           p_val = self.calculate_pvalue(taxalist, majority)
+           return (majority, str(p_val))
         
         read_counts, Total = self.__read_counts(taxalist)
 #        for key, value in read_counts.iteritems():
@@ -631,7 +633,7 @@ class LCAStar(object):
         result_taxon = self.translateIdToName( str( result_id ) )
         p_val = self.calculate_pvalue(collapsed_taxa_list, result_taxon)
         self.__decolor_tree()
-        return result_taxon, p_val
+        return (result_taxon, str(p_val))
 
     # Chi-squared with one degree of freedom
     def chi_squared(self, x):
@@ -664,14 +666,14 @@ class LCAStar(object):
 
         if X_k <= M:
             # trivial case
-            return 1 - self.chi_squared(T)
+            return round(1 - self.chi_squared(T), 3)
         else:
             first = 0
             if M > 0:
                 first = M * log( (2 * M) / (M + X_k) )
             second = X_k * log( (2 * X_k) / (M + X_k) )
             T = 2 * (first + second)
-            return 1 - self.chi_squared(T)
+            return round(1 - self.chi_squared(T),3)
 
     # Calculate the most common taxa in a given list
     def simple_majority(self, L):

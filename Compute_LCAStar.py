@@ -22,7 +22,6 @@ try:
      import glob
      import random
      import functools
-     import itertools
      import operator
      from os import makedirs, sys, remove
      from sys import path
@@ -52,6 +51,11 @@ parser.add_argument('--orf_summary', dest='orf_summary', type=str, nargs='?', ch
     default='lca', help='ORF Summary method')
 parser.add_argument('--contig_taxa_ref', dest='contig_taxa_ref', type=str, nargs='?', required=False,
     default=None, help='List of contig reference taxonomies (i.e., the known taxonomy)')
+parser.add_argument('--sample_taxa_ref', dest='sample_taxa_ref', type=str, nargs='?', required=False,
+    default=None, help='Name of the NCBI reference taxonomy. Hint: Put in double ')
+parser.add_argument('--all_methods', dest='all_methods', action='store_true', required=False,
+    default=None, help='Print all taxonomic estimation methods.')
+
 
 def translate_to_prefered_name(id, ncbi_megan_map, lcastar):
     id_str = str(id)
@@ -91,8 +95,7 @@ def main(argv):
              fields = map(str.strip, fields)
              ncbi_megan_map[fields[0]] = fields[1]
 
-
-    # contig_taxa_datastructure
+    # contig_taxa_data structure
     contig_to_taxa = {}
     contig_pattern = re.compile("^(.*)_([0-9]*)$")
     taxonomy_pattern = re.compile("\[(.*)\]")
@@ -124,30 +127,33 @@ def main(argv):
                 else:
                     continue
 
-    # read contig taxa reference if applicable
-    contig_to_taxa_ref = {}
+    ## load contig references (if available or applicable)
+
+    # read contig taxa reference if available
+    contig_to_taxa_ref = None
     if args["contig_taxa_ref"]:
-        with open(args["contig_taxa_ref"], "r") as fh:
-            for l in fh:
-                fields = clean_tab_lines(l)
-                contig_id = fields[0]
-                contig_origin = fields[1]
-                contig_to_taxa_ref[contig_id] = contig_origin
+        contig_to_taxa_ref = {}
+        if args["contig_taxa_ref"]:
+            with open(args["contig_taxa_ref"], "r") as fh:
+                for l in fh:
+                    fields = clean_tab_lines(l)
+                    contig_id = fields[0]
+                    contig_origin = fields[1]
+                    contig_to_taxa_ref[contig_id] = contig_origin
 
-
+    # all contigs hypothetically have the same reference (i.e., single cells)
+    sample_ref = None
+    if args["sample_taxa_ref"]:
+        sample_ref = args["sample_taxa_ref"]
 
     ## Build the LCA Star NCBI Tree
-    print "Loading LCAStar:"
     lcastar = LCAStar(args["ncbi_tree"])
     lcastar.setLCAStarParameters(min_depth = 1, alpha = 0.51, min_reads = 1)
-    print "Done."
 
     ## Calculate LCA for each ORF
     contig_to_lca = {}
     for contig in contig_to_taxa:
-        print contig
         for orf in contig_to_taxa[contig]:
-            print "\t", orf
             if contig not in contig_to_lca:
                 contig_to_lca[contig] = {}
             if orf not in contig_to_lca[contig]:
@@ -176,37 +182,31 @@ def main(argv):
     # contig_to_taxa = {}
 
     ## LCA^2, Majority, and LCA* for each ORF
-    pval = False
-    dist = False
-    all_methods = False
+    all_methods = args['all_methods']
     if all_methods:
-        if pval:
-            print "\t".join(["Contig", "LCAStar", "LCAStar_p", "Majority", "Majority_p", "LCASquared"])
-        elif dist:
-            print "\t".join(["Contig", "LCAStar", "LCAStar_dist", "LCAStar_WTD",\
-                             "Majority", "Majority_dist", "Majority_WTD",\
-                             "LCASquared", "LCASquared_dist", "LCASquared_WTD"])
-        elif dist and pval:
-            print "\t".join(["Contig", "LCAStar", "LCAStar_p", "LCAStar_dist", "LCAStar_WTD",\
-                             "Majority", "Majority_p", "Majority_dist", "Majority_WTD", \
-                             "LCASquared", "LCASquared_p", "LCASquared_dist", "LCASquared_WTD"])
+        if contig_to_taxa_ref or sample_ref:
+            header = "\t".join(["Contig", "LCAStar", "LCAStar_p", "LCAStar_dist", "LCAStar_WTD",
+                         "Majority", "Majority_p", "Majority_dist", "Majority_WTD",
+                         "LCASquared", "LCASquared_dist", "LCASquared_WTD", "Original"])
         else:
-            print "\t".join(["Contig", "LCAStar", "Majority", "LCASquared"])
+            header = "\t".join(["Contig", "LCAStar", "LCAStar_p",
+                         "Majority", "Majority_p", "LCASquared"])
     else:
-        if pval:
-            print "\t".join(["Contig", "LCAStar", "LCAStar_p"])
-        elif dist:
-            print "\t".join(["Contig", "LCAStar", "LCAStar_dist", "LCAStar_WTD"])
-        elif dist and pval:
-            print "\t".join(["Contig", "LCAStar", "LCAStar_p", "LCAStar_dist", "LCAStar_WTD", "Original" ])
+        if contig_to_taxa_ref or sample_ref:
+            header = "\t".join(["Contig", "LCAStar", "LCAStar_p", "LCAStar_dist", "LCAStar_WTD", "Original" ])
         else:
-            print "\t".join(["Contig", "LCAStar", "Majority", "LCASquared"])
+            header = "\t".join(["Contig", "LCAStar", "LCAStar_p"])
 
+    output_fh = None
+    if args['output']:
+        output_fh = open(args['output'],"w")
+        output_fh.write(header + "\n")
+    else:
+        print header
 
     for contig in contig_to_lca:
         orf_lcas = []
         simple_list = []
-
         for orf in contig_to_lca[contig]:
             lca = contig_to_lca[contig][orf]
             orf_lcas.append( [ lca ] )
@@ -218,22 +218,50 @@ def main(argv):
         majority_p = lcastar.calculate_pvalue(simple_list, majority)
         lca_star, lca_star_p = lcastar.lca_star( simple_list )
 
-        # calculate distances
-        # extract sample from contig name if possible
-        if contig_to_taxa_ref:
-            sample = re.sub("\_[0-9]+$", "", contig)
-            real = contig_to_taxa_ref[sample]
+        ## calculate distances
+        real = None
+        lca_squared_dist = None
+        lca_squared_WTD = None
+        majority_dist = None
+        majority_WTD = None
+        lca_star_dist = None
+        lca_star_WTD = None
+
+        if contig_to_taxa_ref or sample_ref:
+            if contig_to_taxa_ref:
+                real = contig_to_taxa_ref[contig]
+            else:
+                real = sample_ref
             lca_squared_dist = str(lcastar.get_distance(lca_squared, real))
             lca_squared_WTD = str(lcastar.wtd_distance(lca_squared, real))
             majority_dist = str(lcastar.get_distance(majority, real))
             majority_WTD = str(lcastar.wtd_distance(majority, real))
             lca_star_dist = str(lcastar.get_distance(lca_star, real))
-            lca_star_wtd = str(lcastar.wtd_distance(lca_star, real))
+            lca_star_WTD = str(lcastar.wtd_distance(lca_star, real))
 
-        # print out results
-        print "\t".join(map(str, [contig, lca_star, majority, lca_squared, real]))
-        print simple_list
-        print majority
+        # construct line based on cases
+        if all_methods:
+            if contig_to_taxa_ref or sample_ref:
+                line = "\t".join(map(str, [contig, lca_star, lca_star_p, lca_star_dist, lca_star_WTD,
+                                     majority, majority_p, majority_dist, majority_WTD,
+                                     lca_squared, lca_squared_dist, lca_squared_WTD, real]))
+            else:
+                line = "\t".join(map(str, [contig, lca_star, lca_star_p,
+                                           majority, majority_p, lca_squared]))
+        else:
+            if contig_to_taxa_ref or sample_ref:
+                line = "\t".join([contig, lca_star, lca_star_p, lca_star_dist, lca_star_WTD, real ])
+            else:
+                line = "\t".join([contig, lca_star, lca_star_p])
+
+        # print out line
+        if output_fh:
+            output_fh.write(line + "\n")
+        else:
+            print line
+    if output_fh:
+        output_fh.close()
+
 
     exit()
 
