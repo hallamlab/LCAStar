@@ -71,29 +71,6 @@ def clean_tab_lines(line):
     fields = map(str.strip, fields, "\n")
     return fields
 
-
-
-# Calculate the most common taxa in a given list
-def most_common(L):
-    if len(L) == 0:
-        return "root"
-    # get an iterable of (item, iterable) pairs
-    SL = sorted((x, i) for i, x in enumerate(L))
-    # print 'SL:', SL
-    groups = itertools.groupby(SL, key=operator.itemgetter(0))
-    # auxiliary function to get "quality" for an item
-    def _auxfun(g):
-        item, iterable = g
-        count = 0
-        min_index = len(L)
-        for _, where in iterable:
-            count += 1
-            min_index = min(min_index, where)
-        # print 'item %r, count %r, minind %r' % (item, count, min_index)
-        return count, -min_index
-    # pick the highest-count/earliest item
-    return max(groups, key=_auxfun)[0]
-
 def main(argv):
     args = vars(parser.parse_args())
 
@@ -188,7 +165,7 @@ def main(argv):
                     for t in contig_taxas:
                         majority_list.append(t[0])
                     #TODO Update most common to check for alterantive taxonomy names
-                    contig_to_lca[contig][orf] = most_common(majority_list)
+                    contig_to_lca[contig][orf] = lcastar.simple_majority(majority_list)
                 else:
                     lca_list = [] # create a list of lists for LCA calculation
                     for t in contig_taxas:
@@ -199,23 +176,64 @@ def main(argv):
     # contig_to_taxa = {}
 
     ## LCA^2, Majority, and LCA* for each ORF
-    print "\t".join(["Contig", "LCAStar", "Majority", "LCASquared"])
+    pval = False
+    dist = False
+    all_methods = False
+    if all_methods:
+        if pval:
+            print "\t".join(["Contig", "LCAStar", "LCAStar_p", "Majority", "Majority_p", "LCASquared"])
+        elif dist:
+            print "\t".join(["Contig", "LCAStar", "LCAStar_dist", "LCAStar_WTD",\
+                             "Majority", "Majority_dist", "Majority_WTD",\
+                             "LCASquared", "LCASquared_dist", "LCASquared_WTD"])
+        elif dist and pval:
+            print "\t".join(["Contig", "LCAStar", "LCAStar_p", "LCAStar_dist", "LCAStar_WTD",\
+                             "Majority", "Majority_p", "Majority_dist", "Majority_WTD", \
+                             "LCASquared", "LCASquared_p", "LCASquared_dist", "LCASquared_WTD"])
+        else:
+            print "\t".join(["Contig", "LCAStar", "Majority", "LCASquared"])
+    else:
+        if pval:
+            print "\t".join(["Contig", "LCAStar", "LCAStar_p"])
+        elif dist:
+            print "\t".join(["Contig", "LCAStar", "LCAStar_dist", "LCAStar_WTD"])
+        elif dist and pval:
+            print "\t".join(["Contig", "LCAStar", "LCAStar_p", "LCAStar_dist", "LCAStar_WTD", "Original" ])
+        else:
+            print "\t".join(["Contig", "LCAStar", "Majority", "LCASquared"])
+
+
     for contig in contig_to_lca:
         orf_lcas = []
         simple_list = []
-        sample = re.sub("\_[0-9]+$", "", contig)
+
         for orf in contig_to_lca[contig]:
             lca = contig_to_lca[contig][orf]
             orf_lcas.append( [ lca ] )
             simple_list.append( lca )
+
+        # calculate statistics and p-values
         lca_squared = lcastar.getTaxonomy( orf_lcas )
-        majority = most_common( simple_list )
-        lca_star = lcastar.lca_star( simple_list )
+        majority = lcastar.simple_majority( simple_list )
+        majority_p = lcastar.calculate_pvalue(simple_list, majority)
+        lca_star, lca_star_p = lcastar.lca_star( simple_list )
+
+        # calculate distances
+        # extract sample from contig name if possible
+        if contig_to_taxa_ref:
+            sample = re.sub("\_[0-9]+$", "", contig)
+            real = contig_to_taxa_ref[sample]
+            lca_squared_dist = str(lcastar.get_distance(lca_squared, real))
+            lca_squared_WTD = str(lcastar.wtd_distance(lca_squared, real))
+            majority_dist = str(lcastar.get_distance(majority, real))
+            majority_WTD = str(lcastar.wtd_distance(majority, real))
+            lca_star_dist = str(lcastar.get_distance(lca_star, real))
+            lca_star_wtd = str(lcastar.wtd_distance(lca_star, real))
+
         # print out results
-        print "\t".join(map(str, [contig, lca_star, majority, lca_squared, contig_to_taxa_ref[sample]]))
+        print "\t".join(map(str, [contig, lca_star, majority, lca_squared, real]))
         print simple_list
         print majority
-        print lcastar.calculate_pvalue(simple_list, majority)
 
     exit()
 

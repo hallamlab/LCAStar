@@ -14,8 +14,10 @@ Tn <- function(vote_vec){
     log1 <- M * log((2*M)/(M+X_k))
   }
   log2 <- X_k * log((2*X_k)/(M+X_k))
-  
   res <- 2*(log1 + log2)
+  print(paste("log1:", log1))
+  print(paste("log2:", log2))
+  print(paste("res:", res))
   return(res)
 }
 

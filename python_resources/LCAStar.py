@@ -480,7 +480,7 @@ class LCAStar(object):
                   self.ptaxid_to_taxid[id][child] = False
                   S.append(child)
 
-    
+
     def __create_majority(self, root, read_name_counts):
         read_counts = {}
         Total = 0
@@ -488,52 +488,51 @@ class LCAStar(object):
             id = self.translateNameToID(taxon)
             read_counts[id] = count
             Total += count
-        
+
         candidate = ['1', 10000000.00 ]
         Stack = [root]
         while len(Stack) >0:
             id = Stack.pop()
             # calculate here
             if id in self.id_to_V:
-               C = []
-               if id in self.ptaxid_to_taxid:
-                  C = self.ptaxid_to_taxid[id].keys()
-               # I am coming up
-               self.id_to_H[id] = 0
-               
-               if id in read_counts:
-                  self.id_to_S[id] = float(read_counts[id])
-                  self.id_to_L[id] = float(read_counts[id])*log(float(read_counts[id]))
-               else:
-                  self.id_to_S[id] = 0
-                  self.id_to_L[id] = 0
-               
-               for child in C:
-                 if self.ptaxid_to_taxid[id][child]:
-                   self.id_to_S[id] += self.id_to_S[child] 
-                   self.id_to_L[id] += self.id_to_L[child] 
-               #print id, self.id_to_S[id], self.taxid_to_ptaxid[id]
-               try:
-                 self.id_to_H[id] = -(self.id_to_L[id]/self.id_to_S[id] - log(self.id_to_S[id]))
-               except:
-                 print "ID: " + str(id)
-                 exit(-1)
-               if self.id_to_S[id] > Total*self.lca_star_alpha:
-                   if candidate[1] > self.id_to_H[id]:
-                      candidate[0] = id
-                      candidate[1] = self.id_to_H[id]
+                C = []
+                if id in self.ptaxid_to_taxid:
+                    C = self.ptaxid_to_taxid[id].keys()
+                # I am coming up
+                self.id_to_H[id] = 0
 
+                if id in read_counts:
+                    self.id_to_S[id] = float(read_counts[id])
+                    self.id_to_L[id] = float(read_counts[id])*log(float(read_counts[id]))
+                else:
+                    self.id_to_S[id] = 0
+                    self.id_to_L[id] = 0
+
+                for child in C:
+                    if self.ptaxid_to_taxid[id][child]:
+                        self.id_to_S[id] += self.id_to_S[child]
+                        self.id_to_L[id] += self.id_to_L[child]
+                        #print id, self.id_to_S[id], self.taxid_to_ptaxid[id]
+                try:
+                    self.id_to_H[id] = -(self.id_to_L[id]/self.id_to_S[id] - log(self.id_to_S[id]))
+                except:
+                    print "ID: " + str(id)
+                    exit(-1)
+                if self.id_to_S[id] > Total*self.lca_star_alpha:
+                    if candidate[1] > self.id_to_H[id]:
+                        candidate[0] = id
+                        candidate[1] = self.id_to_H[id]
             else: # going down
-               self.id_to_V[id] = True
-               C = []
-               if id in self.ptaxid_to_taxid:
-                  C = self.ptaxid_to_taxid[id].keys()
+                self.id_to_V[id] = True
+                C = []
+                if id in self.ptaxid_to_taxid:
+                    C = self.ptaxid_to_taxid[id].keys()
 
-               Stack.append(id)
-               for child in C:
-                 if self.ptaxid_to_taxid[id][child]:
-                    Stack.append(child)
-        return candidate[0] 
+                Stack.append(id)
+                for child in C:
+                    if self.ptaxid_to_taxid[id][child]:
+                        Stack.append(child)
+        return candidate[0]
 
     def __clear_lca_star_data_structure(self):
         self.id_to_R={}
@@ -546,7 +545,7 @@ class LCAStar(object):
     def step_cost(self, d):
         return 1 / pow(2,d)
     
-    def wtd_distance(self, exp, obs):
+    def wtd_distance(self, obs, exp, debug=False):
         """ weighted taxonomic distance calculates the distance between 
             observed and expected positions on the NCBI Taxonomy Database
             weighting each step by a cost function step_cost base in the 
@@ -556,12 +555,13 @@ class LCAStar(object):
         obs_id = self.get_a_Valid_ID([obs])
         exp_lin = self.get_lineage(exp_id)
         obs_lin = self.get_lineage(obs_id)
-        print "Expected: ", exp
-        print "Observed: ", obs
-        print "Expected ID: ", exp_id
-        print "Observed ID: ", obs_id
-        print "Expected Lineage:", exp_lin
-        print "Observed Lineage :", obs_lin
+        if debug:
+            print "Expected: ", exp
+            print "Observed: ", obs
+            print "Expected ID: ", exp_id
+            print "Observed ID: ", obs_id
+            print "Expected Lineage:", exp_lin
+            print "Observed Lineage :", obs_lin
         sign = -1
 
         # check to see if expected in observed lineage
@@ -591,7 +591,23 @@ class LCAStar(object):
                     return ((a_cost + b_cost) * sign)
         return None # did not find lineages
 
-    def lca_star(self, taxalist):
+    # Function takes an LCAStar candidate and read_counts object and returns a revised
+    # taxonomy distribution to calculate a p-value
+    def __collapse_distribution(self, result_id, read_counts):
+        new_taxa_dist_ids = []
+        for r in read_counts:
+            r_id = self.get_a_Valid_ID([r])
+            lin = self.get_lineage(r_id)
+            if result_id in lin:
+                # found in lineage so replace with candidate
+                r_id = result_id
+            # create a list of taxa
+            for i in range(read_counts[r]):
+                new_taxa_dist_ids.append(r_id)
+        new_data_dist = map(self.translateIdToName, map(str, new_taxa_dist_ids) )
+        return new_data_dist
+
+    def lca_star(self, taxalist, p_value=False):
         # filter taxa dist by depth
         taxalist = self.filter_taxa_list(taxalist)
         
@@ -601,7 +617,7 @@ class LCAStar(object):
         majority = self.__lca_majority(taxalist) 
         
         if majority != None:
-           return majority 
+           return majority
         
         read_counts, Total = self.__read_counts(taxalist)
 #        for key, value in read_counts.iteritems():
@@ -609,16 +625,19 @@ class LCAStar(object):
 
         self.__annotate_tree_counts(read_counts)
         self.__color_tree(read_counts)
-        result_id = self.__create_majority('1', read_counts) 
+        result_id = self.__create_majority('1', read_counts)
+        collapsed_taxa_list = self.__collapse_distribution(result_id, read_counts)
         self.__clear_lca_star_data_structure()
         result_taxon = self.translateIdToName( str( result_id ) )
+        p_val = self.calculate_pvalue(collapsed_taxa_list, result_taxon)
         self.__decolor_tree()
-        return result_taxon
+        return result_taxon, p_val
 
     # Chi-squared with one degree of freedom
     def chi_squared(self, x):
         return erf(sqrt(x/2))
 
+    # Calculate pvalue based on Nettleton result
     def calculate_pvalue(self, taxa_list, taxa):
         if taxa not in taxa_list:
             print "Error: Tried to calculate a p-value for a taxa not in taxa_list."
@@ -647,15 +666,30 @@ class LCAStar(object):
             # trivial case
             return 1 - self.chi_squared(T)
         else:
-            print "M:", M
-            print "X_k:", X_k
             first = 0
             if M > 0:
                 first = M * log( (2 * M) / (M + X_k) )
-            print "first:", first
             second = X_k * log( (2 * X_k) / (M + X_k) )
-            print "second:", second
             T = 2 * (first + second)
-            print "T:", T
             return 1 - self.chi_squared(T)
 
+    # Calculate the most common taxa in a given list
+    def simple_majority(self, L):
+        if len(L) == 0:
+            return "root"
+        # get an iterable of (item, iterable) pairs
+        SL = sorted((x, i) for i, x in enumerate(L))
+        # print 'SL:', SL
+        groups = itertools.groupby(SL, key=operator.itemgetter(0))
+        # auxiliary function to get "quality" for an item
+        def _auxfun(g):
+            item, iterable = g
+            count = 0
+            min_index = len(L)
+            for _, where in iterable:
+                count += 1
+                min_index = min(min_index, where)
+            # print 'item %r, count %r, minind %r' % (item, count, min_index)
+            return count, -min_index
+        # pick the highest-count/earliest item
+        return max(groups, key=_auxfun)[0]
