@@ -40,43 +40,7 @@ class CDF:
         return counter / len(self.obs)
 
 class LCAStar(object):
-    # begin_pattern = re.compile("#")
 
-    # a readable taxon name to numeric string id map as ncbi
-    
-
-    # a readable taxon ncbi tax id to name map
-    # id_to_name={}
-
-    # this is the tree structure in a id to parent map, you can traverse it to go to the root
-    # taxid_to_ptaxid = {}
-
-    # this is the tree structure in a parent to child id map, you can use it to traverse the tree downwards
-    # ptaxid_to_taxid[ptaxid] = [ cid1, cid2, ...cidk]
-    # ptaxid_to_taxid = {}
-
-    # a map from id to value, which has the S = sum n,  value for each id
-    # id_to_R={}
-    # a map from id to value, which has the S = sum n,  value for each id
-    # id_to_S={}
-    # a map from id to value, which has the L = sum n log n,  value for each id
-    # id_to_L={}
-    # a map from id to value, which has the entropy H value for each id
-    # id_to_H={}
-
-    # a map to keep track of visited nodes
-    # id_to_V={}
-
-
-    # lca_min_score = 50   # an LCA parameter for min score for a hit to be considered
-    # lca_top_percent = 10    # an LCA param to confine the hits to within the top hits score upto the top_percent% 
-    # lca_min_support = 5   # a minimum number of reads in the sample to consider a taxon to be present
-
-    # lca_star_min_reads = 10
-    # lca_star_min_depth = 3
-    # lca_star_alpha = 0.53
-    # results_dictionary = None
-    # initialize with the ncbi tree file 
     def __init__(self, filename):
 
         # initialize class variables
