@@ -146,7 +146,7 @@ library(dplyr)
 Here compared our first implementation (March 16 2014) of LCA* using the `lca_star_test1.fasta` above (10,000, sampling 10 sequences per file on a random subset of 100):
 
 ```{r}
-data <- read.table("/Users/nielsh/Dropbox\ (Personal)/projects/LCAStar/lca_star_test1.txt", sep="\t", header=T)
+data <- read.table("/Users/nielshanson/Dropbox/projects/LCAStar/lca_star_test1.txt", sep="\t", header=T)
 
 clean_up_data <- function(data) {
   # clean up the dataset factors
@@ -239,7 +239,7 @@ python create_analysis_table.py -i lca_star_test/metapathways_out/lca_star_test2
 ```
 
 ```{r}
-data2 <- read.table("/Users/nielsh/Dropbox\ (Personal)/projects/LCAStar/lca_star_test2.txt", sep="\t", quote=c("\"", "\'"), header=T)
+data2 <- read.table("/Users/nielshanson/Dropbox/projects/LCAStar/lca_star_test2.txt", sep="\t", quote=c("\"", "\'"), header=T)
 data2 <- clean_up_data(data2)
 data2.m <- melt(data2)
 
@@ -295,6 +295,165 @@ g6
 select(data2.m, Method, variable, value) %>% 
   group_by(Method, variable) %>%
   
+```
+
+
+```{r}
+setwd("/Users/nielshanson/Dropbox/projects/LCAStar/lca_star_geba_analysis")
+colClasses <- c("character", "character", "numeric", "numeric", "numeric",
+                "character", "numeric", "numeric", "numeric", 
+                "character", "numeric", "numeric", "character" )
+geba_df <- read.table("GEBA_SAG_all_lcastar.txt", sep="\t", header=T, na.strings = "None", 
+                      colClasses = colClasses, strip.white=TRUE, quote="")
+test1_df <- read.table("test1_lcastar.txt", sep="\t", header=T, na.strings = "None", 
+                      colClasses = colClasses, strip.white=TRUE, quote="")
+test2_df <- read.table("test2_lcastar.txt", sep="\t", header=T, na.strings = "None", 
+                      colClasses = colClasses, strip.white=TRUE, quote="")
+
+all_df <- rbind(cbind(geba_df, Sample="GEBA"),cbind(test1_df, Sample="small"),cbind(test2_df, Sample="large"))
+
+all_df$Sample <- factor(all_df$Sample, levels=c("small", "large", "GEBA"))
+
+
+# p-value compare
+g7 <- ggplot(all_df, aes(x=LCAStar_p, y=Majority_p)) 
+g7 <- g7 + geom_point(aes(color=Sample), alpha=0.4)
+g7 <- g7 + xlim(0,1)
+g7 <- g7 + ylim(0,1)
+g7 <- g7 + theme_bw()
+g7 <- g7 + facet_wrap(~ Sample)
+g7
+
+clean_up_data2 <- function(df) {
+  new_df <-rbind(cbind(df$Contig, df$LCAStar, "LCAStar", df$Original, df$LCAStar_p, df$LCAStar_dist, df$LCAStar_WTD),
+           cbind(df$Contig, df$Majority, "Majority", df$Original, df$Majority_p, df$Majority_dist, df$Majority_WTD),
+           cbind(df$Contig, df$LCASquared, "LCASquared", df$Original, NA, df$LCASquared_dist, df$LCASquared_WTD))
+  new_df <- as.data.frame(new_df)
+  colnames(new_df) <- c("Contig", "Taxonomy", "Method", "Original", "p-value", "Walk", "WTD")
+  new_df.m<- melt(new_df, id.vars = c("Contig", "Taxonomy", "Method", "Original"))
+  new_df.m$value <- as.numeric(as.character(new_df.m$value))
+  new_df.m$Method <- factor(new_df.m$Method, levels = c("LCASquared", "Majority", "LCAStar"))
+  new_df.m
+}
+
+# reshape data into ggplot form
+test1_df.m <- clean_up_data2(test1_df)
+test1_df.m<- cbind(test1_df.m, Sample="small")
+test2_df.m <- clean_up_data2(test2_df)
+test2_df.m <- cbind(test2_df.m, Sample="large")
+geba_df.m <- clean_up_data2(geba_df)
+geba_df.m <- cbind(geba_df.m, Sample="GEBA")
+
+all_df.m <- rbind(test1_df.m, test2_df.m, geba_df.m)
+
+my_line_col = "#4C4C4C"
+
+means <- select(all_df.m, Method, Sample, variable, value) %>%
+  group_by(Method, Sample, variable) %>%
+  filter(variable== "Walk") %>%
+  summarize(mean=mean(value, na.rm = T),
+            percent_25 = quantile(value, probs = 0.25, na.rm = T),
+            median = quantile(value, probs=0.5, na.rm = T),
+            percent_75 = quantile(value, probs = 0.75, na.rm = T))
+
+g8 <- ggplot(subset(all_df.m, variable == "Walk"), aes(x=value, fill=Method))
+# g8 <- g8 + geom_histogram(binwidth=2, alpha=0.8) 
+g8 <- g8 + geom_density(adjust=5, alpha=0.6) 
+g8 <- g8 + facet_grid(Method ~ Sample, scales = "free_x")
+g8 <- g8 + theme(legend.position="none")
+g8 <- g8 + geom_vline(aes(xintercept=mean), colour=my_line_col, size=1.5, alpha=0.5, means)
+g8 <- g8 + geom_vline(aes(xintercept=median), colour=my_line_col, linetype="dashed", size=1.5, alpha=0.5, means)
+g8 <- g8 + xlab("Simple Distance")
+g8 <- g8 + ylab("Frequency")
+g8
+
+g8 <- ggplot(subset(all_df.m, variable == "Walk"), aes(x=value, fill=Method))
+g8 <- g8 + geom_histogram(binwidth=2, alpha=0.8) 
+# g8 <- g8 + geom_density(adjust=6, alpha=0.8) 
+g8 <- g8 + facet_grid(Method ~ Sample, scales = "free")
+g8 <- g8 + theme(legend.position="none")
+#g8 <- g8 + geom_vline(aes(xintercept=percent_25), colour=my_line_col, size=1.5, alpha=0.5, means)
+#g8 <- g8 + geom_vline(aes(xintercept=median), colour=my_line_col, size=1.5, alpha=0.5, means)
+#g8 <- g8 + geom_vline(aes(xintercept=percent_75), colour=my_line_col, size=1.5, alpha=0.5, means)
+g8 <- g8 + xlab("Simple Distance")
+g8 <- g8 + ylab("Frequency")
+g8
+
+
+means <- select(all_df.m, Method, Sample, variable, value) %>%
+  group_by(Method, Sample, variable) %>%
+  filter(variable== "WTD") %>%
+  summarize(mean=mean(value, na.rm = T),
+            percent_25 = quantile(value, probs = 0.25, na.rm = T),
+            median = quantile(value, probs=0.5, na.rm = T),
+            percent_75 = quantile(value, probs = 0.75, na.rm = T))
+
+g8 <- ggplot(subset(all_df.m, variable == "WTD"), aes(x=value, fill=Method))
+g8 <- g8 + geom_histogram(binwidth=0.1, alpha=0.8) 
+g8 <- g8 + facet_grid(Sample ~ Method, scales = "free_y")
+g8 <- g8 + theme(legend.position="none")
+#g8 <- g8 + geom_vline(aes(xintercept=percent_25), colour=my_line_col, means)
+#g8 <- g8 + geom_vline(aes(xintercept=median), colour=my_line_col, means)
+#g8 <- g8 + geom_vline(aes(xintercept=percent_75), colour=my_line_col, means)
+g8 <- g8 + xlab("Weighted Taxonomic Distance")
+g8 <- g8 + ylab("Frequency")
+g8
+
+g8 <- ggplot(subset(all_df.m, variable == "WTD"), aes(x=value, fill=Method))
+g8 <- g8 + geom_density(adjust=10, alpha=0.6) 
+g8 <- g8 + facet_grid(Sample ~ Method, scales = "free_y")
+g8 <- g8 + theme(legend.position="none")
+#g8 <- g8 + geom_vline(aes(xintercept=percent_25), colour=my_line_col, means)
+#g8 <- g8 + geom_vline(aes(xintercept=median), colour=my_line_col, means)
+#g8 <- g8 + geom_vline(aes(xintercept=percent_75), colour=my_line_col, means)
+g8 <- g8 + xlab("Weighted Taxonomic Distance")
+g8 <- g8 + ylab("Frequency")
+g8
+
+g8 <- ggplot(subset(geba_df.m, variable == "Walk"), aes(x=value, fill=Method))
+g8 <- g8 + geom_histogram(binwidth=2, alpha=0.8) 
+g8 <- g8 + facet_wrap( ~ Method, ncol = 1)
+g8 <- g8 + theme(legend.position="none")
+g8 <- g8 + xlim(0,15)
+g8 <- g8 + xlab("Value")
+g8 <- g8 + ylab("Frequency")
+g8
+
+g9 <-ggplot(subset(geba_df.m, variable == "WTD"), aes(x=value, fill=Method))
+g9 <- g9 + geom_histogram(binwidth=0.1, alpha=0.8) 
+g9 <- g9 + facet_wrap( ~ Method, ncol = 1)
+g9 <- g9 + theme(legend.position="none")
+g9 <- g9 + xlim(-1.5,0)
+g9 <- g9 + xlab("Value")
+g9 <- g9 + ylab("Frequency")
+g9
+
+res <- select(geba_df.m, Method, variable, value) %>%
+       filter(variable %in% c("Walk", "WTD")) %>%
+       group_by(Method, variable) %>%
+       summarize(n_obs = n(), RMSE = mean(abs(value), na.rm=TRUE))
+g10 <- ggplot(res, aes(y=RMSE, x =Method, fill=Method)) 
+g10 <- g10 + geom_bar(stat="identity", alpha=0.8) 
+g10 <- g10 + facet_wrap(~variable, scales="free_y")
+g10 <- g10 + theme(legend.position="none")
+g10
+
+# g11 <-ggplot(subset(geba_df.m, variable %in% c("WTD", "Walk")), aes(x=Method, y=value, fill=Method))
+# g11 <- g11 + geom_violin(alpha=0.6)
+# g11 <- g11 + scale_y_log10()
+# g11 <- g11 + coord_flip()
+# g11 <- g11 + facet_wrap( ~ variable)
+# g11
+geba_df.m$Taxonomy <- as.vector(geba_df.m$Taxonomy)
+geba_df.m$Original<- as.vector(geba_df.m$Original)
+res <- select(geba_df.m, Method, Taxonomy, Original) %>%
+       group_by(Method) %>%
+       summarize(n_obs = n(), accuracy = sum(Taxonomy == Original)/ length(Taxonomy))
+
+g12 <- ggplot(res, aes(x=Method, y=accuracy, fill=Method)) 
+g12 <- g12 + geom_bar(stat="identity", alpha=0.8)
+g12 <- g12 + theme(legend.position="none")
+g12
 ```
 
 ```{r, eval=FALSE}

@@ -52,9 +52,11 @@ parser.add_argument('--orf_summary', dest='orf_summary', type=str, nargs='?', ch
 parser.add_argument('--contig_taxa_ref', dest='contig_taxa_ref', type=str, nargs='?', required=False,
     default=None, help='List of contig reference taxonomies (i.e., the known taxonomy)')
 parser.add_argument('--sample_taxa_ref', dest='sample_taxa_ref', type=str, nargs='?', required=False,
-    default=None, help='Name of the NCBI reference taxonomy. Hint: Put in double ')
+    default=None, help='Name of the NCBI reference taxonomy. Hint: Put in double quotes')
 parser.add_argument('--all_methods', dest='all_methods', action='store_true', required=False,
     default=None, help='Print all taxonomic estimation methods.')
+parser.add_argument('--print_lineage', dest='print_lineage', action='store_true', required=False,
+    default=None, help='Print full taxonomic linage instead of just final leaf taxonomy.')
 
 
 def translate_to_prefered_name(id, ncbi_megan_map, lcastar):

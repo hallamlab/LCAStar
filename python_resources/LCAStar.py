@@ -228,11 +228,16 @@ class LCAStar(object):
            return lineage
     
     # given two names calculates the distance on the tree
-    def get_distance(self, taxa1, taxa2):
+    def get_distance(self, taxa1, taxa2, debug=False):
         id1 = self.get_a_Valid_ID([taxa1])
         id2 = self.get_a_Valid_ID([taxa2]) # real 
         lin1 = self.get_lineage(id1)
         lin2 = self.get_lineage(id2)
+        if debug:
+            print "id1:", id1
+            print "id2:", id2
+            print "lin1:", lin1
+            print "lin2:", lin2
         large = None
         if len(lin1) <= len(lin2):
            large = lin2
@@ -609,7 +614,7 @@ class LCAStar(object):
             print "Error: Tried to calculate a p-value for a taxa not in taxa_list."
             return None
         if len(taxa_list) <= 1:
-            print "Warning: p-value not defined for taxa lists of 1"
+            #print "Warning: p-value not defined for taxa lists of <2"
             return None
 
         X = {} # hash of taxa counts
