@@ -1,0 +1,237 @@
+---
+title: "LCA*: Past Analyses"
+author: "Niels Hanson"
+date: "November 28, 2014"
+output: html_document
+---
+
+```{r global_options, include=FALSE}
+require(knitr)
+opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE)
+```
+
+Here I've put some previous analyses for posterity's sake.
+
+#### Formatting for R
+
+* `create_analysis_table.py` summarizes results into a Long Table format that can be processed by R:
+
+```
+python create_analysis_table.py -i lca_star_test/metapathways_out/lca_star_test1/preprocessed/lca_star_test1.mapping.txt --ft_table lca_star_test/metapathways_out/lca_star_test1/results/annotation_table/functional_and_taxonomic_table.txt --sum_table lca_star_test/ncbi_bacteria_genomes/ncbi/summary.txt --ncbi_tree ~/Dropbox/utilities/tree_update/data/pipeline/ncbi_taxonomy_tree.txt -o test.out.txt
+```
+
+* example output:
+
+```
+shebop:lca_star_test nielsh$ head first_test.txt 
+contig  real	taxa	method	dist
+lca_star_test1_378	Desulfovibrio desulfuricans subsp. desulfuricans str. ATCC 27774	Desulfomonas Moore et al. 1976	LCA_Star	3
+lca_star_test1_378	Desulfovibrio desulfuricans subsp. desulfuricans str. ATCC 27774	all	Majority	11
+lca_star_test1_378	Desulfovibrio desulfuricans subsp. desulfuricans str. ATCC 27774	biota	LCA_Squared	10
+lca_star_test1_379	Desulfovibrio desulfuricans subsp. desulfuricans str. ATCC 27774	Vibrio cholinicus	LCA_Star	2
+lca_star_test1_379	Desulfovibrio desulfuricans subsp. desulfuricans str. ATCC 27774	Vibrio cholinicus	Majority	2
+lca_star_test1_379	Desulfovibrio desulfuricans subsp. desulfuricans str. ATCC 27774	Desulfomonas Moore et al. 1976	LCA_Squared	3
+lca_star_test1_372	Desulfovibrio desulfuricans subsp. desulfuricans str. ATCC 27774	Desulfomonas Moore et al. 1976	LCA_Star	3
+lca_star_test1_372	Desulfovibrio desulfuricans subsp. desulfuricans str. ATCC 27774	all	Majority	11
+lca_star_test1_372	Desulfovibrio desulfuricans subsp. desulfuricans str. ATCC 27774	'Desulfovibrionaceae'	LCA_Squared	4
+```
+
+* a function `lcastar.get_distance(taxon, real)` was added to the LCAStar.py class to calculate a simple distance between taxa.
+
+### Preliminary statistics
+
+First, load required libraries. 
+
+```{r}
+library(ggplot2)
+library(reshape2)
+library(dplyr)
+
+theme_set(theme_bw(base_family = "Gill Sans")) # set theme and font
+
+```
+
+#### First test
+
+Here compared our first implementation (March 16 2014) of LCA* using the `lca_star_test1.fasta` above (10,000, sampling 10 sequences per file on a random subset of 100):
+
+```{r}
+data <- read.table("~/Dropbox/projects/LCAStar/lca_star_geba_analysis/past_data/lca_star_test1_past.txt", sep="\t", header=T)
+
+clean_up_data <- function(data) {
+  # clean up the dataset factors
+  data$dist <- as.numeric(as.character(data$dist))
+  data$wtd <- as.numeric(as.character(data$wtd))
+  data$method <- as.vector(data$method)
+  
+  data$method[data$method=="LCA_Squared"] = "LCA^2"
+  data$method[data$method=="Majority"] = "Simple Majority"
+  data$method[data$method=="LCA_Star"] = "LCA*"
+  
+  # refactor the of methods
+  data$method <- factor(data$method, levels = c("LCA^2", "Simple Majority", "LCA*"))
+  
+  # clean up column names
+  col <- colnames(data)
+  col[col == "method"] = "Method"
+  col[col == "dist"] = "Walk"
+  col[col == "wtd"] = "WTD"
+  colnames(data) <- col
+  
+  # return the data
+  return(data)
+}
+
+data <- clean_up_data(data)
+data.m <- melt(data)
+theme_set(theme_bw())
+```
+
+```{r}
+g1 <- ggplot(subset(data.m, variable=="Walk"), aes(x=value)) 
+g1 <- g1 + geom_histogram(binwidth=2, aes(fill=Method), alpha=0.8) 
+g1 <- g1 + facet_wrap(~ Method, ncol=1)
+g1 <- g1 + theme(legend.position="none")
+g1
+```
+
+```{r}
+g2 <- ggplot(subset(data.m, variable=="WTD"), aes(x=value)) 
+g2 <- g2 + geom_histogram(binwidth = 0.3, aes(fill=Method), alpha=0.8)
+g2 <- g2 + facet_wrap(~ Method, ncol=1)
+g2 <- g2 + theme(legend.position="none")
+g2
+```
+
+```{r, fig.width=6, fig.height=10}
+g3 <- ggplot(data.m, aes(x=value, fill=Method))
+g3 <- g3 + geom_histogram(data = subset(data.m, variable == "Walk"), binwidth=2, alpha=0.8)
+g3 <- g3 + geom_histogram(data = subset(data.m, variable == "WTD"), binwidth=0.3, alpha=0.8)
+g3 <- g3 + facet_wrap(Method ~ variable , scale="free_x", ncol = 2)
+g3 <- g3 + theme(legend.position="none")
+g3
+```
+
+```{r}
+# looking at the RMSE
+res <- select(data.m, Method, variable, value) %>%
+    group_by(Method, variable) %>%
+    summarize(n_obs = n(), RMSE = mean(abs(value), na.rm=TRUE))
+g4 <- ggplot(res, aes(y=RMSE, x =Method, fill=Method)) 
+g4 <- g4 + geom_bar(stat="identity", alpha=0.8) 
+g4 <- g4 + facet_wrap(~variable, scales="free_y")
+g4 <- g4 + theme(legend.position="none")
+g4
+```
+
+### Notes
+
+* The results are encouraging as LCA star seems to have 'significantly' smaller distances compared to the other two methods, meaning it is more specific. Though this first distance metric a small distance might still be divergent which we would like to keep track off.
+
+* Doing some basic delcation by taxa we see that within taxonomic groups LCA* seems to do better on this small subset, however, in some cases, namely Green sulfur bacteria and actinobacteria LCA* was outperformed by the simple Majority rule. 
+
+* Here it would be interesting to compare their divergence, as it is conseavable that a simple majority make quite have significant divergence when wrong and having extreme wins when it is correct.
+
+```
+python create_analysis_table.py -i lca_star_test/metapathways_out/lca_star_test2/preprocessed/lca_star_test2.mapping.txt --ft_table lca_star_test/metapathways_out/lca_star_test2/results/annotation_table/functional_and_taxonomic_table.txt --sum_table lca_star_test/ncbi_bacteria_genomes/ncbi/summary.txt --ncbi_tree ~/Dropbox/utilities/tree_update/data/pipeline/ncbi_taxonomy_tree.txt -o lca_star_test2_lin.txt
+```
+
+```{r}
+data2 <- read.table("~/Dropbox/projects/LCAStar/lca_star_geba_analysis/past_data/lca_star_test2_past.txt", sep="\t", quote=c("\"", "\'"), header=T)
+data2 <- clean_up_data(data2)
+data2.m <- melt(data2)
+
+# remove some outliers
+data2.m <- subset(data2.m, value <= 15)
+```
+
+```{r}
+g5 <- ggplot(data2.m, aes(x=value, fill=Method))
+g5 <- g5 + geom_histogram(data = subset(data2.m, variable == "Walk"), binwidth=2, alpha=0.8)
+g5 <- g5 + geom_histogram(data = subset(data2.m, variable == "WTD"), binwidth=0.3, alpha=0.8)
+g5 <- g5 + facet_wrap(Method ~ variable , scale="free", ncol = 2)
+g5 <- g5 + theme(legend.position="none")
+g5 <- g5 + xlab("Value")
+g5 <- g5 + ylab("Frequency")
+g5
+
+g5a <- ggplot(subset(data2.m, variable == "Walk"), aes(x=value, fill=Method))
+g5a <- g5a + geom_histogram(binwidth=2, alpha=0.8)
+g5a <- g5a + facet_wrap( ~ Method, ncol = 1)
+g5a <- g5a + theme(legend.position="none")
+g5a <- g5a + xlab("Value")
+g5a <- g5a + ylab("Frequency")
+g5a
+
+g5b <- ggplot(subset(data2.m, variable == "WTD"), aes(x=value, fill=Method))
+g5b <- g5b + geom_histogram(binwidth=0.3, alpha=0.8)
+g5b <- g5b + facet_wrap( ~ Method, ncol = 1)
+g5b <- g5b + theme(legend.position="none")
+g5b <- g5b + xlab("Value")
+g5b <- g5b + ylab("Frequency")
+g5b
+
+```
+
+```{r}
+# looking at the RMSE
+res <- select(data2.m, Method, variable, value) %>%
+    group_by(Method, variable) %>%
+    summarize(n_obs = n(), RMSE = mean(abs(value), na.rm=TRUE))
+g6 <- ggplot(res, aes(y=RMSE, x =Method, fill=Method)) 
+g6 <- g6 + geom_bar(stat="identity", alpha=0.8) 
+g6 <- g6 + facet_wrap(~variable, scales="free_y")
+g6 <- g6 + theme(legend.position="none")
+g6
+```
+
+```{r}
+#select(data2.m, Method, variable, value) %>% 
+#  group_by(Method, variable)
+  
+```
+
+### MetaSim Setup
+
+First I tried with MetaSim.
+
+* all genomes in `all.fna.tar.gz` were loaded into a MetaSim (Version 0.9.1) database
+* these genomes were linked via their GI numbers to their `taxid` via the `gi_taxid_nucl.dmp.gz` obtained March 15 2014 from <ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/>
+* a taxon profile was create with all genomes in equal number `ncbi_db_taxon_profile.mprf` for all 5104 sequences (genomes and plasmids) for 2713 had taxids
+```
+grep -o --perl-regexp "taxid.*[0-9]+" ../resources/ncbi_db_taxon_profile.mprf | uniq | wc
+    2713    5426   38611
+```
+*Note I had to reinstall MetaSim as there was an error when the program was writing the sequences sequences to Disk. Changed settings to write out the raw sequence files rather than compressed .gzip*
+
+#### Basic Simulations
+
+* started with a basic simulation using the 'Exact' simulation setting with 5000 reads (Error Model: Normal(10k,5k)) to give a general idea of the performance with respect to a wide range of length distributions.
+
+```
+Settings: Exact
+[Simulating LCA_Star]  Simulator Settings:
+[Simulating LCA_Star]  Preset Name: Exact
+[Simulating LCA_Star]  Number Of Reads / Mate Pairs=5000
+[Simulating LCA_Star]  Error Model=Exact
+
+[Simulating LCA_Star]  Exact Error Model DNA Clone Parameters=
+[Simulating LCA_Star]  Distribution: Normal
+[Simulating LCA_Star]  Mean: 10000.0
+[Simulating LCA_Star]  2nd parameter: 100.0
+
+[Simulating LCA_Star]  Combine All Files=false
+[Simulating LCA_Star]  Uniform Sequence Weights=false
+[Simulating LCA_Star]  Number Of Threads=1
+[Simulating LCA_Star]  Write FastA=true
+[Simulating LCA_Star]  Compress Output Files=false
+
+
+[Simulating LCA_Star]  +++ File: NCBI_even.mprf +++
+[Simulating LCA_Star]  Generating Reads for `NCBI_even.mprf'
+```
+*MetaSim really doesn't like it when you set a high standard deviation on its Normal error model.* 
+
+* Struggled with MetaSim long enough. Always through memory errors.
+
+

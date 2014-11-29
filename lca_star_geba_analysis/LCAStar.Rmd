@@ -1,15 +1,25 @@
 ---
-title: "LCA Star"
+title: "LCA Star Methods"
+author: "Niels W. Hanson"
+date: "Friday, November 28, 2014"
 output:
    html_document: 
       toc: true
       theme: readable
       highlight: default
+csl: ieee.csl
+bibliography: LCAStar.bib
 ---
+
+```{r global_options, include=FALSE}
+require(knitr)
+opts_chunk$set(warning=FALSE, message=FALSE, dev = 'pdf')
+```
 
 ## Overview 
 
-Here, I create two simputated metagenomes consisting of 10,000bp contigs randomly generated from 2713 NCBI genomes (Downloaded March 15 2014 from <ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/>) using the python script `subsample_ncbi.py`. The first simulation is a smaller sample of 100 genomes, sampling 10 random reads from each genome. The second simulation is larger, sampling a random subset of 2000 genomes, sampling 10 random reads from each. Each simulation had its ORFs predicted and annotated against the RefSeq database using the MetaPathways pipeline. The original source of each contig was predicted from the taxonomic annotations ascribed to each LCA-predicted ORF using three different methods: $LCA^2$, $Simple Majority$, and our information-theoretic $LCA*$. $LCA^2$ simply applies the LCA algorithm again to the set of contig taxonomies. The $Simple Majority$ method ascribes the taxonomy of the contig to the taxonomy that has the greatest majority. Our $LCA*$ method applies the information-theoetic result and algorithm previously described with a majority theshold set to the default majority ($\alpha=0.5$).
+
+Two simulated metagenomes were created using 10,000bp contigs, randomly sampled from a collection of 2713 genomes obtained from the NCBI(Downloaded March 15 2014 <ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/>) using the python script `subsample_ncbi.py`. The first simulation is a smaller sample of 100 genomes, sampling 10 random reads from each genome. The second simulation is larger, sampling a random subset of 2,000 genomes, sampling 10 random reads from each. Each simulation had its ORFs predicted and annotated against the RefSeq database using the MetaPathways pipeline [[@Konwar:2013cw, @Hanson2014]]. The original source of each contig was predicted from the taxonomic annotations ascribed to each LCA-predicted ORF using three different methods: $LCA^2$, $Simple Majority$, and our information-theoretic $LCA*$. $LCA^2$ simply applies the LCA algorithm again to the set of contig taxonomies. The $Simple Majority$ method ascribes the taxonomy of the contig to the taxonomy that has the greatest majority. Our $LCA*$ method applies the information-theoetic result and algorithm previously described with a majority theshold set to the default majority ($\alpha=0.5$).
 
 We evaluated the performance of these predictions using two taxonomic distances on the NCBI taxonomy tree. First a simple walk on the NCBI Taxonomy Hierarchy from the observed predicted taxonomy to the original expected taxonomy. The second is a weighted taxonomic distance that weightes each edge proportional to $\frac{1}{d}$ where $d$ is the depth of the edge in the tree. See Hanson *et al.* (2014) for more details. The NCBI Taxonomy Hierarchy was modified with the additional *prokaryotes* node as a parent of *Bacteria* and *Archaea* nodes.
 
@@ -113,6 +123,19 @@ For a second test we sampled sequences of 10,000 bps using 10 subsamples from 20
 python ../../subsample_ncbi.py -i ../ncbiID_to_file.txt -o lca_test2.fasta -l 10000 -s 10 -n 2000
 ```
 
+### Simulations and GEBA SAGs
+
+* Load required libraries
+
+```{r}
+library(ggplot2)
+library(reshape2)
+library(dplyr)
+theme_set(theme_bw()) # set theme and font
+```
+
+* read and merge the three datasets
+
 ```{r}
 setwd("~/Dropbox/projects/LCAStar/lca_star_geba_analysis")
 colClasses <- c("character", "character", "numeric", "numeric", "numeric",
@@ -125,20 +148,43 @@ test1_df <- read.table("test1_lcastar.txt", sep="\t", header=T, na.strings = "No
 test2_df <- read.table("test2_lcastar.txt", sep="\t", header=T, na.strings = "None", 
                       colClasses = colClasses, strip.white=TRUE, quote="")
 
-all_df <- rbind(cbind(geba_df, Sample="GEBA"),cbind(test1_df, Sample="small"),cbind(test2_df, Sample="large"))
+all_df <- rbind(cbind(geba_df, Sample="GEBA"),cbind(test1_df, Sample="Small"),cbind(test2_df, Sample="Large"))
 
-all_df$Sample <- factor(all_df$Sample, levels=c("small", "large", "GEBA"))
+all_df$Sample <- factor(all_df$Sample, levels=c("Small", "Large", "GEBA"))
+```
 
+* compare p-value calculations between the Majority and LCA* methods
 
+```{r fig.width=10.2, fig.height=3.65}
 # p-value compare
-g7 <- ggplot(all_df, aes(x=LCAStar_p, y=Majority_p)) 
-g7 <- g7 + geom_point(aes(color=Sample), alpha=0.4)
-g7 <- g7 + xlim(0,1)
-g7 <- g7 + ylim(0,1)
-g7 <- g7 + theme_bw()
-g7 <- g7 + facet_wrap(~ Sample)
-g7
+g1 <- ggplot(all_df, aes(x=LCAStar_p, y=Majority_p)) 
+g1 <- g1 + geom_point(aes(color=Sample), alpha=0.4)
+g1 <- g1 + xlim(0,1)
+g1 <- g1 + ylim(0,1)
+g1 <- g1 + xlab("p-value (LCA*)")
+g1 <- g1 + ylab("p-value (Majority)")
+g1 <- g1 + facet_wrap(~ Sample)
+g1 <- g1 + theme(legend.position="none")
+g1
+pdf(file = "pdfs/fig1.pdf", width = 10.2, height=3.65)
+g1
+dev.off()
+```
 
+**Figure 1:** Comparing p-values of taxonomic voting statistics Majority and LCA*.
+
+Notes:
+
+* all three samples exhibit the same pattern, suggesting that the simulation procecture is producing representative results at least in terms of the LCA* and Majority summary statistics 
+* in many cases the simple Majority and LCA* solutions are the same, as shown by the strong linear trend
+* when in disagreement LCA* has more favorable (lower) p-values than the simple majority, in many cases the p-value of the LCA* solution is significantly smaller than the simple majority one
+* disagreements where $p_{Majority} < p_{LCA^*}$ occur when the LCA* transformation widens the difference between the first and second place leaders, although this is a bit of a corner case, and happens fairly infrequently
+* the majority has a degenerate case where there is as tie in the $M = X_n$, which is a degenerate case, meaning that the Simple majority had to make an arbitary choise between two or more taxonomic candidates
+* Suggests that if you subscribe to the p-value argument, LCA* produces more reliable results, although one can argue that his happens by construction.
+
+Function to format and reshape data for ggplot:
+
+```{r}
 clean_up_data2 <- function(df) {
   new_df <-rbind(cbind(df$Contig, df$LCAStar, "LCAStar", df$Original, df$LCAStar_p, df$LCAStar_dist, df$LCAStar_WTD),
            cbind(df$Contig, df$Majority, "Majority", df$Original, df$Majority_p, df$Majority_dist, df$Majority_WTD),
@@ -150,20 +196,27 @@ clean_up_data2 <- function(df) {
   new_df.m$Method <- factor(new_df.m$Method, levels = c("LCASquared", "Majority", "LCAStar"))
   new_df.m
 }
+```
 
+```{r}
 # reshape data into ggplot form
 test1_df.m <- clean_up_data2(test1_df)
-test1_df.m<- cbind(test1_df.m, Sample="small")
+test1_df.m<- cbind(test1_df.m, Sample="Small")
 test2_df.m <- clean_up_data2(test2_df)
-test2_df.m <- cbind(test2_df.m, Sample="large")
+test2_df.m <- cbind(test2_df.m, Sample="Large")
 geba_df.m <- clean_up_data2(geba_df)
 geba_df.m <- cbind(geba_df.m, Sample="GEBA")
 
 all_df.m <- rbind(test1_df.m, test2_df.m, geba_df.m)
+```
 
+* plot the distribution of distances between predictions and taxonomic origin
+
+```{r fig.height=7, fig.width=7}
+# plotting parameters
 my_line_col = "#4C4C4C"
 line_size = 1.2
-alpha_val = 0.7
+alpha_val = 0.5
 
 walk_means <- select(all_df.m, Method, Sample, variable, value) %>%
   group_by(Method, Sample, variable) %>%
@@ -172,31 +225,51 @@ walk_means <- select(all_df.m, Method, Sample, variable, value) %>%
             percent_25 = quantile(value, probs = 0.25, na.rm = T),
             median = quantile(value, probs=0.5, na.rm = T),
             percent_75 = quantile(value, probs = 0.75, na.rm = T))
-quartz()
-g8 <- ggplot(subset(all_df.m, variable == "Walk"), aes(x=value, fill=Method))
-# g8 <- g8 + geom_histogram(binwidth=2, alpha=0.8) 
-g8 <- g8 + geom_density(adjust=5, alpha=0.6) 
-g8 <- g8 + facet_grid(Method ~ Sample, scales = "free_x")
-g8 <- g8 + theme(legend.position="none")
-g8 <- g8 + geom_vline(aes(xintercept=mean), colour=my_line_col, size=line_size, alpha=0.5, walk_means)
-g8 <- g8 + geom_vline(aes(xintercept=median), colour=my_line_col, linetype="dashed", size=line_size, alpha=alpha_val, walk_means)
-g8 <- g8 + xlab("Simple Distance")
-g8 <- g8 + ylab("Frequency")
-g8
 
-g8 <- ggplot(subset(all_df.m, variable == "Walk"), aes(x=value, fill=Method))
-g8 <- g8 + geom_histogram(binwidth=2, alpha=0.8) 
-# g8 <- g8 + geom_density(adjust=6, alpha=0.8) 
-g8 <- g8 + facet_grid(Method ~ Sample, scales = "free")
-g8 <- g8 + theme(legend.position="none")
-#g8 <- g8 + geom_vline(aes(xintercept=percent_25), colour=my_line_col, size=1.5, alpha=0.5, means)
-#g8 <- g8 + geom_vline(aes(xintercept=median), colour=my_line_col, size=1.5, alpha=0.5, means)
-#g8 <- g8 + geom_vline(aes(xintercept=percent_75), colour=my_line_col, size=1.5, alpha=0.5, means)
-g8 <- g8 + xlab("Simple Distance")
-g8 <- g8 + ylab("Frequency")
-g8
+g2 <- ggplot(subset(all_df.m, variable == "Walk"), aes(x=value, fill=Method))
+# g2 <- g2 + geom_histogram(binwidth=2, alpha=0.8) 
+g2 <- g2 + geom_density(adjust=5, alpha=alpha_val) 
+g2 <- g2 + facet_grid(Method ~ Sample, scales = "free_x")
+g2 <- g2 + theme(legend.position="none")
+g2 <- g2 + geom_vline(aes(xintercept=mean), colour=my_line_col, size=line_size, alpha=alpha_val, walk_means)
+g2 <- g2 + geom_vline(aes(xintercept=median), colour=my_line_col, linetype="dashed", size=line_size, alpha=alpha_val, walk_means)
+g2 <- g2 + xlab("Simple-walk Distance")
+g2 <- g2 + ylab("Density")
+g2
+pdf(file = "pdfs/fig2.pdf", width = 7, height=7)
+g2
+dev.off()
+```
 
+**Figure 2:** Distribution of simple-walk distances of taxonomic predictions to contig origin: LCASquared, Majority, LCA*. Kernel densities for error distances from each of the three prediction methods on the two simluated and GEBA datasets.
 
+Notes:
+
+* In all cases, LCASquared perfomed on-aggregate more poorly than the voting-based methods, Majority and LCAStar.
+   * Means and Medians of predicted distances for LCASqared were consistently larger
+* LCA* and Majority by large performed very simmialrly in terms of distance from the target taxon, in fact in many cases they are one and the same when no entropy-based transformations need to occur
+   * Majority method has a slightly longer tail in the GEBA sample
+   * medians are identical in all samples, better measure in slightly skewed distribution
+* Simple-walk distance is a crude measure of taxonomic distance
+
+```{r include=FALSE}
+# original histograms
+g2a <- ggplot(subset(all_df.m, variable == "Walk"), aes(x=value, fill=Method))
+g2a <- g2a + geom_histogram(binwidth=2, alpha=alpha_val) 
+# g2a <- g2a + geom_density(adjust=6, alpha=0.8) 
+g2a <- g2a + facet_grid(Method ~ Sample, scales = "free")
+g2a <- g2a + theme(legend.position="none")
+#g2a <- g2a + geom_vline(aes(xintercept=percent_25), colour=my_line_col, size=1.5, alpha=0.5, means)
+#g2a <- g2a + geom_vline(aes(xintercept=median), colour=my_line_col, size=1.5, alpha=0.5, means)
+#g2a <- g2a + geom_vline(aes(xintercept=percent_75), colour=my_line_col, size=1.5, alpha=0.5, means)
+g2a <- g2a + xlab("Simple Distance")
+g2a <- g2a + ylab("Frequency")
+g2a
+```
+
+Same thing again, expect using the weighted taxonomic distance.
+
+```{r fig.height=7, fig.width=7}
 means <- select(all_df.m, Method, Sample, variable, value) %>%
   group_by(Method, Sample, variable) %>%
   filter(variable== "WTD") %>%
@@ -205,28 +278,62 @@ means <- select(all_df.m, Method, Sample, variable, value) %>%
             median = quantile(value, probs=0.5, na.rm = T),
             percent_75 = quantile(value, probs = 0.75, na.rm = T))
 
-quartz()
-g8 <- ggplot(subset(all_df.m, variable == "WTD"), aes(x=value, fill=Method))
-g8 <- g8 + geom_histogram(binwidth=0.1, alpha=0.8) 
-g8 <- g8 + facet_grid(Method ~Sample, scales = "free_y")
-g8 <- g8 + theme(legend.position="none")
-g8 <- g8 + geom_vline(aes(xintercept=mean), colour=my_line_col, size=1.2, alpha=0.5, means)
-g8 <- g8 + geom_vline(aes(xintercept=median), colour=my_line_col, linetype="dashed", size=1.2, alpha=0.5, means)
-g8 <- g8 + xlab("Weighted Taxonomic Distance")
-g8 <- g8 + ylab("Frequency")
-g8
+g3 <- ggplot(subset(all_df.m, variable == "WTD"), aes(x=value, fill=Method))
+g3 <- g3 + geom_density(adjust=20, alpha=0.6) 
+g3 <- g3 + facet_grid(Method ~ Sample, scales = "free_y")
+g3 <- g3 + theme(legend.position="none")
+g3 <- g3 + geom_vline(aes(xintercept=mean), colour=my_line_col, size=1.5, alpha=0.5, means)
+g3 <- g3 + geom_vline(aes(xintercept=median), colour=my_line_col, linetype="dashed", size=1.5, alpha=0.5, means)
+g3 <- g3 + xlab("Weighted Taxonomic Distance")
+g3 <- g3 + ylab("Density")
+g3
+pdf(file = "pdfs/fig3.pdf", width = 7, height=7)
+g3
+dev.off()
+```
 
-quartz()
-g8 <- ggplot(subset(all_df.m, variable == "WTD"), aes(x=value, fill=Method))
-g8 <- g8 + geom_density(adjust=20, alpha=0.6) 
-g8 <- g8 + facet_grid(Method ~ Sample, scales = "free_y")
-g8 <- g8 + theme(legend.position="none")
-g8 <- g8 + geom_vline(aes(xintercept=mean), colour=my_line_col, size=1.5, alpha=0.5, means)
-g8 <- g8 + geom_vline(aes(xintercept=median), colour=my_line_col, linetype="dashed", size=1.5, alpha=0.5, means)
-g8 <- g8 + xlab("Weighted Taxonomic Distance")
-g8 <- g8 + ylab("Frequency")
-g8
+**Figure 3:** Distribution of WTD distances of taxonomic predictions to contig origin: LCASquared, Majority, LCA*. Kernel densities for error distances from each of the three prediction methods on the two simluated and GEBA datasets.
 
+Notes:
+
+* distance punishes divergent predictions more than in-lineage predictions
+* LCA* and Majority methods again consistently performed better than LCASquared, although difference is not as extreme as by definition LCASquared will have to predict a common ancestor to all electorate
+* LCASquared occassionally has an exetremely large tail of 'root' predictions
+* Voting based methods have essentially identical median and average
+    * Majority in GEBA sample has slightly shorter tail
+
+```{r include=FALSE}
+g3a <- ggplot(subset(all_df.m, variable == "WTD"), aes(x=value, fill=Method))
+g3a <- g3a + geom_histogram(binwidth=0.1, alpha=alpha_val) 
+g3a <- g3a + facet_grid(Method ~Sample, scales = "free_y")
+g3a <- g3a + theme(legend.position="none")
+g3a <- g3a + geom_vline(aes(xintercept=mean), colour=my_line_col, size=line_size, alpha=alpha_val, means)
+g3a <- g3a + geom_vline(aes(xintercept=median), colour=my_line_col, linetype="dashed", size=line_size, alpha=alpha_val, means)
+g3a <- g3a + xlab("Weighted Taxonomic Distance")
+g3a <- g3a + ylab("Frequency")
+g3a
+```
+
+Treating the whole thing as a regression problem we have the following global averages.
+
+```{r}
+res <- select(all_df.m, Method, Sample, variable, value) %>%
+       filter(variable %in% c("Walk", "WTD")) %>%
+       group_by(Method, Sample, variable) %>%
+       summarize(n_obs = n(), RMSE = mean(abs(value), na.rm=TRUE))
+g4 <- ggplot(res, aes(y=RMSE, x =Method, fill=Method)) 
+g4 <- g4 + geom_bar(stat="identity") 
+g4 <- g4 + facet_grid(variable~Sample, scales="free_y")
+g4 <- g4 + theme(legend.position="none")
+g4
+pdf(file = "pdfs/fig4.pdf", width = 7, height=7)
+g4
+dev.off()
+```
+
+**Figure 4:** RMSE Values for our prediction errors in the simple Walk and WTD.
+
+```{r include=FALSE}
 g8 <- ggplot(subset(geba_df.m, variable == "Walk"), aes(x=value, fill=Method))
 g8 <- g8 + geom_histogram(binwidth=2, alpha=0.8) 
 g8 <- g8 + facet_wrap( ~ Method, ncol = 1)
@@ -244,16 +351,6 @@ g9 <- g9 + xlim(-1.5,0)
 g9 <- g9 + xlab("Value")
 g9 <- g9 + ylab("Frequency")
 g9
-
-res <- select(geba_df.m, Method, variable, value) %>%
-       filter(variable %in% c("Walk", "WTD")) %>%
-       group_by(Method, variable) %>%
-       summarize(n_obs = n(), RMSE = mean(abs(value), na.rm=TRUE))
-g10 <- ggplot(res, aes(y=RMSE, x =Method, fill=Method)) 
-g10 <- g10 + geom_bar(stat="identity", alpha=0.8) 
-g10 <- g10 + facet_wrap(~variable, scales="free_y")
-g10 <- g10 + theme(legend.position="none")
-g10
 
 # g11 <-ggplot(subset(geba_df.m, variable %in% c("WTD", "Walk")), aes(x=Method, y=value, fill=Method))
 # g11 <- g11 + geom_violin(alpha=0.6)
@@ -273,74 +370,5 @@ g12 <- g12 + theme(legend.position="none")
 g12
 ```
 
-```{r, eval=FALSE}
-source("/Users/nielsh/Dropbox\ (Personal)/projects/LCAStar/taxa_to_columns.R")
-data2 <- cbind(data2, taxa_to_columns(data2$real_linage, cols=5))
-data2.m <- melt(data2)
-
-# mean squared error formula
-mse <- function(vec) {
-  xbar <- mean(vec)
-  sum((vec - xbar)^2) / length(vec)
-}
-
-grouped <- group_by(data2.m, variable, method, level_4)
-res <- summarize(grouped, mean=mean(value))
-res_lcastar <- subset(res, method=="LCA_Star")
-res_lcastar[with(res_lcastar, order(mean)),]
-```
-
-```{r, eval=FALSE}
-data$wtd <- as.numeric(as.character(data$wtd))
-ggplot(data, aes(x=wtd)) + geom_histogram(aes(fill=method), alpha=0.8, binwidith=0.1) + facet_wrap(real_linage ~ method) 
-```
-
-* Again with the latest code
-```{r, eval=FALSE}
-data3 <- read.table("lca_star_test2_wtd.txt", sep="\t", header=T, fill=T)
-```
-
-
-### MetaSim Setup
-
-First I tried with MetaSim.
-
-* all genomes in `all.fna.tar.gz` were loaded into a MetaSim (Version 0.9.1) database
-* these genomes were linked via their GI numbers to their `taxid` via the `gi_taxid_nucl.dmp.gz` obtained March 15 2014 from <ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/>
-* a taxon profile was create with all genomes in equal number `ncbi_db_taxon_profile.mprf` for all 5104 sequences (genomes and plasmids) for 2713 had taxids
-```
-grep -o --perl-regexp "taxid.*[0-9]+" ../resources/ncbi_db_taxon_profile.mprf | uniq | wc
-    2713    5426   38611
-```
-*Note I had to reinstall MetaSim as there was an error when the program was writing the sequences sequences to Disk. Changed settings to write out the raw sequence files rather than compressed .gzip*
-
-#### Basic Simulations
-
-* started with a basic simulation using the 'Exact' simulation setting with 5000 reads (Error Model: Normal(10k,5k)) to give a general idea of the performance with respect to a wide range of length distributions.
-
-```
-Settings: Exact
-[Simulating LCA_Star]  Simulator Settings:
-[Simulating LCA_Star]  Preset Name: Exact
-[Simulating LCA_Star]  Number Of Reads / Mate Pairs=5000
-[Simulating LCA_Star]  Error Model=Exact
-
-[Simulating LCA_Star]  Exact Error Model DNA Clone Parameters=
-[Simulating LCA_Star]  Distribution: Normal
-[Simulating LCA_Star]  Mean: 10000.0
-[Simulating LCA_Star]  2nd parameter: 100.0
-
-[Simulating LCA_Star]  Combine All Files=false
-[Simulating LCA_Star]  Uniform Sequence Weights=false
-[Simulating LCA_Star]  Number Of Threads=1
-[Simulating LCA_Star]  Write FastA=true
-[Simulating LCA_Star]  Compress Output Files=false
-
-
-[Simulating LCA_Star]  +++ File: NCBI_even.mprf +++
-[Simulating LCA_Star]  Generating Reads for `NCBI_even.mprf'
-```
-*MetaSim really doesn't like it when you set a high standard deviation on its Normal error model.* 
-
-* Struggled with MetaSim long enough. Always through memory errors.
+## References
 

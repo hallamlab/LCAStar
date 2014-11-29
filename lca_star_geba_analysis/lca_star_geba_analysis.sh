@@ -1,8 +1,11 @@
 #!/bin/bash
 
-projects_root=/Users/nielshanson/Dropbox/projects
+# lca_star_geba_analysis.sh
+# Simple script to run LCAStar on the small (test1) and large (test2)
+# simulated metagenome contigs, as well as the GEBA Single-cell Amplified
+# Genomes (SAGs).
 
-# geba project
+projects_root=/Users/nielshanson/Dropbox/projects
 input=${projects_root}/LCAStar_data/assemblies/ncbi_names/sag_ids_to_ncbi.txt
 mp_out=${projects_root}/LCAStar_data/assemblies/GEBA_SAGs_out/
 output=${projects_root}/LCAStar/lca_star_geba_analysis/
