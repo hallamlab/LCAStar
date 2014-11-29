@@ -1,0 +1,346 @@
+---
+title: "LCA Star"
+output:
+   html_document: 
+      toc: true
+      theme: readable
+      highlight: default
+---
+
+## Overview 
+
+Here, I create two simputated metagenomes consisting of 10,000bp contigs randomly generated from 2713 NCBI genomes (Downloaded March 15 2014 from <ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/>) using the python script `subsample_ncbi.py`. The first simulation is a smaller sample of 100 genomes, sampling 10 random reads from each genome. The second simulation is larger, sampling a random subset of 2000 genomes, sampling 10 random reads from each. Each simulation had its ORFs predicted and annotated against the RefSeq database using the MetaPathways pipeline. The original source of each contig was predicted from the taxonomic annotations ascribed to each LCA-predicted ORF using three different methods: $LCA^2$, $Simple Majority$, and our information-theoretic $LCA*$. $LCA^2$ simply applies the LCA algorithm again to the set of contig taxonomies. The $Simple Majority$ method ascribes the taxonomy of the contig to the taxonomy that has the greatest majority. Our $LCA*$ method applies the information-theoetic result and algorithm previously described with a majority theshold set to the default majority ($\alpha=0.5$).
+
+We evaluated the performance of these predictions using two taxonomic distances on the NCBI taxonomy tree. First a simple walk on the NCBI Taxonomy Hierarchy from the observed predicted taxonomy to the original expected taxonomy. The second is a weighted taxonomic distance that weightes each edge proportional to $\frac{1}{d}$ where $d$ is the depth of the edge in the tree. See Hanson *et al.* (2014) for more details. The NCBI Taxonomy Hierarchy was modified with the additional *prokaryotes* node as a parent of *Bacteria* and *Archaea* nodes.
+
+### Obtaining NCBI Genomes
+
+* Downloaded `all.fna.tar.gz` and `summary.txt` from the NCBI's ftp server:ftp://ftp.ncbi.nlm.nih.gov/genomes/ Mar 12, 2014
+* `summary.txt` contains some metadata for a number of these genomes:
+
+```
+Accession  GenbankAcc  Length	Taxid	ProjectID	TaxName	Replicon	Create Date	Update_Date
+NC_000907.1	L42023.1	1830138	71421	57771	Haemophilus influenzae Rd KW20	chromosome 	Oct 19 2001	Sep 11 2013  4:30:20:076PM
+```
+
+* this kind of information would be useful for an analysis so I cross referenced all the Accession IDs with the actual `.fna` files that I had in `all.fna.tar.gz` with the following shell command:
+
+```
+cat summary.txt  | awk '{print $1}' > u
+for s in `cat u`; do var1=`find . -name *${s%.[0-9]}*`; echo $s$'\t'$var1 >> ncbiID_to_file; done
+```
+
+* it turns out that this is a fairly comprehensive list 25 genomes were dropped because they were not found in the MetaData
+
+```
+grep --perl-regexp "\t$" ncbiID_to_file | wc
+      25      25     324
+grep --perl-regexp "\t$" ncbiID_to_file | wc
+NC_003911.11  
+AC_000091.1	
+NC_009353.1	
+NC_009444.1	
+NC_010332.1	
+NS_000190.1	
+NC_011980.1	
+NS_000196.1	
+NS_000197.2	
+NC_012627.1	
+NC_012629.1	
+NC_012630.1	
+NC_012915.1	
+NC_013416.1	
+NC_013438.1	
+NC_013597.1	
+NC_013784.1	
+NC_013785.1	
+NC_013786.1	
+NC_013787.1	
+NC_013788.1	
+NC_014629.1	
+NC_015557.1	
+NC_015587.1
+```
+
+* this leaves us with 2617 genomes with annotation of 2642, storing these in `ncbiID_to_file.txt`
+
+```
+grep --perl-regexp ".*fna" ncbiID_to_file2 | wc
+    2617    5234  197129
+wc ncbiID_to_file2
+    2642    5259  197453 ncbiID_to_file2
+grep --perl-regexp ".*fna" ncbiID_to_file2 > ncbiID_to_file.txt
+```
+
+### Creating Simulated Metagenomes
+
+Wrote my own script `subsample_ncbi.py` quickly sample from a collection of fasta files specified in our `ncbiID_to_file.txt` that we created above.
+
+The following example creates sub-sequences of length 10,000, sampling 10 sequences per file on a random subset of 100 (the random number generator is seeded so that results can be reproducible)
+
+```
+python subsample_ncbi.py -i ncbiID_to_file.txt -l 10000 -s 10 -n 100 -o lca_star_test1.fna
+```
+
+* lca_star_test1.fna is going to be our first test, we ran it through MetaPathways with the standard settings:
+
+```
+Run Date : 2014-03-15 
+Nucleotide Quality Control parameters
+  min length  180
+ORF prediction parameters
+  min length	60
+  algorithm	prodigal
+Amino acid quality control and annotation parameters
+  min bit score	20
+  min seq length	60
+  annotation reference dbs	RefSeq_complete_nr_v62_dec2013
+  min BSR	0.4
+  max evalue	0.000001
+Pathway Tools parameters
+  taxonomic pruning 	no
+rRNA search/match parameters
+  min identity	20
+  max evalue	0.000001
+  rRNA reference dbs	GREENGENES_gg16S-2013-09-12
+```
+
+#### Second test
+
+For a second test we sampled sequences of 10,000 bps using 10 subsamples from 2000 randomly selected genomes. Here, did the same procedure except with significantly more samples.
+
+```
+python ../../subsample_ncbi.py -i ../ncbiID_to_file.txt -o lca_test2.fasta -l 10000 -s 10 -n 2000
+```
+
+```{r}
+setwd("~/Dropbox/projects/LCAStar/lca_star_geba_analysis")
+colClasses <- c("character", "character", "numeric", "numeric", "numeric",
+                "character", "numeric", "numeric", "numeric", 
+                "character", "numeric", "numeric", "character" )
+geba_df <- read.table("GEBA_SAG_all_lcastar.txt", sep="\t", header=T, na.strings = "None", 
+                      colClasses = colClasses, strip.white=TRUE, quote="")
+test1_df <- read.table("test1_lcastar.txt", sep="\t", header=T, na.strings = "None", 
+                      colClasses = colClasses, strip.white=TRUE, quote="")
+test2_df <- read.table("test2_lcastar.txt", sep="\t", header=T, na.strings = "None", 
+                      colClasses = colClasses, strip.white=TRUE, quote="")
+
+all_df <- rbind(cbind(geba_df, Sample="GEBA"),cbind(test1_df, Sample="small"),cbind(test2_df, Sample="large"))
+
+all_df$Sample <- factor(all_df$Sample, levels=c("small", "large", "GEBA"))
+
+
+# p-value compare
+g7 <- ggplot(all_df, aes(x=LCAStar_p, y=Majority_p)) 
+g7 <- g7 + geom_point(aes(color=Sample), alpha=0.4)
+g7 <- g7 + xlim(0,1)
+g7 <- g7 + ylim(0,1)
+g7 <- g7 + theme_bw()
+g7 <- g7 + facet_wrap(~ Sample)
+g7
+
+clean_up_data2 <- function(df) {
+  new_df <-rbind(cbind(df$Contig, df$LCAStar, "LCAStar", df$Original, df$LCAStar_p, df$LCAStar_dist, df$LCAStar_WTD),
+           cbind(df$Contig, df$Majority, "Majority", df$Original, df$Majority_p, df$Majority_dist, df$Majority_WTD),
+           cbind(df$Contig, df$LCASquared, "LCASquared", df$Original, NA, df$LCASquared_dist, df$LCASquared_WTD))
+  new_df <- as.data.frame(new_df)
+  colnames(new_df) <- c("Contig", "Taxonomy", "Method", "Original", "p-value", "Walk", "WTD")
+  new_df.m<- melt(new_df, id.vars = c("Contig", "Taxonomy", "Method", "Original"))
+  new_df.m$value <- as.numeric(as.character(new_df.m$value))
+  new_df.m$Method <- factor(new_df.m$Method, levels = c("LCASquared", "Majority", "LCAStar"))
+  new_df.m
+}
+
+# reshape data into ggplot form
+test1_df.m <- clean_up_data2(test1_df)
+test1_df.m<- cbind(test1_df.m, Sample="small")
+test2_df.m <- clean_up_data2(test2_df)
+test2_df.m <- cbind(test2_df.m, Sample="large")
+geba_df.m <- clean_up_data2(geba_df)
+geba_df.m <- cbind(geba_df.m, Sample="GEBA")
+
+all_df.m <- rbind(test1_df.m, test2_df.m, geba_df.m)
+
+my_line_col = "#4C4C4C"
+line_size = 1.2
+alpha_val = 0.7
+
+walk_means <- select(all_df.m, Method, Sample, variable, value) %>%
+  group_by(Method, Sample, variable) %>%
+  filter(variable== "Walk") %>%
+  summarize(mean=mean(value, na.rm = T),
+            percent_25 = quantile(value, probs = 0.25, na.rm = T),
+            median = quantile(value, probs=0.5, na.rm = T),
+            percent_75 = quantile(value, probs = 0.75, na.rm = T))
+quartz()
+g8 <- ggplot(subset(all_df.m, variable == "Walk"), aes(x=value, fill=Method))
+# g8 <- g8 + geom_histogram(binwidth=2, alpha=0.8) 
+g8 <- g8 + geom_density(adjust=5, alpha=0.6) 
+g8 <- g8 + facet_grid(Method ~ Sample, scales = "free_x")
+g8 <- g8 + theme(legend.position="none")
+g8 <- g8 + geom_vline(aes(xintercept=mean), colour=my_line_col, size=line_size, alpha=0.5, walk_means)
+g8 <- g8 + geom_vline(aes(xintercept=median), colour=my_line_col, linetype="dashed", size=line_size, alpha=alpha_val, walk_means)
+g8 <- g8 + xlab("Simple Distance")
+g8 <- g8 + ylab("Frequency")
+g8
+
+g8 <- ggplot(subset(all_df.m, variable == "Walk"), aes(x=value, fill=Method))
+g8 <- g8 + geom_histogram(binwidth=2, alpha=0.8) 
+# g8 <- g8 + geom_density(adjust=6, alpha=0.8) 
+g8 <- g8 + facet_grid(Method ~ Sample, scales = "free")
+g8 <- g8 + theme(legend.position="none")
+#g8 <- g8 + geom_vline(aes(xintercept=percent_25), colour=my_line_col, size=1.5, alpha=0.5, means)
+#g8 <- g8 + geom_vline(aes(xintercept=median), colour=my_line_col, size=1.5, alpha=0.5, means)
+#g8 <- g8 + geom_vline(aes(xintercept=percent_75), colour=my_line_col, size=1.5, alpha=0.5, means)
+g8 <- g8 + xlab("Simple Distance")
+g8 <- g8 + ylab("Frequency")
+g8
+
+
+means <- select(all_df.m, Method, Sample, variable, value) %>%
+  group_by(Method, Sample, variable) %>%
+  filter(variable== "WTD") %>%
+  summarize(mean=mean(value, na.rm = T),
+            percent_25 = quantile(value, probs = 0.25, na.rm = T),
+            median = quantile(value, probs=0.5, na.rm = T),
+            percent_75 = quantile(value, probs = 0.75, na.rm = T))
+
+quartz()
+g8 <- ggplot(subset(all_df.m, variable == "WTD"), aes(x=value, fill=Method))
+g8 <- g8 + geom_histogram(binwidth=0.1, alpha=0.8) 
+g8 <- g8 + facet_grid(Method ~Sample, scales = "free_y")
+g8 <- g8 + theme(legend.position="none")
+g8 <- g8 + geom_vline(aes(xintercept=mean), colour=my_line_col, size=1.2, alpha=0.5, means)
+g8 <- g8 + geom_vline(aes(xintercept=median), colour=my_line_col, linetype="dashed", size=1.2, alpha=0.5, means)
+g8 <- g8 + xlab("Weighted Taxonomic Distance")
+g8 <- g8 + ylab("Frequency")
+g8
+
+quartz()
+g8 <- ggplot(subset(all_df.m, variable == "WTD"), aes(x=value, fill=Method))
+g8 <- g8 + geom_density(adjust=20, alpha=0.6) 
+g8 <- g8 + facet_grid(Method ~ Sample, scales = "free_y")
+g8 <- g8 + theme(legend.position="none")
+g8 <- g8 + geom_vline(aes(xintercept=mean), colour=my_line_col, size=1.5, alpha=0.5, means)
+g8 <- g8 + geom_vline(aes(xintercept=median), colour=my_line_col, linetype="dashed", size=1.5, alpha=0.5, means)
+g8 <- g8 + xlab("Weighted Taxonomic Distance")
+g8 <- g8 + ylab("Frequency")
+g8
+
+g8 <- ggplot(subset(geba_df.m, variable == "Walk"), aes(x=value, fill=Method))
+g8 <- g8 + geom_histogram(binwidth=2, alpha=0.8) 
+g8 <- g8 + facet_wrap( ~ Method, ncol = 1)
+g8 <- g8 + theme(legend.position="none")
+g8 <- g8 + xlim(0,15)
+g8 <- g8 + xlab("Value")
+g8 <- g8 + ylab("Frequency")
+g8
+
+g9 <-ggplot(subset(geba_df.m, variable == "WTD"), aes(x=value, fill=Method))
+g9 <- g9 + geom_histogram(binwidth=0.1, alpha=0.8) 
+g9 <- g9 + facet_wrap( ~ Method, ncol = 1)
+g9 <- g9 + theme(legend.position="none")
+g9 <- g9 + xlim(-1.5,0)
+g9 <- g9 + xlab("Value")
+g9 <- g9 + ylab("Frequency")
+g9
+
+res <- select(geba_df.m, Method, variable, value) %>%
+       filter(variable %in% c("Walk", "WTD")) %>%
+       group_by(Method, variable) %>%
+       summarize(n_obs = n(), RMSE = mean(abs(value), na.rm=TRUE))
+g10 <- ggplot(res, aes(y=RMSE, x =Method, fill=Method)) 
+g10 <- g10 + geom_bar(stat="identity", alpha=0.8) 
+g10 <- g10 + facet_wrap(~variable, scales="free_y")
+g10 <- g10 + theme(legend.position="none")
+g10
+
+# g11 <-ggplot(subset(geba_df.m, variable %in% c("WTD", "Walk")), aes(x=Method, y=value, fill=Method))
+# g11 <- g11 + geom_violin(alpha=0.6)
+# g11 <- g11 + scale_y_log10()
+# g11 <- g11 + coord_flip()
+# g11 <- g11 + facet_wrap( ~ variable)
+# g11
+geba_df.m$Taxonomy <- as.vector(geba_df.m$Taxonomy)
+geba_df.m$Original<- as.vector(geba_df.m$Original)
+res <- select(geba_df.m, Method, Taxonomy, Original) %>%
+       group_by(Method) %>%
+       summarize(n_obs = n(), accuracy = sum(Taxonomy == Original)/ length(Taxonomy))
+
+g12 <- ggplot(res, aes(x=Method, y=accuracy, fill=Method)) 
+g12 <- g12 + geom_bar(stat="identity", alpha=0.8)
+g12 <- g12 + theme(legend.position="none")
+g12
+```
+
+```{r, eval=FALSE}
+source("/Users/nielsh/Dropbox\ (Personal)/projects/LCAStar/taxa_to_columns.R")
+data2 <- cbind(data2, taxa_to_columns(data2$real_linage, cols=5))
+data2.m <- melt(data2)
+
+# mean squared error formula
+mse <- function(vec) {
+  xbar <- mean(vec)
+  sum((vec - xbar)^2) / length(vec)
+}
+
+grouped <- group_by(data2.m, variable, method, level_4)
+res <- summarize(grouped, mean=mean(value))
+res_lcastar <- subset(res, method=="LCA_Star")
+res_lcastar[with(res_lcastar, order(mean)),]
+```
+
+```{r, eval=FALSE}
+data$wtd <- as.numeric(as.character(data$wtd))
+ggplot(data, aes(x=wtd)) + geom_histogram(aes(fill=method), alpha=0.8, binwidith=0.1) + facet_wrap(real_linage ~ method) 
+```
+
+* Again with the latest code
+```{r, eval=FALSE}
+data3 <- read.table("lca_star_test2_wtd.txt", sep="\t", header=T, fill=T)
+```
+
+
+### MetaSim Setup
+
+First I tried with MetaSim.
+
+* all genomes in `all.fna.tar.gz` were loaded into a MetaSim (Version 0.9.1) database
+* these genomes were linked via their GI numbers to their `taxid` via the `gi_taxid_nucl.dmp.gz` obtained March 15 2014 from <ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/>
+* a taxon profile was create with all genomes in equal number `ncbi_db_taxon_profile.mprf` for all 5104 sequences (genomes and plasmids) for 2713 had taxids
+```
+grep -o --perl-regexp "taxid.*[0-9]+" ../resources/ncbi_db_taxon_profile.mprf | uniq | wc
+    2713    5426   38611
+```
+*Note I had to reinstall MetaSim as there was an error when the program was writing the sequences sequences to Disk. Changed settings to write out the raw sequence files rather than compressed .gzip*
+
+#### Basic Simulations
+
+* started with a basic simulation using the 'Exact' simulation setting with 5000 reads (Error Model: Normal(10k,5k)) to give a general idea of the performance with respect to a wide range of length distributions.
+
+```
+Settings: Exact
+[Simulating LCA_Star]  Simulator Settings:
+[Simulating LCA_Star]  Preset Name: Exact
+[Simulating LCA_Star]  Number Of Reads / Mate Pairs=5000
+[Simulating LCA_Star]  Error Model=Exact
+
+[Simulating LCA_Star]  Exact Error Model DNA Clone Parameters=
+[Simulating LCA_Star]  Distribution: Normal
+[Simulating LCA_Star]  Mean: 10000.0
+[Simulating LCA_Star]  2nd parameter: 100.0
+
+[Simulating LCA_Star]  Combine All Files=false
+[Simulating LCA_Star]  Uniform Sequence Weights=false
+[Simulating LCA_Star]  Number Of Threads=1
+[Simulating LCA_Star]  Write FastA=true
+[Simulating LCA_Star]  Compress Output Files=false
+
+
+[Simulating LCA_Star]  +++ File: NCBI_even.mprf +++
+[Simulating LCA_Star]  Generating Reads for `NCBI_even.mprf'
+```
+*MetaSim really doesn't like it when you set a high standard deviation on its Normal error model.* 
+
+* Struggled with MetaSim long enough. Always through memory errors.
+

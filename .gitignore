@@ -40,3 +40,9 @@ lca_star_test/
 ncbi_taxonomy_tree*
 test.out.txt
 lca_star_test2*
+
+# r hidden files
+.DS_Store
+.Rapp.history
+.Rhistory
+.idea/

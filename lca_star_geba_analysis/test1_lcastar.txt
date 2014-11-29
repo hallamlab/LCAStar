@@ -1,0 +1,911 @@
+Contig	LCAStar	LCAStar_p	LCAStar_dist	LCAStar_WTD	Majority	Majority_p	Majority_dist	Majority_WTD	LCASquared	LCASquared_dist	LCASquared_WTD	Original
+lca_star_test1_378	"Sporovibrio" Starkey 1938	0.088	3	-0.00341796875	"Sporovibrio" Starkey 1938	0.165	3	-0.00341796875	Monera	10	-0.49951171875	Desulfovibrio desulfuricans subsp. desulfuricans str. ATCC 27774
+lca_star_test1_379	"Sporovibrio" Starkey 1938	0.086	3	-0.00341796875	"Sporovibrio" Starkey 1938	0.249	3	-0.00341796875	Bacteria	9	-0.24951171875	Desulfovibrio desulfuricans subsp. desulfuricans str. ATCC 27774
+lca_star_test1_372	'Desulfovibrionaceae'	0.024	4	-0.00732421875	"Sporovibrio" Starkey 1938	0.41	3	-0.00341796875	Monera	10	-0.49951171875	Desulfovibrio desulfuricans subsp. desulfuricans str. ATCC 27774
+lca_star_test1_373	"Sporovibrio" Starkey 1938	0.165	3	-0.00341796875	"Sporovibrio" Starkey 1938	0.165	3	-0.00341796875	Bacteria	9	-0.24951171875	Desulfovibrio desulfuricans subsp. desulfuricans str. ATCC 27774
+lca_star_test1_370	'Desulfovibrionaceae'	0.249	4	-0.00732421875	"Bacillus desulfuricans" (Beijerinck 1895) Saltet 1900	0.654	2	-0.00146484375	Bacteria	9	-0.24951171875	Desulfovibrio desulfuricans subsp. desulfuricans str. ATCC 27774
+lca_star_test1_371	Bacteria	0.004	9	-0.24951171875	Bacteria	1.0	9	-0.24951171875	Bacteria	9	-0.24951171875	Desulfovibrio desulfuricans subsp. desulfuricans str. ATCC 27774
+lca_star_test1_376	"Sporovibrio" Starkey 1938	0.249	3	-0.00341796875	"Sporovibrio" Starkey 1938	0.249	3	-0.00341796875	Bacteria	9	-0.24951171875	Desulfovibrio desulfuricans subsp. desulfuricans str. ATCC 27774
+lca_star_test1_377	"Sporovibrio" Starkey 1938	0.088	3	-0.00341796875	"Sporovibrio" Starkey 1938	0.165	3	-0.00341796875	Bacteria	9	-0.24951171875	Desulfovibrio desulfuricans subsp. desulfuricans str. ATCC 27774
+lca_star_test1_374	"Sporovibrio" Starkey 1938	0.001	3	-0.00341796875	"Sporovibrio" Starkey 1938	0.001	3	-0.00341796875	"Sporovibrio" Starkey 1938	3	-0.00341796875	Desulfovibrio desulfuricans subsp. desulfuricans str. ATCC 27774
+lca_star_test1_375	Bacteria	0.088	9	-0.24951171875	Bacteria	0.088	9	-0.24951171875	Bacteria	9	-0.24951171875	Desulfovibrio desulfuricans subsp. desulfuricans str. ATCC 27774
+lca_star_test1_578	Thermoproteaceae	0.05	3	-0.013671875	Thermoproteaceae	1.0	3	-0.013671875	Monera	8	-0.498046875	Thermoproteus uzoniensis 768-20
+lca_star_test1_272	"Thermobaculum terrenum" Botero et al. 2004	0.086	1	-0.015625	"Thermobaculum terrenum" Botero et al. 2004	0.086	1	-0.015625	Bacteria	4	-0.234375	Thermobaculum terrenum ATCC BAA-798
+lca_star_test1_271	Bacteria	0.0	4	-0.234375	Bacteria	1.0	4	-0.234375	Bacteria	4	-0.234375	Thermobaculum terrenum ATCC BAA-798
+lca_star_test1_270	Bacteria	0.148	4	-0.234375	Bacteria	0.148	4	-0.234375	Bacteria	4	-0.234375	Thermobaculum terrenum ATCC BAA-798
+lca_star_test1_277	Bacteria	0.0	4	-0.234375	"Thermobaculum terrenum" Botero et al. 2004	1.0	1	-0.015625	Bacteria	4	-0.234375	Thermobaculum terrenum ATCC BAA-798
+lca_star_test1_276	"Thermobaculum terrenum" Botero et al. 2004	0.477	1	-0.015625	"Thermobaculum terrenum" Botero et al. 2004	0.477	1	-0.015625	Bacteria	4	-0.234375	Thermobaculum terrenum ATCC BAA-798
+lca_star_test1_275	Bacteria	0.0	4	-0.234375	"Thermobaculum terrenum" Botero et al. 2004	0.739	1	-0.015625	Bacteria	4	-0.234375	Thermobaculum terrenum ATCC BAA-798
+lca_star_test1_274	"Thermobaculum terrenum" Botero et al. 2004	0.05	1	-0.015625	"Thermobaculum terrenum" Botero et al. 2004	0.05	1	-0.015625	Bacteria	4	-0.234375	Thermobaculum terrenum ATCC BAA-798
+lca_star_test1_570	Thermoproteaceae	0.001	3	-0.013671875	Thermoproteaceae	0.313	3	-0.013671875	"Crenarchaeota" Woese et al. 1990	6	-0.123046875	Thermoproteus uzoniensis 768-20
+lca_star_test1_571	Thermoproteaceae	0.086	3	-0.013671875	Pyrobaculum	0.654	4	-0.021484375	Monera	8	-0.498046875	Thermoproteus uzoniensis 768-20
+lca_star_test1_279	Bacteria	0.739	4	-0.234375	Monera	1.0	5	-0.484375	Monera	5	-0.484375	Thermobaculum terrenum ATCC BAA-798
+lca_star_test1_278	Bacteria	0.0	4	-0.234375	Bacteria	0.763	4	-0.234375	Bacteria	4	-0.234375	Thermobaculum terrenum ATCC BAA-798
+lca_star_test1_574	Thermoproteaceae	0.009	3	-0.013671875	Thermoproteaceae	0.705	3	-0.013671875	"Crenarchaeota" Woese et al. 1990	6	-0.123046875	Thermoproteus uzoniensis 768-20
+lca_star_test1_482	Actinomycetales	0.313	5	-0.01513671875	Actinomycetales	0.313	5	-0.01513671875	Actinomycetales	5	-0.01513671875	Arthrobacter chlorophenolicus A6
+lca_star_test1_576	Thermoproteaceae	0.028	3	-0.013671875	Thermoproteaceae	0.477	3	-0.013671875	Monera	8	-0.498046875	Thermoproteus uzoniensis 768-20
+lca_star_test1_577	Crenarchaeota	0.363	5	-0.060546875	Thermoproteaceae	0.739	3	-0.013671875	Monera	8	-0.498046875	Thermoproteus uzoniensis 768-20
+lca_star_test1_905	Proteobacteria	0.313	5	-0.12109375	Proteobacteria	0.313	5	-0.12109375	Bacteria	6	-0.24609375	Polymorphum gilvum SL003B-26A1
+lca_star_test1_528	Enterobacteraceae	0.526	4	-0.0146484375	Gammaproteobacteria	1.0	6	-0.0615234375	Gammaproteobacteria	6	-0.0615234375	Yersinia pestis biovar Microtus str. 91001
+lca_star_test1_904	"Alphabacteria" Cavalier-Smith 1992	0.705	4	-0.05859375	"Alphabacteria" Cavalier-Smith 1992	0.705	4	-0.05859375	"Alphabacteria" Cavalier-Smith 1992	4	-0.05859375	Polymorphum gilvum SL003B-26A1
+lca_star_test1_907	"Alphabacteria" Cavalier-Smith 1992	0.125	4	-0.05859375	"Alphabacteria" Cavalier-Smith 1992	0.313	4	-0.05859375	Bacteria	6	-0.24609375	Polymorphum gilvum SL003B-26A1
+lca_star_test1_612	Streptococcaceae	0.019	4	-0.0146484375	Streptococcaceae	0.56	4	-0.0146484375	Streptococcaceae	4	-0.0146484375	Lactococcus lactis subsp. lactis KF147
+lca_star_test1_615	"Bacterium lactis" Lister 1873	0.086	2	-0.0029296875	"Bacterium lactis" Lister 1873	0.086	2	-0.0029296875	Lactobacillales	5	-0.0302734375	Lactococcus lactis subsp. lactis KF147
+lca_star_test1_614	Lactobacillales	0.003	5	-0.0302734375	Lactobacillales	0.088	5	-0.0302734375	Bacteria	8	-0.2490234375	Lactococcus lactis subsp. lactis KF147
+lca_star_test1_903	"Alphabacteria" Cavalier-Smith 1992	0.047	4	-0.05859375	"Alphabacteria" Cavalier-Smith 1992	1.0	4	-0.05859375	Bacteria	6	-0.24609375	Polymorphum gilvum SL003B-26A1
+lca_star_test1_118	"Aurococcus" Winslow and Rogers 1906	0.313	3	-0.0068359375	"Aurococcus" Winslow and Rogers 1906	0.313	3	-0.0068359375	Bacilli	6	-0.0615234375	Staphylococcus aureus subsp. aureus MRSA252
+lca_star_test1_119	Bacillales	0.088	5	-0.0302734375	Bacillales	1.0	5	-0.0302734375	Bacilli	6	-0.0615234375	Staphylococcus aureus subsp. aureus MRSA252
+lca_star_test1_116	"Aurococcus" Winslow and Rogers 1906	0.007	3	-0.0068359375	"Micrococcus aureus" (Rosenbach 1884) Zopf 1885	0.739	2	-0.0029296875	Bacillales	5	-0.0302734375	Staphylococcus aureus subsp. aureus MRSA252
+lca_star_test1_117	Bacillales	0.05	5	-0.0302734375	Bacillales	0.05	5	-0.0302734375	Bacillus/Clostridium group	7	-0.1240234375	Staphylococcus aureus subsp. aureus MRSA252
+lca_star_test1_114	"Aurococcus" Winslow and Rogers 1906	0.024	3	-0.0068359375	"Aurococcus" Winslow and Rogers 1906	0.024	3	-0.0068359375	Bacillus/Clostridium group	7	-0.1240234375	Staphylococcus aureus subsp. aureus MRSA252
+lca_star_test1_115	"Aurococcus" Winslow and Rogers 1906	0.076	3	-0.0068359375	"Aurococcus" Winslow and Rogers 1906	0.076	3	-0.0068359375	Bacillales	5	-0.0302734375	Staphylococcus aureus subsp. aureus MRSA252
+lca_star_test1_112	"Aurococcus" Winslow and Rogers 1906	0.249	3	-0.0068359375	"Aurococcus" Winslow and Rogers 1906	0.654	3	-0.0068359375	Bacillales	5	-0.0302734375	Staphylococcus aureus subsp. aureus MRSA252
+lca_star_test1_113	"Aurococcus" Winslow and Rogers 1906	0.125	3	-0.0068359375	"Aurococcus" Winslow and Rogers 1906	0.125	3	-0.0068359375	Bacillales	5	-0.0302734375	Staphylococcus aureus subsp. aureus MRSA252
+lca_star_test1_110	"Aurococcus" Winslow and Rogers 1906	0.05	3	-0.0068359375	"Aurococcus" Winslow and Rogers 1906	0.05	3	-0.0068359375	Bacteria	8	-0.2490234375	Staphylococcus aureus subsp. aureus MRSA252
+lca_star_test1_111	"Micrococcus aureus" (Rosenbach 1884) Zopf 1885	0.046	2	-0.0029296875	"Micrococcus aureus" (Rosenbach 1884) Zopf 1885	0.046	2	-0.0029296875	"Aurococcus" Winslow and Rogers 1906	3	-0.0068359375	Staphylococcus aureus subsp. aureus MRSA252
+lca_star_test1_618	Streptococcaceae	0.526	4	-0.0146484375	Lactobacillales	0.705	5	-0.0302734375	Lactobacillales	5	-0.0302734375	Lactococcus lactis subsp. lactis KF147
+lca_star_test1_273	Bacteria	0.086	4	-0.234375	Bacteria	0.41	4	-0.234375	Monera	5	-0.484375	Thermobaculum terrenum ATCC BAA-798
+lca_star_test1_579	Pyrobaculum	0.125	4	-0.021484375	Pyrobaculum	0.125	4	-0.021484375	"Archaea" Woese et al. 1990	7	-0.248046875	Thermoproteus uzoniensis 768-20
+lca_star_test1_412	Lactobacillales	0.002	5	-0.0302734375	Lactobacillales	0.477	5	-0.0302734375	Bacillus/Clostridium group	7	-0.1240234375	Lactococcus lactis subsp. lactis Il1403
+lca_star_test1_288	Borrelia	0.088	2	-0.005859375	Borrelia	0.088	2	-0.005859375	Borrelia	2	-0.005859375	Borrelia duttonii Ly
+lca_star_test1_289	Borrelia	0.0	2	-0.005859375	"Spirillum duttoni" (sic) Novy and Knapp 1906	0.705	1	-0.001953125	Borrelia	2	-0.005859375	Borrelia duttonii Ly
+lca_star_test1_286	Borrelia	0.047	2	-0.005859375	Borrelia	0.047	2	-0.005859375	Borrelia	2	-0.005859375	Borrelia duttonii Ly
+lca_star_test1_287	Borrelia	0.0	2	-0.005859375	"Spirillum duttoni" (sic) Novy and Knapp 1906	1.0	1	-0.001953125	Borrelia	2	-0.005859375	Borrelia duttonii Ly
+lca_star_test1_284	Borrelia	0.0	2	-0.005859375	"Spirillum duttoni" (sic) Novy and Knapp 1906	1.0	1	-0.001953125	Borrelia	2	-0.005859375	Borrelia duttonii Ly
+lca_star_test1_285	Borrelia	0.148	2	-0.005859375	Borrelia	0.148	2	-0.005859375	Borrelia	2	-0.005859375	Borrelia duttonii Ly
+lca_star_test1_282	Borrelia	0.249	2	-0.005859375	Borrelia	0.249	2	-0.005859375	Borrelia	2	-0.005859375	Borrelia duttonii Ly
+lca_star_test1_283	Borrelia	0.088	2	-0.005859375	Borrelia	0.088	2	-0.005859375	Borrelia	2	-0.005859375	Borrelia duttonii Ly
+lca_star_test1_280	Borrelia	0.001	2	-0.005859375	"Spirillum duttoni" (sic) Novy and Knapp 1906	1.0	1	-0.001953125	Borrelia	2	-0.005859375	Borrelia duttonii Ly
+lca_star_test1_281	Borrelia	0.0	2	-0.005859375	Borrelia	0.249	2	-0.005859375	Borrelia	2	-0.005859375	Borrelia duttonii Ly
+lca_star_test1_699	"Haloarchaeaceae" DasSarma and DasSarma 2008	0.41	3	-0.013671875	"Haloarchaeaceae" DasSarma and DasSarma 2008	0.41	3	-0.013671875	"Haloarchaeaceae" DasSarma and DasSarma 2008	3	-0.013671875	Haloferax volcanii DS2
+lca_star_test1_698	Haloferax	0.002	2	-0.005859375	Haloferax	0.002	2	-0.005859375	"Haloarchaeaceae" DasSarma and DasSarma 2008	3	-0.013671875	Haloferax volcanii DS2
+lca_star_test1_752	'Betaproteobacteria'	0.763	4	-0.05859375	Proteobacteria	0.249	5	-0.12109375	Proteobacteria	5	-0.12109375	Candidatus Accumulibacter phosphatis clade IIA str. UW-1
+lca_star_test1_753	'Betaproteobacteria'	0.249	4	-0.05859375	'Betaproteobacteria'	0.249	4	-0.05859375	Bacteria	6	-0.24609375	Candidatus Accumulibacter phosphatis clade IIA str. UW-1
+lca_star_test1_754	Proteobacteria	0.004	5	-0.12109375	Proteobacteria	0.654	5	-0.12109375	Proteobacteria	5	-0.12109375	Candidatus Accumulibacter phosphatis clade IIA str. UW-1
+lca_star_test1_755	'Betaproteobacteria'	0.007	4	-0.05859375	'Betaproteobacteria'	0.477	4	-0.05859375	Proteobacteria	5	-0.12109375	Candidatus Accumulibacter phosphatis clade IIA str. UW-1
+lca_star_test1_756	Proteobacteria	0.148	5	-0.12109375	Proteobacteria	0.148	5	-0.12109375	Proteobacteria	5	-0.12109375	Candidatus Accumulibacter phosphatis clade IIA str. UW-1
+lca_star_test1_757	Proteobacteria	0.148	5	-0.12109375	Proteobacteria	0.148	5	-0.12109375	Proteobacteria	5	-0.12109375	Candidatus Accumulibacter phosphatis clade IIA str. UW-1
+lca_star_test1_758	'Betaproteobacteria'	0.076	4	-0.05859375	'Betaproteobacteria'	0.477	4	-0.05859375	Proteobacteria	5	-0.12109375	Candidatus Accumulibacter phosphatis clade IIA str. UW-1
+lca_star_test1_690	Haloferax	0.028	2	-0.005859375	Haloferax	0.028	2	-0.005859375	"Haloarchaeaceae" DasSarma and DasSarma 2008	3	-0.013671875	Haloferax volcanii DS2
+lca_star_test1_693	"Haloarchaeaceae" DasSarma and DasSarma 2008	0.705	3	-0.013671875	"Haloarchaeaceae" DasSarma and DasSarma 2008	0.705	3	-0.013671875	"Haloarchaeaceae" DasSarma and DasSarma 2008	3	-0.013671875	Haloferax volcanii DS2
+lca_star_test1_692	Haloferax	0.028	2	-0.005859375	Haloferax	0.028	2	-0.005859375	"Haloarchaeaceae" DasSarma and DasSarma 2008	3	-0.013671875	Haloferax volcanii DS2
+lca_star_test1_695	Haloferax	0.148	2	-0.005859375	Haloferax	0.148	2	-0.005859375	"Haloarchaeaceae" DasSarma and DasSarma 2008	3	-0.013671875	Haloferax volcanii DS2
+lca_star_test1_694	Haloferax	0.2	2	-0.005859375	Haloferax	0.477	2	-0.005859375	"Haloarchaeaceae" DasSarma and DasSarma 2008	3	-0.013671875	Haloferax volcanii DS2
+lca_star_test1_697	Haloferax	0.125	2	-0.005859375	Haloferax	0.125	2	-0.005859375	"Haloarchaeaceae" DasSarma and DasSarma 2008	3	-0.013671875	Haloferax volcanii DS2
+lca_star_test1_696	"Haloarchaeaceae" DasSarma and DasSarma 2008	0.763	3	-0.013671875	"Haloarchaeaceae" DasSarma and DasSarma 2008	0.763	3	-0.013671875	"Haloarchaeaceae" DasSarma and DasSarma 2008	3	-0.013671875	Haloferax volcanii DS2
+lca_star_test1_572	Thermoproteaceae	0.05	3	-0.013671875	Thermoproteus	0.654	2	-0.005859375	"Archaea" Woese et al. 1990	7	-0.248046875	Thermoproteus uzoniensis 768-20
+lca_star_test1_573	Thermoproteaceae	0.024	3	-0.013671875	Thermoproteaceae	0.024	3	-0.013671875	Monera	8	-0.498046875	Thermoproteus uzoniensis 768-20
+lca_star_test1_38	"Bacillus botulinus" van Ermengem 1896	0.003	2	-0.0029296875	"Bacillus botulinus" van Ermengem 1896	0.003	2	-0.0029296875	Monera	9	-0.4990234375	Clostridium botulinum A3 str. Loch Maree
+lca_star_test1_39	"Bacillus botulinus" van Ermengem 1896	0.024	2	-0.0029296875	"Bacillus botulinus" van Ermengem 1896	0.024	2	-0.0029296875	Clostridium	3	-0.0068359375	Clostridium botulinum A3 str. Loch Maree
+lca_star_test1_36	"Bacillus botulinus" van Ermengem 1896	0.007	2	-0.0029296875	"Bacillus botulinus" van Ermengem 1896	0.007	2	-0.0029296875	Bacteria	8	-0.2490234375	Clostridium botulinum A3 str. Loch Maree
+lca_star_test1_37	"Bacillus botulinus" van Ermengem 1896	0.001	2	-0.0029296875	"Bacillus botulinus" van Ermengem 1896	0.001	2	-0.0029296875	Bacillus/Clostridium group	7	-0.1240234375	Clostridium botulinum A3 str. Loch Maree
+lca_star_test1_34	"Bacillus botulinus" van Ermengem 1896	0.005	2	-0.0029296875	"Bacillus botulinus" van Ermengem 1896	0.005	2	-0.0029296875	Clostridiales	5	-0.0302734375	Clostridium botulinum A3 str. Loch Maree
+lca_star_test1_35	"Bacillus botulinus" van Ermengem 1896	0.41	2	-0.0029296875	"Bacillus botulinus" van Ermengem 1896	0.41	2	-0.0029296875	Bacillus/Clostridium group	7	-0.1240234375	Clostridium botulinum A3 str. Loch Maree
+lca_star_test1_32	"Bacillus botulinus" van Ermengem 1896	0.0	2	-0.0029296875	"Bacillus botulinus" van Ermengem 1896	0.0	2	-0.0029296875	Clostridium	3	-0.0068359375	Clostridium botulinum A3 str. Loch Maree
+lca_star_test1_33	"Bacillus botulinus" van Ermengem 1896	0.005	2	-0.0029296875	"Bacillus botulinus" van Ermengem 1896	0.005	2	-0.0029296875	Bacillus/Clostridium group	7	-0.1240234375	Clostridium botulinum A3 str. Loch Maree
+lca_star_test1_30	"Bacillus botulinus" van Ermengem 1896	0.005	2	-0.0029296875	"Bacillus botulinus" van Ermengem 1896	0.005	2	-0.0029296875	Clostridium	3	-0.0068359375	Clostridium botulinum A3 str. Loch Maree
+lca_star_test1_31	"Bacillus botulinus" van Ermengem 1896	0.041	2	-0.0029296875	"Bacillus botulinus" van Ermengem 1896	0.041	2	-0.0029296875	Bacillus/Clostridium group	7	-0.1240234375	Clostridium botulinum A3 str. Loch Maree
+lca_star_test1_592	Bacillus cereus group	0.024	2	-0.0029296875	ATCC 14579	0.249	3	-0.0048828125	Bacteria	8	-0.2490234375	Bacillus weihenstephanensis KBAB4
+lca_star_test1_593	Bacillus	0.088	3	-0.0068359375	Bacillus cereus group	1.0	2	-0.0029296875	Bacillus/Clostridium group	7	-0.1240234375	Bacillus weihenstephanensis KBAB4
+lca_star_test1_590	Bacillus	0.047	3	-0.0068359375	Bacillus	0.654	3	-0.0068359375	Bacillales	5	-0.0302734375	Bacillus weihenstephanensis KBAB4
+lca_star_test1_591	Bacillus cereus group	0.002	2	-0.0029296875	Bacillus cereus group	0.002	2	-0.0029296875	Bacillus cereus group	2	-0.0029296875	Bacillus weihenstephanensis KBAB4
+lca_star_test1_596	ATCC 14579	0.306	3	-0.0048828125	ATCC 14579	0.306	3	-0.0048828125	Bacillus	3	-0.0068359375	Bacillus weihenstephanensis KBAB4
+lca_star_test1_597	ATCC 14579	0.019	3	-0.0048828125	ATCC 14579	0.019	3	-0.0048828125	ATCC 14579	3	-0.0048828125	Bacillus weihenstephanensis KBAB4
+lca_star_test1_594	ATCC 14579	0.047	3	-0.0048828125	ATCC 14579	0.047	3	-0.0048828125	Bacillus	3	-0.0068359375	Bacillus weihenstephanensis KBAB4
+lca_star_test1_595	Bacillus cereus group	0.086	2	-0.0029296875	ATCC 14579	0.249	3	-0.0048828125	Bacteria	8	-0.2490234375	Bacillus weihenstephanensis KBAB4
+lca_star_test1_453	Chromatiaceae	0.076	3	-0.013671875	"Bacillus vinosus" (Ehrenberg 1838) Trevisan 1889	0.313	1	-0.001953125	Bacteria	7	-0.248046875	Allochromatium vinosum DSM 180
+lca_star_test1_452	Proteobacteria	0.027	6	-0.123046875	"Bacillus vinosus" (Ehrenberg 1838) Trevisan 1889	1.0	1	-0.001953125	Bacteria	7	-0.248046875	Allochromatium vinosum DSM 180
+lca_star_test1_451	Chromatiaceae	0.007	3	-0.013671875	Chromatiaceae	0.477	3	-0.013671875	Bacteria	7	-0.248046875	Allochromatium vinosum DSM 180
+lca_star_test1_450	Proteobacteria	0.148	6	-0.123046875	Proteobacteria	0.654	6	-0.123046875	Bacteria	7	-0.248046875	Allochromatium vinosum DSM 180
+lca_star_test1_457	"Bacillus vinosus" (Ehrenberg 1838) Trevisan 1889	0.007	1	-0.001953125	"Bacillus vinosus" (Ehrenberg 1838) Trevisan 1889	0.007	1	-0.001953125	Proteobacteria	6	-0.123046875	Allochromatium vinosum DSM 180
+lca_star_test1_456	Chromatiaceae	0.313	3	-0.013671875	"Bacillus vinosus" (Ehrenberg 1838) Trevisan 1889	0.477	1	-0.001953125	Monera	8	-0.498046875	Allochromatium vinosum DSM 180
+lca_star_test1_455	"Bacillus vinosus" (Ehrenberg 1838) Trevisan 1889	0.002	1	-0.001953125	"Bacillus vinosus" (Ehrenberg 1838) Trevisan 1889	0.002	1	-0.001953125	Proteobacteria	6	-0.123046875	Allochromatium vinosum DSM 180
+lca_star_test1_454	Chromatiaceae	0.16	3	-0.013671875	"Bacillus vinosus" (Ehrenberg 1838) Trevisan 1889	0.739	1	-0.001953125	Proteobacteria	6	-0.123046875	Allochromatium vinosum DSM 180
+lca_star_test1_648	Bacilli	0.013	5	-0.060546875	Bacilli	1.0	5	-0.060546875	Bacillus/Clostridium group	6	-0.123046875	Listeria monocytogenes serotype 4b str. CLIP 80459
+lca_star_test1_649	Bacillales	0.2	4	-0.029296875	Bacillales	0.477	4	-0.029296875	Bacilli	5	-0.060546875	Listeria monocytogenes serotype 4b str. CLIP 80459
+lca_star_test1_646	Bacilli	0.125	5	-0.060546875	Bacilli	0.705	5	-0.060546875	Bacillus/Clostridium group	6	-0.123046875	Listeria monocytogenes serotype 4b str. CLIP 80459
+lca_star_test1_647	Bacillales	0.313	4	-0.029296875	"Listerella" Pirie 1927 (nom. rej. Opin 14)	1.0	2	-0.005859375	Bacilli	5	-0.060546875	Listeria monocytogenes serotype 4b str. CLIP 80459
+lca_star_test1_228	"Aigarchaeota" Nunoura et al. 2011	0.477	5	-0.12109375	"Cenarchaeum symbiosum" DeLong and Preston 1996	0.705	1	-0.00390625	Monera	7	-0.49609375	Cenarchaeum symbiosum A
+lca_star_test1_229	"Aigarchaeota" Nunoura et al. 2011	0.249	5	-0.12109375	"Aigarchaeota" Nunoura et al. 2011	0.41	5	-0.12109375	"Archaea" Woese et al. 1990	6	-0.24609375	Cenarchaeum symbiosum A
+lca_star_test1_886	Bacillales	0.249	3	-0.02734375	Bacillales	0.249	3	-0.02734375	Bacteria	6	-0.24609375	Geobacillus sp. Y412MC61
+lca_star_test1_624	Thermoplasmales	0.05	4	-0.029296875	Thermoplasmales	0.477	4	-0.029296875	Monera	8	-0.498046875	Picrophilus torridus DSM 9790
+lca_star_test1_625	"Euryarchaeota" Woese et al. 1990	0.028	6	-0.123046875	Thermoplasmales	0.477	4	-0.029296875	Monera	8	-0.498046875	Picrophilus torridus DSM 9790
+lca_star_test1_626	Thermoplasmales	0.125	4	-0.029296875	Thermoplasmales	0.125	4	-0.029296875	Monera	8	-0.498046875	Picrophilus torridus DSM 9790
+lca_star_test1_340	BCF group	0.088	6	-0.0615234375	BCF group	0.088	6	-0.0615234375	Bacteria	8	-0.2490234375	Cytophaga hutchinsonii ATCC 33406
+lca_star_test1_620	"Euryarchaeota" Woese et al. 1990	0.024	6	-0.123046875	Thermoplasmales	1.0	4	-0.029296875	Monera	8	-0.498046875	Picrophilus torridus DSM 9790
+lca_star_test1_621	"Euryarchaeota" Woese et al. 1990	0.009	6	-0.123046875	"Euryarchaeota" Woese et al. 1990	1.0	6	-0.123046875	Monera	8	-0.498046875	Picrophilus torridus DSM 9790
+lca_star_test1_792	Bacteria	0.05	7	-0.248046875	Bacteria	0.654	7	-0.248046875	Monera	8	-0.498046875	Meiothermus silvanus DSM 9946
+lca_star_test1_623	Thermoplasmales	0.313	4	-0.029296875	ATCC 700027	0.705	1	-0.001953125	Monera	8	-0.498046875	Picrophilus torridus DSM 9790
+lca_star_test1_880	Geobacillus	0.526	1	-0.00390625	Geobacillus	0.526	1	-0.00390625	Bacillaceae	2	-0.01171875	Geobacillus sp. Y412MC61
+lca_star_test1_628	Thermoplasmales	0.086	4	-0.029296875	ATCC 700027	0.705	1	-0.001953125	Monera	8	-0.498046875	Picrophilus torridus DSM 9790
+lca_star_test1_629	Thermoplasmales	0.086	4	-0.029296875	Thermoplasmales	0.249	4	-0.029296875	Monera	8	-0.498046875	Picrophilus torridus DSM 9790
+lca_star_test1_881	Bacillaceae	0.148	2	-0.01171875	Bacillaceae	1.0	2	-0.01171875	Bacteria	6	-0.24609375	Geobacillus sp. Y412MC61
+lca_star_test1_417	Lactobacillales	0.001	5	-0.0302734375	Lactobacillales	0.41	5	-0.0302734375	Lactobacillales	5	-0.0302734375	Lactococcus lactis subsp. lactis Il1403
+lca_star_test1_142	Chlamydia/Chlamydophila group	0.705	3	-0.00341796875	"Chlamydozoon psittaci" (Lillie 1930) Ryzhkov 1950	1.0	5	-0.00634765625	Bacteria	9	-0.24951171875	Chlamydophila abortus S26/3
+lca_star_test1_882	Bacillaceae	0.249	2	-0.01171875	Bacillaceae	0.249	2	-0.01171875	Bacillus/Clostridium group	5	-0.12109375	Geobacillus sp. Y412MC61
+lca_star_test1_416	Lactobacillales	0.024	5	-0.0302734375	"Bacterium lactis" Lister 1873	0.654	2	-0.0029296875	Bacteria	8	-0.2490234375	Lactococcus lactis subsp. lactis Il1403
+lca_star_test1_344	BCF group	0.654	6	-0.0615234375	Bacteria	0.56	8	-0.2490234375	Bacteria	8	-0.2490234375	Cytophaga hutchinsonii ATCC 33406
+lca_star_test1_415	Streptococcaceae	0.125	4	-0.0146484375	"Bacterium lactis" Lister 1873	1.0	2	-0.0029296875	Bacillus/Clostridium group	7	-0.1240234375	Lactococcus lactis subsp. lactis Il1403
+lca_star_test1_336	Ureaplasma	0.249	3	-0.0068359375	Ureaplasma	0.249	3	-0.0068359375	"Borrelomycetaceae" Turner 1935	4	-0.0146484375	Ureaplasma urealyticum serovar 10 str. ATCC 33699
+lca_star_test1_337	Ureaplasma	0.024	3	-0.0068359375	Ureaplasma	0.024	3	-0.0068359375	"Paramycetes" Sabin 1941	6	-0.0615234375	Ureaplasma urealyticum serovar 10 str. ATCC 33699
+lca_star_test1_334	"Borrelomycetaceae" Turner 1935	0.313	4	-0.0146484375	Ureaplasma	0.705	3	-0.0068359375	"Paramycetes" Sabin 1941	6	-0.0615234375	Ureaplasma urealyticum serovar 10 str. ATCC 33699
+lca_star_test1_335	Ureaplasma	0.007	3	-0.0068359375	Ureaplasma	0.007	3	-0.0068359375	Bacteria	8	-0.2490234375	Ureaplasma urealyticum serovar 10 str. ATCC 33699
+lca_star_test1_332	Ureaplasma	0.306	3	-0.0068359375	Ureaplasma	0.306	3	-0.0068359375	"Borrelomycetaceae" Turner 1935	4	-0.0146484375	Ureaplasma urealyticum serovar 10 str. ATCC 33699
+lca_star_test1_333	Ureaplasma	0.003	3	-0.0068359375	Ureaplasma	0.003	3	-0.0068359375	Bacteria	8	-0.2490234375	Ureaplasma urealyticum serovar 10 str. ATCC 33699
+lca_star_test1_330	Ureaplasma	0.007	3	-0.0068359375	Ureaplasma	0.007	3	-0.0068359375	Bacteria	8	-0.2490234375	Ureaplasma urealyticum serovar 10 str. ATCC 33699
+lca_star_test1_331	Ureaplasma	0.477	3	-0.0068359375	Ureaplasma	1.0	3	-0.0068359375	Bacteria	8	-0.2490234375	Ureaplasma urealyticum serovar 10 str. ATCC 33699
+lca_star_test1_893	Wolbachia	0.477	2	-0.0029296875	Wolbachia	0.705	2	-0.0029296875	Bacteria	8	-0.2490234375	Wolbachia endosymbiont strain TRS of Brugia malayi
+lca_star_test1_892	Wolbachia	0.477	2	-0.0029296875	Wolbachia	0.477	2	-0.0029296875	"Alphabacteria" Cavalier-Smith 1992	6	-0.0615234375	Wolbachia endosymbiont strain TRS of Brugia malayi
+lca_star_test1_891	"Alphabacteria" Cavalier-Smith 1992	0.2	6	-0.0615234375	Bacteria	1.0	8	-0.2490234375	Bacteria	8	-0.2490234375	Wolbachia endosymbiont strain TRS of Brugia malayi
+lca_star_test1_890	"Alphabacteria" Cavalier-Smith 1992	0.088	6	-0.0615234375	"Alphabacteria" Cavalier-Smith 1992	0.088	6	-0.0615234375	"Alphabacteria" Cavalier-Smith 1992	6	-0.0615234375	Wolbachia endosymbiont strain TRS of Brugia malayi
+lca_star_test1_897	Wolbachia	0.41	2	-0.0029296875	Wolbachia	0.41	2	-0.0029296875	Bacteria	8	-0.2490234375	Wolbachia endosymbiont strain TRS of Brugia malayi
+lca_star_test1_896	Anaplasmataceae	0.086	4	-0.0146484375	Wolbachia	0.249	2	-0.0029296875	Proteobacteria	7	-0.1240234375	Wolbachia endosymbiont strain TRS of Brugia malayi
+lca_star_test1_231	Gammaproteobacteria	0.028	5	-0.060546875	Gammaproteobacteria	1.0	5	-0.060546875	Bacteria	7	-0.248046875	Shewanella baltica OS195
+lca_star_test1_339	ATCC 27618	None	2	-0.0029296875	ATCC 27618	None	2	-0.0029296875	ATCC 27618	2	-0.0029296875	Ureaplasma urealyticum serovar 10 str. ATCC 33699
+lca_star_test1_223	"Aigarchaeota" Nunoura et al. 2011	0.047	5	-0.12109375	"Aigarchaeota" Nunoura et al. 2011	0.047	5	-0.12109375	"Archaea" Woese et al. 1990	6	-0.24609375	Cenarchaeum symbiosum A
+lca_star_test1_808	"Microspironema" Stiles and Pfender 1905	0.013	3	-0.0068359375	"Microspironema" Stiles and Pfender 1905	0.013	3	-0.0068359375	Bacteria	8	-0.2490234375	Treponema pallidum subsp. pallidum str. Nichols
+lca_star_test1_809	"Microspironema" Stiles and Pfender 1905	0.047	3	-0.0068359375	"Microspironema" Stiles and Pfender 1905	0.047	3	-0.0068359375	"Microspironema" Stiles and Pfender 1905	3	-0.0068359375	Treponema pallidum subsp. pallidum str. Nichols
+lca_star_test1_804	"Microspironema" Stiles and Pfender 1905	0.013	3	-0.0068359375	"Microspironema" Stiles and Pfender 1905	0.013	3	-0.0068359375	"Microspironema" Stiles and Pfender 1905	3	-0.0068359375	Treponema pallidum subsp. pallidum str. Nichols
+lca_star_test1_888	Bacillaceae	0.088	2	-0.01171875	Bacillaceae	0.088	2	-0.01171875	Bacillus/Clostridium group	5	-0.12109375	Geobacillus sp. Y412MC61
+lca_star_test1_806	Bacteria	0.019	8	-0.2490234375	Bacteria	1.0	8	-0.2490234375	Bacteria	8	-0.2490234375	Treponema pallidum subsp. pallidum str. Nichols
+lca_star_test1_410	Streptococcaceae	0.125	4	-0.0146484375	"Bacterium lactis" Lister 1873	0.705	2	-0.0029296875	Lactobacillales	5	-0.0302734375	Lactococcus lactis subsp. lactis Il1403
+lca_star_test1_800	"Microspironema" Stiles and Pfender 1905	0.008	3	-0.0068359375	"Microspironema" Stiles and Pfender 1905	0.008	3	-0.0068359375	"Microspironema" Stiles and Pfender 1905	3	-0.0068359375	Treponema pallidum subsp. pallidum str. Nichols
+lca_star_test1_801	"Microspironema" Stiles and Pfender 1905	0.165	3	-0.0068359375	"Microspironema" Stiles and Pfender 1905	0.165	3	-0.0068359375	Bacteria	8	-0.2490234375	Treponema pallidum subsp. pallidum str. Nichols
+lca_star_test1_802	"Microspironema" Stiles and Pfender 1905	0.148	3	-0.0068359375	"Microspironema" Stiles and Pfender 1905	0.148	3	-0.0068359375	Monera	9	-0.4990234375	Treponema pallidum subsp. pallidum str. Nichols
+lca_star_test1_889	Bacillaceae	0.028	2	-0.01171875	Bacillaceae	0.028	2	-0.01171875	Bacillales	3	-0.02734375	Geobacillus sp. Y412MC61
+lca_star_test1_794	Thermaceae	0.2	3	-0.013671875	ATCC 700542	1.0	1	-0.001953125	Bacteria	7	-0.248046875	Meiothermus silvanus DSM 9946
+lca_star_test1_795	Bacteria	0.0	7	-0.248046875	Bacteria	0.477	7	-0.248046875	Bacteria	7	-0.248046875	Meiothermus silvanus DSM 9946
+lca_star_test1_248	Novosphingobium sp. PP1Y	0.002	0	0	Novosphingobium sp. PP1Y	0.002	0	0	Novosphingobium sp. PP1Y	0	0	Novosphingobium sp. PP1Y
+lca_star_test1_249	Sphingomonadaceae	0.249	2	-0.01171875	Sphingomonadaceae	0.654	2	-0.01171875	Proteobacteria	5	-0.12109375	Novosphingobium sp. PP1Y
+lca_star_test1_477	Acinetobacter calcoaceticus/baumannii complex	0.739	2	-0.0029296875	Acinetobacter	0.705	3	-0.0068359375	Acinetobacter	3	-0.0068359375	Acinetobacter baumannii ACICU
+lca_star_test1_242	Proteobacteria	0.05	5	-0.12109375	Sphingomonadaceae	0.705	2	-0.01171875	Bacteria	6	-0.24609375	Novosphingobium sp. PP1Y
+lca_star_test1_243	"Alphabacteria" Cavalier-Smith 1992	0.249	4	-0.05859375	"Alphabacteria" Cavalier-Smith 1992	0.654	4	-0.05859375	Proteobacteria	5	-0.12109375	Novosphingobium sp. PP1Y
+lca_star_test1_240	Proteobacteria	0.086	5	-0.12109375	Proteobacteria	0.086	5	-0.12109375	Proteobacteria	5	-0.12109375	Novosphingobium sp. PP1Y
+lca_star_test1_241	Proteobacteria	0.148	5	-0.12109375	Proteobacteria	0.148	5	-0.12109375	Bacteria	6	-0.24609375	Novosphingobium sp. PP1Y
+lca_star_test1_246	Proteobacteria	0.148	5	-0.12109375	Proteobacteria	0.41	5	-0.12109375	Bacteria	6	-0.24609375	Novosphingobium sp. PP1Y
+lca_star_test1_247	"Alphabacteria" Cavalier-Smith 1992	0.477	4	-0.05859375	Sphingomonadaceae	0.705	2	-0.01171875	Bacteria	6	-0.24609375	Novosphingobium sp. PP1Y
+lca_star_test1_244	Sphingomonadaceae	0.148	2	-0.01171875	Sphingomonadaceae	0.148	2	-0.01171875	"Alphabacteria" Cavalier-Smith 1992	4	-0.05859375	Novosphingobium sp. PP1Y
+lca_star_test1_245	Sphingomonadaceae	0.477	2	-0.01171875	Sphingomonadaceae	0.705	2	-0.01171875	"Alphabacteria" Cavalier-Smith 1992	4	-0.05859375	Novosphingobium sp. PP1Y
+lca_star_test1_523	Gammaproteobacteria	0.192	6	-0.0615234375	Gammaproteobacteria	0.192	6	-0.0615234375	Gammaproteobacteria	6	-0.0615234375	Yersinia pestis biovar Microtus str. 91001
+lca_star_test1_522	Gammaproteobacteria	0.007	6	-0.0615234375	Gammaproteobacteria	0.007	6	-0.0615234375	Gammaproteobacteria	6	-0.0615234375	Yersinia pestis biovar Microtus str. 91001
+lca_star_test1_521	Enterobacteraceae	0.028	4	-0.0146484375	Enterobacteraceae	0.249	4	-0.0146484375	Gammaproteobacteria	6	-0.0615234375	Yersinia pestis biovar Microtus str. 91001
+lca_star_test1_520	Gammaproteobacteria	0.282	6	-0.0615234375	Gammaproteobacteria	0.282	6	-0.0615234375	Gammaproteobacteria	6	-0.0615234375	Yersinia pestis biovar Microtus str. 91001
+lca_star_test1_527	Gammaproteobacteria	0.028	6	-0.0615234375	Gammaproteobacteria	0.739	6	-0.0615234375	Proteobacteria	7	-0.1240234375	Yersinia pestis biovar Microtus str. 91001
+lca_star_test1_526	Gammaproteobacteria	0.103	6	-0.0615234375	Gammaproteobacteria	0.103	6	-0.0615234375	Gammaproteobacteria	6	-0.0615234375	Yersinia pestis biovar Microtus str. 91001
+lca_star_test1_525	Gammaproteobacteria	0.526	6	-0.0615234375	Gammaproteobacteria	0.526	6	-0.0615234375	Gammaproteobacteria	6	-0.0615234375	Yersinia pestis biovar Microtus str. 91001
+lca_star_test1_524	Enterobacteraceae	0.125	4	-0.0146484375	Enterobacteraceae	0.125	4	-0.0146484375	Gammaproteobacteria	6	-0.0615234375	Yersinia pestis biovar Microtus str. 91001
+lca_star_test1_480	Actinomycetales	0.249	5	-0.01513671875	Actinomycetales	0.249	5	-0.01513671875	Actinomycetales	5	-0.01513671875	Arthrobacter chlorophenolicus A6
+lca_star_test1_481	Arthrobacter	0.086	2	-0.00146484375	Arthrobacter	0.086	2	-0.00146484375	Actinomycetales	5	-0.01513671875	Arthrobacter chlorophenolicus A6
+lca_star_test1_529	Gammaproteobacteria	0.313	6	-0.0615234375	Gammaproteobacteria	0.313	6	-0.0615234375	Gammaproteobacteria	6	-0.0615234375	Yersinia pestis biovar Microtus str. 91001
+lca_star_test1_483	Micrococcineae	0.2	4	-0.00732421875	Actinomycetales	1.0	5	-0.01513671875	Actinomycetales	5	-0.01513671875	Arthrobacter chlorophenolicus A6
+lca_star_test1_484	Arthrobacter	0.306	2	-0.00146484375	ATCC 700700	0.56	1	-0.00048828125	Actinomycetales	5	-0.01513671875	Arthrobacter chlorophenolicus A6
+lca_star_test1_485	Actinomycetales	0.148	5	-0.01513671875	Actinomycetales	0.654	5	-0.01513671875	Bacteria	9	-0.24951171875	Arthrobacter chlorophenolicus A6
+lca_star_test1_486	Micrococcineae	0.739	4	-0.00732421875	Actinomycetales	1.0	5	-0.01513671875	Actinomycetales	5	-0.01513671875	Arthrobacter chlorophenolicus A6
+lca_star_test1_487	Actinomycetales	0.013	5	-0.01513671875	Actinomycetales	0.013	5	-0.01513671875	Bacteria	9	-0.24951171875	Arthrobacter chlorophenolicus A6
+lca_star_test1_830	Enterobacteraceae	0.086	2	-0.01171875	Enterobacteraceae	0.705	2	-0.01171875	Proteobacteria	5	-0.12109375	Rahnella sp. Y9602
+lca_star_test1_691	Haloferax	0.016	2	-0.005859375	Haloferax	0.016	2	-0.005859375	"Haloarchaeaceae" DasSarma and DasSarma 2008	3	-0.013671875	Haloferax volcanii DS2
+lca_star_test1_141	"Chlamydozoon psittaci" (Lillie 1930) Ryzhkov 1950	0.165	5	-0.00634765625	"Chlamydozoon psittaci" (Lillie 1930) Ryzhkov 1950	0.165	5	-0.00634765625	Chlamydia/Chlamydophila group	3	-0.00341796875	Chlamydophila abortus S26/3
+lca_star_test1_140	"Bedsonia" Meyer 1953	0.41	4	-0.00537109375	"Chlamydozoon psittaci" (Lillie 1930) Ryzhkov 1950	0.654	5	-0.00634765625	Bacteria	9	-0.24951171875	Chlamydophila abortus S26/3
+lca_star_test1_143	"Chlamydozoon psittaci" (Lillie 1930) Ryzhkov 1950	0.002	5	-0.00634765625	"Chlamydozoon psittaci" (Lillie 1930) Ryzhkov 1950	0.002	5	-0.00634765625	"Chlamydozoon psittaci" (Lillie 1930) Ryzhkov 1950	5	-0.00634765625	Chlamydophila abortus S26/3
+lca_star_test1_414	Lactobacillales	0.047	5	-0.0302734375	"Bacterium lactis" Lister 1873	1.0	2	-0.0029296875	Bacteria	8	-0.2490234375	Lactococcus lactis subsp. lactis Il1403
+lca_star_test1_413	Streptococcaceae	0.088	4	-0.0146484375	Streptococcaceae	1.0	4	-0.0146484375	Lactobacillales	5	-0.0302734375	Lactococcus lactis subsp. lactis Il1403
+lca_star_test1_144	"Bedsonia" Meyer 1953	0.654	4	-0.00537109375	"Chlamydozoon psittaci" (Lillie 1930) Ryzhkov 1950	1.0	5	-0.00634765625	Chlamydia/Chlamydophila group	3	-0.00341796875	Chlamydophila abortus S26/3
+lca_star_test1_147	"Chlamydozoon psittaci" (Lillie 1930) Ryzhkov 1950	0.249	5	-0.00634765625	"Chlamydozoon psittaci" (Lillie 1930) Ryzhkov 1950	0.249	5	-0.00634765625	Bacteria	9	-0.24951171875	Chlamydophila abortus S26/3
+lca_star_test1_146	"Chlamydozoon psittaci" (Lillie 1930) Ryzhkov 1950	0.148	5	-0.00634765625	"Chlamydozoon psittaci" (Lillie 1930) Ryzhkov 1950	0.148	5	-0.00634765625	Chlamydia/Chlamydophila group	3	-0.00341796875	Chlamydophila abortus S26/3
+lca_star_test1_149	"Bedsonia" Meyer 1953	0.047	4	-0.00537109375	"Chlamydozoon psittaci" (Lillie 1930) Ryzhkov 1950	0.41	5	-0.00634765625	Bacteria	9	-0.24951171875	Chlamydophila abortus S26/3
+lca_star_test1_148	Chlamydia/Chlamydophila group	0.0	3	-0.00341796875	Chlamydia/Chlamydophila group	0.763	3	-0.00341796875	Chlamydia/Chlamydophila group	3	-0.00341796875	Chlamydophila abortus S26/3
+lca_star_test1_796	Bacteria	0.086	7	-0.248046875	Bacteria	0.086	7	-0.248046875	Bacteria	7	-0.248046875	Meiothermus silvanus DSM 9946
+lca_star_test1_797	ATCC 700542	0.148	1	-0.001953125	ATCC 700542	0.148	1	-0.001953125	Bacteria	7	-0.248046875	Meiothermus silvanus DSM 9946
+lca_star_test1_790	Thermaceae	0.088	3	-0.013671875	Thermaceae	0.088	3	-0.013671875	Bacteria	7	-0.248046875	Meiothermus silvanus DSM 9946
+lca_star_test1_791	Thermaceae	0.013	3	-0.013671875	Thermaceae	0.705	3	-0.013671875	Bacteria	7	-0.248046875	Meiothermus silvanus DSM 9946
+lca_star_test1_419	Lactobacillales	0.249	5	-0.0302734375	Lactococcus	0.654	3	-0.0068359375	Bacteria	8	-0.2490234375	Lactococcus lactis subsp. lactis Il1403
+lca_star_test1_418	Lactobacillales	0.526	5	-0.0302734375	Lactobacillales	1.0	5	-0.0302734375	Bacilli	6	-0.0615234375	Lactococcus lactis subsp. lactis Il1403
+lca_star_test1_836	Enterobacteraceae	0.003	2	-0.01171875	Enterobacteraceae	0.003	2	-0.01171875	Gammaproteobacteria	4	-0.05859375	Rahnella sp. Y9602
+lca_star_test1_504	Lactobacillales	0.013	4	-0.029296875	Lactobacillales	0.013	4	-0.029296875	Lactobacillales	4	-0.029296875	Leuconostoc gasicomitatum LMG 18811
+lca_star_test1_660	"Chlorobacterium" Guillebeau 1890, nom. rejic. Opin. 6 (not "Chlorobacterium" Lauterborn 1916)	0.004	3	-0.0068359375	"Chlorobacterium" Guillebeau 1890, nom. rejic. Opin. 6 (not "Chlorobacterium" Lauterborn 1916)	0.004	3	-0.0068359375	"Chlorobacterium" Guillebeau 1890, nom. rejic. Opin. 6 (not "Chlorobacterium" Lauterborn 1916)	3	-0.0068359375	Pseudomonas fluorescens SBW25
+lca_star_test1_661	"Chlorobacterium" Guillebeau 1890, nom. rejic. Opin. 6 (not "Chlorobacterium" Lauterborn 1916)	0.003	3	-0.0068359375	"Chlorobacterium" Guillebeau 1890, nom. rejic. Opin. 6 (not "Chlorobacterium" Lauterborn 1916)	0.003	3	-0.0068359375	Proteobacteria	7	-0.1240234375	Pseudomonas fluorescens SBW25
+lca_star_test1_662	"Chlorobacterium" Guillebeau 1890, nom. rejic. Opin. 6 (not "Chlorobacterium" Lauterborn 1916)	0.001	3	-0.0068359375	"Chlorobacterium" Guillebeau 1890, nom. rejic. Opin. 6 (not "Chlorobacterium" Lauterborn 1916)	0.563	3	-0.0068359375	Proteobacteria	7	-0.1240234375	Pseudomonas fluorescens SBW25
+lca_star_test1_663	"Chlorobacterium" Guillebeau 1890, nom. rejic. Opin. 6 (not "Chlorobacterium" Lauterborn 1916)	0.249	3	-0.0068359375	"Chlorobacterium" Guillebeau 1890, nom. rejic. Opin. 6 (not "Chlorobacterium" Lauterborn 1916)	0.249	3	-0.0068359375	Proteobacteria	7	-0.1240234375	Pseudomonas fluorescens SBW25
+lca_star_test1_664	"Chlorobacterium" Guillebeau 1890, nom. rejic. Opin. 6 (not "Chlorobacterium" Lauterborn 1916)	0.306	3	-0.0068359375	"Chlorobacterium" Guillebeau 1890, nom. rejic. Opin. 6 (not "Chlorobacterium" Lauterborn 1916)	0.306	3	-0.0068359375	Gammaproteobacteria	6	-0.0615234375	Pseudomonas fluorescens SBW25
+lca_star_test1_665	"Chlorobacterium" Guillebeau 1890, nom. rejic. Opin. 6 (not "Chlorobacterium" Lauterborn 1916)	0.148	3	-0.0068359375	"Chlorobacterium" Guillebeau 1890, nom. rejic. Opin. 6 (not "Chlorobacterium" Lauterborn 1916)	0.41	3	-0.0068359375	Proteobacteria	7	-0.1240234375	Pseudomonas fluorescens SBW25
+lca_star_test1_666	"Chlorobacterium" Guillebeau 1890, nom. rejic. Opin. 6 (not "Chlorobacterium" Lauterborn 1916)	0.002	3	-0.0068359375	"Chlorobacterium" Guillebeau 1890, nom. rejic. Opin. 6 (not "Chlorobacterium" Lauterborn 1916)	0.002	3	-0.0068359375	"Chlorobacterium" Guillebeau 1890, nom. rejic. Opin. 6 (not "Chlorobacterium" Lauterborn 1916)	3	-0.0068359375	Pseudomonas fluorescens SBW25
+lca_star_test1_667	"Chlorobacterium" Guillebeau 1890, nom. rejic. Opin. 6 (not "Chlorobacterium" Lauterborn 1916)	0.003	3	-0.0068359375	"Chlorobacterium" Guillebeau 1890, nom. rejic. Opin. 6 (not "Chlorobacterium" Lauterborn 1916)	0.003	3	-0.0068359375	Proteobacteria	7	-0.1240234375	Pseudomonas fluorescens SBW25
+lca_star_test1_668	"Chlorobacterium" Guillebeau 1890, nom. rejic. Opin. 6 (not "Chlorobacterium" Lauterborn 1916)	0.0	3	-0.0068359375	"Chlorobacterium" Guillebeau 1890, nom. rejic. Opin. 6 (not "Chlorobacterium" Lauterborn 1916)	0.0	3	-0.0068359375	"Chlorobacterium" Guillebeau 1890, nom. rejic. Opin. 6 (not "Chlorobacterium" Lauterborn 1916)	3	-0.0068359375	Pseudomonas fluorescens SBW25
+lca_star_test1_669	"Chlorobacterium" Guillebeau 1890, nom. rejic. Opin. 6 (not "Chlorobacterium" Lauterborn 1916)	0.004	3	-0.0068359375	"Chlorobacterium" Guillebeau 1890, nom. rejic. Opin. 6 (not "Chlorobacterium" Lauterborn 1916)	0.004	3	-0.0068359375	"Chlorobacterium" Guillebeau 1890, nom. rejic. Opin. 6 (not "Chlorobacterium" Lauterborn 1916)	3	-0.0068359375	Pseudomonas fluorescens SBW25
+lca_star_test1_586	Hyphomicrobiales	0.477	5	-0.0302734375	Hyphomicrobiales	0.477	5	-0.0302734375	Hyphomicrobiales	5	-0.0302734375	Agrobacterium vitis S4
+lca_star_test1_6	Flavobacteriaceae	0.088	3	-0.0068359375	Flavobacteriaceae	0.088	3	-0.0068359375	BCF group	6	-0.0615234375	Riemerella anatipestifer ATCC 11845 = DSM 15868
+lca_star_test1_7	Flavobacteriaceae	0.001	3	-0.0068359375	Flavobacteriaceae	0.763	3	-0.0068359375	BCF group	6	-0.0615234375	Riemerella anatipestifer ATCC 11845 = DSM 15868
+lca_star_test1_4	Flavobacteriaceae	0.148	3	-0.0068359375	Flavobacteriaceae	0.148	3	-0.0068359375	BCF group	6	-0.0615234375	Riemerella anatipestifer ATCC 11845 = DSM 15868
+lca_star_test1_5	Flavobacteriaceae	0.0	3	-0.0068359375	Flavobacteriaceae	0.0	3	-0.0068359375	Flavobacteriaceae	3	-0.0068359375	Riemerella anatipestifer ATCC 11845 = DSM 15868
+lca_star_test1_2	Flavobacteriaceae	0.086	3	-0.0068359375	Flavobacteriaceae	0.086	3	-0.0068359375	BCF group	6	-0.0615234375	Riemerella anatipestifer ATCC 11845 = DSM 15868
+lca_star_test1_3	Flavobacteriaceae	0.2	3	-0.0068359375	Flavobacteriaceae	0.477	3	-0.0068359375	BCF group	6	-0.0615234375	Riemerella anatipestifer ATCC 11845 = DSM 15868
+lca_star_test1_0	Flavobacteriaceae	0.001	3	-0.0068359375	Flavobacteriaceae	0.001	3	-0.0068359375	Flavobacteriaceae	3	-0.0068359375	Riemerella anatipestifer ATCC 11845 = DSM 15868
+lca_star_test1_1	Flavobacteriaceae	0.013	3	-0.0068359375	Flavobacteriaceae	0.013	3	-0.0068359375	BCF group	6	-0.0615234375	Riemerella anatipestifer ATCC 11845 = DSM 15868
+lca_star_test1_8	Flavobacteriaceae	0.013	3	-0.0068359375	Flavobacteriaceae	0.013	3	-0.0068359375	Bacteria	8	-0.2490234375	Riemerella anatipestifer ATCC 11845 = DSM 15868
+lca_star_test1_9	BCF group	0.028	6	-0.0615234375	BCF group	0.028	6	-0.0615234375	BCF group	6	-0.0615234375	Riemerella anatipestifer ATCC 11845 = DSM 15868
+lca_star_test1_47	Streptococcus	0.086	3	-0.0068359375	"Micrococcus scarlatinae" Klein 1884	1.0	2	-0.0029296875	Lactobacillales	5	-0.0302734375	Streptococcus pyogenes SSI-1
+lca_star_test1_46	Streptococcus	0.0	3	-0.0068359375	Streptococcus	0.0	3	-0.0068359375	Streptococcus	3	-0.0068359375	Streptococcus pyogenes SSI-1
+lca_star_test1_45	Streptococcus	0.477	3	-0.0068359375	Streptococcus	0.477	3	-0.0068359375	Lactobacillales	5	-0.0302734375	Streptococcus pyogenes SSI-1
+lca_star_test1_44	Streptococcus	0.007	3	-0.0068359375	Streptococcus	0.007	3	-0.0068359375	Lactobacillales	5	-0.0302734375	Streptococcus pyogenes SSI-1
+lca_star_test1_43	Streptococcus	0.103	3	-0.0068359375	"Micrococcus scarlatinae" Klein 1884	0.739	2	-0.0029296875	Bacteria	8	-0.2490234375	Streptococcus pyogenes SSI-1
+lca_star_test1_42	Streptococcus	0.028	3	-0.0068359375	Streptococcus	0.028	3	-0.0068359375	Bacteria	8	-0.2490234375	Streptococcus pyogenes SSI-1
+lca_star_test1_41	Streptococcus	0.007	3	-0.0068359375	Streptococcus	0.007	3	-0.0068359375	Bacilli	6	-0.0615234375	Streptococcus pyogenes SSI-1
+lca_star_test1_40	Streptococcus	0.148	3	-0.0068359375	Streptococcus	0.148	3	-0.0068359375	Lactobacillales	5	-0.0302734375	Streptococcus pyogenes SSI-1
+lca_star_test1_719	Clostridium	0.477	2	-0.005859375	Clostridium	0.705	2	-0.005859375	Clostridiales	4	-0.029296875	Clostridium kluyveri DSM 555
+lca_star_test1_49	Streptococcus	0.028	3	-0.0068359375	Streptococcus	0.028	3	-0.0068359375	Lactobacillales	5	-0.0302734375	Streptococcus pyogenes SSI-1
+lca_star_test1_48	Streptococcus	0.047	3	-0.0068359375	Streptococcus	0.047	3	-0.0068359375	Bacteria	8	-0.2490234375	Streptococcus pyogenes SSI-1
+lca_star_test1_462	Cyanobacteria	0.086	5	-0.12109375	Cyanobacteria	0.086	5	-0.12109375	Cyanobacteria	5	-0.12109375	Microcystis aeruginosa NIES-843
+lca_star_test1_463	Cyanobacteria	0.249	5	-0.12109375	IAM M-247	0.654	1	-0.00390625	Bacteria	6	-0.24609375	Microcystis aeruginosa NIES-843
+lca_star_test1_460	Cyanobacteria	0.007	5	-0.12109375	Cyanobacteria	0.249	5	-0.12109375	Bacteria	6	-0.24609375	Microcystis aeruginosa NIES-843
+lca_star_test1_708	Actinomycetales	0.047	5	-0.01513671875	Actinomycetales	1.0	5	-0.01513671875	'Actinobacteria'	8	-0.12451171875	Clavibacter michiganensis subsp. sepedonicus
+lca_star_test1_466	Cyanobacteria	0.028	5	-0.12109375	Cyanobacteria	0.028	5	-0.12109375	Bacteria	6	-0.24609375	Microcystis aeruginosa NIES-843
+lca_star_test1_467	Cyanobacteria	0.148	5	-0.12109375	Cyanobacteria	0.148	5	-0.12109375	Cyanobacteria	5	-0.12109375	Microcystis aeruginosa NIES-843
+lca_star_test1_464	Cyanobacteria	0.007	5	-0.12109375	Cyanobacteria	0.007	5	-0.12109375	Bacteria	6	-0.24609375	Microcystis aeruginosa NIES-843
+lca_star_test1_465	Cyanobacteria	0.526	5	-0.12109375	Cyanobacteria	0.526	5	-0.12109375	Bacteria	6	-0.24609375	Microcystis aeruginosa NIES-843
+lca_star_test1_703	Micrococcineae	0.086	4	-0.00732421875	Micrococcineae	0.086	4	-0.00732421875	Actinomycetales	5	-0.01513671875	Clavibacter michiganensis subsp. sepedonicus
+lca_star_test1_702	Micrococcineae	0.739	4	-0.00732421875	Actinomycetales	1.0	5	-0.01513671875	Actinomycetales	5	-0.01513671875	Clavibacter michiganensis subsp. sepedonicus
+lca_star_test1_468	Cyanobacteria	0.086	5	-0.12109375	Cyanobacteria	0.086	5	-0.12109375	Cyanobacteria	5	-0.12109375	Microcystis aeruginosa NIES-843
+lca_star_test1_469	Cyanobacteria	0.0	5	-0.12109375	Cyanobacteria	0.0	5	-0.12109375	Cyanobacteria	5	-0.12109375	Microcystis aeruginosa NIES-843
+lca_star_test1_707	Actinomycetales	0.001	5	-0.01513671875	Actinomycetales	0.41	5	-0.01513671875	Actinomycetales	5	-0.01513671875	Clavibacter michiganensis subsp. sepedonicus
+lca_star_test1_706	Actinomycetales	0.007	5	-0.01513671875	Actinomycetales	0.477	5	-0.01513671875	Bacteria	9	-0.24951171875	Clavibacter michiganensis subsp. sepedonicus
+lca_star_test1_705	Actinomycetales	0.05	5	-0.01513671875	Actinomycetales	0.41	5	-0.01513671875	Bacteria	9	-0.24951171875	Clavibacter michiganensis subsp. sepedonicus
+lca_star_test1_704	Actinomycetales	0.2	5	-0.01513671875	Actinomycetales	0.2	5	-0.01513671875	'Actinobacteria'	8	-0.12451171875	Clavibacter michiganensis subsp. sepedonicus
+lca_star_test1_98	Flavobacteriaceae	0.249	2	-0.005859375	Flavobacteriaceae	0.654	2	-0.005859375	BCF group	5	-0.060546875	Krokinobacter sp. 4H-3-7-5
+lca_star_test1_539	"Chlorobiacea" (sic) Copeland 1956	0.313	4	-0.00732421875	"Chlorobiacea" (sic) Copeland 1956	0.313	4	-0.00732421875	Bacteria	9	-0.24951171875	Chlorobium phaeobacteroides DSM 266
+lca_star_test1_343	BCF group	0.313	6	-0.0615234375	Bacteria	1.0	8	-0.2490234375	Bacteria	8	-0.2490234375	Cytophaga hutchinsonii ATCC 33406
+lca_star_test1_848	Bacteria	0.0	6	-0.24609375	Bacteria	0.0	6	-0.24609375	Bacteria	6	-0.24609375	Thermotoga sp. RQ2
+lca_star_test1_849	Thermotogaceae	0.313	2	-0.01171875	Thermotoga	0.477	1	-0.00390625	Monera	7	-0.49609375	Thermotoga sp. RQ2
+lca_star_test1_535	"Chlorobiacea" (sic) Copeland 1956	0.313	4	-0.00732421875	"Chlorobiacea" (sic) Copeland 1956	1.0	4	-0.00732421875	Bacteria	9	-0.24951171875	Chlorobium phaeobacteroides DSM 266
+lca_star_test1_840	Thermotogaceae	0.148	2	-0.01171875	Thermotogaceae	0.654	2	-0.01171875	Monera	7	-0.49609375	Thermotoga sp. RQ2
+lca_star_test1_841	Thermotogaceae	0.249	2	-0.01171875	Thermotogaceae	0.249	2	-0.01171875	Monera	7	-0.49609375	Thermotoga sp. RQ2
+lca_star_test1_842	Bacteria	0.249	6	-0.24609375	Bacteria	0.654	6	-0.24609375	Monera	7	-0.49609375	Thermotoga sp. RQ2
+lca_star_test1_843	Thermotoga	0.088	1	-0.00390625	Thermotoga	0.088	1	-0.00390625	Monera	7	-0.49609375	Thermotoga sp. RQ2
+lca_star_test1_844	Bacteria	0.001	6	-0.24609375	Bacteria	0.41	6	-0.24609375	Bacteria	6	-0.24609375	Thermotoga sp. RQ2
+lca_star_test1_845	Thermotogaceae	0.781	2	-0.01171875	Bacteria	0.763	6	-0.24609375	Bacteria	6	-0.24609375	Thermotoga sp. RQ2
+lca_star_test1_846	Bacteria	0.2	6	-0.24609375	Bacteria	1.0	6	-0.24609375	Monera	7	-0.49609375	Thermotoga sp. RQ2
+lca_star_test1_847	Bacteria	0.013	6	-0.24609375	Bacteria	0.013	6	-0.24609375	Bacteria	6	-0.24609375	Thermotoga sp. RQ2
+lca_star_test1_369	"Candidatus intracellularis" Murray and Stackebrandt 1995	0.047	1	-0.0009765625	"Candidatus intracellularis" Murray and Stackebrandt 1995	0.047	1	-0.0009765625	Proteobacteria	7	-0.1240234375	Lawsonia intracellularis PHE/MN1-00
+lca_star_test1_368	"Candidatus intracellularis" Murray and Stackebrandt 1995	0.086	1	-0.0009765625	"Candidatus intracellularis" Murray and Stackebrandt 1995	0.086	1	-0.0009765625	Bacteria	8	-0.2490234375	Lawsonia intracellularis PHE/MN1-00
+lca_star_test1_97	Flavobacteriaceae	0.41	2	-0.005859375	Flavobacteriaceae	0.654	2	-0.005859375	Bacteria	7	-0.248046875	Krokinobacter sp. 4H-3-7-5
+lca_star_test1_361	"Candidatus intracellularis" Murray and Stackebrandt 1995	0.088	1	-0.0009765625	"Candidatus intracellularis" Murray and Stackebrandt 1995	0.088	1	-0.0009765625	Bacteria	8	-0.2490234375	Lawsonia intracellularis PHE/MN1-00
+lca_star_test1_360	'Desulfovibrionaceae'	0.249	3	-0.0068359375	"Candidatus intracellularis" Murray and Stackebrandt 1995	0.41	1	-0.0009765625	Bacteria	8	-0.2490234375	Lawsonia intracellularis PHE/MN1-00
+lca_star_test1_363	"Candidatus intracellularis" Murray and Stackebrandt 1995	0.024	1	-0.0009765625	"Candidatus intracellularis" Murray and Stackebrandt 1995	0.024	1	-0.0009765625	Bacteria	8	-0.2490234375	Lawsonia intracellularis PHE/MN1-00
+lca_star_test1_362	'Desulfovibrionaceae'	0.306	3	-0.0068359375	"Candidatus intracellularis" Murray and Stackebrandt 1995	0.56	1	-0.0009765625	Bacteria	8	-0.2490234375	Lawsonia intracellularis PHE/MN1-00
+lca_star_test1_365	"Candidatus intracellularis" Murray and Stackebrandt 1995	0.024	1	-0.0009765625	"Candidatus intracellularis" Murray and Stackebrandt 1995	0.024	1	-0.0009765625	Bacteria	8	-0.2490234375	Lawsonia intracellularis PHE/MN1-00
+lca_star_test1_364	"Candidatus intracellularis" Murray and Stackebrandt 1995	0.047	1	-0.0009765625	"Candidatus intracellularis" Murray and Stackebrandt 1995	0.047	1	-0.0009765625	Proteobacteria	7	-0.1240234375	Lawsonia intracellularis PHE/MN1-00
+lca_star_test1_367	"Candidatus intracellularis" Murray and Stackebrandt 1995	0.165	1	-0.0009765625	"Candidatus intracellularis" Murray and Stackebrandt 1995	0.165	1	-0.0009765625	Bacteria	8	-0.2490234375	Lawsonia intracellularis PHE/MN1-00
+lca_star_test1_366	"Candidatus intracellularis" Murray and Stackebrandt 1995	0.306	1	-0.0009765625	"Candidatus intracellularis" Murray and Stackebrandt 1995	0.306	1	-0.0009765625	Proteobacteria	7	-0.1240234375	Lawsonia intracellularis PHE/MN1-00
+lca_star_test1_206	Clostridiales	0.028	4	-0.029296875	"Bacillus botulinus" van Ermengem 1896	0.249	1	-0.001953125	Bacillus/Clostridium group	6	-0.123046875	Clostridium botulinum BKT015925
+lca_star_test1_207	"Bacillus botulinus" van Ermengem 1896	0.076	1	-0.001953125	"Bacillus botulinus" van Ermengem 1896	0.076	1	-0.001953125	Bacillus/Clostridium group	6	-0.123046875	Clostridium botulinum BKT015925
+lca_star_test1_895	Wolbachia	0.088	2	-0.0029296875	Wolbachia	0.088	2	-0.0029296875	Proteobacteria	7	-0.1240234375	Wolbachia endosymbiont strain TRS of Brugia malayi
+lca_star_test1_205	Clostridium	0.705	2	-0.005859375	Clostridium	0.705	2	-0.005859375	Clostridium	2	-0.005859375	Clostridium botulinum BKT015925
+lca_star_test1_202	Clostridium	0.705	2	-0.005859375	Clostridium	0.705	2	-0.005859375	Clostridium	2	-0.005859375	Clostridium botulinum BKT015925
+lca_star_test1_203	Clostridiaceae	0.249	3	-0.013671875	"Bacillus botulinus" van Ermengem 1896	0.654	1	-0.001953125	Bacillus/Clostridium group	6	-0.123046875	Clostridium botulinum BKT015925
+lca_star_test1_569	"Azotobacter acida" (sic) Roy 1958	0.313	2	-0.0029296875	"Azotobacter acida" (sic) Roy 1958	0.313	2	-0.0029296875	"Alphabacteria" Cavalier-Smith 1992	6	-0.0615234375	Beijerinckia indica subsp. indica ATCC 9039
+lca_star_test1_201	Clostridiaceae	0.249	3	-0.013671875	"Bacillus botulinus" van Ermengem 1896	0.654	1	-0.001953125	Bacillus/Clostridium group	6	-0.123046875	Clostridium botulinum BKT015925
+lca_star_test1_567	"Alphabacteria" Cavalier-Smith 1992	0.016	6	-0.0615234375	"Azotobacter acida" (sic) Roy 1958	0.739	2	-0.0029296875	Proteobacteria	7	-0.1240234375	Beijerinckia indica subsp. indica ATCC 9039
+lca_star_test1_566	Hyphomicrobiales	0.086	5	-0.0302734375	"Azotobacter acida" (sic) Roy 1958	0.41	2	-0.0029296875	Bacteria	8	-0.2490234375	Beijerinckia indica subsp. indica ATCC 9039
+lca_star_test1_565	Hyphomicrobiales	0.313	5	-0.0302734375	"Alphabacteria" Cavalier-Smith 1992	0.654	6	-0.0615234375	"Alphabacteria" Cavalier-Smith 1992	6	-0.0615234375	Beijerinckia indica subsp. indica ATCC 9039
+lca_star_test1_564	"Alphabacteria" Cavalier-Smith 1992	0.56	6	-0.0615234375	Proteobacteria	1.0	7	-0.1240234375	Proteobacteria	7	-0.1240234375	Beijerinckia indica subsp. indica ATCC 9039
+lca_star_test1_563	Hyphomicrobiales	0.148	5	-0.0302734375	Rhizobium/Agrobacterium group	1.0	7	-0.0537109375	Proteobacteria	7	-0.1240234375	Beijerinckia indica subsp. indica ATCC 9039
+lca_star_test1_562	Hyphomicrobiales	0.076	5	-0.0302734375	Hyphomicrobiales	0.313	5	-0.0302734375	Proteobacteria	7	-0.1240234375	Beijerinckia indica subsp. indica ATCC 9039
+lca_star_test1_561	Hyphomicrobiales	0.024	5	-0.0302734375	"Azotobacter acida" (sic) Roy 1958	0.306	2	-0.0029296875	Proteobacteria	7	-0.1240234375	Beijerinckia indica subsp. indica ATCC 9039
+lca_star_test1_560	"Azotobacter acida" (sic) Roy 1958	0.249	2	-0.0029296875	"Azotobacter acida" (sic) Roy 1958	0.249	2	-0.0029296875	"Alphabacteria" Cavalier-Smith 1992	6	-0.0615234375	Beijerinckia indica subsp. indica ATCC 9039
+lca_star_test1_894	"Alphabacteria" Cavalier-Smith 1992	0.313	6	-0.0615234375	"Alphabacteria" Cavalier-Smith 1992	0.313	6	-0.0615234375	"Alphabacteria" Cavalier-Smith 1992	6	-0.0615234375	Wolbachia endosymbiont strain TRS of Brugia malayi
+lca_star_test1_533	Bacteria	0.165	9	-0.24951171875	Bacteria	0.56	9	-0.24951171875	Monera	10	-0.49951171875	Chlorobium phaeobacteroides DSM 266
+lca_star_test1_518	Mycobacterium	0.249	1	-0.0009765625	Mycobacterium	0.249	1	-0.0009765625	Actinomycetales	4	-0.0146484375	Mycobacterium sp. JDM601
+lca_star_test1_519	Corynebacterineae	0.477	3	-0.0068359375	Corynebacterineae	0.477	3	-0.0068359375	Actinomycetales	4	-0.0146484375	Mycobacterium sp. JDM601
+lca_star_test1_109	"Aurococcus" Winslow and Rogers 1906	0.05	2	-0.005859375	"Aurococcus" Winslow and Rogers 1906	0.05	2	-0.005859375	Bacilli	5	-0.060546875	Staphylococcus epidermidis RP62A
+lca_star_test1_108	"Aurococcus" Winslow and Rogers 1906	0.013	2	-0.005859375	"Aurococcus" Winslow and Rogers 1906	0.013	2	-0.005859375	Bacilli	5	-0.060546875	Staphylococcus epidermidis RP62A
+lca_star_test1_105	Bacillales	0.013	4	-0.029296875	Bacillales	0.705	4	-0.029296875	Bacilli	5	-0.060546875	Staphylococcus epidermidis RP62A
+lca_star_test1_104	"Aurococcus" Winslow and Rogers 1906	0.047	2	-0.005859375	"Aurococcus" Winslow and Rogers 1906	0.047	2	-0.005859375	Bacteria	7	-0.248046875	Staphylococcus epidermidis RP62A
+lca_star_test1_510	Mycobacterium	0.024	1	-0.0009765625	Mycobacterium	0.024	1	-0.0009765625	Corynebacterineae	3	-0.0068359375	Mycobacterium sp. JDM601
+lca_star_test1_106	"Albococcus epidermidis" Winslow and Winslow 1908	None	1	-0.001953125	"Albococcus epidermidis" Winslow and Winslow 1908	None	1	-0.001953125	"Albococcus epidermidis" Winslow and Winslow 1908	1	-0.001953125	Staphylococcus epidermidis RP62A
+lca_star_test1_101	Bacillales	0.477	4	-0.029296875	Bacillales	0.477	4	-0.029296875	Bacteria	7	-0.248046875	Staphylococcus epidermidis RP62A
+lca_star_test1_517	Mycobacterium	0.739	1	-0.0009765625	Mycobacterium	0.739	1	-0.0009765625	Corynebacterineae	3	-0.0068359375	Mycobacterium sp. JDM601
+lca_star_test1_103	"Aurococcus" Winslow and Rogers 1906	0.013	2	-0.005859375	"Aurococcus" Winslow and Rogers 1906	0.013	2	-0.005859375	Bacilli	5	-0.060546875	Staphylococcus epidermidis RP62A
+lca_star_test1_515	Corynebacterineae	0.013	3	-0.0068359375	Corynebacterineae	0.013	3	-0.0068359375	Actinomycetales	4	-0.0146484375	Mycobacterium sp. JDM601
+lca_star_test1_268	"Alphabacteria" Cavalier-Smith 1992	0.013	6	-0.0615234375	"Alphabacteria" Cavalier-Smith 1992	0.013	6	-0.0615234375	Proteobacteria	7	-0.1240234375	Zymomonas mobilis subsp. mobilis NCIMB 11163
+lca_star_test1_404	Proteobacteria	0.016	6	-0.123046875	Proteobacteria	0.705	6	-0.123046875	Bacteria	7	-0.248046875	Sphingobium japonicum UT26S
+lca_star_test1_382	Gammaproteobacteria	0.024	5	-0.060546875	Gammaproteobacteria	0.024	5	-0.060546875	Gammaproteobacteria	5	-0.060546875	Yersinia pestis Pestoides F
+lca_star_test1_196	Lactobacillus	0.05	2	-0.005859375	Lactobacillus	0.05	2	-0.005859375	Bacillus/Clostridium group	6	-0.123046875	Lactobacillus kefiranofaciens ZW3
+lca_star_test1_197	Lactobacillus	0.125	2	-0.005859375	Lactobacillus	0.125	2	-0.005859375	Lactobacillales	4	-0.029296875	Lactobacillus kefiranofaciens ZW3
+lca_star_test1_194	Lactobacillus	0.019	2	-0.005859375	Lactobacillus	0.019	2	-0.005859375	Lactobacillus	2	-0.005859375	Lactobacillus kefiranofaciens ZW3
+lca_star_test1_195	Lactobacillus	0.739	2	-0.005859375	Lactobacillus	0.739	2	-0.005859375	Lactobacillales	4	-0.029296875	Lactobacillus kefiranofaciens ZW3
+lca_star_test1_192	Lactobacillus	0.024	2	-0.005859375	Lactobacillus	0.024	2	-0.005859375	Bacillus/Clostridium group	6	-0.123046875	Lactobacillus kefiranofaciens ZW3
+lca_star_test1_193	Lactobacillus	0.003	2	-0.005859375	Lactobacillus	0.003	2	-0.005859375	Bacteria	7	-0.248046875	Lactobacillus kefiranofaciens ZW3
+lca_star_test1_190	Lactobacillales	0.526	4	-0.029296875	Lactobacillus	0.739	2	-0.005859375	Bacteria	7	-0.248046875	Lactobacillus kefiranofaciens ZW3
+lca_star_test1_191	Lactobacillus	0.047	2	-0.005859375	Lactobacillus	0.047	2	-0.005859375	Lactobacillus	2	-0.005859375	Lactobacillus kefiranofaciens ZW3
+lca_star_test1_198	Lactobacillus	0.56	2	-0.005859375	Lactobacillus sp. ASF360	1.0	3	-0.009765625	Lactobacillaceae	3	-0.013671875	Lactobacillus kefiranofaciens ZW3
+lca_star_test1_199	Lactobacillales	0.05	4	-0.029296875	Lactobacillales	0.41	4	-0.029296875	Bacteria	7	-0.248046875	Lactobacillus kefiranofaciens ZW3
+lca_star_test1_299	Bacillales	0.148	4	-0.029296875	Bacteria	1.0	7	-0.248046875	Bacteria	7	-0.248046875	Geobacillus thermoglucosidasius C56-YS93
+lca_star_test1_298	Bacillus/Clostridium group	0.047	6	-0.123046875	Bacillus/Clostridium group	0.56	6	-0.123046875	Monera	8	-0.498046875	Geobacillus thermoglucosidasius C56-YS93
+lca_star_test1_295	Bacillales	0.165	4	-0.029296875	Geobacillus	0.56	2	-0.005859375	Bacteria	7	-0.248046875	Geobacillus thermoglucosidasius C56-YS93
+lca_star_test1_294	Bacillus/Clostridium group	0.024	6	-0.123046875	Bacillus/Clostridium group	0.654	6	-0.123046875	Bacteria	7	-0.248046875	Geobacillus thermoglucosidasius C56-YS93
+lca_star_test1_297	Bacillaceae	0.2	3	-0.013671875	Bacillaceae	0.2	3	-0.013671875	Bacillales	4	-0.029296875	Geobacillus thermoglucosidasius C56-YS93
+lca_star_test1_296	Bacillaceae	0.148	3	-0.013671875	Bacillaceae	0.148	3	-0.013671875	Bacillales	4	-0.029296875	Geobacillus thermoglucosidasius C56-YS93
+lca_star_test1_291	Bacillus/Clostridium group	0.563	6	-0.123046875	Bacillus/Clostridium group	0.763	6	-0.123046875	Bacteria	7	-0.248046875	Geobacillus thermoglucosidasius C56-YS93
+lca_star_test1_290	Bacillales	0.004	4	-0.029296875	Bacillales	0.654	4	-0.029296875	Bacillales	4	-0.029296875	Geobacillus thermoglucosidasius C56-YS93
+lca_star_test1_293	Bacillales	0.148	4	-0.029296875	Bacillales	0.41	4	-0.029296875	Bacteria	7	-0.248046875	Geobacillus thermoglucosidasius C56-YS93
+lca_star_test1_292	Bacillaceae	0.009	3	-0.013671875	Bacillaceae	0.009	3	-0.013671875	Bacillus/Clostridium group	6	-0.123046875	Geobacillus thermoglucosidasius C56-YS93
+lca_star_test1_747	BCF group	0.013	6	-0.0615234375	BCF group	0.013	6	-0.0615234375	BCF group	6	-0.0615234375	Cellulophaga lytica DSM 7489
+lca_star_test1_746	Flavobacteriaceae	0.526	3	-0.0068359375	Flavobacteriaceae	1.0	3	-0.0068359375	Bacteria	8	-0.2490234375	Cellulophaga lytica DSM 7489
+lca_star_test1_745	Flavobacteriaceae	0.05	3	-0.0068359375	Flavobacteriaceae	0.477	3	-0.0068359375	BCF group	6	-0.0615234375	Cellulophaga lytica DSM 7489
+lca_star_test1_744	BCF group	0.41	6	-0.0615234375	Bacteria	1.0	8	-0.2490234375	Bacteria	8	-0.2490234375	Cellulophaga lytica DSM 7489
+lca_star_test1_743	Bacteria	0.088	8	-0.2490234375	Bacteria	0.088	8	-0.2490234375	Bacteria	8	-0.2490234375	Cellulophaga lytica DSM 7489
+lca_star_test1_742	Flavobacteriaceae	0.477	3	-0.0068359375	Flavobacteriaceae	0.477	3	-0.0068359375	BCF group	6	-0.0615234375	Cellulophaga lytica DSM 7489
+lca_star_test1_741	Flavobacteriaceae	0.244	3	-0.0068359375	Flavobacteriaceae	0.244	3	-0.0068359375	BCF group	6	-0.0615234375	Cellulophaga lytica DSM 7489
+lca_star_test1_740	Flavobacteriaceae	0.148	3	-0.0068359375	Flavobacteriaceae	0.148	3	-0.0068359375	Bacteria	8	-0.2490234375	Cellulophaga lytica DSM 7489
+lca_star_test1_858	Borrelia	0.125	3	-0.0068359375	Borrelia	0.477	3	-0.0068359375	Bacteria	8	-0.2490234375	Borrelia garinii PBi
+lca_star_test1_749	BCF group	0.088	6	-0.0615234375	BCF group	0.56	6	-0.0615234375	Bacteria	8	-0.2490234375	Cellulophaga lytica DSM 7489
+lca_star_test1_748	Flavobacteriaceae	0.477	3	-0.0068359375	BCF group	1.0	6	-0.0615234375	Bacteria	8	-0.2490234375	Cellulophaga lytica DSM 7489
+lca_star_test1_338	Ureaplasma	0.013	3	-0.0068359375	Ureaplasma	0.013	3	-0.0068359375	"Paramycetes" Sabin 1941	6	-0.0615234375	Ureaplasma urealyticum serovar 10 str. ATCC 33699
+lca_star_test1_157	Lactobacillus	0.007	2	-0.005859375	Lactobacillus	0.007	2	-0.005859375	Lactobacillales	4	-0.029296875	Lactobacillus crispatus ST1
+lca_star_test1_262	"Alphabacteria" Cavalier-Smith 1992	0.088	6	-0.0615234375	"Alphabacteria" Cavalier-Smith 1992	0.088	6	-0.0615234375	"Alphabacteria" Cavalier-Smith 1992	6	-0.0615234375	Zymomonas mobilis subsp. mobilis NCIMB 11163
+lca_star_test1_388	Enterobacteraceae	0.2	3	-0.013671875	Enterobacteraceae	0.2	3	-0.013671875	Gammaproteobacteria	5	-0.060546875	Yersinia pestis Pestoides F
+lca_star_test1_855	Borrelia	0.047	3	-0.0068359375	Borrelia	0.047	3	-0.0068359375	Bacteria	8	-0.2490234375	Borrelia garinii PBi
+lca_star_test1_854	"Spirochaetaceae" Swellengrebel 1907 emend. Abt et al. 2012	0.103	4	-0.0146484375	Borrelia	0.739	3	-0.0068359375	Bacteria	8	-0.2490234375	Borrelia garinii PBi
+lca_star_test1_581	Hyphomicrobiales	0.363	5	-0.0302734375	"Alphabacteria" Cavalier-Smith 1992	1.0	6	-0.0615234375	"Alphabacteria" Cavalier-Smith 1992	6	-0.0615234375	Agrobacterium vitis S4
+lca_star_test1_580	Hyphomicrobiales	0.046	5	-0.0302734375	Hyphomicrobiales	0.313	5	-0.0302734375	"Alphabacteria" Cavalier-Smith 1992	6	-0.0615234375	Agrobacterium vitis S4
+lca_star_test1_583	Hyphomicrobiales	0.003	5	-0.0302734375	Hyphomicrobiales	0.003	5	-0.0302734375	Hyphomicrobiales	5	-0.0302734375	Agrobacterium vitis S4
+lca_star_test1_582	Hyphomicrobiales	0.148	5	-0.0302734375	Hyphomicrobiales	0.41	5	-0.0302734375	Proteobacteria	7	-0.1240234375	Agrobacterium vitis S4
+lca_star_test1_585	Hyphomicrobiales	0.024	5	-0.0302734375	Hyphomicrobiales	0.654	5	-0.0302734375	Bacteria	8	-0.2490234375	Agrobacterium vitis S4
+lca_star_test1_584	Rhizobium/Agrobacterium group	0.306	3	-0.0068359375	ATCC 49767	0.56	1	-0.0009765625	Bacteria	8	-0.2490234375	Agrobacterium vitis S4
+lca_star_test1_428	ATCC 14579	0.41	2	-0.00146484375	ATCC 14579	0.41	2	-0.00146484375	Bacillales	6	-0.03076171875	Bacillus cereus biovar anthracis str. CI
+lca_star_test1_429	ATCC 14579	0.165	2	-0.00146484375	ATCC 14579	0.165	2	-0.00146484375	Bacillales	6	-0.03076171875	Bacillus cereus biovar anthracis str. CI
+lca_star_test1_589	"Alphabacteria" Cavalier-Smith 1992	0.249	6	-0.0615234375	"Alphabacteria" Cavalier-Smith 1992	0.249	6	-0.0615234375	"Alphabacteria" Cavalier-Smith 1992	6	-0.0615234375	Agrobacterium vitis S4
+lca_star_test1_427	ATCC 14579	0.41	2	-0.00146484375	ATCC 14579	0.41	2	-0.00146484375	Bacillales	6	-0.03076171875	Bacillus cereus biovar anthracis str. CI
+lca_star_test1_424	ATCC 14579	0.086	2	-0.00146484375	ATCC 14579	0.086	2	-0.00146484375	Bacillales	6	-0.03076171875	Bacillus cereus biovar anthracis str. CI
+lca_star_test1_425	Bacillus cereus group	0.047	3	-0.00341796875	ATCC 14579	0.41	2	-0.00146484375	Bacillales	6	-0.03076171875	Bacillus cereus biovar anthracis str. CI
+lca_star_test1_422	ATCC 14579	0.148	2	-0.00146484375	ATCC 14579	0.148	2	-0.00146484375	Bacillales	6	-0.03076171875	Bacillus cereus biovar anthracis str. CI
+lca_star_test1_423	ATCC 14579	0.165	2	-0.00146484375	ATCC 14579	0.165	2	-0.00146484375	Bacillales	6	-0.03076171875	Bacillus cereus biovar anthracis str. CI
+lca_star_test1_420	ATCC 14579	0.088	2	-0.00146484375	ATCC 14579	0.088	2	-0.00146484375	Bacillales	6	-0.03076171875	Bacillus cereus biovar anthracis str. CI
+lca_star_test1_421	ATCC 14579	0.086	2	-0.00146484375	ATCC 14579	0.086	2	-0.00146484375	Bacillales	6	-0.03076171875	Bacillus cereus biovar anthracis str. CI
+lca_star_test1_750	'Betaproteobacteria'	0.05	4	-0.05859375	"Candidatus Accumulibacter phosphatis" Hesselmann et al. 1999	1.0	1	-0.00390625	Bacteria	6	-0.24609375	Candidatus Accumulibacter phosphatis clade IIA str. UW-1
+lca_star_test1_751	"Candidatus Accumulibacter phosphatis" Hesselmann et al. 1999	0.2	1	-0.00390625	"Candidatus Accumulibacter phosphatis" Hesselmann et al. 1999	0.2	1	-0.00390625	'Betaproteobacteria'	4	-0.05859375	Candidatus Accumulibacter phosphatis clade IIA str. UW-1
+lca_star_test1_730	Gammaproteobacteria	0.148	5	-0.060546875	Shewanella	0.41	2	-0.005859375	Proteobacteria	6	-0.123046875	Shewanella halifaxensis HAW-EB4
+lca_star_test1_732	Gammaproteobacteria	0.41	5	-0.060546875	Gammaproteobacteria	0.41	5	-0.060546875	Gammaproteobacteria	5	-0.060546875	Shewanella halifaxensis HAW-EB4
+lca_star_test1_733	Gammaproteobacteria	0.05	5	-0.060546875	Gammaproteobacteria	0.41	5	-0.060546875	Proteobacteria	6	-0.123046875	Shewanella halifaxensis HAW-EB4
+lca_star_test1_639	Bacteria	0.0	10	-0.249755859375	Bacteria	0.313	10	-0.249755859375	Bacteria	10	-0.249755859375	Mycobacterium tuberculosis KZN 1435
+lca_star_test1_731	Shewanella	0.148	2	-0.005859375	Shewanella	0.148	2	-0.005859375	Gammaproteobacteria	5	-0.060546875	Shewanella halifaxensis HAW-EB4
+lca_star_test1_736	Alteromonadaceae group	0.477	4	-0.029296875	Gammaproteobacteria	0.654	5	-0.060546875	Gammaproteobacteria	5	-0.060546875	Shewanella halifaxensis HAW-EB4
+lca_star_test1_737	Gammaproteobacteria	0.024	5	-0.060546875	Aeromonas	0.654	8	-0.115234375	Bacteria	7	-0.248046875	Shewanella halifaxensis HAW-EB4
+lca_star_test1_734	Gammaproteobacteria	0.0	5	-0.060546875	Gammaproteobacteria	1.0	5	-0.060546875	Gammaproteobacteria	5	-0.060546875	Shewanella halifaxensis HAW-EB4
+lca_star_test1_759	"Candidatus Accumulibacter phosphatis" Hesselmann et al. 1999	0.086	1	-0.00390625	"Candidatus Accumulibacter phosphatis" Hesselmann et al. 1999	0.086	1	-0.00390625	Proteobacteria	5	-0.12109375	Candidatus Accumulibacter phosphatis clade IIA str. UW-1
+lca_star_test1_633	Corynebacterineae	0.249	5	-0.007568359375	Corynebacterineae	0.654	5	-0.007568359375	Actinomycetales	6	-0.015380859375	Mycobacterium tuberculosis KZN 1435
+lca_star_test1_632	Corynebacterineae	0.2	5	-0.007568359375	Corynebacterineae	0.705	5	-0.007568359375	Bacteria	10	-0.249755859375	Mycobacterium tuberculosis KZN 1435
+lca_star_test1_631	Corynebacterineae	0.313	5	-0.007568359375	Mycobacterium	1.0	3	-0.001708984375	Bacteria	10	-0.249755859375	Mycobacterium tuberculosis KZN 1435
+lca_star_test1_630	Mycobacterium	0.05	3	-0.001708984375	Mycobacterium	0.05	3	-0.001708984375	Corynebacterineae	5	-0.007568359375	Mycobacterium tuberculosis KZN 1435
+lca_star_test1_637	Corynebacterineae	0.002	5	-0.007568359375	Corynebacterineae	1.0	5	-0.007568359375	Actinomycetales	6	-0.015380859375	Mycobacterium tuberculosis KZN 1435
+lca_star_test1_636	Mycobacterium	0.526	3	-0.001708984375	Mycobacterium	0.526	3	-0.001708984375	Corynebacterineae	5	-0.007568359375	Mycobacterium tuberculosis KZN 1435
+lca_star_test1_635	Corynebacterineae	0.076	5	-0.007568359375	Corynebacterineae	0.739	5	-0.007568359375	Bacteria	10	-0.249755859375	Mycobacterium tuberculosis KZN 1435
+lca_star_test1_634	Corynebacterineae	0.0	5	-0.007568359375	Corynebacterineae	0.563	5	-0.007568359375	Corynebacterineae	5	-0.007568359375	Mycobacterium tuberculosis KZN 1435
+lca_star_test1_735	Gammaproteobacteria	0.165	5	-0.060546875	ATCC 700982	1.0	9	-0.119140625	Proteobacteria	6	-0.123046875	Shewanella halifaxensis HAW-EB4
+lca_star_test1_325	Lactobacillaceae	0.403	3	-0.013671875	Lactobacillus	1.0	2	-0.005859375	Lactobacillales	4	-0.029296875	Lactobacillus brevis ATCC 367
+lca_star_test1_324	Lactobacillales	0.024	4	-0.029296875	Lactobacillus	1.0	2	-0.005859375	Bacillus/Clostridium group	6	-0.123046875	Lactobacillus brevis ATCC 367
+lca_star_test1_327	Lactobacillus	0.05	2	-0.005859375	Lactobacillus	0.477	2	-0.005859375	Bacilli	5	-0.060546875	Lactobacillus brevis ATCC 367
+lca_star_test1_326	Lactobacillus	0.088	2	-0.005859375	Lactobacillus	0.088	2	-0.005859375	Bacteria	7	-0.248046875	Lactobacillus brevis ATCC 367
+lca_star_test1_321	Lactobacillus	0.477	2	-0.005859375	Lactobacillus	0.477	2	-0.005859375	Bacilli	5	-0.060546875	Lactobacillus brevis ATCC 367
+lca_star_test1_320	Lactobacillales	0.047	4	-0.029296875	Lactobacillales	0.306	4	-0.029296875	Bacillus/Clostridium group	6	-0.123046875	Lactobacillus brevis ATCC 367
+lca_star_test1_323	Lactobacillus	0.028	2	-0.005859375	Lactobacillus	0.313	2	-0.005859375	Bacteria	7	-0.248046875	Lactobacillus brevis ATCC 367
+lca_star_test1_322	Lactobacillales	0.047	4	-0.029296875	Lactobacillus	0.654	2	-0.005859375	Bacteria	7	-0.248046875	Lactobacillus brevis ATCC 367
+lca_star_test1_329	Lactobacillales	0.526	4	-0.029296875	Lactobacillales	0.526	4	-0.029296875	Lactobacillales	4	-0.029296875	Lactobacillus brevis ATCC 367
+lca_star_test1_328	Lactobacillus	0.013	2	-0.005859375	Lactobacillus	0.013	2	-0.005859375	Bacilli	5	-0.060546875	Lactobacillus brevis ATCC 367
+lca_star_test1_739	Alteromonadaceae group	0.148	4	-0.029296875	Shewanella	0.41	2	-0.005859375	Gammaproteobacteria	5	-0.060546875	Shewanella halifaxensis HAW-EB4
+lca_star_test1_902	"Alphabacteria" Cavalier-Smith 1992	0.705	4	-0.05859375	"Alphabacteria" Cavalier-Smith 1992	0.705	4	-0.05859375	"Alphabacteria" Cavalier-Smith 1992	4	-0.05859375	Polymorphum gilvum SL003B-26A1
+lca_star_test1_575	Thermoproteaceae	0.028	3	-0.013671875	Thermoproteaceae	0.705	3	-0.013671875	Monera	8	-0.498046875	Thermoproteus uzoniensis 768-20
+lca_star_test1_813	Proteobacteria	0.125	6	-0.123046875	Bacteria	1.0	7	-0.248046875	Bacteria	7	-0.248046875	Legionella pneumophila str. Corby
+lca_star_test1_812	Gammaproteobacteria	0.047	5	-0.060546875	Legionella	0.306	2	-0.005859375	Bacteria	7	-0.248046875	Legionella pneumophila str. Corby
+lca_star_test1_811	Legionella	0.086	2	-0.005859375	ATCC 33152	0.249	1	-0.001953125	Proteobacteria	6	-0.123046875	Legionella pneumophila str. Corby
+lca_star_test1_810	ATCC 33152	0.249	1	-0.001953125	ATCC 33152	0.249	1	-0.001953125	Bacteria	7	-0.248046875	Legionella pneumophila str. Corby
+lca_star_test1_817	Legionellaceae	0.2	3	-0.013671875	Legionellaceae	0.705	3	-0.013671875	Bacteria	7	-0.248046875	Legionella pneumophila str. Corby
+lca_star_test1_411	Streptococcaceae	0.41	4	-0.0146484375	Lactococcus	1.0	3	-0.0068359375	Bacillus/Clostridium group	7	-0.1240234375	Lactococcus lactis subsp. lactis Il1403
+lca_star_test1_815	Legionellaceae	0.148	3	-0.013671875	ATCC 33152	0.41	1	-0.001953125	Proteobacteria	6	-0.123046875	Legionella pneumophila str. Corby
+lca_star_test1_814	Gammaproteobacteria	0.013	5	-0.060546875	Gammaproteobacteria	0.705	5	-0.060546875	Bacteria	7	-0.248046875	Legionella pneumophila str. Corby
+lca_star_test1_819	Gammaproteobacteria	0.165	5	-0.060546875	"Chlorobacterium" Guillebeau 1890, nom. rejic. Opin. 6 (not "Chlorobacterium" Lauterborn 1916)	1.0	8	-0.115234375	Proteobacteria	6	-0.123046875	Legionella pneumophila str. Corby
+lca_star_test1_818	Gammaproteobacteria	0.165	5	-0.060546875	Gammaproteobacteria	0.165	5	-0.060546875	root	10	-1.998046875	Legionella pneumophila str. Corby
+lca_star_test1_390	Enterobacteraceae	0.249	3	-0.013671875	Enterobacteraceae	0.654	3	-0.013671875	Bacteria	7	-0.248046875	Yersinia pestis Nepal516
+lca_star_test1_258	Hyphomicrobiales	0.148	4	-0.029296875	"Alphabacteria" Cavalier-Smith 1992	1.0	5	-0.060546875	"Alphabacteria" Cavalier-Smith 1992	5	-0.060546875	Hyphomicrobium denitrificans ATCC 51888
+lca_star_test1_392	Enterobacteraceae	0.148	3	-0.013671875	Enterobacteraceae	0.654	3	-0.013671875	Bacteria	7	-0.248046875	Yersinia pestis Nepal516
+lca_star_test1_393	Enterobacteraceae	0.249	3	-0.013671875	Enterobacteraceae	0.654	3	-0.013671875	Bacteria	7	-0.248046875	Yersinia pestis Nepal516
+lca_star_test1_394	Enterobacteraceae	0.249	3	-0.013671875	Enterobacteraceae	0.654	3	-0.013671875	Bacteria	7	-0.248046875	Yersinia pestis Nepal516
+lca_star_test1_395	Enterobacteraceae	0.249	3	-0.013671875	Enterobacteraceae	0.654	3	-0.013671875	Bacteria	7	-0.248046875	Yersinia pestis Nepal516
+lca_star_test1_396	Enterobacteraceae	0.249	3	-0.013671875	Enterobacteraceae	0.654	3	-0.013671875	Bacteria	7	-0.248046875	Yersinia pestis Nepal516
+lca_star_test1_397	Enterobacteraceae	0.249	3	-0.013671875	Enterobacteraceae	0.654	3	-0.013671875	Bacteria	7	-0.248046875	Yersinia pestis Nepal516
+lca_star_test1_251	ATCC 51888	0.249	1	-0.001953125	ATCC 51888	0.249	1	-0.001953125	Proteobacteria	6	-0.123046875	Hyphomicrobium denitrificans ATCC 51888
+lca_star_test1_250	ATCC 51888	0.0	1	-0.001953125	ATCC 51888	0.0	1	-0.001953125	Proteobacteria	6	-0.123046875	Hyphomicrobium denitrificans ATCC 51888
+lca_star_test1_253	"Alphabacteria" Cavalier-Smith 1992	0.148	5	-0.060546875	Hyphomicrobium	0.654	2	-0.005859375	Bacteria	7	-0.248046875	Hyphomicrobium denitrificans ATCC 51888
+lca_star_test1_252	"Alphabacteria" Cavalier-Smith 1992	0.05	5	-0.060546875	"Alphabacteria" Cavalier-Smith 1992	1.0	5	-0.060546875	Proteobacteria	6	-0.123046875	Hyphomicrobium denitrificans ATCC 51888
+lca_star_test1_255	"Alphabacteria" Cavalier-Smith 1992	0.148	5	-0.060546875	"Alphabacteria" Cavalier-Smith 1992	0.654	5	-0.060546875	Bacteria	7	-0.248046875	Hyphomicrobium denitrificans ATCC 51888
+lca_star_test1_254	Ancylobacter group	0.086	3	-0.013671875	Hyphomicrobium	0.41	2	-0.005859375	Bacteria	7	-0.248046875	Hyphomicrobium denitrificans ATCC 51888
+lca_star_test1_257	Hyphomicrobium	0.165	2	-0.005859375	ATCC 51888	0.306	1	-0.001953125	Proteobacteria	6	-0.123046875	Hyphomicrobium denitrificans ATCC 51888
+lca_star_test1_256	"Alphabacteria" Cavalier-Smith 1992	0.05	5	-0.060546875	"Alphabacteria" Cavalier-Smith 1992	0.654	5	-0.060546875	Proteobacteria	6	-0.123046875	Hyphomicrobium denitrificans ATCC 51888
+lca_star_test1_556	'Betaproteobacteria'	0.739	5	-0.060546875	Proteobacteria	0.41	6	-0.123046875	Proteobacteria	6	-0.123046875	Methylobacillus flagellatus KT
+lca_star_test1_557	'Betaproteobacteria'	0.086	5	-0.060546875	'Methylophilaceae'	0.654	3	-0.013671875	Proteobacteria	6	-0.123046875	Methylobacillus flagellatus KT
+lca_star_test1_554	Proteobacteria	0.05	6	-0.123046875	Proteobacteria	0.249	6	-0.123046875	Bacteria	7	-0.248046875	Methylobacillus flagellatus KT
+lca_star_test1_555	Proteobacteria	0.0	6	-0.123046875	Proteobacteria	0.41	6	-0.123046875	Proteobacteria	6	-0.123046875	Methylobacillus flagellatus KT
+lca_star_test1_552	'Betaproteobacteria'	0.617	5	-0.060546875	'Betaproteobacteria'	0.617	5	-0.060546875	Proteobacteria	6	-0.123046875	Methylobacillus flagellatus KT
+lca_star_test1_553	Proteobacteria	0.306	6	-0.123046875	ATCC 51484	0.56	1	-0.001953125	Bacteria	7	-0.248046875	Methylobacillus flagellatus KT
+lca_star_test1_499	Proteobacteria	0.148	6	-0.123046875	Proteobacteria	0.148	6	-0.123046875	Proteobacteria	6	-0.123046875	Ralstonia eutropha H16
+lca_star_test1_551	'Betaproteobacteria'	0.249	5	-0.060546875	'Betaproteobacteria'	0.249	5	-0.060546875	Proteobacteria	6	-0.123046875	Methylobacillus flagellatus KT
+lca_star_test1_497	'Burkholderiales'	0.2	4	-0.029296875	'Burkholderiales'	0.705	4	-0.029296875	Bacteria	7	-0.248046875	Ralstonia eutropha H16
+lca_star_test1_496	Proteobacteria	0.003	6	-0.123046875	Proteobacteria	0.477	6	-0.123046875	Bacteria	7	-0.248046875	Ralstonia eutropha H16
+lca_star_test1_495	Proteobacteria	0.086	6	-0.123046875	Proteobacteria	0.086	6	-0.123046875	Proteobacteria	6	-0.123046875	Ralstonia eutropha H16
+lca_star_test1_494	'Burkholderiales'	0.05	4	-0.029296875	'Burkholderiaceae'	0.477	3	-0.013671875	Proteobacteria	6	-0.123046875	Ralstonia eutropha H16
+lca_star_test1_493	'Burkholderiales'	0.086	4	-0.029296875	'Burkholderiales'	1.0	4	-0.029296875	Bacteria	7	-0.248046875	Ralstonia eutropha H16
+lca_star_test1_492	Proteobacteria	0.003	6	-0.123046875	Proteobacteria	0.003	6	-0.123046875	Proteobacteria	6	-0.123046875	Ralstonia eutropha H16
+lca_star_test1_558	'Betaproteobacteria'	0.526	5	-0.060546875	Proteobacteria	0.41	6	-0.123046875	Proteobacteria	6	-0.123046875	Methylobacillus flagellatus KT
+lca_star_test1_559	'Betaproteobacteria'	0.148	5	-0.060546875	'Betaproteobacteria'	0.148	5	-0.060546875	Proteobacteria	6	-0.123046875	Methylobacillus flagellatus KT
+lca_star_test1_154	Lactobacillus	0.016	2	-0.005859375	Lactobacillus	0.016	2	-0.005859375	Bacillus/Clostridium group	6	-0.123046875	Lactobacillus crispatus ST1
+lca_star_test1_863	Bacteria	0.024	6	-0.24609375	Bacteria	0.024	6	-0.24609375	Bacteria	6	-0.24609375	Bradyrhizobium sp. ORS 278
+lca_star_test1_407	"Alphabacteria" Cavalier-Smith 1992	0.363	5	-0.060546875	"Alphabacteria" Cavalier-Smith 1992	0.739	5	-0.060546875	Bacteria	7	-0.248046875	Sphingobium japonicum UT26S
+lca_star_test1_709	Actinomycetales	0.047	5	-0.01513671875	Actinomycetales	0.654	5	-0.01513671875	Bacteria	9	-0.24951171875	Clavibacter michiganensis subsp. sepedonicus
+lca_star_test1_461	Cyanobacteria	0.249	5	-0.12109375	Cyanobacteria	0.249	5	-0.12109375	Bacteria	6	-0.24609375	Microcystis aeruginosa NIES-843
+lca_star_test1_409	"Alphabacteria" Cavalier-Smith 1992	0.244	5	-0.060546875	Bacteria	1.0	7	-0.248046875	Bacteria	7	-0.248046875	Sphingobium japonicum UT26S
+lca_star_test1_342	BCF group	0.165	6	-0.0615234375	BCF group	0.165	6	-0.0615234375	Monera	9	-0.4990234375	Cytophaga hutchinsonii ATCC 33406
+lca_star_test1_174	Clostridia	0.076	5	-0.060546875	Caldicellulosiruptor	0.313	2	-0.005859375	Bacteria	7	-0.248046875	Caldicellulosiruptor kristjanssonii 177R1B
+lca_star_test1_175	Bacillus/Clostridium group	0.0	6	-0.123046875	Bacillus/Clostridium group	0.739	6	-0.123046875	Bacillus/Clostridium group	6	-0.123046875	Caldicellulosiruptor kristjanssonii 177R1B
+lca_star_test1_176	Bacillus/Clostridium group	0.0	6	-0.123046875	Bacillus/Clostridium group	0.477	6	-0.123046875	Bacillus/Clostridium group	6	-0.123046875	Caldicellulosiruptor kristjanssonii 177R1B
+lca_star_test1_177	Bacillus/Clostridium group	0.088	6	-0.123046875	Bacillus/Clostridium group	0.56	6	-0.123046875	Bacteria	7	-0.248046875	Caldicellulosiruptor kristjanssonii 177R1B
+lca_star_test1_170	Caldicellulosiruptor	0.028	2	-0.005859375	Caldicellulosiruptor	0.028	2	-0.005859375	Bacillus/Clostridium group	6	-0.123046875	Caldicellulosiruptor kristjanssonii 177R1B
+lca_star_test1_171	Bacillus/Clostridium group	0.001	6	-0.123046875	Bacillus/Clostridium group	0.705	6	-0.123046875	Bacillus/Clostridium group	6	-0.123046875	Caldicellulosiruptor kristjanssonii 177R1B
+lca_star_test1_172	Bacillus/Clostridium group	0.002	6	-0.123046875	Caldicellulosiruptor	1.0	2	-0.005859375	Bacteria	7	-0.248046875	Caldicellulosiruptor kristjanssonii 177R1B
+lca_star_test1_173	Caldicellulosiruptor	0.313	2	-0.005859375	Caldicellulosiruptor	0.313	2	-0.005859375	Monera	8	-0.498046875	Caldicellulosiruptor kristjanssonii 177R1B
+lca_star_test1_178	Caldicellulosiruptor	0.148	2	-0.005859375	Caldicellulosiruptor	0.148	2	-0.005859375	Caldicellulosiruptor	2	-0.005859375	Caldicellulosiruptor kristjanssonii 177R1B
+lca_star_test1_179	Caldicellulosiruptor	0.047	2	-0.005859375	Caldicellulosiruptor	0.047	2	-0.005859375	Bacillus/Clostridium group	6	-0.123046875	Caldicellulosiruptor kristjanssonii 177R1B
+lca_star_test1_783	Borrelia	0.2	2	-0.005859375	Borrelia	0.2	2	-0.005859375	Borrelia	2	-0.005859375	Borrelia duttonii Ly
+lca_star_test1_782	Borrelia	0.002	2	-0.005859375	Borrelia	0.654	2	-0.005859375	Borrelia	2	-0.005859375	Borrelia duttonii Ly
+lca_star_test1_781	Borrelia	0.526	2	-0.005859375	Borrelia	0.526	2	-0.005859375	Borrelia	2	-0.005859375	Borrelia duttonii Ly
+lca_star_test1_780	Borrelia	0.0	2	-0.005859375	Borrelia	0.705	2	-0.005859375	Borrelia	2	-0.005859375	Borrelia duttonii Ly
+lca_star_test1_787	Borrelia	0.0	2	-0.005859375	Borrelia	0.705	2	-0.005859375	Borrelia	2	-0.005859375	Borrelia duttonii Ly
+lca_star_test1_786	Borrelia	0.001	2	-0.005859375	Borrelia	0.41	2	-0.005859375	Borrelia	2	-0.005859375	Borrelia duttonii Ly
+lca_star_test1_785	Borrelia	0.526	2	-0.005859375	Borrelia	0.526	2	-0.005859375	Borrelia	2	-0.005859375	Borrelia duttonii Ly
+lca_star_test1_784	Borrelia	0.313	2	-0.005859375	Borrelia	0.313	2	-0.005859375	Borrelia	2	-0.005859375	Borrelia duttonii Ly
+lca_star_test1_789	Borrelia	0.001	2	-0.005859375	Borrelia	1.0	2	-0.005859375	Borrelia	2	-0.005859375	Borrelia duttonii Ly
+lca_star_test1_788	Borrelia	0.249	2	-0.005859375	Borrelia	0.249	2	-0.005859375	Borrelia	2	-0.005859375	Borrelia duttonii Ly
+lca_star_test1_701	Micrococcineae	0.41	4	-0.00732421875	Micrococcineae	1.0	4	-0.00732421875	Actinomycetales	5	-0.01513671875	Clavibacter michiganensis subsp. sepedonicus
+lca_star_test1_700	"Aplanobacter michiganense" (sic) (Smith 1910) Smith 1914	0.306	1	-0.00048828125	"Aplanobacter michiganense" (sic) (Smith 1910) Smith 1914	0.306	1	-0.00048828125	Actinomycetales	5	-0.01513671875	Clavibacter michiganensis subsp. sepedonicus
+lca_star_test1_96	BCF group	0.249	5	-0.060546875	Flavobacteriaceae	1.0	2	-0.005859375	Monera	8	-0.498046875	Krokinobacter sp. 4H-3-7-5
+lca_star_test1_677	Gammaproteobacteria	0.148	5	-0.060546875	Gammaproteobacteria	0.148	5	-0.060546875	Gammaproteobacteria	5	-0.060546875	Shewanella putrefaciens CN-32
+lca_star_test1_676	Gammaproteobacteria	0.024	5	-0.060546875	Gammaproteobacteria	0.024	5	-0.060546875	Gammaproteobacteria	5	-0.060546875	Shewanella putrefaciens CN-32
+lca_star_test1_675	Gammaproteobacteria	0.024	5	-0.060546875	Gammaproteobacteria	1.0	5	-0.060546875	Bacteria	7	-0.248046875	Shewanella putrefaciens CN-32
+lca_star_test1_674	Gammaproteobacteria	0.013	5	-0.060546875	Gammaproteobacteria	0.013	5	-0.060546875	Gammaproteobacteria	5	-0.060546875	Shewanella putrefaciens CN-32
+lca_star_test1_673	Gammaproteobacteria	0.313	5	-0.060546875	Proteobacteria	1.0	6	-0.123046875	Bacteria	7	-0.248046875	Shewanella putrefaciens CN-32
+lca_star_test1_672	Gammaproteobacteria	0.088	5	-0.060546875	Gammaproteobacteria	0.088	5	-0.060546875	Bacteria	7	-0.248046875	Shewanella putrefaciens CN-32
+lca_star_test1_671	Gammaproteobacteria	0.016	5	-0.060546875	Gammaproteobacteria	1.0	5	-0.060546875	Bacteria	7	-0.248046875	Shewanella putrefaciens CN-32
+lca_star_test1_670	Proteobacteria	0.148	6	-0.123046875	Bacteria	1.0	7	-0.248046875	Bacteria	7	-0.248046875	Shewanella putrefaciens CN-32
+lca_star_test1_679	Gammaproteobacteria	0.047	5	-0.060546875	Gammaproteobacteria	0.047	5	-0.060546875	Gammaproteobacteria	5	-0.060546875	Shewanella putrefaciens CN-32
+lca_star_test1_678	Gammaproteobacteria	0.047	5	-0.060546875	Gammaproteobacteria	0.654	5	-0.060546875	Bacteria	7	-0.248046875	Shewanella putrefaciens CN-32
+lca_star_test1_58	Oscillatoriophycideae	0.148	3	-0.0546875	Chroococcales	0.654	2	-0.0234375	Bacteria	5	-0.2421875	Cyanothece sp. PCC 7822
+lca_star_test1_59	Cyanothece sp. PCC 7822	0.165	0	0	Cyanothece sp. PCC 7822	0.165	0	0	Bacteria	5	-0.2421875	Cyanothece sp. PCC 7822
+lca_star_test1_90	Flavobacteriaceae	0.477	2	-0.005859375	Flavobacteriaceae	0.477	2	-0.005859375	Flavobacteriaceae	2	-0.005859375	Krokinobacter sp. 4H-3-7-5
+lca_star_test1_50	Cyanothece	0.088	1	-0.0078125	Cyanothece	0.088	1	-0.0078125	Cyanobacteria	4	-0.1171875	Cyanothece sp. PCC 7822
+lca_star_test1_51	Cyanothece	0.477	1	-0.0078125	Cyanothece sp. PCC 7822	1.0	0	0	Oscillatoriophycideae	3	-0.0546875	Cyanothece sp. PCC 7822
+lca_star_test1_52	Cyanothece	0.024	1	-0.0078125	Cyanothece	0.705	1	-0.0078125	Chroococcales	2	-0.0234375	Cyanothece sp. PCC 7822
+lca_star_test1_53	Xenococcus ATCC29373	None	7	-0.2265625	Xenococcus ATCC29373	None	7	-0.2265625	Xenococcus ATCC29373	7	-0.2265625	Cyanothece sp. PCC 7822
+lca_star_test1_54	Cyanothece sp. PCC 7822	0.313	0	0	Cyanothece sp. PCC 7822	0.313	0	0	Bacteria	5	-0.2421875	Cyanothece sp. PCC 7822
+lca_star_test1_55	Cyanobacteria	0.654	4	-0.1171875	Bacteria	0.56	5	-0.2421875	Bacteria	5	-0.2421875	Cyanothece sp. PCC 7822
+lca_star_test1_56	Cyanothece	0.2	1	-0.0078125	Cyanothece	0.477	1	-0.0078125	Cyanobacteria	4	-0.1171875	Cyanothece sp. PCC 7822
+lca_star_test1_57	Cyanothece	0.016	1	-0.0078125	Cyanothece	0.563	1	-0.0078125	Cyanobacteria	4	-0.1171875	Cyanothece sp. PCC 7822
+lca_star_test1_471	Acinetobacter calcoaceticus/baumannii complex	0.313	2	-0.0029296875	Acinetobacter calcoaceticus/baumannii complex	0.705	2	-0.0029296875	Acinetobacter	3	-0.0068359375	Acinetobacter baumannii ACICU
+lca_star_test1_470	Acinetobacter calcoaceticus/baumannii complex	0.477	2	-0.0029296875	Acinetobacter	1.0	3	-0.0068359375	Acinetobacter	3	-0.0068359375	Acinetobacter baumannii ACICU
+lca_star_test1_473	Acinetobacter	0.563	3	-0.0068359375	Acinetobacter	0.563	3	-0.0068359375	Acinetobacter	3	-0.0068359375	Acinetobacter baumannii ACICU
+lca_star_test1_472	Acinetobacter calcoaceticus/baumannii complex	0.306	2	-0.0029296875	ATCC 19606	0.56	1	-0.0009765625	Bacteria	8	-0.2490234375	Acinetobacter baumannii ACICU
+lca_star_test1_475	Acinetobacter	0.047	3	-0.0068359375	Acinetobacter	0.047	3	-0.0068359375	Acinetobacteraceae	4	-0.0146484375	Acinetobacter baumannii ACICU
+lca_star_test1_474	Acinetobacter calcoaceticus/baumannii complex	0.16	2	-0.0029296875	Acinetobacter calcoaceticus/baumannii complex	0.526	2	-0.0029296875	Acinetobacter	3	-0.0068359375	Acinetobacter baumannii ACICU
+lca_star_test1_778	"Asterococcus" Borrel et al. 1910	0.001	2	-0.005859375	"Asterococcus" Borrel et al. 1910	1.0	2	-0.005859375	"Asterococcus" Borrel et al. 1910	2	-0.005859375	Mycoplasma hominis ATCC 23114
+lca_star_test1_476	Acinetobacter	0.088	3	-0.0068359375	Acinetobacter	0.088	3	-0.0068359375	root	11	-1.9990234375	Acinetobacter baumannii ACICU
+lca_star_test1_479	Acinetobacteraceae	0.222	4	-0.0146484375	Acinetobacter	0.315	3	-0.0068359375	Bacteria	8	-0.2490234375	Acinetobacter baumannii ACICU
+lca_star_test1_478	Acinetobacter	0.2	3	-0.0068359375	Acinetobacter	0.2	3	-0.0068359375	Gammaproteobacteria	6	-0.0615234375	Acinetobacter baumannii ACICU
+lca_star_test1_774	"Asterococcus" Borrel et al. 1910	0.047	2	-0.005859375	"Asterococcus" Borrel et al. 1910	1.0	2	-0.005859375	"Paramycetes" Sabin 1941	5	-0.060546875	Mycoplasma hominis ATCC 23114
+lca_star_test1_775	"Asterococcus" Borrel et al. 1910	0.125	2	-0.005859375	"Asterococcus" Borrel et al. 1910	0.125	2	-0.005859375	"Asterococcus" Borrel et al. 1910	2	-0.005859375	Mycoplasma hominis ATCC 23114
+lca_star_test1_772	"Asterococcus" Borrel et al. 1910	0.05	2	-0.005859375	"Asterococcus" Borrel et al. 1910	0.477	2	-0.005859375	"Paramycetes" Sabin 1941	5	-0.060546875	Mycoplasma hominis ATCC 23114
+lca_star_test1_773	"Asterococcus" Borrel et al. 1910	0.047	2	-0.005859375	"Asterococcus" Borrel et al. 1910	0.047	2	-0.005859375	"Asterococcus" Borrel et al. 1910	2	-0.005859375	Mycoplasma hominis ATCC 23114
+lca_star_test1_770	"Asterococcus" Borrel et al. 1910	0.363	2	-0.005859375	"Asterococcus hominis" (Freundt 1953) Prevot 1961	0.739	1	-0.001953125	Bacteria	7	-0.248046875	Mycoplasma hominis ATCC 23114
+lca_star_test1_771	"Asterococcus" Borrel et al. 1910	0.013	2	-0.005859375	"Asterococcus" Borrel et al. 1910	0.013	2	-0.005859375	Bacteria	7	-0.248046875	Mycoplasma hominis ATCC 23114
+lca_star_test1_681	Bacillus	0.363	3	-0.0068359375	Bacillus	0.363	3	-0.0068359375	Bacillales	5	-0.0302734375	Bacillus atrophaeus 1942
+lca_star_test1_160	Bacillus	0.016	3	-0.0068359375	ATCC 14579	1.0	3	-0.0048828125	Bacillus/Clostridium group	7	-0.1240234375	Bacillus anthracis str. 'Ames Ancestor'
+lca_star_test1_91	BCF group	0.024	5	-0.060546875	Flavobacteriaceae	1.0	2	-0.005859375	Monera	8	-0.498046875	Krokinobacter sp. 4H-3-7-5
+lca_star_test1_145	"Chlamydozoon psittaci" (Lillie 1930) Ryzhkov 1950	0.165	5	-0.00634765625	"Chlamydozoon psittaci" (Lillie 1930) Ryzhkov 1950	0.165	5	-0.00634765625	Bacteria	9	-0.24951171875	Chlamydophila abortus S26/3
+lca_star_test1_779	"Asterococcus hominis" (Freundt 1953) Prevot 1961	0.41	1	-0.001953125	"Asterococcus hominis" (Freundt 1953) Prevot 1961	0.41	1	-0.001953125	Bacteria	7	-0.248046875	Mycoplasma hominis ATCC 23114
+lca_star_test1_598	Bacillus cereus group	0.001	2	-0.0029296875	Bacillus cereus group	0.001	2	-0.0029296875	Bacillus cereus group	2	-0.0029296875	Bacillus weihenstephanensis KBAB4
+lca_star_test1_92	Flavobacteriaceae	0.249	2	-0.005859375	Flavobacteriaceae	0.249	2	-0.005859375	Bacteria	7	-0.248046875	Krokinobacter sp. 4H-3-7-5
+lca_star_test1_599	Bacillus	0.013	3	-0.0068359375	Bacillus	0.705	3	-0.0068359375	Bacteria	8	-0.2490234375	Bacillus weihenstephanensis KBAB4
+lca_star_test1_602	Bacteria	0.0	7	-0.248046875	Bacteria	0.41	7	-0.248046875	Bacteria	7	-0.248046875	Calditerrivibrio nitroreducens DSM 19672
+lca_star_test1_603	Calditerrivibrio nitroreducens	0.086	1	-0.001953125	Calditerrivibrio nitroreducens	0.086	1	-0.001953125	Bacteria	7	-0.248046875	Calditerrivibrio nitroreducens DSM 19672
+lca_star_test1_600	Bacteria	0.002	7	-0.248046875	Calditerrivibrio nitroreducens	0.654	1	-0.001953125	Bacteria	7	-0.248046875	Calditerrivibrio nitroreducens DSM 19672
+lca_star_test1_601	Calditerrivibrio nitroreducens	0.249	1	-0.001953125	Calditerrivibrio nitroreducens	0.249	1	-0.001953125	Bacteria	7	-0.248046875	Calditerrivibrio nitroreducens DSM 19672
+lca_star_test1_606	Bacteria	0.0	7	-0.248046875	Calditerrivibrio nitroreducens	0.705	1	-0.001953125	Bacteria	7	-0.248046875	Calditerrivibrio nitroreducens DSM 19672
+lca_star_test1_607	Bacteria	0.0	7	-0.248046875	Calditerrivibrio nitroreducens	0.705	1	-0.001953125	Bacteria	7	-0.248046875	Calditerrivibrio nitroreducens DSM 19672
+lca_star_test1_604	Calditerrivibrio nitroreducens	0.249	1	-0.001953125	Calditerrivibrio nitroreducens	0.249	1	-0.001953125	Bacteria	7	-0.248046875	Calditerrivibrio nitroreducens DSM 19672
+lca_star_test1_605	Calditerrivibrio nitroreducens	0.148	1	-0.001953125	Calditerrivibrio nitroreducens	0.148	1	-0.001953125	Bacteria	7	-0.248046875	Calditerrivibrio nitroreducens DSM 19672
+lca_star_test1_857	Borrelia	0.148	3	-0.0068359375	Borrelia	0.148	3	-0.0068359375	Bacteria	8	-0.2490234375	Borrelia garinii PBi
+lca_star_test1_856	Borrelia	0.313	3	-0.0068359375	Borrelia	0.477	3	-0.0068359375	Bacteria	8	-0.2490234375	Borrelia garinii PBi
+lca_star_test1_608	Deferribacteraceae	0.148	3	-0.013671875	Calditerrivibrio nitroreducens	0.249	1	-0.001953125	Bacteria	7	-0.248046875	Calditerrivibrio nitroreducens DSM 19672
+lca_star_test1_609	Bacteria	0.002	7	-0.248046875	Bacteria	0.763	7	-0.248046875	Monera	8	-0.498046875	Calditerrivibrio nitroreducens DSM 19672
+lca_star_test1_853	Borrelia	0.086	3	-0.0068359375	Borrelia	0.249	3	-0.0068359375	Bacteria	8	-0.2490234375	Borrelia garinii PBi
+lca_star_test1_852	Borrelia	0.705	3	-0.0068359375	Bacteria	1.0	8	-0.2490234375	Bacteria	8	-0.2490234375	Borrelia garinii PBi
+lca_star_test1_851	Borrelia	0.125	3	-0.0068359375	Borrelia	0.125	3	-0.0068359375	Bacteria	8	-0.2490234375	Borrelia garinii PBi
+lca_star_test1_850	Borrelia	0.477	3	-0.0068359375	Bacteria	1.0	8	-0.2490234375	Bacteria	8	-0.2490234375	Borrelia garinii PBi
+lca_star_test1_358	Streptococcus	0.008	2	-0.005859375	Streptococcus	0.008	2	-0.005859375	Streptococcus	2	-0.005859375	Streptococcus pasteurianus ATCC 43144
+lca_star_test1_359	Streptococcaceae	0.148	3	-0.013671875	Streptococcaceae	0.654	3	-0.013671875	Bacillus/Clostridium group	6	-0.123046875	Streptococcus pasteurianus ATCC 43144
+lca_star_test1_354	Streptococcus	0.019	2	-0.005859375	Streptococcus	0.019	2	-0.005859375	Streptococcus	2	-0.005859375	Streptococcus pasteurianus ATCC 43144
+lca_star_test1_355	Streptococcus	0.249	2	-0.005859375	Streptococcus	0.249	2	-0.005859375	Bacteria	7	-0.248046875	Streptococcus pasteurianus ATCC 43144
+lca_star_test1_356	Bacilli	0.088	5	-0.060546875	Streptococcus	0.654	2	-0.005859375	Bacillus/Clostridium group	6	-0.123046875	Streptococcus pasteurianus ATCC 43144
+lca_star_test1_357	Streptococcus	0.2	2	-0.005859375	Streptococcus	0.2	2	-0.005859375	Lactobacillales	4	-0.029296875	Streptococcus pasteurianus ATCC 43144
+lca_star_test1_350	Bacillus/Clostridium group	0.024	6	-0.123046875	Bacillus/Clostridium group	0.165	6	-0.123046875	Bacteria	7	-0.248046875	Streptococcus pasteurianus ATCC 43144
+lca_star_test1_351	Streptococcus	0.05	2	-0.005859375	Streptococcus	0.05	2	-0.005859375	Lactobacillales	4	-0.029296875	Streptococcus pasteurianus ATCC 43144
+lca_star_test1_352	Streptococcus	0.007	2	-0.005859375	Streptococcus	0.007	2	-0.005859375	Lactobacillales	4	-0.029296875	Streptococcus pasteurianus ATCC 43144
+lca_star_test1_353	Streptococcus	0.088	2	-0.005859375	Streptococcus	0.088	2	-0.005859375	Bacteria	7	-0.248046875	Streptococcus pasteurianus ATCC 43144
+lca_star_test1_215	Escherchia	0.705	2	-0.005859375	Escherchia	1.0	2	-0.005859375	Enterobacteraceae	3	-0.013671875	Escherichia coli SE11
+lca_star_test1_214	Gammaproteobacteria	0.148	5	-0.060546875	Enterobacteraceae	0.654	3	-0.013671875	Bacteria	7	-0.248046875	Escherichia coli SE11
+lca_star_test1_217	"Bacillus coli" Migula 1895	0.103	1	-0.001953125	"Bacillus coli" Migula 1895	0.103	1	-0.001953125	Enterobacteraceae	3	-0.013671875	Escherichia coli SE11
+lca_star_test1_216	Escherchia	0.125	2	-0.005859375	Escherchia	0.477	2	-0.005859375	Enterobacteraceae	3	-0.013671875	Escherichia coli SE11
+lca_star_test1_211	Enterobacteraceae	0.05	3	-0.013671875	"Bacillus coli" Migula 1895	0.477	1	-0.001953125	Proteobacteria	6	-0.123046875	Escherichia coli SE11
+lca_star_test1_210	Escherchia	0.705	2	-0.005859375	Enterobacteraceae	0.654	3	-0.013671875	Enterobacteraceae	3	-0.013671875	Escherichia coli SE11
+lca_star_test1_213	Enterobacteraceae	0.2	3	-0.013671875	Enterobacteraceae	0.2	3	-0.013671875	Enterobacteraceae	3	-0.013671875	Escherichia coli SE11
+lca_star_test1_212	"Bacillus coli" Migula 1895	0.592	1	-0.001953125	"Bacillus coli" Migula 1895	0.592	1	-0.001953125	Enterobacteraceae	3	-0.013671875	Escherichia coli SE11
+lca_star_test1_219	Gammaproteobacteria	0.086	5	-0.060546875	"Bacillus coli" Migula 1895	0.654	1	-0.001953125	Bacteria	7	-0.248046875	Escherichia coli SE11
+lca_star_test1_218	"Bacillus coli" Migula 1895	0.437	1	-0.001953125	"Bacillus coli" Migula 1895	0.437	1	-0.001953125	Enterobacteraceae	3	-0.013671875	Escherichia coli SE11
+lca_star_test1_828	Clostridiales	0.306	4	-0.029296875	ATCC 8527	0.56	1	-0.001953125	Bacillus/Clostridium group	6	-0.123046875	Clostridium kluyveri DSM 555
+lca_star_test1_829	Clostridium	0.2	2	-0.005859375	ATCC 8527	0.705	1	-0.001953125	Bacillus/Clostridium group	6	-0.123046875	Clostridium kluyveri DSM 555
+lca_star_test1_822	Clostridiales	0.086	4	-0.029296875	ATCC 8527	1.0	1	-0.001953125	Bacteria	7	-0.248046875	Clostridium kluyveri DSM 555
+lca_star_test1_823	ATCC 8527	0.028	1	-0.001953125	ATCC 8527	0.028	1	-0.001953125	Bacteria	7	-0.248046875	Clostridium kluyveri DSM 555
+lca_star_test1_820	ATCC 8527	0.076	1	-0.001953125	ATCC 8527	0.076	1	-0.001953125	Clostridiales	4	-0.029296875	Clostridium kluyveri DSM 555
+lca_star_test1_821	ATCC 8527	0.0	1	-0.001953125	ATCC 8527	0.0	1	-0.001953125	Clostridiales	4	-0.029296875	Clostridium kluyveri DSM 555
+lca_star_test1_826	ATCC 8527	0.076	1	-0.001953125	ATCC 8527	0.076	1	-0.001953125	Clostridiales	4	-0.029296875	Clostridium kluyveri DSM 555
+lca_star_test1_827	ATCC 8527	0.654	1	-0.001953125	ATCC 8527	0.654	1	-0.001953125	Clostridium	2	-0.005859375	Clostridium kluyveri DSM 555
+lca_star_test1_824	Clostridiales	0.086	4	-0.029296875	Clostridium	0.41	2	-0.005859375	Bacteria	7	-0.248046875	Clostridium kluyveri DSM 555
+lca_star_test1_825	ATCC 8527	0.028	1	-0.001953125	ATCC 8527	0.028	1	-0.001953125	Bacteria	7	-0.248046875	Clostridium kluyveri DSM 555
+lca_star_test1_83	"Bacillus coli" Migula 1895	0.763	1	-0.001953125	"Bacillus coli" Migula 1895	0.763	1	-0.001953125	Enterobacteraceae	3	-0.013671875	Escherichia coli UTI89
+lca_star_test1_82	Enterobacteraceae	0.125	3	-0.013671875	Enterobacteraceae	0.705	3	-0.013671875	Bacteria	7	-0.248046875	Escherichia coli UTI89
+lca_star_test1_81	"Bacillus coli" Migula 1895	0.0	1	-0.001953125	"Bacillus coli" Migula 1895	0.0	1	-0.001953125	"Bacillus coli" Migula 1895	1	-0.001953125	Escherichia coli UTI89
+lca_star_test1_816	Gammaproteobacteria	0.007	5	-0.060546875	Gammaproteobacteria	0.705	5	-0.060546875	Bacteria	7	-0.248046875	Legionella pneumophila str. Corby
+lca_star_test1_509	Lactobacillales	0.249	4	-0.029296875	Lactobacillales	0.249	4	-0.029296875	Bacilli	5	-0.060546875	Leuconostoc gasicomitatum LMG 18811
+lca_star_test1_508	Lactobacillales	0.016	4	-0.029296875	Lactobacillales	0.016	4	-0.029296875	Bacilli	5	-0.060546875	Leuconostoc gasicomitatum LMG 18811
+lca_star_test1_89	"Bacillus coli" Migula 1895	0.363	1	-0.001953125	"Bacillus coli" Migula 1895	0.363	1	-0.001953125	Enterobacteraceae	3	-0.013671875	Escherichia coli UTI89
+lca_star_test1_88	"Bacillus coli" Migula 1895	0.001	1	-0.001953125	"Bacillus coli" Migula 1895	0.001	1	-0.001953125	"Bacillus coli" Migula 1895	1	-0.001953125	Escherichia coli UTI89
+lca_star_test1_501	"Betacoccus" Orla-Jensen 1919	0.739	2	-0.005859375	"Betacoccus" Orla-Jensen 1919	0.739	2	-0.005859375	Lactobacillales	4	-0.029296875	Leuconostoc gasicomitatum LMG 18811
+lca_star_test1_500	Lactobacillales	0.028	4	-0.029296875	Lactobacillales	0.477	4	-0.029296875	Bacilli	5	-0.060546875	Leuconostoc gasicomitatum LMG 18811
+lca_star_test1_503	"Betacoccus" Orla-Jensen 1919	0.563	2	-0.005859375	"Betacoccus" Orla-Jensen 1919	0.563	2	-0.005859375	Lactobacillales	4	-0.029296875	Leuconostoc gasicomitatum LMG 18811
+lca_star_test1_502	Lactobacillales	0.007	4	-0.029296875	Lactobacillales	0.007	4	-0.029296875	Lactobacillales	4	-0.029296875	Leuconostoc gasicomitatum LMG 18811
+lca_star_test1_87	"Bacillus coli" Migula 1895	0.013	1	-0.001953125	"Bacillus coli" Migula 1895	0.013	1	-0.001953125	Enterobacteraceae	3	-0.013671875	Escherichia coli UTI89
+lca_star_test1_86	"Bacillus coli" Migula 1895	0.05	1	-0.001953125	"Bacillus coli" Migula 1895	0.05	1	-0.001953125	Enterobacteraceae	3	-0.013671875	Escherichia coli UTI89
+lca_star_test1_85	Enterobacteraceae	0.2	3	-0.013671875	Enterobacteraceae	0.2	3	-0.013671875	Enterobacteraceae	3	-0.013671875	Escherichia coli UTI89
+lca_star_test1_506	Lactobacillales	0.086	4	-0.029296875	"Betacoccus" Orla-Jensen 1919	1.0	2	-0.005859375	Bacteria	7	-0.248046875	Leuconostoc gasicomitatum LMG 18811
+lca_star_test1_130	'Rhodobacteraceae'	0.088	3	-0.013671875	'Rhodobacteraceae'	0.654	3	-0.013671875	Bacteria	7	-0.248046875	Roseobacter denitrificans OCh 114
+lca_star_test1_131	'Rhodobacteraceae'	0.047	3	-0.013671875	ATCC 33942	0.41	1	-0.001953125	Bacteria	7	-0.248046875	Roseobacter denitrificans OCh 114
+lca_star_test1_132	"Alphabacteria" Cavalier-Smith 1992	0.148	5	-0.060546875	ATCC 33942	0.41	1	-0.001953125	Bacteria	7	-0.248046875	Roseobacter denitrificans OCh 114
+lca_star_test1_133	'Rhodobacteraceae'	0.249	3	-0.013671875	'Rhodobacteraceae'	0.654	3	-0.013671875	Bacteria	7	-0.248046875	Roseobacter denitrificans OCh 114
+lca_star_test1_134	'Rhodobacteraceae'	0.148	3	-0.013671875	ATCC 33942	0.41	1	-0.001953125	Bacteria	7	-0.248046875	Roseobacter denitrificans OCh 114
+lca_star_test1_507	Lactobacillales	0.024	4	-0.029296875	Lactobacillales	0.41	4	-0.029296875	Bacteria	7	-0.248046875	Leuconostoc gasicomitatum LMG 18811
+lca_star_test1_136	'Rhodobacteraceae'	0.148	3	-0.013671875	ATCC 33942	0.41	1	-0.001953125	Bacteria	7	-0.248046875	Roseobacter denitrificans OCh 114
+lca_star_test1_137	'Rhodobacteraceae'	0.148	3	-0.013671875	ATCC 33942	0.41	1	-0.001953125	Bacteria	7	-0.248046875	Roseobacter denitrificans OCh 114
+lca_star_test1_138	'Rhodobacteraceae'	0.088	3	-0.013671875	'Rhodobacteraceae'	0.654	3	-0.013671875	Bacteria	7	-0.248046875	Roseobacter denitrificans OCh 114
+lca_star_test1_139	'Rhodobacteraceae'	0.047	3	-0.013671875	ATCC 33942	0.41	1	-0.001953125	Bacteria	7	-0.248046875	Roseobacter denitrificans OCh 114
+lca_star_test1_84	Enterobacteraceae	0.0	3	-0.013671875	"Bacillus coli" Migula 1895	1.0	1	-0.001953125	Enterobacteraceae	3	-0.013671875	Escherichia coli UTI89
+lca_star_test1_185	Streptococcus	0.086	2	-0.005859375	Streptococcus	0.086	2	-0.005859375	Bacillus/Clostridium group	6	-0.123046875	Streptococcus uberis 0140J
+lca_star_test1_184	Streptococcus	0.028	2	-0.005859375	Streptococcus	0.028	2	-0.005859375	Bacteria	7	-0.248046875	Streptococcus uberis 0140J
+lca_star_test1_187	Streptococcus	0.013	2	-0.005859375	Streptococcus	0.013	2	-0.005859375	Bacillus/Clostridium group	6	-0.123046875	Streptococcus uberis 0140J
+lca_star_test1_186	Streptococcus	0.028	2	-0.005859375	Streptococcus	0.028	2	-0.005859375	Lactobacillales	4	-0.029296875	Streptococcus uberis 0140J
+lca_star_test1_181	Streptococcus	0.007	2	-0.005859375	Streptococcus	0.007	2	-0.005859375	Bacteria	7	-0.248046875	Streptococcus uberis 0140J
+lca_star_test1_180	Streptococcus	0.007	2	-0.005859375	Streptococcus	0.007	2	-0.005859375	Bacteria	7	-0.248046875	Streptococcus uberis 0140J
+lca_star_test1_183	Streptococcaceae	0.526	3	-0.013671875	Streptococcus	0.739	2	-0.005859375	Lactobacillales	4	-0.029296875	Streptococcus uberis 0140J
+lca_star_test1_182	Streptococcus	0.249	2	-0.005859375	Streptococcus	0.249	2	-0.005859375	Bacteria	7	-0.248046875	Streptococcus uberis 0140J
+lca_star_test1_189	Streptococcus	0.047	2	-0.005859375	Streptococcus	0.047	2	-0.005859375	Lactobacillales	4	-0.029296875	Streptococcus uberis 0140J
+lca_star_test1_188	Streptococcus	0.019	2	-0.005859375	Streptococcus	0.019	2	-0.005859375	Streptococcus	2	-0.005859375	Streptococcus uberis 0140J
+lca_star_test1_793	ATCC 700542	0.249	1	-0.001953125	ATCC 700542	0.249	1	-0.001953125	Bacteria	7	-0.248046875	Meiothermus silvanus DSM 9946
+lca_star_test1_135	"Alphabacteria" Cavalier-Smith 1992	0.148	5	-0.060546875	ATCC 33942	0.41	1	-0.001953125	Bacteria	7	-0.248046875	Roseobacter denitrificans OCh 114
+lca_star_test1_259	Proteobacteria	0.2	6	-0.123046875	Proteobacteria	0.2	6	-0.123046875	Bacteria	7	-0.248046875	Hyphomicrobium denitrificans ATCC 51888
+lca_star_test1_391	Enterobacteraceae	0.148	3	-0.013671875	Enterobacteraceae	0.654	3	-0.013671875	Bacteria	7	-0.248046875	Yersinia pestis Nepal516
+lca_star_test1_638	Mycobacterium	0.282	3	-0.001708984375	Mycobacterium	0.763	3	-0.001708984375	Actinomycetales	6	-0.015380859375	Mycobacterium tuberculosis KZN 1435
+lca_star_test1_14	Brucella	0.024	2	-0.005859375	Brucella	0.024	2	-0.005859375	Bacteria	7	-0.248046875	Brucella suis 1330
+lca_star_test1_15	Brucellaceae	0.2	3	-0.013671875	Brucellaceae	0.705	3	-0.013671875	Proteobacteria	6	-0.123046875	Brucella suis 1330
+lca_star_test1_16	Brucella	0.477	2	-0.005859375	Brucella	0.477	2	-0.005859375	Hyphomicrobiales	4	-0.029296875	Brucella suis 1330
+lca_star_test1_17	Brucellaceae	0.086	3	-0.013671875	Brucella	0.705	2	-0.005859375	Hyphomicrobiales	4	-0.029296875	Brucella suis 1330
+lca_star_test1_10	Hyphomicrobiales	0.477	4	-0.029296875	Brucella	0.705	2	-0.005859375	Proteobacteria	6	-0.123046875	Brucella suis 1330
+lca_star_test1_438	Acinetobacter	0.013	3	-0.0068359375	Acinetobacter	0.013	3	-0.0068359375	Bacteria	8	-0.2490234375	Acinetobacter baumannii ATCC 17978
+lca_star_test1_12	Brucellaceae	0.249	3	-0.013671875	Brucella	0.654	2	-0.005859375	"Alphabacteria" Cavalier-Smith 1992	5	-0.060546875	Brucella suis 1330
+lca_star_test1_399	Enterobacteraceae	0.249	3	-0.013671875	Enterobacteraceae	0.654	3	-0.013671875	Bacteria	7	-0.248046875	Yersinia pestis Nepal516
+lca_star_test1_435	Acinetobacter	0.013	3	-0.0068359375	Acinetobacter	0.013	3	-0.0068359375	Bacteria	8	-0.2490234375	Acinetobacter baumannii ATCC 17978
+lca_star_test1_434	Acinetobacter	0.007	3	-0.0068359375	Acinetobacter	0.007	3	-0.0068359375	Bacteria	8	-0.2490234375	Acinetobacter baumannii ATCC 17978
+lca_star_test1_437	Acinetobacter	0.013	3	-0.0068359375	Acinetobacter	0.013	3	-0.0068359375	Bacteria	8	-0.2490234375	Acinetobacter baumannii ATCC 17978
+lca_star_test1_436	Acinetobacter	0.013	3	-0.0068359375	Acinetobacter	0.013	3	-0.0068359375	Bacteria	8	-0.2490234375	Acinetobacter baumannii ATCC 17978
+lca_star_test1_18	Brucella	0.249	2	-0.005859375	Brucella	0.249	2	-0.005859375	Hyphomicrobiales	4	-0.029296875	Brucella suis 1330
+lca_star_test1_430	Acinetobacter	0.007	3	-0.0068359375	Acinetobacter	0.007	3	-0.0068359375	Bacteria	8	-0.2490234375	Acinetobacter baumannii ATCC 17978
+lca_star_test1_433	Acinetobacter	0.007	3	-0.0068359375	Acinetobacter	0.007	3	-0.0068359375	Bacteria	8	-0.2490234375	Acinetobacter baumannii ATCC 17978
+lca_star_test1_432	Acinetobacter	0.013	3	-0.0068359375	Acinetobacter	0.013	3	-0.0068359375	Bacteria	8	-0.2490234375	Acinetobacter baumannii ATCC 17978
+lca_star_test1_398	Enterobacteraceae	0.249	3	-0.013671875	Enterobacteraceae	0.654	3	-0.013671875	Bacteria	7	-0.248046875	Yersinia pestis Nepal516
+lca_star_test1_61	Bacillus	0.403	4	-0.00732421875	Bacillus	1.0	4	-0.00732421875	Bacillaceae	5	-0.01513671875	Bacillus thuringiensis BMB171
+lca_star_test1_60	Bacillus	0.249	4	-0.00732421875	Bacillus	0.249	4	-0.00732421875	Bacillus	4	-0.00732421875	Bacillus thuringiensis BMB171
+lca_star_test1_63	Bacillus cereus group	0.363	3	-0.00341796875	ATCC 14579	0.526	4	-0.00537109375	Bacillaceae	5	-0.01513671875	Bacillus thuringiensis BMB171
+lca_star_test1_62	Bacillus cereus group	0.148	3	-0.00341796875	ATCC 14579	1.0	4	-0.00537109375	Bacillales	6	-0.03076171875	Bacillus thuringiensis BMB171
+lca_star_test1_65	Bacillus	0.526	4	-0.00732421875	Bacillus	0.526	4	-0.00732421875	Bacillus	4	-0.00732421875	Bacillus thuringiensis BMB171
+lca_star_test1_64	Bacillus cereus group	0.477	3	-0.00341796875	ATCC 14579	0.705	4	-0.00537109375	Bacillaceae	5	-0.01513671875	Bacillus thuringiensis BMB171
+lca_star_test1_67	Bacillales	0.016	6	-0.03076171875	Bacillales	0.016	6	-0.03076171875	Bacillus/Clostridium group	8	-0.12451171875	Bacillus thuringiensis BMB171
+lca_star_test1_66	Bacillus	0.003	4	-0.00732421875	Bacillus	0.477	4	-0.00732421875	Bacillales	6	-0.03076171875	Bacillus thuringiensis BMB171
+lca_star_test1_69	ATCC 14579	0.165	4	-0.00537109375	ATCC 14579	0.165	4	-0.00537109375	Bacillus	4	-0.00732421875	Bacillus thuringiensis BMB171
+lca_star_test1_68	Bacillaceae	0.165	5	-0.01513671875	Bacillaceae	1.0	5	-0.01513671875	Bacillales	6	-0.03076171875	Bacillus thuringiensis BMB171
+lca_star_test1_807	"Microspironema" Stiles and Pfender 1905	0.013	3	-0.0068359375	"Microspironema" Stiles and Pfender 1905	0.013	3	-0.0068359375	"Microspironema" Stiles and Pfender 1905	3	-0.0068359375	Treponema pallidum subsp. pallidum str. Nichols
+lca_star_test1_721	Streptococcus	0.007	3	-0.0068359375	Streptococcus	0.007	3	-0.0068359375	Lactobacillales	5	-0.0302734375	Streptococcus pyogenes str. Manfredo
+lca_star_test1_720	Streptococcus	0.002	3	-0.0068359375	Streptococcus	0.002	3	-0.0068359375	Lactobacillales	5	-0.0302734375	Streptococcus pyogenes str. Manfredo
+lca_star_test1_723	Lactobacillales	0.001	5	-0.0302734375	Streptococcus	1.0	3	-0.0068359375	Lactobacillales	5	-0.0302734375	Streptococcus pyogenes str. Manfredo
+lca_star_test1_722	Streptococcus	0.009	3	-0.0068359375	Streptococcus	0.009	3	-0.0068359375	Lactobacillales	5	-0.0302734375	Streptococcus pyogenes str. Manfredo
+lca_star_test1_725	Streptococcus	0.002	3	-0.0068359375	Streptococcus	0.002	3	-0.0068359375	Bacillus/Clostridium group	7	-0.1240234375	Streptococcus pyogenes str. Manfredo
+lca_star_test1_724	Streptococcus	0.024	3	-0.0068359375	Streptococcus	0.024	3	-0.0068359375	Bacteria	8	-0.2490234375	Streptococcus pyogenes str. Manfredo
+lca_star_test1_727	Streptococcus	0.047	3	-0.0068359375	Streptococcus	0.047	3	-0.0068359375	Lactobacillales	5	-0.0302734375	Streptococcus pyogenes str. Manfredo
+lca_star_test1_726	Lactobacillales	0.001	5	-0.0302734375	Lactobacillales	0.763	5	-0.0302734375	Bacillus/Clostridium group	7	-0.1240234375	Streptococcus pyogenes str. Manfredo
+lca_star_test1_729	Streptococcus	0.041	3	-0.0068359375	Streptococcus	0.041	3	-0.0068359375	Streptococcus	3	-0.0068359375	Streptococcus pyogenes str. Manfredo
+lca_star_test1_728	Streptococcus	0.013	3	-0.0068359375	Streptococcus	0.013	3	-0.0068359375	Bacillus/Clostridium group	7	-0.1240234375	Streptococcus pyogenes str. Manfredo
+lca_star_test1_644	Bacillales	0.086	4	-0.029296875	Bacillales	0.086	4	-0.029296875	Bacteria	7	-0.248046875	Listeria monocytogenes serotype 4b str. CLIP 80459
+lca_star_test1_645	Bacilli	0.0	5	-0.060546875	Bacilli	0.763	5	-0.060546875	Bacilli	5	-0.060546875	Listeria monocytogenes serotype 4b str. CLIP 80459
+lca_star_test1_642	Bacillales	0.313	4	-0.029296875	"Listerella" Pirie 1927 (nom. rej. Opin 14)	1.0	2	-0.005859375	Bacteria	7	-0.248046875	Listeria monocytogenes serotype 4b str. CLIP 80459
+lca_star_test1_643	Bacillales	0.047	4	-0.029296875	Bacillales	0.047	4	-0.029296875	Bacilli	5	-0.060546875	Listeria monocytogenes serotype 4b str. CLIP 80459
+lca_star_test1_640	Bacilli	0.024	5	-0.060546875	Lactobacillales	1.0	6	-0.091796875	Bacillus/Clostridium group	6	-0.123046875	Listeria monocytogenes serotype 4b str. CLIP 80459
+lca_star_test1_641	Bacillales	0.047	4	-0.029296875	Bacillales	0.41	4	-0.029296875	Bacteria	7	-0.248046875	Listeria monocytogenes serotype 4b str. CLIP 80459
+lca_star_test1_550	'Methylophilales'	0.086	4	-0.029296875	'Methylophilaceae'	0.249	3	-0.013671875	Proteobacteria	6	-0.123046875	Methylobacillus flagellatus KT
+lca_star_test1_498	ATCC 43291	0.125	1	-0.001953125	ATCC 43291	0.125	1	-0.001953125	Proteobacteria	6	-0.123046875	Ralstonia eutropha H16
+lca_star_test1_318	Deinobacter	0.739	2	-0.005859375	Bacteria	0.705	7	-0.248046875	Bacteria	7	-0.248046875	Deinococcus proteolyticus MRP
+lca_star_test1_319	Bacteria	0.0	7	-0.248046875	Bacteria	0.705	7	-0.248046875	Bacteria	7	-0.248046875	Deinococcus proteolyticus MRP
+lca_star_test1_505	Lactobacillales	0.739	4	-0.029296875	Lactobacillales	0.739	4	-0.029296875	Lactobacillales	4	-0.029296875	Leuconostoc gasicomitatum LMG 18811
+lca_star_test1_310	Bacteria	0.086	7	-0.248046875	Bacteria	0.086	7	-0.248046875	Bacteria	7	-0.248046875	Deinococcus proteolyticus MRP
+lca_star_test1_311	Deinobacter	0.148	2	-0.005859375	Deinobacter	0.41	2	-0.005859375	Bacteria	7	-0.248046875	Deinococcus proteolyticus MRP
+lca_star_test1_312	Deinobacter	0.563	2	-0.005859375	Bacteria	0.739	7	-0.248046875	Bacteria	7	-0.248046875	Deinococcus proteolyticus MRP
+lca_star_test1_313	Bacteria	0.002	7	-0.248046875	Bacteria	0.306	7	-0.248046875	Bacteria	7	-0.248046875	Deinococcus proteolyticus MRP
+lca_star_test1_314	Deinobacter	0.028	2	-0.005859375	Deinobacter	0.739	2	-0.005859375	Bacteria	7	-0.248046875	Deinococcus proteolyticus MRP
+lca_star_test1_315	Bacteria	0.001	7	-0.248046875	Bacteria	0.654	7	-0.248046875	Bacteria	7	-0.248046875	Deinococcus proteolyticus MRP
+lca_star_test1_316	Bacteria	0.0	7	-0.248046875	Bacteria	0.249	7	-0.248046875	Bacteria	7	-0.248046875	Deinococcus proteolyticus MRP
+lca_star_test1_317	"Hadobacteria" Cavalier-Smith 1992 emend. Cavalier-Smith 1998	0.028	5	-0.060546875	"Hadobacteria" Cavalier-Smith 1992 emend. Cavalier-Smith 1998	0.705	5	-0.060546875	Bacteria	7	-0.248046875	Deinococcus proteolyticus MRP
+lca_star_test1_426	Bacillus cereus group	0.047	3	-0.00341796875	ATCC 14579	0.41	2	-0.00146484375	Bacillales	6	-0.03076171875	Bacillus cereus biovar anthracis str. CI
+lca_star_test1_866	"Alphabacteria" Cavalier-Smith 1992	0.002	4	-0.05859375	"Alphabacteria" Cavalier-Smith 1992	0.002	4	-0.05859375	"Alphabacteria" Cavalier-Smith 1992	4	-0.05859375	Bradyrhizobium sp. ORS 278
+lca_star_test1_867	Proteobacteria	0.148	5	-0.12109375	Proteobacteria	0.41	5	-0.12109375	Bacteria	6	-0.24609375	Bradyrhizobium sp. ORS 278
+lca_star_test1_864	"Alphabacteria" Cavalier-Smith 1992	0.086	4	-0.05859375	"Alphabacteria" Cavalier-Smith 1992	0.086	4	-0.05859375	"Alphabacteria" Cavalier-Smith 1992	4	-0.05859375	Bradyrhizobium sp. ORS 278
+lca_star_test1_865	Hyphomicrobiales	0.148	3	-0.02734375	Agromonas	0.41	1	-0.00390625	Bacteria	6	-0.24609375	Bradyrhizobium sp. ORS 278
+lca_star_test1_862	"Alphabacteria" Cavalier-Smith 1992	0.41	4	-0.05859375	Agromonas	1.0	1	-0.00390625	Proteobacteria	5	-0.12109375	Bradyrhizobium sp. ORS 278
+lca_star_test1_491	Proteobacteria	0.013	6	-0.123046875	Proteobacteria	0.705	6	-0.123046875	Bacteria	7	-0.248046875	Ralstonia eutropha H16
+lca_star_test1_860	Agromonas	0.165	1	-0.00390625	Agromonas	0.165	1	-0.00390625	"Alphabacteria" Cavalier-Smith 1992	4	-0.05859375	Bradyrhizobium sp. ORS 278
+lca_star_test1_861	"Alphabacteria" Cavalier-Smith 1992	0.024	4	-0.05859375	"Alphabacteria" Cavalier-Smith 1992	0.024	4	-0.05859375	Bacteria	6	-0.24609375	Bradyrhizobium sp. ORS 278
+lca_star_test1_490	'Burkholderiales'	0.024	4	-0.029296875	'Burkholderiales'	0.024	4	-0.029296875	Bacteria	7	-0.248046875	Ralstonia eutropha H16
+lca_star_test1_72	Clostridia	0.088	4	-0.05859375	Clostridia	0.56	4	-0.05859375	Bacteria	6	-0.24609375	Halanaerobium hydrogeniformans
+lca_star_test1_868	"Alphabacteria" Cavalier-Smith 1992	0.086	4	-0.05859375	"Alphabacteria" Cavalier-Smith 1992	0.41	4	-0.05859375	Proteobacteria	5	-0.12109375	Bradyrhizobium sp. ORS 278
+lca_star_test1_869	Proteobacteria	0.2	5	-0.12109375	Bacteria	0.654	6	-0.24609375	Bacteria	6	-0.24609375	Bradyrhizobium sp. ORS 278
+lca_star_test1_387	Gammaproteobacteria	0.477	5	-0.060546875	Gammaproteobacteria	0.477	5	-0.060546875	Gammaproteobacteria	5	-0.060546875	Yersinia pestis Pestoides F
+lca_star_test1_386	Enterobacteraceae	0.2	3	-0.013671875	Enterobacteraceae	0.2	3	-0.013671875	Gammaproteobacteria	5	-0.060546875	Yersinia pestis Pestoides F
+lca_star_test1_385	Gammaproteobacteria	0.016	5	-0.060546875	Gammaproteobacteria	0.016	5	-0.060546875	Proteobacteria	6	-0.123046875	Yersinia pestis Pestoides F
+lca_star_test1_384	Gammaproteobacteria	0.2	5	-0.060546875	Gammaproteobacteria	0.2	5	-0.060546875	Gammaproteobacteria	5	-0.060546875	Yersinia pestis Pestoides F
+lca_star_test1_383	Enterobacteraceae	0.076	3	-0.013671875	Enterobacteraceae	1.0	3	-0.013671875	Gammaproteobacteria	5	-0.060546875	Yersinia pestis Pestoides F
+lca_star_test1_622	Thermoplasmales	0.313	4	-0.029296875	Thermoplasmales	1.0	4	-0.029296875	"Archaea" Woese et al. 1990	7	-0.248046875	Picrophilus torridus DSM 9790
+lca_star_test1_381	Gammaproteobacteria	0.016	5	-0.060546875	Gammaproteobacteria	0.526	5	-0.060546875	Proteobacteria	6	-0.123046875	Yersinia pestis Pestoides F
+lca_star_test1_380	Gammaproteobacteria	0.125	5	-0.060546875	Gammaproteobacteria	0.125	5	-0.060546875	Proteobacteria	6	-0.123046875	Yersinia pestis Pestoides F
+lca_star_test1_264	"Alphabacteria" Cavalier-Smith 1992	0.148	6	-0.0615234375	"Alphabacteria" Cavalier-Smith 1992	0.148	6	-0.0615234375	Proteobacteria	7	-0.1240234375	Zymomonas mobilis subsp. mobilis NCIMB 11163
+lca_star_test1_265	Proteobacteria	0.088	7	-0.1240234375	Proteobacteria	0.088	7	-0.1240234375	Bacteria	8	-0.2490234375	Zymomonas mobilis subsp. mobilis NCIMB 11163
+lca_star_test1_266	"Alphabacteria" Cavalier-Smith 1992	0.013	6	-0.0615234375	"Alphabacteria" Cavalier-Smith 1992	0.41	6	-0.0615234375	Proteobacteria	7	-0.1240234375	Zymomonas mobilis subsp. mobilis NCIMB 11163
+lca_star_test1_267	Sphingomonadaceae	0.41	4	-0.0146484375	Sphingomonadaceae	0.654	4	-0.0146484375	"Alphabacteria" Cavalier-Smith 1992	6	-0.0615234375	Zymomonas mobilis subsp. mobilis NCIMB 11163
+lca_star_test1_260	"Alphabacteria" Cavalier-Smith 1992	0.001	6	-0.0615234375	"Alphabacteria" Cavalier-Smith 1992	0.001	6	-0.0615234375	Bacteria	8	-0.2490234375	Zymomonas mobilis subsp. mobilis NCIMB 11163
+lca_star_test1_261	"Achromobacter anaerobium" (sic) Shimwell 1937	0.705	2	-0.0029296875	"Achromobacter anaerobium" (sic) Shimwell 1937	0.705	2	-0.0029296875	"Alphabacteria" Cavalier-Smith 1992	6	-0.0615234375	Zymomonas mobilis subsp. mobilis NCIMB 11163
+lca_star_test1_389	Enterobacteraceae	0.244	3	-0.013671875	Enterobacteraceae	0.244	3	-0.013671875	Gammaproteobacteria	5	-0.060546875	Yersinia pestis Pestoides F
+lca_star_test1_263	"Alphabacteria" Cavalier-Smith 1992	0.002	6	-0.0615234375	"Alphabacteria" Cavalier-Smith 1992	0.249	6	-0.0615234375	Proteobacteria	7	-0.1240234375	Zymomonas mobilis subsp. mobilis NCIMB 11163
+lca_star_test1_545	Corynebacterineae	0.086	3	-0.0068359375	Corynebacterineae	0.705	3	-0.0068359375	Bacteria	8	-0.2490234375	Mycobacterium sp. JLS
+lca_star_test1_544	Corynebacterineae	0.007	3	-0.0068359375	Mycobacterium	0.739	1	-0.0009765625	Actinomycetales	4	-0.0146484375	Mycobacterium sp. JLS
+lca_star_test1_547	Actinomycetales	0.477	4	-0.0146484375	Actinomycetales	0.477	4	-0.0146484375	Bacteria	8	-0.2490234375	Mycobacterium sp. JLS
+lca_star_test1_546	Corynebacterineae	0.05	3	-0.0068359375	Mycobacterium	0.477	1	-0.0009765625	Actinomycetales	4	-0.0146484375	Mycobacterium sp. JLS
+lca_star_test1_541	Corynebacterineae	0.086	3	-0.0068359375	Mycobacterium	0.249	1	-0.0009765625	Bacteria	8	-0.2490234375	Mycobacterium sp. JLS
+lca_star_test1_540	Corynebacterineae	0.05	3	-0.0068359375	Corynebacterineae	0.477	3	-0.0068359375	Actinomycetales	4	-0.0146484375	Mycobacterium sp. JLS
+lca_star_test1_543	Corynebacterineae	0.003	3	-0.0068359375	Mycobacterium	0.526	1	-0.0009765625	Bacteria	8	-0.2490234375	Mycobacterium sp. JLS
+lca_star_test1_542	Mycobacterium	0.086	1	-0.0009765625	Mycobacterium	0.086	1	-0.0009765625	Corynebacterineae	3	-0.0068359375	Mycobacterium sp. JLS
+lca_star_test1_549	Mycobacterium	0.05	1	-0.0009765625	Mycobacterium	0.05	1	-0.0009765625	Actinomycetales	4	-0.0146484375	Mycobacterium sp. JLS
+lca_star_test1_548	Corynebacterineae	0.526	3	-0.0068359375	Corynebacterineae	0.526	3	-0.0068359375	Corynebacterineae	3	-0.0068359375	Mycobacterium sp. JLS
+lca_star_test1_204	Clostridiaceae	0.249	3	-0.013671875	Clostridium	1.0	2	-0.005859375	Bacillus/Clostridium group	6	-0.123046875	Clostridium botulinum BKT015925
+lca_star_test1_587	ATCC 49767	0.148	1	-0.0009765625	ATCC 49767	0.148	1	-0.0009765625	Bacteria	8	-0.2490234375	Agrobacterium vitis S4
+lca_star_test1_169	ATCC 14579	0.313	3	-0.0048828125	ATCC 14579	0.313	3	-0.0048828125	Bacillaceae	4	-0.0146484375	Bacillus anthracis str. 'Ames Ancestor'
+lca_star_test1_168	Bacillaceae	0.004	4	-0.0146484375	Bacillaceae	0.654	4	-0.0146484375	Bacillaceae	4	-0.0146484375	Bacillus anthracis str. 'Ames Ancestor'
+lca_star_test1_200	Clostridiales	0.076	4	-0.029296875	"Bacillus botulinus" van Ermengem 1896	0.313	1	-0.001953125	Bacillus/Clostridium group	6	-0.123046875	Clostridium botulinum BKT015925
+lca_star_test1_163	Bacillus	0.086	3	-0.0068359375	Bacillus	0.086	3	-0.0068359375	Bacillales	5	-0.0302734375	Bacillus anthracis str. 'Ames Ancestor'
+lca_star_test1_162	Bacillus	0.088	3	-0.0068359375	Bacillus	0.306	3	-0.0068359375	Bacteria	8	-0.2490234375	Bacillus anthracis str. 'Ames Ancestor'
+lca_star_test1_161	Bacillus cereus group	0.526	2	-0.0029296875	ATCC 14579	0.739	3	-0.0048828125	Bacillales	5	-0.0302734375	Bacillus anthracis str. 'Ames Ancestor'
+lca_star_test1_568	"Azotobacter acida" (sic) Roy 1958	0.129	2	-0.0029296875	"Azotobacter acida" (sic) Roy 1958	0.129	2	-0.0029296875	Hyphomicrobiales	5	-0.0302734375	Beijerinckia indica subsp. indica ATCC 9039
+lca_star_test1_167	Bacillus	0.2	3	-0.0068359375	Bacillus cereus group	1.0	2	-0.0029296875	Bacillales	5	-0.0302734375	Bacillus anthracis str. 'Ames Ancestor'
+lca_star_test1_166	ATCC 14579	0.148	3	-0.0048828125	ATCC 14579	0.148	3	-0.0048828125	Bacillus	3	-0.0068359375	Bacillus anthracis str. 'Ames Ancestor'
+lca_star_test1_165	Bacillus cereus group	0.249	2	-0.0029296875	ATCC 14579	0.654	3	-0.0048828125	Bacillales	5	-0.0302734375	Bacillus anthracis str. 'Ames Ancestor'
+lca_star_test1_164	Bacillus cereus group	0.125	2	-0.0029296875	Bacillus cereus group	0.477	2	-0.0029296875	Bacillales	5	-0.0302734375	Bacillus anthracis str. 'Ames Ancestor'
+lca_star_test1_349	BCF group	0.05	6	-0.0615234375	BCF group	0.41	6	-0.0615234375	Bacteria	8	-0.2490234375	Cytophaga hutchinsonii ATCC 33406
+lca_star_test1_208	"Bacillus botulinus" van Ermengem 1896	0.705	1	-0.001953125	"Bacillus botulinus" van Ermengem 1896	0.705	1	-0.001953125	Clostridium	2	-0.005859375	Clostridium botulinum BKT015925
+lca_star_test1_710	Clostridium	0.249	2	-0.005859375	Clostridium	0.249	2	-0.005859375	Clostridiales	4	-0.029296875	Clostridium kluyveri DSM 555
+lca_star_test1_209	Bacillus/Clostridium group	0.0	6	-0.123046875	"Bacillus botulinus" van Ermengem 1896	0.705	1	-0.001953125	Bacillus/Clostridium group	6	-0.123046875	Clostridium botulinum BKT015925
+lca_star_test1_658	unclassified Alphaproteobacteria	0.086	4	-0.029296875	SAR 11 cluster	0.41	3	-0.013671875	Bacteria	7	-0.248046875	Candidatus Pelagibacter ubique HTCC1062
+lca_star_test1_152	Lactobacillus	0.024	2	-0.005859375	Lactobacillus	0.024	2	-0.005859375	Lactobacillales	4	-0.029296875	Lactobacillus crispatus ST1
+lca_star_test1_651	unclassified Alphaproteobacteria	0.148	4	-0.029296875	unclassified Alphaproteobacteria	0.41	4	-0.029296875	"Alphabacteria" Cavalier-Smith 1992	5	-0.060546875	Candidatus Pelagibacter ubique HTCC1062
+lca_star_test1_688	Bacillus	0.047	3	-0.0068359375	Bacillus	0.047	3	-0.0068359375	Bacteria	8	-0.2490234375	Bacillus atrophaeus 1942
+lca_star_test1_689	Bacillales	0.477	5	-0.0302734375	Bacillales	0.477	5	-0.0302734375	Bacillales	5	-0.0302734375	Bacillus atrophaeus 1942
+lca_star_test1_682	Bacillus	0.024	3	-0.0068359375	Bacillus	0.024	3	-0.0068359375	Bacteria	8	-0.2490234375	Bacillus atrophaeus 1942
+lca_star_test1_683	Bacillus	0.088	3	-0.0068359375	Bacillus	0.088	3	-0.0068359375	Bacillaceae	4	-0.0146484375	Bacillus atrophaeus 1942
+lca_star_test1_680	Bacillaceae	0.16	4	-0.0146484375	Bacillus	0.526	3	-0.0068359375	Bacillales	5	-0.0302734375	Bacillus atrophaeus 1942
+lca_star_test1_588	ATCC 49767	0.047	1	-0.0009765625	ATCC 49767	0.047	1	-0.0009765625	Proteobacteria	7	-0.1240234375	Agrobacterium vitis S4
+lca_star_test1_686	Bacillus	0.05	3	-0.0068359375	Bacillus	0.148	3	-0.0068359375	Bacteria	8	-0.2490234375	Bacillus atrophaeus 1942
+lca_star_test1_687	Bacillus	0.024	3	-0.0068359375	Bacillus	0.024	3	-0.0068359375	Bacillales	5	-0.0302734375	Bacillus atrophaeus 1942
+lca_star_test1_684	Bacillales	0.013	5	-0.0302734375	Bacillales	0.705	5	-0.0302734375	Bacteria	8	-0.2490234375	Bacillus atrophaeus 1942
+lca_star_test1_685	Bacillus subtilis group	0.16	2	-0.0029296875	Bacillus subtilis group	0.16	2	-0.0029296875	Bacillales	5	-0.0302734375	Bacillus atrophaeus 1942
+lca_star_test1_153	Lactobacillus	0.007	2	-0.005859375	Lactobacillus	0.477	2	-0.005859375	Bacilli	5	-0.060546875	Lactobacillus crispatus ST1
+lca_star_test1_29	BCF group	0.047	6	-0.0615234375	ATCC 27775	0.41	1	-0.0009765625	Bacteria	8	-0.2490234375	Haliscomenobacter hydrossis DSM 1100
+lca_star_test1_28	ATCC 27775	0.306	1	-0.0009765625	ATCC 27775	0.306	1	-0.0009765625	Bacteria	8	-0.2490234375	Haliscomenobacter hydrossis DSM 1100
+lca_star_test1_25	ATCC 27775	0.313	1	-0.0009765625	ATCC 27775	0.313	1	-0.0009765625	Bacteria	8	-0.2490234375	Haliscomenobacter hydrossis DSM 1100
+lca_star_test1_24	ATCC 27775	0.047	1	-0.0009765625	ATCC 27775	0.047	1	-0.0009765625	Bacteria	8	-0.2490234375	Haliscomenobacter hydrossis DSM 1100
+lca_star_test1_27	BCF group	0.2	6	-0.0615234375	ATCC 27775	0.477	1	-0.0009765625	Bacteria	8	-0.2490234375	Haliscomenobacter hydrossis DSM 1100
+lca_star_test1_738	Shewanella	0.125	2	-0.005859375	Shewanella	0.125	2	-0.005859375	Bacteria	7	-0.248046875	Shewanella halifaxensis HAW-EB4
+lca_star_test1_21	"Saprospiraceae" The Editorial Board BMSB 2nd Ed. V. 4 2011	0.249	3	-0.0068359375	ATCC 27775	0.41	1	-0.0009765625	Bacteria	8	-0.2490234375	Haliscomenobacter hydrossis DSM 1100
+lca_star_test1_899	"Alphabacteria" Cavalier-Smith 1992	0.41	6	-0.0615234375	"Alphabacteria" Cavalier-Smith 1992	1.0	6	-0.0615234375	Bacteria	8	-0.2490234375	Wolbachia endosymbiont strain TRS of Brugia malayi
+lca_star_test1_23	BCF group	0.007	6	-0.0615234375	BCF group	0.739	6	-0.0615234375	Bacteria	8	-0.2490234375	Haliscomenobacter hydrossis DSM 1100
+lca_star_test1_22	ATCC 27775	0.088	1	-0.0009765625	ATCC 27775	0.088	1	-0.0009765625	Bacteria	8	-0.2490234375	Haliscomenobacter hydrossis DSM 1100
+lca_star_test1_444	"Alphabacteria" Cavalier-Smith 1992	0.076	5	-0.060546875	Proteobacteria	1.0	6	-0.123046875	Bacteria	7	-0.248046875	Bradyrhizobium diazoefficiens USDA 110
+lca_star_test1_445	Hyphomicrobiales	0.125	4	-0.029296875	Agromonas	0.705	2	-0.005859375	Bacteria	7	-0.248046875	Bradyrhizobium diazoefficiens USDA 110
+lca_star_test1_446	Proteobacteria	0.0	6	-0.123046875	Proteobacteria	0.477	6	-0.123046875	Proteobacteria	6	-0.123046875	Bradyrhizobium diazoefficiens USDA 110
+lca_star_test1_898	"Alphabacteria" Cavalier-Smith 1992	0.306	6	-0.0615234375	Proteobacteria	1.0	7	-0.1240234375	Proteobacteria	7	-0.1240234375	Wolbachia endosymbiont strain TRS of Brugia malayi
+lca_star_test1_769	Bacillaceae	0.148	3	-0.013671875	Bacillaceae	0.654	3	-0.013671875	Monera	8	-0.498046875	Geobacillus thermoglucosidasius C56-YS93
+lca_star_test1_768	Bacilli	0.249	5	-0.060546875	Bacillales	0.654	4	-0.029296875	Bacteria	7	-0.248046875	Geobacillus thermoglucosidasius C56-YS93
+lca_star_test1_80	"Bacillus coli" Migula 1895	0.148	1	-0.001953125	"Bacillus coli" Migula 1895	0.148	1	-0.001953125	Enterobacteraceae	3	-0.013671875	Escherichia coli UTI89
+lca_star_test1_443	"Alphabacteria" Cavalier-Smith 1992	0.05	5	-0.060546875	'Bradyrhizobiaceae'	0.705	3	-0.013671875	Bacteria	7	-0.248046875	Bradyrhizobium diazoefficiens USDA 110
+lca_star_test1_765	Bacteria	0.477	7	-0.248046875	Monera	0.654	8	-0.498046875	Monera	8	-0.498046875	Geobacillus thermoglucosidasius C56-YS93
+lca_star_test1_764	Bacteria	0.477	7	-0.248046875	Monera	0.654	8	-0.498046875	Monera	8	-0.498046875	Geobacillus thermoglucosidasius C56-YS93
+lca_star_test1_767	Bacillaceae	0.05	3	-0.013671875	Bacillaceae	0.249	3	-0.013671875	Bacillales	4	-0.029296875	Geobacillus thermoglucosidasius C56-YS93
+lca_star_test1_766	Bacillales	0.05	4	-0.029296875	Bacillaceae	1.0	3	-0.013671875	Bacteria	7	-0.248046875	Geobacillus thermoglucosidasius C56-YS93
+lca_star_test1_761	Bacteria	0.249	7	-0.248046875	Bacteria	0.249	7	-0.248046875	Bacteria	7	-0.248046875	Geobacillus thermoglucosidasius C56-YS93
+lca_star_test1_760	Bacillales	0.024	4	-0.029296875	Bacillales	0.165	4	-0.029296875	Bacteria	7	-0.248046875	Geobacillus thermoglucosidasius C56-YS93
+lca_star_test1_763	Bacteria	0.249	7	-0.248046875	Bacteria	0.249	7	-0.248046875	Bacteria	7	-0.248046875	Geobacillus thermoglucosidasius C56-YS93
+lca_star_test1_762	Bacillales	0.313	4	-0.029296875	Bacteria	1.0	7	-0.248046875	Bacteria	7	-0.248046875	Geobacillus thermoglucosidasius C56-YS93
+lca_star_test1_26	ATCC 27775	0.086	1	-0.0009765625	ATCC 27775	0.086	1	-0.0009765625	BCF group	6	-0.0615234375	Haliscomenobacter hydrossis DSM 1100
+lca_star_test1_239	Gammaproteobacteria	0.05	5	-0.060546875	Gammaproteobacteria	0.05	5	-0.060546875	Bacteria	7	-0.248046875	Shewanella baltica OS195
+lca_star_test1_238	Shewanella	0.148	2	-0.005859375	CCUG 39356	0.249	1	-0.001953125	Gammaproteobacteria	5	-0.060546875	Shewanella baltica OS195
+lca_star_test1_20	BCF group	0.088	6	-0.0615234375	ATCC 27775	1.0	1	-0.0009765625	Bacteria	8	-0.2490234375	Haliscomenobacter hydrossis DSM 1100
+lca_star_test1_237	Shewanella	0.148	2	-0.005859375	CCUG 39356	0.249	1	-0.001953125	Gammaproteobacteria	5	-0.060546875	Shewanella baltica OS195
+lca_star_test1_236	Gammaproteobacteria	0.024	5	-0.060546875	Gammaproteobacteria	0.41	5	-0.060546875	Bacteria	7	-0.248046875	Shewanella baltica OS195
+lca_star_test1_151	Lactobacillus	0.024	2	-0.005859375	Lactobacillus	0.024	2	-0.005859375	Bacteria	7	-0.248046875	Lactobacillus crispatus ST1
+lca_star_test1_235	Gammaproteobacteria	0.007	5	-0.060546875	Gammaproteobacteria	0.007	5	-0.060546875	Bacteria	7	-0.248046875	Shewanella baltica OS195
+lca_star_test1_234	Gammaproteobacteria	0.008	5	-0.060546875	Gammaproteobacteria	0.56	5	-0.060546875	Gammaproteobacteria	5	-0.060546875	Shewanella baltica OS195
+lca_star_test1_233	Gammaproteobacteria	0.05	5	-0.060546875	Gammaproteobacteria	0.05	5	-0.060546875	Bacteria	7	-0.248046875	Shewanella baltica OS195
+lca_star_test1_232	Gammaproteobacteria	0.024	5	-0.060546875	Gammaproteobacteria	0.024	5	-0.060546875	Bacteria	7	-0.248046875	Shewanella baltica OS195
+lca_star_test1_611	Lactobacillales	0.148	5	-0.0302734375	Lactococcus	1.0	3	-0.0068359375	Bacteria	8	-0.2490234375	Lactococcus lactis subsp. lactis KF147
+lca_star_test1_610	Streptococcaceae	0.2	4	-0.0146484375	Streptococcaceae	0.705	4	-0.0146484375	Bacillus/Clostridium group	7	-0.1240234375	Lactococcus lactis subsp. lactis KF147
+lca_star_test1_613	Lactobacillales	0.0	5	-0.0302734375	Lactobacillales	0.739	5	-0.0302734375	Lactobacillales	5	-0.0302734375	Lactococcus lactis subsp. lactis KF147
+lca_star_test1_906	Hyphomicrobiales	0.477	5	-0.08984375	Hyphomicrobiales	0.705	5	-0.08984375	Proteobacteria	5	-0.12109375	Polymorphum gilvum SL003B-26A1
+lca_star_test1_901	Rhizobiaceae	0.086	6	-0.10546875	Rhizobiaceae	0.086	6	-0.10546875	Bacteria	6	-0.24609375	Polymorphum gilvum SL003B-26A1
+lca_star_test1_900	Proteobacteria	0.028	5	-0.12109375	"Alphabacteria" Cavalier-Smith 1992	1.0	4	-0.05859375	Bacteria	6	-0.24609375	Polymorphum gilvum SL003B-26A1
+lca_star_test1_617	Streptococcaceae	0.086	4	-0.0146484375	Streptococcaceae	0.41	4	-0.0146484375	Bacilli	6	-0.0615234375	Lactococcus lactis subsp. lactis KF147
+lca_star_test1_616	Lactobacillales	0.363	5	-0.0302734375	Lactobacillales	0.739	5	-0.0302734375	Bacilli	6	-0.0615234375	Lactococcus lactis subsp. lactis KF147
+lca_star_test1_619	Lactobacillales	0.013	5	-0.0302734375	Lactobacillales	0.654	5	-0.0302734375	Bacteria	8	-0.2490234375	Lactococcus lactis subsp. lactis KF147
+lca_star_test1_440	"Alphabacteria" Cavalier-Smith 1992	0.249	5	-0.060546875	"Alphabacteria" Cavalier-Smith 1992	0.249	5	-0.060546875	"Alphabacteria" Cavalier-Smith 1992	5	-0.060546875	Bradyrhizobium diazoefficiens USDA 110
+lca_star_test1_230	Gammaproteobacteria	0.05	5	-0.060546875	Gammaproteobacteria	0.249	5	-0.060546875	Bacteria	7	-0.248046875	Shewanella baltica OS195
+lca_star_test1_909	"Alphabacteria" Cavalier-Smith 1992	0.004	4	-0.05859375	"Alphabacteria" Cavalier-Smith 1992	1.0	4	-0.05859375	"Alphabacteria" Cavalier-Smith 1992	4	-0.05859375	Polymorphum gilvum SL003B-26A1
+lca_star_test1_908	Hyphomicrobiales	0.05	5	-0.08984375	Hyphomicrobiales	0.05	5	-0.08984375	Proteobacteria	5	-0.12109375	Polymorphum gilvum SL003B-26A1
+lca_star_test1_441	Bacteria	None	7	-0.248046875	Bacteria	None	7	-0.248046875	Bacteria	7	-0.248046875	Bradyrhizobium diazoefficiens USDA 110
+lca_star_test1_442	"Alphabacteria" Cavalier-Smith 1992	0.313	5	-0.060546875	"Alphabacteria" Cavalier-Smith 1992	0.313	5	-0.060546875	Proteobacteria	6	-0.123046875	Bradyrhizobium diazoefficiens USDA 110
+lca_star_test1_884	Bacillales	0.0	3	-0.02734375	Bacillales	0.526	3	-0.02734375	Bacillales	3	-0.02734375	Geobacillus sp. Y412MC61
+lca_star_test1_885	Bacillaceae	0.086	2	-0.01171875	Bacillaceae	0.086	2	-0.01171875	Bacillus/Clostridium group	5	-0.12109375	Geobacillus sp. Y412MC61
+lca_star_test1_341	BCF group	0.05	6	-0.0615234375	BCF group	0.05	6	-0.0615234375	Bacteria	8	-0.2490234375	Cytophaga hutchinsonii ATCC 33406
+lca_star_test1_887	Bacillaceae	0.047	2	-0.01171875	Bacillaceae	0.047	2	-0.01171875	Bacteria	6	-0.24609375	Geobacillus sp. Y412MC61
+lca_star_test1_347	BCF group	0.249	6	-0.0615234375	BCF group	0.249	6	-0.0615234375	Bacteria	8	-0.2490234375	Cytophaga hutchinsonii ATCC 33406
+lca_star_test1_346	ATCC 33406	0.041	1	-0.0009765625	ATCC 33406	0.041	1	-0.0009765625	ATCC 33406	1	-0.0009765625	Cytophaga hutchinsonii ATCC 33406
+lca_star_test1_345	BCF group	0.001	6	-0.0615234375	BCF group	0.41	6	-0.0615234375	BCF group	6	-0.0615234375	Cytophaga hutchinsonii ATCC 33406
+lca_star_test1_883	Bacillales	0.076	3	-0.02734375	Bacillales	1.0	3	-0.02734375	Bacteria	6	-0.24609375	Geobacillus sp. Y412MC61
+lca_star_test1_220	Monera	0.477	7	-0.49609375	Monera	0.477	7	-0.49609375	Monera	7	-0.49609375	Cenarchaeum symbiosum A
+lca_star_test1_221	"Aigarchaeota" Nunoura et al. 2011	0.05	5	-0.12109375	"Aigarchaeota" Nunoura et al. 2011	0.05	5	-0.12109375	Monera	7	-0.49609375	Cenarchaeum symbiosum A
+lca_star_test1_222	"Aigarchaeota" Nunoura et al. 2011	0.007	5	-0.12109375	"Aigarchaeota" Nunoura et al. 2011	0.739	5	-0.12109375	Monera	7	-0.49609375	Cenarchaeum symbiosum A
+lca_star_test1_348	BCF group	0.086	6	-0.0615234375	Bacteria	1.0	8	-0.2490234375	Bacteria	8	-0.2490234375	Cytophaga hutchinsonii ATCC 33406
+lca_star_test1_224	"Aigarchaeota" Nunoura et al. 2011	0.088	5	-0.12109375	"Cenarchaeum symbiosum" DeLong and Preston 1996	0.306	1	-0.00390625	Monera	7	-0.49609375	Cenarchaeum symbiosum A
+lca_star_test1_225	"Aigarchaeota" Nunoura et al. 2011	0.477	5	-0.12109375	"Aigarchaeota" Nunoura et al. 2011	0.705	5	-0.12109375	Monera	7	-0.49609375	Cenarchaeum symbiosum A
+lca_star_test1_226	Monera	None	7	-0.49609375	Monera	None	7	-0.49609375	Monera	7	-0.49609375	Cenarchaeum symbiosum A
+lca_star_test1_227	"Aigarchaeota" Nunoura et al. 2011	0.125	5	-0.12109375	"Aigarchaeota" Nunoura et al. 2011	0.477	5	-0.12109375	"Archaea" Woese et al. 1990	6	-0.24609375	Cenarchaeum symbiosum A
+lca_star_test1_839	Enterobacteraceae	0.313	2	-0.01171875	Enterobacteraceae	0.313	2	-0.01171875	Gammaproteobacteria	4	-0.05859375	Rahnella sp. Y9602
+lca_star_test1_838	Enterobacteraceae	0.086	2	-0.01171875	Enterobacteraceae	0.086	2	-0.01171875	Gammaproteobacteria	4	-0.05859375	Rahnella sp. Y9602
+lca_star_test1_831	Enterobacteraceae	0.047	2	-0.01171875	Enterobacteraceae	0.047	2	-0.01171875	Enterobacteraceae	2	-0.01171875	Rahnella sp. Y9602
+lca_star_test1_448	"Alphabacteria" Cavalier-Smith 1992	0.007	5	-0.060546875	"Alphabacteria" Cavalier-Smith 1992	0.007	5	-0.060546875	"Alphabacteria" Cavalier-Smith 1992	5	-0.060546875	Bradyrhizobium diazoefficiens USDA 110
+lca_star_test1_833	Enterobacteraceae	0.002	2	-0.01171875	Enterobacteraceae	0.002	2	-0.01171875	Enterobacteraceae	2	-0.01171875	Rahnella sp. Y9602
+lca_star_test1_832	Proteobacteria	0.007	5	-0.12109375	Proteobacteria	0.705	5	-0.12109375	Bacteria	6	-0.24609375	Rahnella sp. Y9602
+lca_star_test1_835	Enterobacteraceae	0.047	2	-0.01171875	Enterobacteraceae	1.0	2	-0.01171875	Proteobacteria	5	-0.12109375	Rahnella sp. Y9602
+lca_star_test1_834	Enterobacteraceae	0.007	2	-0.01171875	Enterobacteraceae	0.007	2	-0.01171875	Proteobacteria	5	-0.12109375	Rahnella sp. Y9602
+lca_star_test1_837	Enterobacteraceae	0.088	2	-0.01171875	Enterobacteraceae	0.088	2	-0.01171875	Proteobacteria	5	-0.12109375	Rahnella sp. Y9602
+lca_star_test1_449	"Alphabacteria" Cavalier-Smith 1992	0.013	5	-0.060546875	"Alphabacteria" Cavalier-Smith 1992	0.41	5	-0.060546875	Proteobacteria	6	-0.123046875	Bradyrhizobium diazoefficiens USDA 110
+lca_star_test1_805	"Microspironema" Stiles and Pfender 1905	0.0	3	-0.0068359375	"Microspironema" Stiles and Pfender 1905	0.0	3	-0.0068359375	"Microspironema" Stiles and Pfender 1905	3	-0.0068359375	Treponema pallidum subsp. pallidum str. Nichols
+lca_star_test1_776	"Asterococcus" Borrel et al. 1910	0.05	2	-0.005859375	"Asterococcus" Borrel et al. 1910	0.05	2	-0.005859375	"Asterococcus" Borrel et al. 1910	2	-0.005859375	Mycoplasma hominis ATCC 23114
+lca_star_test1_538	Bacteroidetes/Chlorobi group	0.313	8	-0.12451171875	"Chlorobiacea" (sic) Copeland 1956	1.0	4	-0.00732421875	Bacteria	9	-0.24951171875	Chlorobium phaeobacteroides DSM 266
+lca_star_test1_99	Flavobacteriaceae	0.088	2	-0.005859375	Flavobacteriaceae	0.654	2	-0.005859375	BCF group	5	-0.060546875	Krokinobacter sp. 4H-3-7-5
+lca_star_test1_94	Flavobacteriaceae	0.013	2	-0.005859375	Flavobacteriaceae	0.013	2	-0.005859375	Bacteria	7	-0.248046875	Krokinobacter sp. 4H-3-7-5
+lca_star_test1_95	Flavobacteriaceae	0.047	2	-0.005859375	Flavobacteriaceae	0.047	2	-0.005859375	BCF group	5	-0.060546875	Krokinobacter sp. 4H-3-7-5
+lca_star_test1_536	Bacteroidetes/Chlorobi group	0.563	8	-0.12451171875	Bacteria	0.249	9	-0.24951171875	Bacteria	9	-0.24951171875	Chlorobium phaeobacteroides DSM 266
+lca_star_test1_537	Bacteria	0.363	9	-0.24951171875	Bacteria	0.363	9	-0.24951171875	Bacteria	9	-0.24951171875	Chlorobium phaeobacteroides DSM 266
+lca_star_test1_530	"Chlorobiacea" (sic) Copeland 1956	0.165	4	-0.00732421875	"Chlorobiacea" (sic) Copeland 1956	0.306	4	-0.00732421875	Bacteria	9	-0.24951171875	Chlorobium phaeobacteroides DSM 266
+lca_star_test1_531	Chlorobium/Pelodictyon group	0.086	3	-0.00341796875	Chlorobium/Pelodictyon group	0.086	3	-0.00341796875	Bacteria	9	-0.24951171875	Chlorobium phaeobacteroides DSM 266
+lca_star_test1_532	Bacteria	0.001	9	-0.24951171875	Bacteria	1.0	9	-0.24951171875	Bacteria	9	-0.24951171875	Chlorobium phaeobacteroides DSM 266
+lca_star_test1_93	Flavobacteriaceae	0.148	2	-0.005859375	Flavobacteriaceae	0.148	2	-0.005859375	BCF group	5	-0.060546875	Krokinobacter sp. 4H-3-7-5
+lca_star_test1_127	Alicyclobacillus	0.05	3	-0.0068359375	Alicyclobacillus	0.477	3	-0.0068359375	Bacteria	8	-0.2490234375	Alicyclobacillus acidocaldarius subsp. acidocaldarius DSM 446
+lca_star_test1_126	Alicyclobacillus	0.007	3	-0.0068359375	Alicyclobacillus	0.007	3	-0.0068359375	Bacillus/Clostridium group	7	-0.1240234375	Alicyclobacillus acidocaldarius subsp. acidocaldarius DSM 446
+lca_star_test1_125	Alicyclobacillus	0.05	3	-0.0068359375	Alicyclobacillus	0.05	3	-0.0068359375	Bacteria	8	-0.2490234375	Alicyclobacillus acidocaldarius subsp. acidocaldarius DSM 446
+lca_star_test1_124	Alicyclobacillus	0.024	3	-0.0068359375	Alicyclobacillus	0.705	3	-0.0068359375	Bacillus/Clostridium group	7	-0.1240234375	Alicyclobacillus acidocaldarius subsp. acidocaldarius DSM 446
+lca_star_test1_123	Alicyclobacillus	0.088	3	-0.0068359375	Alicyclobacillus	0.088	3	-0.0068359375	Bacillales	5	-0.0302734375	Alicyclobacillus acidocaldarius subsp. acidocaldarius DSM 446
+lca_star_test1_122	Alicyclobacillus	0.028	3	-0.0068359375	Alicyclobacillus	0.028	3	-0.0068359375	Alicyclobacillus	3	-0.0068359375	Alicyclobacillus acidocaldarius subsp. acidocaldarius DSM 446
+lca_star_test1_121	Alicyclobacillus	0.007	3	-0.0068359375	Alicyclobacillus	0.739	3	-0.0068359375	Bacillus/Clostridium group	7	-0.1240234375	Alicyclobacillus acidocaldarius subsp. acidocaldarius DSM 446
+lca_star_test1_120	Alicyclobacillus	0.024	3	-0.0068359375	Alicyclobacillus	0.705	3	-0.0068359375	Bacillus/Clostridium group	7	-0.1240234375	Alicyclobacillus acidocaldarius subsp. acidocaldarius DSM 446
+lca_star_test1_803	"Microspironema" Stiles and Pfender 1905	0.007	3	-0.0068359375	"Microspironema" Stiles and Pfender 1905	0.007	3	-0.0068359375	Bacteria	8	-0.2490234375	Treponema pallidum subsp. pallidum str. Nichols
+lca_star_test1_129	Alicyclobacillus	0.249	3	-0.0068359375	Alicyclobacillus	0.249	3	-0.0068359375	Bacilli	6	-0.0615234375	Alicyclobacillus acidocaldarius subsp. acidocaldarius DSM 446
+lca_star_test1_128	Alicyclobacillus	0.003	3	-0.0068359375	Alicyclobacillus	1.0	3	-0.0068359375	Bacillus/Clostridium group	7	-0.1240234375	Alicyclobacillus acidocaldarius subsp. acidocaldarius DSM 446
+lca_star_test1_512	Mycobacterium	0.2	1	-0.0009765625	Mycobacterium	0.2	1	-0.0009765625	Corynebacterineae	3	-0.0068359375	Mycobacterium sp. JDM601
+lca_star_test1_513	Mycobacterium	0.2	1	-0.0009765625	Mycobacterium	0.2	1	-0.0009765625	Corynebacterineae	3	-0.0068359375	Mycobacterium sp. JDM601
+lca_star_test1_439	Acinetobacter	0.007	3	-0.0068359375	Acinetobacter	0.007	3	-0.0068359375	Bacteria	8	-0.2490234375	Acinetobacter baumannii ATCC 17978
+lca_star_test1_107	Bacillales	0.0	4	-0.029296875	"Aurococcus" Winslow and Rogers 1906	1.0	2	-0.005859375	Bacillales	4	-0.029296875	Staphylococcus epidermidis RP62A
+lca_star_test1_11	Brucellaceae	0.739	3	-0.013671875	Hyphomicrobiales	0.705	4	-0.029296875	Hyphomicrobiales	4	-0.029296875	Brucella suis 1330
+lca_star_test1_400	Proteobacteria	0.016	6	-0.123046875	"Alphabacteria" Cavalier-Smith 1992	0.739	5	-0.060546875	Bacteria	7	-0.248046875	Sphingobium japonicum UT26S
+lca_star_test1_401	"Alphabacteria" Cavalier-Smith 1992	0.563	5	-0.060546875	Bacteria	0.739	7	-0.248046875	Bacteria	7	-0.248046875	Sphingobium japonicum UT26S
+lca_star_test1_402	"Alphabacteria" Cavalier-Smith 1992	0.363	5	-0.060546875	"Alphabacteria" Cavalier-Smith 1992	0.526	5	-0.060546875	Bacteria	7	-0.248046875	Sphingobium japonicum UT26S
+lca_star_test1_403	"Alphabacteria" Cavalier-Smith 1992	0.05	5	-0.060546875	Sphingomonadaceae	0.249	3	-0.013671875	Bacteria	7	-0.248046875	Sphingobium japonicum UT26S
+lca_star_test1_156	Lactobacillus	0.047	2	-0.005859375	"Eubacterium crispatum" Brygoo and Aladame 1953	0.41	1	-0.001953125	Bacillus/Clostridium group	6	-0.123046875	Lactobacillus crispatus ST1
+lca_star_test1_405	"Alphabacteria" Cavalier-Smith 1992	0.2	5	-0.060546875	"Alphabacteria" Cavalier-Smith 1992	0.313	5	-0.060546875	Bacteria	7	-0.248046875	Sphingobium japonicum UT26S
+lca_star_test1_406	"Alphabacteria" Cavalier-Smith 1992	0.2	5	-0.060546875	"Alphabacteria" Cavalier-Smith 1992	0.477	5	-0.060546875	Bacteria	7	-0.248046875	Sphingobium japonicum UT26S
+lca_star_test1_155	Lactobacillus	0.41	2	-0.005859375	Lactobacillus	0.41	2	-0.005859375	Bacillus/Clostridium group	6	-0.123046875	Lactobacillus crispatus ST1
+lca_star_test1_408	"Alphabacteria" Cavalier-Smith 1992	0.313	5	-0.060546875	"Alphabacteria" Cavalier-Smith 1992	0.477	5	-0.060546875	Bacteria	7	-0.248046875	Sphingobium japonicum UT26S
+lca_star_test1_516	Mycobacterium	0.2	1	-0.0009765625	Mycobacterium	0.2	1	-0.0009765625	Bacteria	8	-0.2490234375	Mycobacterium sp. JDM601
+lca_star_test1_158	Lactobacillus	0.013	2	-0.005859375	Lactobacillus	0.013	2	-0.005859375	Lactobacillales	4	-0.029296875	Lactobacillus crispatus ST1
+lca_star_test1_13	Brucellaceae	0.028	3	-0.013671875	Brucella	0.739	2	-0.005859375	Hyphomicrobiales	4	-0.029296875	Brucella suis 1330
+lca_star_test1_100	Bacillales	0.41	4	-0.029296875	"Aurococcus" Winslow and Rogers 1906	0.654	2	-0.005859375	Bacillus/Clostridium group	6	-0.123046875	Staphylococcus epidermidis RP62A
+lca_star_test1_514	Corynebacterineae	0.002	3	-0.0068359375	Corynebacterineae	0.763	3	-0.0068359375	Bacteria	8	-0.2490234375	Mycobacterium sp. JDM601
+lca_star_test1_102	Bacillales	0.024	4	-0.029296875	Bacillales	0.705	4	-0.029296875	Bacilli	5	-0.060546875	Staphylococcus epidermidis RP62A
+lca_star_test1_534	Chlorobium phaeobacteroides	0.088	1	-0.00048828125	Chlorobium phaeobacteroides	0.088	1	-0.00048828125	Bacteria	9	-0.24951171875	Chlorobium phaeobacteroides DSM 266
+lca_star_test1_269	Sphingomonadaceae	0.148	4	-0.0146484375	"Achromobacter anaerobium" (sic) Shimwell 1937	1.0	2	-0.0029296875	Proteobacteria	7	-0.1240234375	Zymomonas mobilis subsp. mobilis NCIMB 11163
+lca_star_test1_459	Chromatiaceae	0.125	3	-0.013671875	Chromatiaceae	0.477	3	-0.013671875	Bacteria	7	-0.248046875	Allochromatium vinosum DSM 180
+lca_star_test1_431	Acinetobacter	0.013	3	-0.0068359375	Acinetobacter	0.013	3	-0.0068359375	Bacteria	8	-0.2490234375	Acinetobacter baumannii ATCC 17978
+lca_star_test1_19	Hyphomicrobiales	0.477	4	-0.029296875	Hyphomicrobiales	0.477	4	-0.029296875	Hyphomicrobiales	4	-0.029296875	Brucella suis 1330
+lca_star_test1_859	Borrelia	0.148	3	-0.0068359375	Borrelia	1.0	3	-0.0068359375	Bacteria	8	-0.2490234375	Borrelia garinii PBi
+lca_star_test1_447	Hyphomicrobiales	0.705	4	-0.029296875	Hyphomicrobiales	0.705	4	-0.029296875	Hyphomicrobiales	4	-0.029296875	Bradyrhizobium diazoefficiens USDA 110
+lca_star_test1_458	Chromatiaceae/Ectothiorhodospiraceae group	0.086	4	-0.029296875	"Bacillus vinosus" (Ehrenberg 1838) Trevisan 1889	1.0	1	-0.001953125	Bacteria	7	-0.248046875	Allochromatium vinosum DSM 180
+lca_star_test1_627	Thermoplasmales	0.002	4	-0.029296875	Thermoplasmales	0.002	4	-0.029296875	Monera	8	-0.498046875	Picrophilus torridus DSM 9790
+lca_star_test1_159	Lactobacillales	0.41	4	-0.029296875	Lactobacillus	0.654	2	-0.005859375	Bacillus/Clostridium group	6	-0.123046875	Lactobacillus crispatus ST1
+lca_star_test1_777	"Asterococcus" Borrel et al. 1910	0.148	2	-0.005859375	"Asterococcus" Borrel et al. 1910	0.249	2	-0.005859375	Bacteria	7	-0.248046875	Mycoplasma hominis ATCC 23114
+lca_star_test1_150	Lactobacillus	0.244	2	-0.005859375	Lactobacillus	0.244	2	-0.005859375	Bacillus/Clostridium group	6	-0.123046875	Lactobacillus crispatus ST1
+lca_star_test1_73	Halanaerobium	0.165	1	-0.00390625	Halanaerobium	0.165	1	-0.00390625	Monera	7	-0.49609375	Halanaerobium hydrogeniformans
+lca_star_test1_70	Bacillus/Clostridium group	0.086	5	-0.12109375	Bacillus/Clostridium group	0.086	5	-0.12109375	Bacteria	6	-0.24609375	Halanaerobium hydrogeniformans
+lca_star_test1_71	Bacillus/Clostridium group	0.148	5	-0.12109375	Bacillus/Clostridium group	0.148	5	-0.12109375	Monera	7	-0.49609375	Halanaerobium hydrogeniformans
+lca_star_test1_76	Halanaerobium	0.086	1	-0.00390625	"Halanaerobium hydrogeniformans" Brown et al. 2011	0.249	0	0	Monera	7	-0.49609375	Halanaerobium hydrogeniformans
+lca_star_test1_77	Bacillus/Clostridium group	0.05	5	-0.12109375	Halanaerobiales	0.654	3	-0.02734375	Monera	7	-0.49609375	Halanaerobium hydrogeniformans
+lca_star_test1_74	Bacillus/Clostridium group	0.363	5	-0.12109375	"Halanaerobium hydrogeniformans" Brown et al. 2011	0.739	0	0	Bacteria	6	-0.24609375	Halanaerobium hydrogeniformans
+lca_star_test1_75	Bacteria	0.148	6	-0.24609375	Bacteria	0.148	6	-0.24609375	Bacteria	6	-0.24609375	Halanaerobium hydrogeniformans
+lca_star_test1_78	Bacillus/Clostridium group	0.05	5	-0.12109375	Bacillus/Clostridium group	0.05	5	-0.12109375	Bacteria	6	-0.24609375	Halanaerobium hydrogeniformans
+lca_star_test1_79	Halanaerobiales	0.313	3	-0.02734375	Bacteria	0.654	6	-0.24609375	Bacteria	6	-0.24609375	Halanaerobium hydrogeniformans
+lca_star_test1_714	Clostridiales	0.477	4	-0.029296875	Bacillus/Clostridium group	0.654	6	-0.123046875	Bacillus/Clostridium group	6	-0.123046875	Clostridium kluyveri DSM 555
+lca_star_test1_715	Clostridiales	0.028	4	-0.029296875	Clostridium	0.705	2	-0.005859375	Monera	8	-0.498046875	Clostridium kluyveri DSM 555
+lca_star_test1_716	Clostridiales	0.148	4	-0.029296875	Clostridium	0.654	2	-0.005859375	Bacteria	7	-0.248046875	Clostridium kluyveri DSM 555
+lca_star_test1_717	Clostridium	0.2	2	-0.005859375	Clostridium	0.313	2	-0.005859375	Bacteria	7	-0.248046875	Clostridium kluyveri DSM 555
+lca_star_test1_659	"Candidatus Pelagibacter" Rappe et al. 2002	0.2	2	-0.005859375	"Candidatus Pelagibacter ubique" Rappe et al. 2002	0.313	1	-0.001953125	Bacteria	7	-0.248046875	Candidatus Pelagibacter ubique HTCC1062
+lca_star_test1_711	Clostridiales	0.05	4	-0.029296875	ATCC 8527	0.249	1	-0.001953125	Monera	8	-0.498046875	Clostridium kluyveri DSM 555
+lca_star_test1_712	Bacillus/Clostridium group	0.165	6	-0.123046875	Bacillus/Clostridium group	0.165	6	-0.123046875	Bacteria	7	-0.248046875	Clostridium kluyveri DSM 555
+lca_star_test1_713	Bacillus/Clostridium group	0.148	6	-0.123046875	Bacillus/Clostridium group	0.41	6	-0.123046875	Bacteria	7	-0.248046875	Clostridium kluyveri DSM 555
+lca_star_test1_655	unclassified Alphaproteobacteria	0.313	4	-0.029296875	unclassified Alphaproteobacteria	0.477	4	-0.029296875	Bacteria	7	-0.248046875	Candidatus Pelagibacter ubique HTCC1062
+lca_star_test1_654	unclassified Alphaproteobacteria	0.363	4	-0.029296875	"Alphabacteria" Cavalier-Smith 1992	0.705	5	-0.060546875	Bacteria	7	-0.248046875	Candidatus Pelagibacter ubique HTCC1062
+lca_star_test1_657	"Alphabacteria" Cavalier-Smith 1992	0.047	5	-0.060546875	"Alphabacteria" Cavalier-Smith 1992	0.047	5	-0.060546875	"Alphabacteria" Cavalier-Smith 1992	5	-0.060546875	Candidatus Pelagibacter ubique HTCC1062
+lca_star_test1_656	unclassified Alphaproteobacteria	0.249	4	-0.029296875	unclassified Alphaproteobacteria	0.249	4	-0.029296875	"Alphabacteria" Cavalier-Smith 1992	5	-0.060546875	Candidatus Pelagibacter ubique HTCC1062
+lca_star_test1_718	Clostridia	0.088	5	-0.060546875	Clostridia	0.56	5	-0.060546875	Bacteria	7	-0.248046875	Clostridium kluyveri DSM 555
+lca_star_test1_650	"Alphabacteria" Cavalier-Smith 1992	0.148	5	-0.060546875	"Alphabacteria" Cavalier-Smith 1992	0.148	5	-0.060546875	Bacteria	7	-0.248046875	Candidatus Pelagibacter ubique HTCC1062
+lca_star_test1_653	SAR 11 cluster	0.05	3	-0.013671875	SAR 11 cluster	0.148	3	-0.013671875	Bacteria	7	-0.248046875	Candidatus Pelagibacter ubique HTCC1062
+lca_star_test1_652	"Alphabacteria" Cavalier-Smith 1992	0.05	5	-0.060546875	"Alphabacteria" Cavalier-Smith 1992	1.0	5	-0.060546875	Bacteria	7	-0.248046875	Candidatus Pelagibacter ubique HTCC1062
+lca_star_test1_798	Bacteria	0.0	7	-0.248046875	Bacteria	0.477	7	-0.248046875	Bacteria	7	-0.248046875	Meiothermus silvanus DSM 9946
+lca_star_test1_309	"Asterococcus" Borrel et al. 1910	0.56	2	-0.005859375	"Asterococcus" Borrel et al. 1910	1.0	2	-0.005859375	Bacteria	7	-0.248046875	Mycoplasma fermentans M64
+lca_star_test1_308	"Asterococcus" Borrel et al. 1910	0.2	2	-0.005859375	"Asterococcus fermentans" (Edward 1955) Prevot 1961	0.477	1	-0.001953125	Bacteria	7	-0.248046875	Mycoplasma fermentans M64
+lca_star_test1_307	"Asterococcus fermentans" (Edward 1955) Prevot 1961	0.05	1	-0.001953125	"Asterococcus fermentans" (Edward 1955) Prevot 1961	0.05	1	-0.001953125	Bacteria	7	-0.248046875	Mycoplasma fermentans M64
+lca_star_test1_306	"Asterococcus fermentans" (Edward 1955) Prevot 1961	0.0	1	-0.001953125	"Asterococcus fermentans" (Edward 1955) Prevot 1961	0.0	1	-0.001953125	"Asterococcus fermentans" (Edward 1955) Prevot 1961	1	-0.001953125	Mycoplasma fermentans M64
+lca_star_test1_305	"Asterococcus" Borrel et al. 1910	0.088	2	-0.005859375	"Asterococcus" Borrel et al. 1910	0.654	2	-0.005859375	Bacteria	7	-0.248046875	Mycoplasma fermentans M64
+lca_star_test1_304	"Asterococcus" Borrel et al. 1910	0.41	2	-0.005859375	"Asterococcus" Borrel et al. 1910	0.41	2	-0.005859375	"Asterococcus" Borrel et al. 1910	2	-0.005859375	Mycoplasma fermentans M64
+lca_star_test1_303	"Asterococcus" Borrel et al. 1910	0.047	2	-0.005859375	"Asterococcus fermentans" (Edward 1955) Prevot 1961	1.0	1	-0.001953125	Bacteria	7	-0.248046875	Mycoplasma fermentans M64
+lca_star_test1_302	"Asterococcus fermentans" (Edward 1955) Prevot 1961	0.0	1	-0.001953125	"Asterococcus fermentans" (Edward 1955) Prevot 1961	0.0	1	-0.001953125	"Asterococcus" Borrel et al. 1910	2	-0.005859375	Mycoplasma fermentans M64
+lca_star_test1_301	"Asterococcus fermentans" (Edward 1955) Prevot 1961	0.003	1	-0.001953125	"Asterococcus fermentans" (Edward 1955) Prevot 1961	0.003	1	-0.001953125	"Asterococcus" Borrel et al. 1910	2	-0.005859375	Mycoplasma fermentans M64
+lca_star_test1_300	"Asterococcus" Borrel et al. 1910	0.41	2	-0.005859375	"Asterococcus fermentans" (Edward 1955) Prevot 1961	0.654	1	-0.001953125	Bacteria	7	-0.248046875	Mycoplasma fermentans M64
+lca_star_test1_488	Actinomycetales	0.249	5	-0.01513671875	Actinomycetales	1.0	5	-0.01513671875	Bacteria	9	-0.24951171875	Arthrobacter chlorophenolicus A6
+lca_star_test1_511	Mycobacterium	0.2	1	-0.0009765625	Mycobacterium	0.2	1	-0.0009765625	Corynebacterineae	3	-0.0068359375	Mycobacterium sp. JDM601
+lca_star_test1_489	Actinomycetales	0.0	5	-0.01513671875	Actinomycetales	0.763	5	-0.01513671875	Actinomycetales	5	-0.01513671875	Arthrobacter chlorophenolicus A6
+lca_star_test1_799	ATCC 700542	0.05	1	-0.001953125	ATCC 700542	0.05	1	-0.001953125	Bacteria	7	-0.248046875	Meiothermus silvanus DSM 9946
+lca_star_test1_875	Actinomycetales	0.001	4	-0.0146484375	Actinomycetales	0.148	4	-0.0146484375	Bacteria	8	-0.2490234375	Nocardioides sp. JS614
+lca_star_test1_874	Nocardioidaceae	0.477	2	-0.0029296875	Nocardioides sp. JS614	1.0	0	0	Actinomycetales	4	-0.0146484375	Nocardioides sp. JS614
+lca_star_test1_877	Actinomycetales	0.148	4	-0.0146484375	Actinomycetales	0.148	4	-0.0146484375	Bacteria	8	-0.2490234375	Nocardioides sp. JS614
+lca_star_test1_876	'Actinobacteria'	0.477	7	-0.1240234375	Nocardioides sp. JS614	1.0	0	0	Bacteria	8	-0.2490234375	Nocardioides sp. JS614
+lca_star_test1_871	Actinomycetales	0.002	4	-0.0146484375	Actinomycetales	0.002	4	-0.0146484375	Bacteria	8	-0.2490234375	Nocardioides sp. JS614
+lca_star_test1_870	Nocardioides sp. JS614	0.313	0	0	Nocardioides sp. JS614	0.313	0	0	Bacteria	8	-0.2490234375	Nocardioides sp. JS614
+lca_star_test1_873	Actinomycetales	0.024	4	-0.0146484375	Actinomycetales	0.024	4	-0.0146484375	Bacteria	8	-0.2490234375	Nocardioides sp. JS614
+lca_star_test1_872	Actinomycetales	0.763	4	-0.0146484375	Bacteria	0.739	8	-0.2490234375	Bacteria	8	-0.2490234375	Nocardioides sp. JS614
+lca_star_test1_879	Nocardioides sp. JS614	0.024	0	0	Nocardioides sp. JS614	0.024	0	0	Monera	9	-0.4990234375	Nocardioides sp. JS614
+lca_star_test1_878	Actinomycetales	0.003	4	-0.0146484375	Actinomycetales	0.41	4	-0.0146484375	Actinobacteridae	5	-0.0302734375	Nocardioides sp. JS614
