@@ -316,22 +316,42 @@ g3a
 
 Treating the whole thing as a regression problem we have the following global averages.
 
-```{r}
+```{r fig.width=5.49, fig.height=4.43}
+rmse <- function(x) {
+  sqrt(mean(x^2, na.rm = T))
+}
+
 res <- select(all_df.m, Method, Sample, variable, value) %>%
        filter(variable %in% c("Walk", "WTD")) %>%
        group_by(Method, Sample, variable) %>%
-       summarize(n_obs = n(), RMSE = mean(abs(value), na.rm=TRUE))
+       summarize(n_obs = n(), RMSE = rmse(value), na.rm=TRUE)
 g4 <- ggplot(res, aes(y=RMSE, x =Method, fill=Method)) 
-g4 <- g4 + geom_bar(stat="identity") 
+g4 <- g4 + geom_bar(stat="identity") alpha=0.7) 
 g4 <- g4 + facet_grid(variable~Sample, scales="free_y")
 g4 <- g4 + theme(legend.position="none")
 g4
-pdf(file = "pdfs/fig4.pdf", width = 7, height=7)
+pdf(file = "pdfs/fig4.pdf", width = 5.49, height=4.43)
 g4
 dev.off()
 ```
 
 **Figure 4:** RMSE Values for our prediction errors in the simple Walk and WTD.
+
+```{r fig.width=5.39, fig.height=3.42}
+g5 <- ggplot(subset(geba_df.m, variable == "p-value" & Method %in% c("Majority", "LCAStar")), aes(x=value, fill=Method)) 
+g5 <- g5 + geom_density(adjust=5, alpha=alpha_val)
+g5 <- g5 + facet_wrap(~ Method)
+g5 <- g5 + xlab("p-value")
+g5 <- g5 + ylab("Density")
+g5 <- g5 + scale_fill_manual(values=c("#1BB840", "#649EFC"))
+g5 <- g5 + theme(legend.position="none")
+pdf(file = "pdfs/fig5.pdf", width = 5.39, height=5.39)
+g5
+dev.off()
+```
+
+**Figure 5:** p-value distribution of the Majority and LCA* predictions.
+
 
 ```{r include=FALSE}
 g8 <- ggplot(subset(geba_df.m, variable == "Walk"), aes(x=value, fill=Method))
