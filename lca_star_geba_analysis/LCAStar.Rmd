@@ -158,7 +158,9 @@ all_df$Sample <- factor(all_df$Sample, levels=c("Small", "Large", "GEBA"))
 ```{r fig.width=10.2, fig.height=3.65}
 # p-value compare
 g1 <- ggplot(all_df, aes(x=LCAStar_p, y=Majority_p)) 
-g1 <- g1 + geom_point(aes(color=Sample), alpha=0.4)
+g1 <- g1 + geom_point(data = subset(all_df, LCAStar_p > Majority_p), color="#1BB840")
+g1 <- g1 + geom_point(data = subset(all_df, LCAStar_p < Majority_p), color="#649EFC")
+g1 <- g1 + geom_point(data = subset(all_df, LCAStar_p == Majority_p), color="darkgrey")
 g1 <- g1 + xlim(0,1)
 g1 <- g1 + ylim(0,1)
 g1 <- g1 + xlab("p-value (LCA*)")
@@ -321,14 +323,64 @@ rmse <- function(x) {
   sqrt(mean(x^2, na.rm = T))
 }
 
+ci <- function(x, sig=0.05) {
+  
+  x <- x[!is.na(x)] # remove NA
+  x <- x^2 # squre
+  N <- length(x)
+  x_sd <- sd(x, na.rm=TRUE)
+  
+  x_se <- x_sd / sqrt(N)
+  x_se <- sqrt(x_se)
+  ciMult <- qt((1-sig)/2 + .5, N-1)
+  x_ci <- x_se * ciMult
+  x_ci
+}
+summarySE <- function(data=NULL, measurevar, groupvars=NULL, na.rm=FALSE,
+                      conf.interval=.95, .drop=TRUE) {
+    require(plyr)
+
+    # New version of length which can handle NA's: if na.rm==T, don't count them
+    length2 <- function (x, na.rm=FALSE) {
+        if (na.rm) sum(!is.na(x))
+        else       length(x)
+    }
+
+    # This does the summary. For each group's data frame, return a vector with
+    # N, mean, and sd
+    datac <- ddply(data, groupvars, .drop=.drop,
+      .fun = function(xx, col) {
+        c(N    = length2(xx[[col]], na.rm=na.rm),
+          mean = mean   (xx[[col]], na.rm=na.rm),
+          sd   = sd     (xx[[col]], na.rm=na.rm)
+        )
+      },
+      measurevar
+    )
+
+    # Rename the "mean" column    
+    datac <- rename(datac, c("mean" = measurevar))
+
+    datac$se <- datac$sd / sqrt(datac$N)  # Calculate standard error of the mean
+
+    # Confidence interval multiplier for standard error
+    # Calculate t-statistic for confidence interval: 
+    # e.g., if conf.interval is .95, use .975 (above/below), and use df=N-1
+    ciMult <- qt(conf.interval/2 + .5, datac$N-1)
+    datac$ci <- datac$se * ciMult
+
+    return(datac)
+}
+
 res <- select(all_df.m, Method, Sample, variable, value) %>%
        filter(variable %in% c("Walk", "WTD")) %>%
        group_by(Method, Sample, variable) %>%
-       summarize(n_obs = n(), RMSE = rmse(value), na.rm=TRUE)
+       summarize(n_obs = n(), RMSE = rmse(value), sd=sd(value, na.rm=TRUE),ci=ci(value, sig=0.05), na.rm=TRUE)
 g4 <- ggplot(res, aes(y=RMSE, x =Method, fill=Method)) 
-g4 <- g4 + geom_bar(stat="identity") alpha=0.7) 
+g4 <- g4 + geom_bar(stat="identity", alpha=0.7) 
 g4 <- g4 + facet_grid(variable~Sample, scales="free_y")
 g4 <- g4 + theme(legend.position="none")
+g4 <- g4 + geom_errorbar(aes(ymin=RMSE-ci, ymax=RMSE+ci), width=.1)
 g4
 pdf(file = "pdfs/fig4.pdf", width = 5.49, height=4.43)
 g4
@@ -337,15 +389,26 @@ dev.off()
 
 **Figure 4:** RMSE Values for our prediction errors in the simple Walk and WTD.
 
-```{r fig.width=5.39, fig.height=3.42}
-g5 <- ggplot(subset(geba_df.m, variable == "p-value" & Method %in% c("Majority", "LCAStar")), aes(x=value, fill=Method)) 
+```{r fig.width=7.309, fig.height=5.33}
+means <- select(all_df.m, Method, Sample, variable, value) %>%
+  filter(variable== "p-value" & Method %in% c("Majority", "LCAStar")) %>%
+  group_by(Method, Sample, variable) %>%
+  summarize(mean=mean(value, na.rm = T),
+            percent_25 = quantile(value, probs = 0.25, na.rm = T),
+            median = quantile(value, probs=0.5, na.rm = T),
+            percent_75 = quantile(value, probs = 0.75, na.rm = T))
+
+g5 <- ggplot(subset(all_df.m, variable == "p-value" & Method %in% c("Majority", "LCAStar")), aes(x=value, fill=Method)) 
 g5 <- g5 + geom_density(adjust=5, alpha=alpha_val)
-g5 <- g5 + facet_wrap(~ Method)
+g5 <- g5 + facet_grid(Method~Sample)
 g5 <- g5 + xlab("p-value")
 g5 <- g5 + ylab("Density")
+g5 <- g5 + geom_vline(aes(xintercept=median), colour=my_line_col, linetype="dashed", size=line_size, alpha=alpha_val, means)
+g5 <- g5 + geom_vline(aes(xintercept=mean), colour=my_line_col, size=line_size, alpha=alpha_val, means)
 g5 <- g5 + scale_fill_manual(values=c("#1BB840", "#649EFC"))
 g5 <- g5 + theme(legend.position="none")
-pdf(file = "pdfs/fig5.pdf", width = 5.39, height=5.39)
+g5
+pdf(file = "pdfs/fig5.pdf", width = 8.77, height=6.897)
 g5
 dev.off()
 ```
