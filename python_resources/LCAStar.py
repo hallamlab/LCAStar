@@ -45,6 +45,8 @@ class LCAStar(object):
 
         # initialize class variables
         self.begin_pattern = re.compile("#")
+        
+        # Stanard NCBI Tree parameters
         self.name_to_id = {} # a readable taxon name to ncbi id
         self.id_to_name = {} # a readable taxon ncbi taxid to name
         self.taxid_to_ptaxid = {} # this is the tree structure in a id to parent map, you can traverse it to go to the root
@@ -64,12 +66,12 @@ class LCAStar(object):
         self.lca_min_score = 50   # an LCA parameter for min score for a hit to be considered
         self.lca_top_percent = 10    # an LCA param to confine the hits to within the top hits score upto the top_percent%
         self.lca_min_support = 5   # a minimum number of reads in the sample to consider a taxon to be present
-
+        self.results_dictionary = None
+        
+        # LCAStar parameters
         self.lca_star_min_reads = 10
         self.lca_star_min_depth = 3
-        self.lca_star_alpha = 0.53
-
-        self.results_dictionary = None
+        self.lca_star_alpha = 0.51
         self.chi_squared_cdf = None
 
         taxonomy_file = open(filename, 'r')
@@ -82,8 +84,10 @@ class LCAStar(object):
             fields =  [ str(x.strip())  for x in line.rstrip().split('\t')]
             if len(fields) !=3:
                 continue
-            self.name_to_id[fields[0]] = fields[1]
-            self.id_to_name[fields[1]] = fields[0]
+            if fields[0] not in self.name_to_id:
+                self.name_to_id[fields[0]] = fields[1]
+            if fields[1] not in self.id_to_name:
+                self.id_to_name[fields[1]] = fields[0]
             # the taxid to ptax map has for each taxid a corresponding 3-tuple
             # the first location is the pid, the second is used as a counter for
             # lca while a search is traversed up the tree and the third is used for
@@ -99,9 +103,6 @@ class LCAStar(object):
                     sys.exit(0)
 
                 self.ptaxid_to_taxid[fields[2]][fields[1]] = False
-
-
-
 
     def setParameters(self, min_score, top_percent, min_support):
        self.lca_min_score = min_score
@@ -133,7 +134,6 @@ class LCAStar(object):
            return None
        return self.id_to_name[id]
 
-
     # given a name it returns the parents name
     def getParentName(self, name):
        if not name in  self.name_to_id:  
@@ -142,13 +142,11 @@ class LCAStar(object):
        pid = self.getParentTaxId(id)
        return self.translateIdToName( pid )
 
-
     # given a ncbi tax id returns the parents tax id
     def getParentTaxId(self, ID):
        if not ID in self.taxid_to_ptaxid:
           return None
        return self.taxid_to_ptaxid[ID][0]
-
 
     #   given a set of ids it returns the lowest common ancenstor 
     #   without caring about min support
@@ -159,17 +157,23 @@ class LCAStar(object):
     #   note that at the node where all the of the individual ids ( limit in number)
     #   converges the counter matches the limit for the first time, while climbing up. 
     #   This also this enables us to make the selection of id arbitrary 
-    def get_lca(self, IDs):
+    def get_lca(self, IDs, return_id=False):
         limit = len(IDs)
         for id in IDs:
            tid = id 
            while( tid in self.taxid_to_ptaxid and tid !='1' ):
                self.taxid_to_ptaxid[tid][1]+=1
                if self.taxid_to_ptaxid[tid][1]==limit:
-                  return  self.id_to_name[tid]  
+                  if return_id:
+                      return tid
+                  else:
+                      return  self.id_to_name[tid]  
                tid = self.taxid_to_ptaxid[tid][0]
-
-        return "root"
+        
+        if return_id:
+            return '1'
+        else:
+            return "root"
 
     def update_taxon_support_count(self, taxonomy):
          id = self.get_a_Valid_ID( [taxonomy ])
@@ -201,22 +205,20 @@ class LCAStar(object):
                tid = self.taxid_to_ptaxid[tid][0]
         return ""
 
-
     # given a set of sets of names it computes an lca 
     # in the format [ [name1, name2], [name3, name4,....namex] ...]
     # here name1 and name2 are synonyms and so are name3 through namex
-    def getTaxonomy(self, name_groups):
+    def getTaxonomy(self, name_groups, return_id=False):
          IDs = []
          for name_group in name_groups:
             id = self.get_a_Valid_ID(name_group)
             if id!=-1:
               IDs.append(id)
     
-         consensus = self.get_lca(IDs)
+         consensus = self.get_lca(IDs, return_id)
          self.clear_cells(IDs)
          return consensus
     
-
     # given an ID gets the lineage
     def get_lineage(self, id):
            tid = id
@@ -300,7 +302,6 @@ class LCAStar(object):
          taxonomy = self.getTaxonomy(species)
          meganTaxonomy = self.get_supported_taxon( taxonomy)
          return meganTaxonomy
- 
 
     # this is use to compute the min support for each taxon in the tree
     # this is called before the  getMeganTaxonomy
@@ -349,7 +350,7 @@ class LCAStar(object):
         return depth
 
     def filter_taxa_list(self, taxalist):
-        #filter baed on depth 
+        # filter based on depth 
         newlist = []
         for taxon in taxalist:
             depth  = self.taxon_depth(taxon)
@@ -379,9 +380,8 @@ class LCAStar(object):
            Total +=1
         return read_counts, Total
          
-        # find the taxon with the highest count but also has count higher than the 
-        # majority threshold
- 
+    # find the taxon with the highest count but also has count higher than the 
+    # majority threshold
     def lca_majority(self, taxalist):
         taxalist = self.filter_taxa_list(taxalist)
 
@@ -398,7 +398,6 @@ class LCAStar(object):
         
 
     def __lca_majority(self, taxalist):
-
         # create the read counts
         read_counts, Total = self.__read_counts(taxalist)
          
@@ -502,6 +501,7 @@ class LCAStar(object):
                 for child in C:
                     if self.ptaxid_to_taxid[id][child]:
                         Stack.append(child)
+        
         return candidate[0]
 
     def __clear_lca_star_data_structure(self):
@@ -577,7 +577,7 @@ class LCAStar(object):
         new_data_dist = map(self.translateIdToName, map(str, new_taxa_dist_ids) )
         return new_data_dist
 
-    def lca_star(self, taxalist, p_value=False):
+    def lca_star(self, taxalist, return_id=False):
         # filter taxa dist by depth
         taxalist = self.filter_taxa_list(taxalist)
         
@@ -591,9 +591,8 @@ class LCAStar(object):
            return (majority, str(p_val))
         
         read_counts, Total = self.__read_counts(taxalist)
-#        for key, value in read_counts.iteritems():
-#           print key + ' ' + str(value) 
-
+        
+        ## Calculate LCA Star
         self.__annotate_tree_counts(read_counts)
         self.__color_tree(read_counts)
         result_id = self.__create_majority('1', read_counts)
@@ -602,6 +601,8 @@ class LCAStar(object):
         result_taxon = self.translateIdToName( str( result_id ) )
         p_val = self.calculate_pvalue(collapsed_taxa_list, result_taxon)
         self.__decolor_tree()
+        if return_id:
+            return (result_id, str(p_val))
         return (result_taxon, str(p_val))
 
     # Chi-squared with one degree of freedom
@@ -644,8 +645,8 @@ class LCAStar(object):
             T = 2 * (first + second)
             return round(1 - self.chi_squared(T),3)
 
-    # Calculate the most common taxa in a given list
-    def simple_majority(self, L):
+    # Returns the simple majority taxa: calculate the most common taxa in a given list
+    def simple_majority(self, L, return_id=False):
         if len(L) == 0:
             return "root"
         # get an iterable of (item, iterable) pairs
@@ -663,4 +664,7 @@ class LCAStar(object):
             # print 'item %r, count %r, minind %r' % (item, count, min_index)
             return count, -min_index
         # pick the highest-count/earliest item
-        return max(groups, key=_auxfun)[0]
+        majority = max(groups, key=_auxfun)[0]
+        if return_id:
+            majority = self.get_a_Valid_ID([majority])
+        return majority
