@@ -1,0 +1,3 @@
+# Run some regression tests
+
+python Compute_LCAStar.py -i /Users/nielshanson/Dropbox/projects/LCAStar_data/lca_star_test/metapathways_out/lca_star_test1/blast_results/lca_star_test1.refseq.lastout.parsed.txt -m /Users/nielshanson/Dropbox/projects/LCAStar_data/lca_star_test/metapathways_out/lca_star_test1/preprocessed/lca_star_test1.mapping.txt --ncbi_tree /Users/nielshanson/Dropbox/projects/LCAStar/resources/ncbi_taxonomy_tree.txt --ncbi_megan_map /Users/nielshanson/Dropbox/projects/LCAStar/resources/ncbi.map -a -v --contig_taxa_ref /Users/nielshanson/Dropbox/projects/LCAStar_data/lca_star_test/resources/lca_star_test1_contigmap.txt 

@@ -84,8 +84,8 @@ class LCAStar(object):
             fields =  [ str(x.strip())  for x in line.rstrip().split('\t')]
             if len(fields) !=3:
                 continue
-            if fields[0] not in self.name_to_id:
-                self.name_to_id[fields[0]] = fields[1]
+
+            self.name_to_id[fields[0]] = fields[1]
             if fields[1] not in self.id_to_name:
                 self.id_to_name[fields[1]] = fields[0]
             # the taxid to ptax map has for each taxid a corresponding 3-tuple
@@ -588,6 +588,8 @@ class LCAStar(object):
         
         if majority != None:
            p_val = self.calculate_pvalue(taxalist, majority)
+           if return_id:
+               majority = self.translateNameToID(majority)
            return (majority, str(p_val))
         
         read_counts, Total = self.__read_counts(taxalist)
