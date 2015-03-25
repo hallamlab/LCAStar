@@ -45,3 +45,9 @@ lca_star_test2*
 .Rapp.history
 .Rhistory
 .idea/
+
+# data
+data
+LCAStar_data
+lca_star_data
+.Rproj.user

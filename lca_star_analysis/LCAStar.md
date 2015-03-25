@@ -1,30 +1,36 @@
----
-title: "LCA Star Methods"
-author: "Niels W. Hanson"
-date: "Friday, November 28, 2014"
-output:
-   html_document: 
-      toc: true
-      theme: readable
-      highlight: default
-csl: ieee.csl
-bibliography: LCAStar.bib
----
+# LCA Star Methods
+Niels W. Hanson  
+Friday, November 28, 2014  
 
-```{r global_options, include=FALSE}
-require(knitr)
-opts_chunk$set(warning=FALSE, message=FALSE, dev = 'pdf')
+
+
+# Preample
+
+* load required R packages
+
+
+```r
+require(ggplot2)
+require(reshape2)
+require(dplyr)
+theme_set(theme_bw()) # set theme and font
 ```
 
-## Overview 
+# Overview
 
-Two simulated metagenomes were created using 10,000bp contigs, randomly sampled from a collection of 2713 genomes obtained from the NCBI(Downloaded March 15 2014 <ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/>) using the python script `subsample_ncbi.py`. The first simulation is a smaller sample of 100 genomes, sampling 10 random reads from each genome. The second simulation is larger, sampling a random subset of 2,000 genomes, sampling 10 random reads from each. Each simulation had its ORFs predicted and annotated against the RefSeq database using the MetaPathways pipeline [[@Konwar:2013cw, @Hanson2014]]. The original source of each contig was predicted from the taxonomic annotations ascribed to each LCA-predicted ORF using three different methods: $LCA^2$, $Simple Majority$, and our information-theoretic $LCA*$. $LCA^2$ simply applies the LCA algorithm again to the set of contig taxonomies. The $Simple Majority$ method ascribes the taxonomy of the contig to the taxonomy that has the greatest majority. Our $LCA*$ method applies the information-theoetic result and algorithm previously described with a majority theshold set to the default majority ($\alpha=0.5$).
+This document summarizes the analysis performed in "LCA*: an entropy-based measure for taxonomic assignment within assembled metagenomes" describing the use of the simulation the Small and Large metagenomes from a coolection of genomes downloaded from the NCBI, the running of the MetaPathways pipeline  [[@Konwar:2013cw], [@Hanson2014]], use of the `LCAStar.py` python module for the calculation of the LCAStar, Simple Majority, LCA^2 taxonomic estimation methods. 
 
-We evaluated the performance of these predictions using two taxonomic distances on the NCBI taxonomy tree. First a simple walk on the NCBI Taxonomy Hierarchy from the observed predicted taxonomy to the original expected taxonomy. The second is a weighted taxonomic distance that weightes each edge proportional to $\frac{1}{d}$ where $d$ is the depth of the edge in the tree. See Hanson *et al.* (2014) for more details. The NCBI Taxonomy Hierarchy was modified with the additional *prokaryotes* node as a parent of *Bacteria* and *Archaea* nodes.
+Each simulation had its ORFs predicted and annotated against the RefSeq database using the MetaPathways pipeline. The original source of each contig was predicted from the taxonomic annotations ascribed to each LCA-predicted ORF using three different methods: $LCA^2$, $Simple Majority$, and our information-theoretic LCAStar. LCA^2 simply applies the LCA algorithm again to the set of ORF taxonomies. The $Simple Majority$ method ascribes the taxonomy of the contig to the taxonomy that has the greatest majority. Our $LCA*$ method applies the information-theoetic result and algorithm previously described with a majority theshold set to the default majority ($\alpha=0.5$).
 
-### Obtaining NCBI Genomes
+We evaluated the performance of these predictions using two taxonomic distances on the NCBI taxonomy tree. First a simple walk on the NCBI Taxonomy Hierarchy from the observed predicted taxonomy to the original expected taxonomy. The second is a weighted taxonomic distance that weightes each edge proportional to $\frac{1}{d}$ where $d$ is the depth of the edge in the tree (see [[@Hanson2014]]) for more details. The NCBI Taxonomy Hierarchy was modified with the additional *prokaryotes* node as a parent of *Bacteria* and *Archaea* nodes.
 
-* Downloaded `all.fna.tar.gz` and `summary.txt` from the NCBI's ftp server:ftp://ftp.ncbi.nlm.nih.gov/genomes/ Mar 12, 2014
+# Simulation
+
+Two simulated metagenomes were created, Small Large, using 10,000bp contigs, randomly sampled from a collection of 2713 genomes obtained from the NCBI (Downloaded March 15 2014 <ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/>) using the python script `subsample_ncbi.py`. The first simulation, Small, is a smaller sample of 100 genomes, sampling 10 random reads from each genome. The second simulation, Large, samples a random subset of 2,000 genomes, sampling 10 random reads from each genome.
+
+## Obtaining NCBI Genomes
+
+* Downloaded `all.fna.tar.gz` and `summary.txt` from the NCBI's ftp server: <ftp://ftp.ncbi.nlm.nih.gov/genomes/> Mar 12, 2014
 * `summary.txt` contains some metadata for a number of these genomes:
 
 ```
@@ -32,14 +38,12 @@ Accession  GenbankAcc  Length	Taxid	ProjectID	TaxName	Replicon	Create Date	Updat
 NC_000907.1	L42023.1	1830138	71421	57771	Haemophilus influenzae Rd KW20	chromosome 	Oct 19 2001	Sep 11 2013  4:30:20:076PM
 ```
 
-* this kind of information would be useful for an analysis so I cross referenced all the Accession IDs with the actual `.fna` files that I had in `all.fna.tar.gz` with the following shell command:
-
 ```
 cat summary.txt  | awk '{print $1}' > u
 for s in `cat u`; do var1=`find . -name *${s%.[0-9]}*`; echo $s$'\t'$var1 >> ncbiID_to_file; done
 ```
 
-* it turns out that this is a fairly comprehensive list 25 genomes were dropped because they were not found in the MetaData
+* `summary.txt` is a fairly comprehensive list, but 25 genomes were dropped because they were not found in the `summary.txt` metadata file
 
 ```
 grep --perl-regexp "\t$" ncbiID_to_file | wc
@@ -71,80 +75,69 @@ NC_015557.1
 NC_015587.1
 ```
 
-* this leaves us with 2617 genomes with annotation of 2642, storing these in `ncbiID_to_file.txt`
+* this leaves a total of 2617 genomes in `ncbiID_to_file.txt`, which maps the NCBI IDs to the .fna file location
 
 ```
-grep --perl-regexp ".*fna" ncbiID_to_file2 | wc
+grep --perl-regexp ".*fna" ncbiID_to_file | wc
     2617    5234  197129
-wc ncbiID_to_file2
-    2642    5259  197453 ncbiID_to_file2
-grep --perl-regexp ".*fna" ncbiID_to_file2 > ncbiID_to_file.txt
+wc ncbiID_to_file
+    2642    5259  197453 ncbiID_to_file
+grep --perl-regexp ".*fna" ncbiID_to_file > ncbiID_to_file.txt
 ```
 
-### Creating Simulated Metagenomes
+## Simulation
 
-Wrote my own script `subsample_ncbi.py` quickly sample from a collection of fasta files specified in our `ncbiID_to_file.txt` that we created above.
+Wrote my own script `subsample_ncbi.py` to quickly sample from a collection of fasta files specified in our `ncbiID_to_file.txt` that we created above. We use this to compute the `test1` or Small and `test2` or Larger simulated metagenomes.
 
-The following example creates sub-sequences of length 10,000, sampling 10 sequences per file on a random subset of 100 (the random number generator is seeded so that results can be reproducible)
+### Small simulation
 
-```
-python subsample_ncbi.py -i ncbiID_to_file.txt -l 10000 -s 10 -n 100 -o lca_star_test1.fna
-```
-
-* lca_star_test1.fna is going to be our first test, we ran it through MetaPathways with the standard settings:
+Here we create the `test1` or Small simulation as it is referred to in the text. This script creates sub-sequences of length 10,000, sampling 10 sequences per file on a random subset of 100 (the random number generator is seeded so that results can be reproducible)
 
 ```
-Run Date : 2014-03-15 
-Nucleotide Quality Control parameters
-  min length  180
-ORF prediction parameters
-  min length	60
-  algorithm	prodigal
-Amino acid quality control and annotation parameters
-  min bit score	20
-  min seq length	60
-  annotation reference dbs	RefSeq_complete_nr_v62_dec2013
-  min BSR	0.4
-  max evalue	0.000001
-Pathway Tools parameters
-  taxonomic pruning 	no
-rRNA search/match parameters
-  min identity	20
-  max evalue	0.000001
-  rRNA reference dbs	GREENGENES_gg16S-2013-09-12
+python subsample_ncbi.py -i ncbiID_to_file.txt -l 10000 -s 10 -n 100 -o lca_star_test1.fasta
 ```
 
-#### Second test
+Creating our Small simulated contigs file: `lca_star_test1.fasta`
+
+### Large simulation
 
 For a second test we sampled sequences of 10,000 bps using 10 subsamples from 2000 randomly selected genomes. Here, did the same procedure except with significantly more samples.
 
 ```
-python ../../subsample_ncbi.py -i ../ncbiID_to_file.txt -o lca_test2.fasta -l 10000 -s 10 -n 2000
+python subsample_ncbi.py -i ncbiID_to_file.txt -o lca_test2.fasta -l 10000 -s 10 -n 2000
 ```
 
-### Simulations and GEBA SAGs
+Creating our Large simulated contigs file: `lca_star_test1.fasta`
 
-* Load required libraries
+# GEBA SAGs
 
-```{r}
-library(ggplot2)
-library(reshape2)
-library(dplyr)
-theme_set(theme_bw()) # set theme and font
-```
+The 201 Single-cell amplified genome (SAG) microbial dark matter assembies were obtained from <https://img.jgi.doe.gov> under the Study Name `GEBA-MDM` [[@Rinke]]. Combined assemblies were excluded from this analysis.
 
-* read and merge the three datasets
+# MetaPathways Annotation
 
-```{r}
-setwd("~/Dropbox/projects/LCAStar/lca_star_geba_analysis")
+The Small, Large, and 201 MDM SAG assemblies were annotated against the RefSeq v62 via MetaPathways v2.0 pipeline [REF] using standard quality control settings and the LAST homology search algorithm [REF].
+
+The outputs of these runs can be found in:
+
+
+# Running LCAStar
+
+
+
+# Analysis of LCAStar Results
+
+* Read and merge the three datasets
+
+
+```r
 colClasses <- c("character", "character", "numeric", "numeric", "numeric",
                 "character", "numeric", "numeric", "numeric", 
                 "character", "numeric", "numeric", "character" )
-geba_df <- read.table("GEBA_SAG_all_lcastar.txt", sep="\t", header=T, na.strings = "None", 
-                      colClasses = colClasses, strip.white=TRUE, quote="")
 test1_df <- read.table("test1_lcastar.txt", sep="\t", header=T, na.strings = "None", 
                       colClasses = colClasses, strip.white=TRUE, quote="")
 test2_df <- read.table("test2_lcastar.txt", sep="\t", header=T, na.strings = "None", 
+                      colClasses = colClasses, strip.white=TRUE, quote="")
+geba_df <- read.table("GEBA_SAG_all_lcastar.txt", sep="\t", header=T, na.strings = "None", 
                       colClasses = colClasses, strip.white=TRUE, quote="")
 
 all_df <- rbind(cbind(geba_df, Sample="GEBA"),cbind(test1_df, Sample="Small"),cbind(test2_df, Sample="Large"))
@@ -154,7 +147,8 @@ all_df$Sample <- factor(all_df$Sample, levels=c("Small", "Large", "GEBA"))
 
 * compare p-value calculations between the Majority and LCA* methods
 
-```{r fig.width=10.2, fig.height=3.65}
+
+```r
 # p-value compare
 g1 <- ggplot(all_df, aes(x=LCAStar_p, y=Majority_p)) 
 g1 <- g1 + geom_point(data = subset(all_df, LCAStar_p > Majority_p), color="#1BB840")
@@ -167,9 +161,19 @@ g1 <- g1 + ylab("p-value (Majority)")
 g1 <- g1 + facet_wrap(~ Sample)
 g1 <- g1 + theme(legend.position="none")
 g1
+```
+
+![](LCAStar_files/figure-html/unnamed-chunk-3-1.png) 
+
+```r
 pdf(file = "pdfs/fig1.pdf", width = 10.2, height=3.65)
 g1
 dev.off()
+```
+
+```
+## quartz_off_screen 
+##                 2
 ```
 
 **Figure 1:** Comparing p-values of taxonomic voting statistics Majority and LCA*.
@@ -185,7 +189,8 @@ Notes:
 
 Function to format and reshape data for ggplot:
 
-```{r}
+
+```r
 clean_up_data2 <- function(df) {
   new_df <-rbind(cbind(df$Contig, df$LCAStar, "LCAStar", df$Original, df$LCAStar_p, df$LCAStar_dist, df$LCAStar_WTD),
            cbind(df$Contig, df$Majority, "Majority", df$Original, df$Majority_p, df$Majority_dist, df$Majority_WTD),
@@ -199,7 +204,8 @@ clean_up_data2 <- function(df) {
 }
 ```
 
-```{r}
+
+```r
 # reshape data into ggplot form
 test1_df.m <- clean_up_data2(test1_df)
 test1_df.m<- cbind(test1_df.m, Sample="Small")
@@ -213,7 +219,8 @@ all_df.m <- rbind(test1_df.m, test2_df.m, geba_df.m)
 
 * plot the distribution of distances between predictions and taxonomic origin
 
-```{r fig.height=7, fig.width=7}
+
+```r
 # plotting parameters
 my_line_col = "#4C4C4C"
 line_size = 1.2
@@ -237,9 +244,19 @@ g2 <- g2 + geom_vline(aes(xintercept=median), colour=my_line_col, linetype="dash
 g2 <- g2 + xlab("Simple-walk Distance")
 g2 <- g2 + ylab("Density")
 g2
+```
+
+![](LCAStar_files/figure-html/unnamed-chunk-6-1.png) 
+
+```r
 pdf(file = "pdfs/fig2.pdf", width = 7, height=7)
 g2
 dev.off()
+```
+
+```
+## quartz_off_screen 
+##                 2
 ```
 
 **Figure 2:** Distribution of simple-walk distances of taxonomic predictions to contig origin: LCASquared, Majority, LCA*. Kernel densities for error distances from each of the three prediction methods on the two simluated and GEBA datasets.
@@ -253,24 +270,12 @@ Notes:
    * medians are identical in all samples, better measure in slightly skewed distribution
 * Simple-walk distance is a crude measure of taxonomic distance
 
-```{r include=FALSE}
-# original histograms
-g2a <- ggplot(subset(all_df.m, variable == "Walk"), aes(x=value, fill=Method))
-g2a <- g2a + geom_histogram(binwidth=2, alpha=alpha_val) 
-# g2a <- g2a + geom_density(adjust=6, alpha=0.8) 
-g2a <- g2a + facet_grid(Method ~ Sample, scales = "free")
-g2a <- g2a + theme(legend.position="none")
-#g2a <- g2a + geom_vline(aes(xintercept=percent_25), colour=my_line_col, size=1.5, alpha=0.5, means)
-#g2a <- g2a + geom_vline(aes(xintercept=median), colour=my_line_col, size=1.5, alpha=0.5, means)
-#g2a <- g2a + geom_vline(aes(xintercept=percent_75), colour=my_line_col, size=1.5, alpha=0.5, means)
-g2a <- g2a + xlab("Simple Distance")
-g2a <- g2a + ylab("Frequency")
-g2a
-```
+
 
 Same thing again, expect using the weighted taxonomic distance.
 
-```{r fig.height=7, fig.width=7}
+
+```r
 means <- select(all_df.m, Method, Sample, variable, value) %>%
   group_by(Method, Sample, variable) %>%
   filter(variable== "WTD") %>%
@@ -288,9 +293,19 @@ g3 <- g3 + geom_vline(aes(xintercept=median), colour=my_line_col, linetype="dash
 g3 <- g3 + xlab("Weighted Taxonomic Distance")
 g3 <- g3 + ylab("Density")
 g3
+```
+
+![](LCAStar_files/figure-html/unnamed-chunk-8-1.png) 
+
+```r
 pdf(file = "pdfs/fig3.pdf", width = 7, height=7)
 g3
 dev.off()
+```
+
+```
+## quartz_off_screen 
+##                 2
 ```
 
 **Figure 3:** Distribution of WTD distances of taxonomic predictions to contig origin: LCASquared, Majority, LCA*. Kernel densities for error distances from each of the three prediction methods on the two simluated and GEBA datasets.
@@ -303,21 +318,13 @@ Notes:
 * Voting based methods have essentially identical median and average
     * Majority in GEBA sample has slightly shorter tail
 
-```{r include=FALSE}
-g3a <- ggplot(subset(all_df.m, variable == "WTD"), aes(x=value, fill=Method))
-g3a <- g3a + geom_histogram(binwidth=0.1, alpha=alpha_val) 
-g3a <- g3a + facet_grid(Method ~Sample, scales = "free_y")
-g3a <- g3a + theme(legend.position="none")
-g3a <- g3a + geom_vline(aes(xintercept=mean), colour=my_line_col, size=line_size, alpha=alpha_val, means)
-g3a <- g3a + geom_vline(aes(xintercept=median), colour=my_line_col, linetype="dashed", size=line_size, alpha=alpha_val, means)
-g3a <- g3a + xlab("Weighted Taxonomic Distance")
-g3a <- g3a + ylab("Frequency")
-g3a
-```
+
 
 Treating the whole thing as a regression problem we have the following global averages.
 
-```{r fig.width=5.49, fig.height=4.43}
+
+```r
+# function for RMSE
 rmse <- function(x) {
   sqrt(mean(x^2, na.rm = T))
 }
@@ -335,6 +342,8 @@ ci <- function(x, sig=0.05) {
   x_ci <- x_se * ciMult
   x_ci
 }
+
+# function to compute standard errors
 summarySE <- function(data=NULL, measurevar, groupvars=NULL, na.rm=FALSE,
                       conf.interval=.95, .drop=TRUE) {
     require(plyr)
@@ -381,14 +390,25 @@ g4 <- g4 + facet_grid(variable~Sample, scales="free_y")
 g4 <- g4 + theme(legend.position="none")
 g4 <- g4 + geom_errorbar(aes(ymin=RMSE-ci, ymax=RMSE+ci), width=.1)
 g4
+```
+
+![](LCAStar_files/figure-html/unnamed-chunk-10-1.png) 
+
+```r
 pdf(file = "pdfs/fig4.pdf", width = 5.49, height=4.43)
 g4
 dev.off()
 ```
 
+```
+## quartz_off_screen 
+##                 2
+```
+
 **Figure 4:** RMSE Values for our prediction errors in the simple Walk and WTD.
 
-```{r fig.width=7.309, fig.height=5.33}
+
+```r
 means <- select(all_df.m, Method, Sample, variable, value) %>%
   filter(variable== "p-value" & Method %in% c("Majority", "LCAStar")) %>%
   group_by(Method, Sample, variable) %>%
@@ -407,50 +427,24 @@ g5 <- g5 + geom_vline(aes(xintercept=mean), colour=my_line_col, size=line_size, 
 g5 <- g5 + scale_fill_manual(values=c("#1BB840", "#649EFC"))
 g5 <- g5 + theme(legend.position="none")
 g5
+```
+
+![](LCAStar_files/figure-html/unnamed-chunk-11-1.png) 
+
+```r
 pdf(file = "pdfs/fig5.pdf", width = 8.77, height=6.897)
 g5
 dev.off()
 ```
 
+```
+## quartz_off_screen 
+##                 2
+```
+
 **Figure 5:** p-value distribution of the Majority and LCA* predictions.
 
 
-```{r include=FALSE}
-g8 <- ggplot(subset(geba_df.m, variable == "Walk"), aes(x=value, fill=Method))
-g8 <- g8 + geom_histogram(binwidth=2, alpha=0.8) 
-g8 <- g8 + facet_wrap( ~ Method, ncol = 1)
-g8 <- g8 + theme(legend.position="none")
-g8 <- g8 + xlim(0,15)
-g8 <- g8 + xlab("Value")
-g8 <- g8 + ylab("Frequency")
-g8
-
-g9 <-ggplot(subset(geba_df.m, variable == "WTD"), aes(x=value, fill=Method))
-g9 <- g9 + geom_histogram(binwidth=0.1, alpha=0.8) 
-g9 <- g9 + facet_wrap( ~ Method, ncol = 1)
-g9 <- g9 + theme(legend.position="none")
-g9 <- g9 + xlim(-1.5,0)
-g9 <- g9 + xlab("Value")
-g9 <- g9 + ylab("Frequency")
-g9
-
-# g11 <-ggplot(subset(geba_df.m, variable %in% c("WTD", "Walk")), aes(x=Method, y=value, fill=Method))
-# g11 <- g11 + geom_violin(alpha=0.6)
-# g11 <- g11 + scale_y_log10()
-# g11 <- g11 + coord_flip()
-# g11 <- g11 + facet_wrap( ~ variable)
-# g11
-geba_df.m$Taxonomy <- as.vector(geba_df.m$Taxonomy)
-geba_df.m$Original<- as.vector(geba_df.m$Original)
-res <- select(geba_df.m, Method, Taxonomy, Original) %>%
-       group_by(Method) %>%
-       summarize(n_obs = n(), accuracy = sum(Taxonomy == Original)/ length(Taxonomy))
-
-g12 <- ggplot(res, aes(x=Method, y=accuracy, fill=Method)) 
-g12 <- g12 + geom_bar(stat="identity", alpha=0.8)
-g12 <- g12 + theme(legend.position="none")
-g12
-```
 
 ## References
 

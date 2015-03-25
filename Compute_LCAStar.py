@@ -377,7 +377,7 @@ def main(argv):
                     if taxa_hits:
                         taxa = taxa_hits.group(1)
                         bitscore = fields[3]
-                        contig_to_taxa[contig][orf].append( (taxa, int(bitscore)) )
+                        contig_to_taxa[contig][orf].append( (taxa, float(str(bitscore))) )
                     else:
                         continue
                 else:

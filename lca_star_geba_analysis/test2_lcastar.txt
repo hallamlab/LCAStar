@@ -1,1 +1,0 @@
-Contig	LCAStar	LCAStar_p	LCAStar_dist	LCAStar_WTD	Majority	Majority_p	Majority_dist	Majority_WTD	LCASquared	LCASquared_dist	LCASquared_WTD	Original
