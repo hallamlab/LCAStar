@@ -1,6 +1,6 @@
 ---
-title: "LCA Star Methods"
-author: "Niels W. Hanson"
+title: "LCA Star Supplementary Code"
+author: "Niels W. Hanson, Kishori M. Konwar, Steven J. Hallam"
 date: "Friday, November 28, 2014"
 output:
   html_document:
@@ -19,26 +19,31 @@ opts_chunk$set(warning=FALSE, message=FALSE)
 
 # Preample
 
-* load required R packages
+* Load required R packages
 
 ```{r}
 require(ggplot2)
 require(reshape2)
 require(dplyr)
-theme_set(theme_bw()) # set theme and font
+```
+
+* Set plotting theme
+
+```{r}
+theme_set(theme_bw())
 ```
 
 # Overview
 
-This document summarizes the analysis performed in "LCA*: an entropy-based measure for taxonomic assignment within assembled metagenomes" describing the use of the simulation the Small and Large metagenomes from a coolection of genomes downloaded from the NCBI, the running of the MetaPathways pipeline  [[@Konwar:2013cw], [@Hanson2014]], use of the `LCAStar.py` python module for the calculation of the LCAStar, Simple Majority, LCA^2 taxonomic estimation methods. 
+This document summarizes the analysis performed in "LCA*: an entropy-based measure for taxonomic assignment within assembled metagenomes" describing the use of the simulation the Small and Large metagenomes from a coolection of genomes downloaded from the NCBI, the running of the MetaPathways pipeline [[@Konwar:2013cw], [@Hanson2014]], use of the `LCAStar.py` Python script for the calculation of the $LCAStar$, $Simple Majority$, $LCA^2$ taxonomic estimation methods. 
 
-Each simulation had its ORFs predicted and annotated against the RefSeq database using the MetaPathways pipeline. The original source of each contig was predicted from the taxonomic annotations ascribed to each LCA-predicted ORF using three different methods: $LCA^2$, $Simple Majority$, and our information-theoretic LCAStar. LCA^2 simply applies the LCA algorithm again to the set of ORF taxonomies. The $Simple Majority$ method ascribes the taxonomy of the contig to the taxonomy that has the greatest majority. Our $LCA*$ method applies the information-theoetic result and algorithm previously described with a majority theshold set to the default majority ($\alpha=0.5$).
+Each simulation was run through the MetaPathways v2.0 pipeline [[@Hanson2014]], having its ORFs predicted and annotated against the RefSeq database using standard settings (Version 62, BSR=0.4, E-value=1e-5, Bit-score=20) [[@Pruitt:2007fi]]. Taxonomy for each ORF was annotated using the Lowest Common Ancestor (LCA) (or Best-BLAST in the GEBA SAGs), and contig taxonomy was predicted from these taxonomic three different methods: $LCA^2$, $Simple Majority$, and our information-theoretic $LCAStar$. $LCA^2$ simply applies the LCA method again to the set of taxonomic ORF annotations on a contig. $Simple Majority$ ascribes the taxonomy of the contig to the taxonomy that has the greatest number of annotations. Our $LCA*$ method applies the information-theoetic result and algorithm previously described with a majority theshold set to the default majority ($\alpha=0.51$).
 
-We evaluated the performance of these predictions using two taxonomic distances on the NCBI taxonomy tree. First a simple walk on the NCBI Taxonomy Hierarchy from the observed predicted taxonomy to the original expected taxonomy. The second is a weighted taxonomic distance that weightes each edge proportional to $\frac{1}{d}$ where $d$ is the depth of the edge in the tree (see [[@Hanson2014]]) for more details. The NCBI Taxonomy Hierarchy was modified with the additional *prokaryotes* node as a parent of *Bacteria* and *Archaea* nodes.
+We evaluated the performance of these predictions using two taxonomic distances on the NCBI taxonomic database hierarchy (NCBI Tree) [[@Federhen:2012jx]]. The first is a Simple Walk of the the NCBI Tree from the observed predicted taxonomy to the original expected taxonomy. The second is a weighted taxonomic distance (WTD) that weightes each edge proportional to $\frac{1}{d}$ where $d$ is the depth of the edge in the tree (see [[@Hanson:2014bz], [@Konwar:2015vh]]) for more details. The NCBI Tree was slightly modified with the addition of a *prokaryotes* node as a parent of *Bacteria* and *Archaea* nodes.
 
-# Simulation
+# Simulations
 
-Two simulated metagenomes were created, Small Large, using 10,000bp contigs, randomly sampled from a collection of 2713 genomes obtained from the NCBI (Downloaded March 15 2014 <ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/>) using the python script `subsample_ncbi.py`. The first simulation, Small, is a smaller sample of 100 genomes, sampling 10 random reads from each genome. The second simulation, Large, samples a random subset of 2,000 genomes, sampling 10 random reads from each genome.
+Two simulated metagenomes were created, Small and Large, using 10,000bp contigs randomly sampled from a collection of 2617 genomes obtained from the NCBI (Downloaded March 15 2014 <ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/>) using the python script [subsample_ncbi.py](). The first simulation, Small, is a smaller sample of 100 genomes, sampling 10 random reads from each genome. The second simulation, Large, samples a random subset of 2,000 genomes, sampling 10 random reads from each genome.
 
 ## Obtaining NCBI Genomes
 
@@ -113,13 +118,13 @@ Creating our Small simulated contigs file: `lca_star_test1.fasta`
 
 ### Large simulation
 
-For a second test we sampled sequences of 10,000 bps using 10 subsamples from 2000 randomly selected genomes. Here, did the same procedure except with significantly more samples.
+For a second test we sampled sequences of 10,000 bps using 10 subsamples from 2,000 randomly selected genomes. Here, did the same procedure except with significantly more samples.
 
 ```
 python subsample_ncbi.py -i ncbiID_to_file.txt -o lca_test2.fasta -l 10000 -s 10 -n 2000
 ```
 
-Creating our Large simulated contigs file: `lca_star_test1.fasta`
+Creating our Large simulated contigs file: `lca_star_test2.fasta`
 
 # GEBA SAGs
 
@@ -127,15 +132,26 @@ The 201 Single-cell amplified genome (SAG) microbial dark matter assembies were 
 
 # MetaPathways Annotation
 
-The Small, Large, and 201 MDM SAG assemblies were annotated against the RefSeq v62 via MetaPathways v2.0 pipeline [REF] using standard quality control settings and the LAST homology-search algorithm [[@Kieibasa:2011do]].
+The Small, Large, and 201 MDM SAG assemblies were annotated against the RefSeq v62 via MetaPathways v2.0 pipeline [[@Hanson2014]] using standard quality control settings and the LAST homology-search algorithm [[@Kieibasa:2011do]].
 
-The outputs of these runs can be found in:
+* In the MetaPathways base directory:
 
-* [lca_star_data/lca_star_simulations/](lca_star_data/lca_star_simulations/): F
+```
+source MetaPathwaysrc 
+python MetaPathways.py -i lca_star_data/mp_data/lca_star_simulations/mp_in/lca_star_test1.fasta -o lca_star_data/mp_data/lca_star_simulations/mp_out/ -p lca_star_data/mp_data/lca_star_simulations/mp_in/lca_star_test1_param.txt -v
+python MetaPathways.py -i lca_star_data/mp_data/lca_star_simulations/mp_in/lca_star_test2.fasta -o lca_star_data/mp_data/lca_star_simulations/mp_out/ -p lca_star_data/mp_data/lca_star_simulations/mp_in/lca_star_test2_param.txt -v 
+python MetaPathways.py -i lca_star_data/mp_data/mdm_sag_assemblies/mp_in/ -o lca_star_data/mp_data/mdm_sag_assemblies/mp_out/ -p lca_star_data/mp_data/mdm_sag_assemblies/mp_in/GEBA_param.txt -v 
+```
 
 # Running LCAStar
 
+The script [run_lca_star_analysis.sh](run_lca_star_analysis.sh) starts the analysis (base paths may need to be updated)
 
+The outputs of these runs can be found in [lca_star_data/](lca_star_data/):
+
+* [test1_lcastar.txt](lca_star_data/test1_lcastar.txt): LCAStar output for the Small simulation
+* [test2_lcastar.txt](lca_star_data/test2_lcastar.txt): LCAStar output for the Large simulation
+* [GEBA_SAG_all_lcastar.txt](lca_star_data/GEBA_SAG_all_lcastar.txt): LCAStar output for the 201 GEBA SAGs
 
 # Analysis of LCAStar Results
 
@@ -145,16 +161,16 @@ The outputs of these runs can be found in:
 colClasses <- c("character", "character", "numeric", "numeric", "numeric",
                 "character", "numeric", "numeric", "numeric", 
                 "character", "numeric", "numeric", "character" )
-test1_df <- read.table("test1_lcastar.txt", sep="\t", header=T, na.strings = "None", 
+test1_df <- read.table("lca_star_results/test1_lcastar.txt", sep="\t", header=T, na.strings = "None", 
                       colClasses = colClasses, strip.white=TRUE, quote="")
-test2_df <- read.table("test2_lcastar.txt", sep="\t", header=T, na.strings = "None", 
+test2_df <- read.table("lca_star_results/test2_lcastar.txt", sep="\t", header=T, na.strings = "None", 
                       colClasses = colClasses, strip.white=TRUE, quote="")
-geba_df <- read.table("GEBA_SAG_all_lcastar.txt", sep="\t", header=T, na.strings = "None", 
+geba_df <- read.table("lca_star_results/GEBA_SAG_all_lcastar.txt", sep="\t", header=T, na.strings = "None", 
                       colClasses = colClasses, strip.white=TRUE, quote="")
 
-all_df <- rbind(cbind(geba_df, Sample="GEBA"),cbind(test1_df, Sample="Small"),cbind(test2_df, Sample="Large"))
+all_df <- rbind(cbind(geba_df, Sample="GEBA MDM"),cbind(test1_df, Sample="Small"),cbind(test2_df, Sample="Large"))
 
-all_df$Sample <- factor(all_df$Sample, levels=c("Small", "Large", "GEBA"))
+all_df$Sample <- factor(all_df$Sample, levels=c("Small", "Large", "GEBA MDM"))
 ```
 
 * compare p-value calculations between the Majority and LCA* methods
@@ -211,7 +227,7 @@ test1_df.m<- cbind(test1_df.m, Sample="Small")
 test2_df.m <- clean_up_data2(test2_df)
 test2_df.m <- cbind(test2_df.m, Sample="Large")
 geba_df.m <- clean_up_data2(geba_df)
-geba_df.m <- cbind(geba_df.m, Sample="GEBA")
+geba_df.m <- cbind(geba_df.m, Sample="GEBA MDM")
 
 all_df.m <- rbind(test1_df.m, test2_df.m, geba_df.m)
 ```
@@ -422,7 +438,7 @@ dev.off()
 
 **Figure 5:** p-value distribution of the Majority and LCA* predictions.
 
-```{r include=FALSE}
+```{r include=FALSE, eval=FALSE}
 g8 <- ggplot(subset(geba_df.m, variable == "Walk"), aes(x=value, fill=Method))
 g8 <- g8 + geom_histogram(binwidth=2, alpha=0.8) 
 g8 <- g8 + facet_wrap( ~ Method, ncol = 1)

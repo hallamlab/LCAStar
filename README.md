@@ -10,3 +10,32 @@ A perennial problem in the analyses of large meta'omic datasets is the taxonomic
 ## Installation
 
 LCA\* is released as as Python library, requiring Python 2.6 or greater. More installation and useage information can be found on the wiki.
+
+## Contents
+
+* [Compute_LCAStar.py](Compute_LCAStar.py): Driver script for running LCAStar.py
+
+    * Usage: 
+    
+    ```
+    python Compute_LCAStar.py -i blast_results/refseq.*.parsed.txt \
+                              -m preprocessed/*.mapping.txt \
+                              --ncbi_tree resources/ncbi_taxonomy_tree.txt \
+                              --ncbi_megan_map resources/ncbi.map \
+                              -a \
+                              -v \
+                              --contig_taxa_ref ...contigmap.txt \
+                              -o LCAStar.output.txt
+    ```
+    
+    where,
+    
+        * `-i`: is a MetaPathways `parsed.txt` annotation file
+        * `-m`: is a MetaPathways mapping file `.mapping.txt`
+        * `--ncbi_tree`: the MetaPathways `ncbi_taxonomy_tree.txt`
+        * `-a`: computes all methods Majority, LCAStar, and LCA^2
+        * `-v`: verbose mode
+        * `--contig_taxa_ref`: calculat
+        * `-o`: output text file
+
+
