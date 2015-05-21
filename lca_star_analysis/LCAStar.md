@@ -1,6 +1,6 @@
 # LCA Star Supplementary Code
-Niels W. Hanson  
-Friday, November 28, 2014  
+Niels W. Hanson, Kishori M. Konwar, Steven J. Hallam  
+Wednesday, May 20, 2015  
 
 
 
@@ -113,34 +113,36 @@ For a second test we sampled sequences of 10,000 bps using 10 subsamples from 2,
 python subsample_ncbi.py -i ncbiID_to_file.txt -o lca_test2.fasta -l 10000 -s 10 -n 2000
 ```
 
-Creating our Large simulated contigs file: `lca_star_test1.fasta`
+Creating our Large simulated contigs file: `lca_star_test2.fasta`
 
 # GEBA SAGs
 
-The 201 Single-cell amplified genome (SAG) microbial dark matter assembies were obtained from <https://img.jgi.doe.gov> under the Study Name `GEBA-MDM` [[@Rinke]]. Combined assemblies were excluded from this analysis.
+The 201 Single-cell amplified genome (SAG) microbial dark matter assembies were obtained from <https://img.jgi.doe.gov> under the Study Name `GEBA-MDM` [[@Rinke:2013bt]]. Combined assemblies were excluded from this analysis.
 
 # MetaPathways Annotation
 
 The Small, Large, and 201 MDM SAG assemblies were annotated against the RefSeq v62 via MetaPathways v2.0 pipeline [[@Hanson2014]] using standard quality control settings and the LAST homology-search algorithm [[@Kieibasa:2011do]].
 
-* In the MetaPathways base directory
+* In the MetaPathways base directory:
 
 ```
-source MetaPathwaysrc
-python MetaPathways.py -i 
+source MetaPathwaysrc 
+python MetaPathways.py -i lca_star_data/mp_data/lca_star_simulations/mp_in/lca_star_test1.fasta -o lca_star_data/mp_data/lca_star_simulations/mp_out/ -p lca_star_data/mp_data/lca_star_simulations/mp_in/lca_star_test1_param.txt -v
+python MetaPathways.py -i lca_star_data/mp_data/lca_star_simulations/mp_in/lca_star_test2.fasta -o lca_star_data/mp_data/lca_star_simulations/mp_out/ -p lca_star_data/mp_data/lca_star_simulations/mp_in/lca_star_test2_param.txt -v 
+python MetaPathways.py -i lca_star_data/mp_data/mdm_sag_assemblies/mp_in/ -o lca_star_data/mp_data/mdm_sag_assemblies/mp_out/ -p lca_star_data/mp_data/mdm_sag_assemblies/mp_in/GEBA_param.txt -v 
 ```
 
 # Running LCAStar
 
-```
+The script [run_lca_star_analysis.sh](run_lca_star_analysis.sh) runs the Small, Larger, and MDM SAG contigs through the pipeline 
 
-```
+* Note: base paths may need to be updated
 
-The outputs of these runs can be found in:
+The outputs of these runs can be found in [lca_star_data/](lca_star_data/):
 
 * [test1_lcastar.txt](lca_star_data/test1_lcastar.txt): LCAStar output for the Small simulation
 * [test2_lcastar.txt](lca_star_data/test2_lcastar.txt): LCAStar output for the Large simulation
-* [test1_lcastar.txt](lca_star_data/GEBA_SAG_all_lcastar.txt): LCAStar output for the 201 GEBA SAGs
+* [GEBA_SAG_all_lcastar.txt](lca_star_data/GEBA_SAG_all_lcastar.txt): LCAStar output for the 201 GEBA SAGs
 
 # Analysis of LCAStar Results
 
@@ -163,7 +165,7 @@ all_df <- rbind(cbind(geba_df, Sample="GEBA MDM"),cbind(test1_df, Sample="Small"
 all_df$Sample <- factor(all_df$Sample, levels=c("Small", "Large", "GEBA MDM"))
 ```
 
-* compare p-value calculations between the Majority and LCA* methods
+* Compare p-value calculations between the Majority and LCA* methods
 
 
 ```r
@@ -330,15 +332,13 @@ dev.off()
 
 Notes:
 
-* distance punishes divergent predictions more than in-lineage predictions
+* Distance punishes divergent predictions more than in-lineage predictions
 * LCA* and Majority methods again consistently performed better than LCASquared, although difference is not as extreme as by definition LCASquared will have to predict a common ancestor to all electorate
 * LCASquared occassionally has an exetremely large tail of 'root' predictions
 * Voting based methods have essentially identical median and average
     * Majority in GEBA sample has slightly shorter tail
 
-
-
-Treating the whole thing as a regression problem we have the following global averages.
+Treating the whole thing as a regression problem we have the following RMSE values
 
 
 ```r
@@ -410,7 +410,7 @@ g4 <- g4 + geom_errorbar(aes(ymin=RMSE-ci, ymax=RMSE+ci), width=.1)
 g4
 ```
 
-![](LCAStar_files/figure-html/unnamed-chunk-11-1.png) 
+![](LCAStar_files/figure-html/unnamed-chunk-10-1.png) 
 
 ```r
 pdf(file = "pdfs/fig4.pdf", width = 5.49, height=4.43)
@@ -447,7 +447,7 @@ g5 <- g5 + theme(legend.position="none")
 g5
 ```
 
-![](LCAStar_files/figure-html/unnamed-chunk-12-1.png) 
+![](LCAStar_files/figure-html/unnamed-chunk-11-1.png) 
 
 ```r
 pdf(file = "pdfs/fig5.pdf", width = 8.77, height=6.897)
@@ -461,8 +461,6 @@ dev.off()
 ```
 
 **Figure 5:** p-value distribution of the Majority and LCA* predictions.
-
-
 
 ## References
 

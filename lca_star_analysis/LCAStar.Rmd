@@ -1,7 +1,7 @@
 ---
 title: "LCA Star Supplementary Code"
 author: "Niels W. Hanson, Kishori M. Konwar, Steven J. Hallam"
-date: "Friday, November 28, 2014"
+date: "Wednesday, May 20, 2015"
 output:
   html_document:
     keep_md: yes
@@ -128,7 +128,7 @@ Creating our Large simulated contigs file: `lca_star_test2.fasta`
 
 # GEBA SAGs
 
-The 201 Single-cell amplified genome (SAG) microbial dark matter assembies were obtained from <https://img.jgi.doe.gov> under the Study Name `GEBA-MDM` [[@Rinke]]. Combined assemblies were excluded from this analysis.
+The 201 Single-cell amplified genome (SAG) microbial dark matter assembies were obtained from <https://img.jgi.doe.gov> under the Study Name `GEBA-MDM` [[@Rinke:2013bt]]. Combined assemblies were excluded from this analysis.
 
 # MetaPathways Annotation
 
@@ -145,7 +145,9 @@ python MetaPathways.py -i lca_star_data/mp_data/mdm_sag_assemblies/mp_in/ -o lca
 
 # Running LCAStar
 
-The script [run_lca_star_analysis.sh](run_lca_star_analysis.sh) starts the analysis (base paths may need to be updated)
+The script [run_lca_star_analysis.sh](run_lca_star_analysis.sh) runs the Small, Larger, and MDM SAG contigs through the pipeline 
+
+* Note: base paths may need to be updated
 
 The outputs of these runs can be found in [lca_star_data/](lca_star_data/):
 
@@ -173,7 +175,7 @@ all_df <- rbind(cbind(geba_df, Sample="GEBA MDM"),cbind(test1_df, Sample="Small"
 all_df$Sample <- factor(all_df$Sample, levels=c("Small", "Large", "GEBA MDM"))
 ```
 
-* compare p-value calculations between the Majority and LCA* methods
+* Compare p-value calculations between the Majority and LCA* methods
 
 ```{r fig.width=10.2, fig.height=3.65}
 # p-value compare
@@ -318,25 +320,13 @@ dev.off()
 
 Notes:
 
-* distance punishes divergent predictions more than in-lineage predictions
+* Distance punishes divergent predictions more than in-lineage predictions
 * LCA* and Majority methods again consistently performed better than LCASquared, although difference is not as extreme as by definition LCASquared will have to predict a common ancestor to all electorate
 * LCASquared occassionally has an exetremely large tail of 'root' predictions
 * Voting based methods have essentially identical median and average
     * Majority in GEBA sample has slightly shorter tail
 
-```{r include=FALSE}
-g3a <- ggplot(subset(all_df.m, variable == "WTD"), aes(x=value, fill=Method))
-g3a <- g3a + geom_histogram(binwidth=0.1, alpha=alpha_val) 
-g3a <- g3a + facet_grid(Method ~Sample, scales = "free_y")
-g3a <- g3a + theme(legend.position="none")
-g3a <- g3a + geom_vline(aes(xintercept=mean), colour=my_line_col, size=line_size, alpha=alpha_val, means)
-g3a <- g3a + geom_vline(aes(xintercept=median), colour=my_line_col, linetype="dashed", size=line_size, alpha=alpha_val, means)
-g3a <- g3a + xlab("Weighted Taxonomic Distance")
-g3a <- g3a + ylab("Frequency")
-g3a
-```
-
-Treating the whole thing as a regression problem we have the following global averages.
+Treating the whole thing as a regression problem we have the following RMSE values
 
 ```{r fig.width=5.49, fig.height=4.43}
 # function for RMSE
@@ -437,43 +427,6 @@ dev.off()
 ```
 
 **Figure 5:** p-value distribution of the Majority and LCA* predictions.
-
-```{r include=FALSE, eval=FALSE}
-g8 <- ggplot(subset(geba_df.m, variable == "Walk"), aes(x=value, fill=Method))
-g8 <- g8 + geom_histogram(binwidth=2, alpha=0.8) 
-g8 <- g8 + facet_wrap( ~ Method, ncol = 1)
-g8 <- g8 + theme(legend.position="none")
-g8 <- g8 + xlim(0,15)
-g8 <- g8 + xlab("Value")
-g8 <- g8 + ylab("Frequency")
-g8
-
-g9 <-ggplot(subset(geba_df.m, variable == "WTD"), aes(x=value, fill=Method))
-g9 <- g9 + geom_histogram(binwidth=0.1, alpha=0.8) 
-g9 <- g9 + facet_wrap( ~ Method, ncol = 1)
-g9 <- g9 + theme(legend.position="none")
-g9 <- g9 + xlim(-1.5,0)
-g9 <- g9 + xlab("Value")
-g9 <- g9 + ylab("Frequency")
-g9
-
-# g11 <-ggplot(subset(geba_df.m, variable %in% c("WTD", "Walk")), aes(x=Method, y=value, fill=Method))
-# g11 <- g11 + geom_violin(alpha=0.6)
-# g11 <- g11 + scale_y_log10()
-# g11 <- g11 + coord_flip()
-# g11 <- g11 + facet_wrap( ~ variable)
-# g11
-geba_df.m$Taxonomy <- as.vector(geba_df.m$Taxonomy)
-geba_df.m$Original<- as.vector(geba_df.m$Original)
-res <- select(geba_df.m, Method, Taxonomy, Original) %>%
-       group_by(Method) %>%
-       summarize(n_obs = n(), accuracy = sum(Taxonomy == Original)/ length(Taxonomy))
-
-g12 <- ggplot(res, aes(x=Method, y=accuracy, fill=Method)) 
-g12 <- g12 + geom_bar(stat="identity", alpha=0.8)
-g12 <- g12 + theme(legend.position="none")
-g12
-```
 
 ## References
 

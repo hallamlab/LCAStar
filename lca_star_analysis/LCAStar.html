@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
-<meta name="author" content="Niels W. Hanson" />
+<meta name="author" content="Niels W. Hanson, Kishori M. Konwar, Steven J. Hallam" />
 
 
 <title>LCA Star Supplementary Code</title>
@@ -62,8 +62,8 @@ img {
 
 <div id="header">
 <h1 class="title">LCA Star Supplementary Code</h1>
-<h4 class="author"><em>Niels W. Hanson</em></h4>
-<h4 class="date"><em>Friday, November 28, 2014</em></h4>
+<h4 class="author"><em>Niels W. Hanson, Kishori M. Konwar, Steven J. Hallam</em></h4>
+<h4 class="date"><em>Wednesday, May 20, 2015</em></h4>
 </div>
 
 <div id="TOC">
@@ -100,8 +100,8 @@ require(dplyr)</code></pre>
 <div id="overview" class="section level1">
 <h1><span class="header-section-number">2</span> Overview</h1>
 <p>This document summarizes the analysis performed in “LCA*: an entropy-based measure for taxonomic assignment within assembled metagenomes&quot; describing the use of the simulation the Small and Large metagenomes from a coolection of genomes downloaded from the NCBI, the running of the MetaPathways pipeline [<span class="citation">1</span>, <span class="citation">2</span>], use of the <code>LCAStar.py</code> Python script for the calculation of the <span class="math">\(LCAStar\)</span>, <span class="math">\(Simple Majority\)</span>, <span class="math">\(LCA^2\)</span> taxonomic estimation methods.</p>
-<p>Each simulation was run through the MetaPathways v2.0 pipeline [<span class="citation">2</span>], having its ORFs predicted and annotated against the RefSeq database using standard settings (Version 62, BSR=0.4, E-value=1e-5, Bit-score=20) [<span class="citation"><strong>???</strong></span>]. Taxonomy for each ORF was annotated using the Lowest Common Ancestor (LCA) (or Best-BLAST in the GEBA SAGs), and contig taxonomy was predicted from these taxonomic three different methods: <span class="math">\(LCA^2\)</span>, <span class="math">\(Simple Majority\)</span>, and our information-theoretic <span class="math">\(LCAStar\)</span>. <span class="math">\(LCA^2\)</span> simply applies the LCA method again to the set of taxonomic ORF annotations on a contig. <span class="math">\(Simple Majority\)</span> ascribes the taxonomy of the contig to the taxonomy that has the greatest number of annotations. Our <span class="math">\(LCA*\)</span> method applies the information-theoetic result and algorithm previously described with a majority theshold set to the default majority (<span class="math">\(\alpha=0.51\)</span>).</p>
-<p>We evaluated the performance of these predictions using two taxonomic distances on the NCBI taxonomic database hierarchy (NCBI Tree) [<span class="citation"><strong>???</strong></span>]. The first is a Simple Walk of the the NCBI Tree from the observed predicted taxonomy to the original expected taxonomy. The second is a weighted taxonomic distance (WTD) that weightes each edge proportional to <span class="math">\(\frac{1}{d}\)</span> where <span class="math">\(d\)</span> is the depth of the edge in the tree (see [<span class="citation"><strong>???</strong></span>, <span class="citation"><strong>???</strong></span>]) for more details. The NCBI Tree was slightly modified with the addition of a <em>prokaryotes</em> node as a parent of <em>Bacteria</em> and <em>Archaea</em> nodes.</p>
+<p>Each simulation was run through the MetaPathways v2.0 pipeline [<span class="citation">2</span>], having its ORFs predicted and annotated against the RefSeq database using standard settings (Version 62, BSR=0.4, E-value=1e-5, Bit-score=20) [<span class="citation">3</span>]. Taxonomy for each ORF was annotated using the Lowest Common Ancestor (LCA) (or Best-BLAST in the GEBA SAGs), and contig taxonomy was predicted from these taxonomic three different methods: <span class="math">\(LCA^2\)</span>, <span class="math">\(Simple Majority\)</span>, and our information-theoretic <span class="math">\(LCAStar\)</span>. <span class="math">\(LCA^2\)</span> simply applies the LCA method again to the set of taxonomic ORF annotations on a contig. <span class="math">\(Simple Majority\)</span> ascribes the taxonomy of the contig to the taxonomy that has the greatest number of annotations. Our <span class="math">\(LCA*\)</span> method applies the information-theoetic result and algorithm previously described with a majority theshold set to the default majority (<span class="math">\(\alpha=0.51\)</span>).</p>
+<p>We evaluated the performance of these predictions using two taxonomic distances on the NCBI taxonomic database hierarchy (NCBI Tree) [<span class="citation">4</span>]. The first is a Simple Walk of the the NCBI Tree from the observed predicted taxonomy to the original expected taxonomy. The second is a weighted taxonomic distance (WTD) that weightes each edge proportional to <span class="math">\(\frac{1}{d}\)</span> where <span class="math">\(d\)</span> is the depth of the edge in the tree (see [<span class="citation"><strong>???</strong></span>, <span class="citation">5</span>]) for more details. The NCBI Tree was slightly modified with the addition of a <em>prokaryotes</em> node as a parent of <em>Bacteria</em> and <em>Archaea</em> nodes.</p>
 </div>
 <div id="simulations" class="section level1">
 <h1><span class="header-section-number">3</span> Simulations</h1>
@@ -168,31 +168,36 @@ grep --perl-regexp &quot;.*fna&quot; ncbiID_to_file &gt; ncbiID_to_file.txt</cod
 <h3><span class="header-section-number">3.2.2</span> Large simulation</h3>
 <p>For a second test we sampled sequences of 10,000 bps using 10 subsamples from 2,000 randomly selected genomes. Here, did the same procedure except with significantly more samples.</p>
 <pre><code>python subsample_ncbi.py -i ncbiID_to_file.txt -o lca_test2.fasta -l 10000 -s 10 -n 2000</code></pre>
-<p>Creating our Large simulated contigs file: <code>lca_star_test1.fasta</code></p>
+<p>Creating our Large simulated contigs file: <code>lca_star_test2.fasta</code></p>
 </div>
 </div>
 </div>
 <div id="geba-sags" class="section level1">
 <h1><span class="header-section-number">4</span> GEBA SAGs</h1>
-<p>The 201 Single-cell amplified genome (SAG) microbial dark matter assembies were obtained from <a href="https://img.jgi.doe.gov" class="uri">https://img.jgi.doe.gov</a> under the Study Name <code>GEBA-MDM</code> [<span class="citation"><strong>???</strong></span>]. Combined assemblies were excluded from this analysis.</p>
+<p>The 201 Single-cell amplified genome (SAG) microbial dark matter assembies were obtained from <a href="https://img.jgi.doe.gov" class="uri">https://img.jgi.doe.gov</a> under the Study Name <code>GEBA-MDM</code> [<span class="citation">6</span>]. Combined assemblies were excluded from this analysis.</p>
 </div>
 <div id="metapathways-annotation" class="section level1">
 <h1><span class="header-section-number">5</span> MetaPathways Annotation</h1>
-<p>The Small, Large, and 201 MDM SAG assemblies were annotated against the RefSeq v62 via MetaPathways v2.0 pipeline [<span class="citation">2</span>] using standard quality control settings and the LAST homology-search algorithm [<span class="citation"><strong>???</strong></span>].</p>
+<p>The Small, Large, and 201 MDM SAG assemblies were annotated against the RefSeq v62 via MetaPathways v2.0 pipeline [<span class="citation">2</span>] using standard quality control settings and the LAST homology-search algorithm [<span class="citation">7</span>].</p>
 <ul>
-<li>In the MetaPathways base directory</li>
+<li>In the MetaPathways base directory:</li>
 </ul>
-<pre><code>source MetaPathwaysrc
-python MetaPathways.py -i </code></pre>
+<pre><code>source MetaPathwaysrc 
+python MetaPathways.py -i lca_star_data/mp_data/lca_star_simulations/mp_in/lca_star_test1.fasta -o lca_star_data/mp_data/lca_star_simulations/mp_out/ -p lca_star_data/mp_data/lca_star_simulations/mp_in/lca_star_test1_param.txt -v
+python MetaPathways.py -i lca_star_data/mp_data/lca_star_simulations/mp_in/lca_star_test2.fasta -o lca_star_data/mp_data/lca_star_simulations/mp_out/ -p lca_star_data/mp_data/lca_star_simulations/mp_in/lca_star_test2_param.txt -v 
+python MetaPathways.py -i lca_star_data/mp_data/mdm_sag_assemblies/mp_in/ -o lca_star_data/mp_data/mdm_sag_assemblies/mp_out/ -p lca_star_data/mp_data/mdm_sag_assemblies/mp_in/GEBA_param.txt -v </code></pre>
 </div>
 <div id="running-lcastar" class="section level1">
 <h1><span class="header-section-number">6</span> Running LCAStar</h1>
-<pre><code></code></pre>
-<p>The outputs of these runs can be found in:</p>
+<p>The script <a href="run_lca_star_analysis.sh" class="uri">run_lca_star_analysis.sh</a> runs the Small, Larger, and MDM SAG contigs through the pipeline</p>
+<ul>
+<li>Note: base paths may need to be updated</li>
+</ul>
+<p>The outputs of these runs can be found in <a href="lca_star_data/" class="uri">lca_star_data/</a>:</p>
 <ul>
 <li><a href="lca_star_data/test1_lcastar.txt">test1_lcastar.txt</a>: LCAStar output for the Small simulation</li>
 <li><a href="lca_star_data/test2_lcastar.txt">test2_lcastar.txt</a>: LCAStar output for the Large simulation</li>
-<li><a href="lca_star_data/GEBA_SAG_all_lcastar.txt">test1_lcastar.txt</a>: LCAStar output for the 201 GEBA SAGs</li>
+<li><a href="lca_star_data/GEBA_SAG_all_lcastar.txt">GEBA_SAG_all_lcastar.txt</a>: LCAStar output for the 201 GEBA SAGs</li>
 </ul>
 </div>
 <div id="analysis-of-lcastar-results" class="section level1">
@@ -214,7 +219,7 @@ all_df &lt;- rbind(cbind(geba_df, Sample=&quot;GEBA MDM&quot;),cbind(test1_df, S
 
 all_df$Sample &lt;- factor(all_df$Sample, levels=c(&quot;Small&quot;, &quot;Large&quot;, &quot;GEBA MDM&quot;))</code></pre>
 <ul>
-<li>compare p-value calculations between the Majority and LCA* methods</li>
+<li>Compare p-value calculations between the Majority and LCA* methods</li>
 </ul>
 <pre class="r"><code># p-value compare
 g1 &lt;- ggplot(all_df, aes(x=LCAStar_p, y=Majority_p)) 
@@ -334,7 +339,7 @@ dev.off()</code></pre>
 <p><strong>Figure 3:</strong> Distribution of WTD distances of taxonomic predictions to contig origin: LCASquared, Majority, LCA*. Kernel densities for error distances from each of the three prediction methods on the two simluated and GEBA datasets.</p>
 <p>Notes:</p>
 <ul>
-<li>distance punishes divergent predictions more than in-lineage predictions</li>
+<li>Distance punishes divergent predictions more than in-lineage predictions</li>
 <li>LCA* and Majority methods again consistently performed better than LCASquared, although difference is not as extreme as by definition LCASquared will have to predict a common ancestor to all electorate</li>
 <li>LCASquared occassionally has an exetremely large tail of ‘root’ predictions</li>
 <li>Voting based methods have essentially identical median and average
@@ -342,7 +347,7 @@ dev.off()</code></pre>
 <li>Majority in GEBA sample has slightly shorter tail</li>
 </ul></li>
 </ul>
-<p>Treating the whole thing as a regression problem we have the following global averages.</p>
+<p>Treating the whole thing as a regression problem we have the following RMSE values</p>
 <pre class="r"><code># function for RMSE
 rmse &lt;- function(x) {
   sqrt(mean(x^2, na.rm = T))
@@ -445,6 +450,11 @@ dev.off()</code></pre>
 <h2>References</h2>
 <p>[1]K. M. Konwar, N. W. Hanson, A. P. Pag<span>é</span>, and S. J. Hallam, “MetaPathways: a modular pipeline for constructing pathway/genome databases from environmental sequence information.” <em>BMC Bioinformatics</em>, vol. 14, no. 1, p. 202, 2013.</p>
 <p>[2]N. W. Hanson, K. M. Konwar, S.-J. Wu, and S. J. Hallam, “MetaPathways v2.0: A master-worker model for environmental Pathway/Genome Database construction on grids and clouds,” <em>Computational Intelligence in Bioinformatics and Computational Biology, 2014 IEEE Conference on</em>, pp. 1–7, May 2014.</p>
+<p>[3]K. D. Pruitt, T. Tatusova, and D. R. Maglott, “NCBI reference sequences (RefSeq): a curated non-redundant sequence database of genomes, transcripts and proteins.” <em>Nucleic Acids Research</em>, vol. 35, no. Database issue, pp. D61–5, Jan. 2007.</p>
+<p>[4]S. Federhen, “The NCBI Taxonomy database.” <em>Nucleic Acids Research</em>, vol. 40, no. Database issue, pp. D136–43, Jan. 2012.</p>
+<p>[5]K. M. Konwar, N. W. Hanson, M. P. Bhatia, D. Kim, S.-J. Wu, A. P. Hahn, C. Morgan-Lang, H. K. Cheung, and S. J. Hallam, “MetaPathways v2.5: Quantitative functional, taxonomic, and usability improvements.” <em>Bioinformatics</em>, pp. 1–3, Jan. 2015.</p>
+<p>[6]C. Rinke, P. Schwientek, A. Sczyrba, N. N. Ivanova, I. J. Anderson, J.-F. Cheng, A. Darling, S. Malfatti, B. K. Swan, E. A. Gies, J. A. Dodsworth, B. P. Hedlund, G. Tsiamis, S. M. Sievert, W.-T. Liu, J. A. Eisen, S. J. Hallam, N. C. Kyrpides, R. Stepanauskas, E. M. Rubin, P. Hugenholtz, and T. Woyke, “Insights into the phylogeny and coding potential of microbial dark matter.” <em>Nature</em>, vol. 499, no. 7459, pp. 431–437, Jul. 2013.</p>
+<p>[7]S. M. Kie<span>ł</span>basa, R. Wan, K. Sato, P. Horton, and M. C. Frith, “Adaptive seeds tame genomic sequence comparison.” <em>Genome Res</em>, vol. 21, no. 3, pp. 487–493, Mar. 2011.</p>
 </div>
 </div>
 
