@@ -35,25 +35,31 @@ theme_set(theme_bw())
 
 # Overview
 
-This document summarizes the analysis performed in "LCA*: an entropy-based measure for taxonomic assignment within assembled metagenomes" describing the use of the simulation the Small and Large metagenomes from a coolection of genomes downloaded from the NCBI, the running of the MetaPathways pipeline [[@Konwar:2013cw], [@Hanson2014]], use of the `LCAStar.py` Python script for the calculation of the $LCAStar$, $Simple Majority$, $LCA^2$ taxonomic estimation methods. 
+This document summarizes the analysis performed in "LCA*: an entropy-based measure for taxonomic assignment within assembled metagenomes", describing ths construction of the Small and Large metagenomes from a coolection of genomes downloaded from the NCBI, the running of the MetaPathways pipeline [[@Konwar:2013cw], [@Hanson2014]], use of the `LCAStar.py` Python library for the calculation of the $LCAStar$, $Simple Majority$, $LCA^2$ taxonomic estimates for assembled metagenomic contigs.
 
-Each simulation was run through the MetaPathways v2.0 pipeline [[@Hanson2014]], having its ORFs predicted and annotated against the RefSeq database using standard settings (Version 62, BSR=0.4, E-value=1e-5, Bit-score=20) [[@Pruitt:2007fi]]. Taxonomy for each ORF was annotated using the Lowest Common Ancestor (LCA) (or Best-BLAST in the GEBA SAGs), and contig taxonomy was predicted from these taxonomic three different methods: $LCA^2$, $Simple Majority$, and our information-theoretic $LCAStar$. $LCA^2$ simply applies the LCA method again to the set of taxonomic ORF annotations on a contig. $Simple Majority$ ascribes the taxonomy of the contig to the taxonomy that has the greatest number of annotations. Our $LCA*$ method applies the information-theoetic result and algorithm previously described with a majority theshold set to the default majority ($\alpha=0.51$).
+Each simulation was run through the MetaPathways v2.0 pipeline [[@Hanson2014]], having its ORFs predicted and annotated against the RefSeq database using standard settings (Version 62, BSR=0.4, E-value=1e-5, Bit-score=20) [[@Pruitt:2007fi]]. Taxonomy for each ORF was annotated using the Lowest Common Ancestor (LCA) (or Best-BLAST in the GEBA SAGs), and contig taxonomy was predicted using three different methods: LCASquared, Simple Majority, and our information-theoretic LCAStar. LCASquared simply applies the LCA method again to the set of taxonomic ORF annotations on a contig. Simple Majority ascribes the taxonomy of the contig to the taxonomy that has the greatest number of annotations. Our LCA* method applies our information-theoetic result and algorithm previously described with a the default majority theshold ($\alpha=0.51$).
 
 We evaluated the performance of these predictions using two taxonomic distances on the NCBI taxonomic database hierarchy (NCBI Tree) [[@Federhen:2012jx]]. The first is a Simple Walk of the the NCBI Tree from the observed predicted taxonomy to the original expected taxonomy. The second is a weighted taxonomic distance (WTD) that weightes each edge proportional to $\frac{1}{d}$ where $d$ is the depth of the edge in the tree (see [[@Hanson:2014bz], [@Konwar:2015vh]]) for more details. The NCBI Tree was slightly modified with the addition of a *prokaryotes* node as a parent of *Bacteria* and *Archaea* nodes.
 
+## Materials and Downloads
+
+Up-to-date code is available on the [GitHub repository](https://github.com/hallamlab/lcastar). Data required for this analysis can be found: [lca_star_data.zip](https://www.dropbox.com/s/ew5v55eroa332mu/lca_star_data.zip?dl=0)
+
 # Simulations
 
-Two simulated metagenomes were created, Small and Large, using 10,000bp contigs randomly sampled from a collection of 2617 genomes obtained from the NCBI (Downloaded March 15 2014 <ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/>) using the python script [subsample_ncbi.py](). The first simulation, Small, is a smaller sample of 100 genomes, sampling 10 random reads from each genome. The second simulation, Large, samples a random subset of 2,000 genomes, sampling 10 random reads from each genome.
+Two simulated metagenomes, Small and Large, were created by randomly sampling 10,000bp `contigs' from a collection of 2617 genomes obtained from the NCBI (Downloaded March 15 2014 <ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/>) using the Python script [subsample_ncbi.py](../python_resources/subsample_ncbi.py). The first simulation, Small, is a smaller sample of 100 genomes, sampling 10 random reads from each genome. The second simulation, Large, samples a random subset of 2,000 genomes, sampling 10 random reads from each genome.
 
 ## Obtaining NCBI Genomes
 
 * Downloaded `all.fna.tar.gz` and `summary.txt` from the NCBI's ftp server: <ftp://ftp.ncbi.nlm.nih.gov/genomes/> Mar 12, 2014
-* `summary.txt` contains some metadata for a number of these genomes:
+* The file `summary.txt` contains some metadata for a number of these genomes:
 
 ```
 Accession  GenbankAcc  Length	Taxid	ProjectID	TaxName	Replicon	Create Date	Update_Date
 NC_000907.1	L42023.1	1830138	71421	57771	Haemophilus influenzae Rd KW20	chromosome 	Oct 19 2001	Sep 11 2013  4:30:20:076PM
 ```
+
+* Extract NCBI IDs
 
 ```
 cat summary.txt  | awk '{print $1}' > u
@@ -92,7 +98,7 @@ NC_015557.1
 NC_015587.1
 ```
 
-* this leaves a total of 2617 genomes in `ncbiID_to_file.txt`, which maps the NCBI IDs to the .fna file location
+* This leaves a total of 2617 genomes in `ncbiID_to_file.txt`, which maps the NCBI IDs to the .fna file location
 
 ```
 grep --perl-regexp ".*fna" ncbiID_to_file | wc
@@ -104,7 +110,7 @@ grep --perl-regexp ".*fna" ncbiID_to_file > ncbiID_to_file.txt
 
 ## Simulation
 
-Wrote my own script `subsample_ncbi.py` to quickly sample from a collection of fasta files specified in our `ncbiID_to_file.txt` that we created above. We use this to compute the `test1` or Small and the `test2` or Large simulated metagenomes.
+The script [subsample_ncbi.py](../python_resources/subsample_ncbi.py) was used to quickly sample from a collection of fasta files specified in our `ncbiID_to_file.txt`. This script creates the `test1` or Small and the `test2` or Large simulated metagenomes.
 
 ### Small simulation
 
@@ -128,7 +134,7 @@ Creating our Large simulated contigs file: `lca_star_test2.fasta`
 
 # GEBA SAGs
 
-The 201 Single-cell amplified genome (SAG) microbial dark matter assembies were obtained from <https://img.jgi.doe.gov> under the Study Name `GEBA-MDM` [[@Rinke:2013bt]]. Combined assemblies were excluded from this analysis.
+The 201 Single-cell amplified genome (SAG) microbial 'dark matter' assembies were obtained from <https://img.jgi.doe.gov> under the Study Name `GEBA-MDM` [[@Rinke:2013bt]]. Combined assemblies were excluded from this analysis.
 
 # MetaPathways Annotation
 
@@ -149,11 +155,11 @@ The script [run_lca_star_analysis.sh](run_lca_star_analysis.sh) runs the Small, 
 
 * Note: base paths may need to be updated
 
-The outputs of these runs can be found in [lca_star_data/](lca_star_data/):
+The outputs of these runs can be found in [lca_star_data.zip](https://www.dropbox.com/s/ew5v55eroa332mu/lca_star_data.zip?dl=0):
 
-* [test1_lcastar.txt](lca_star_data/test1_lcastar.txt): LCAStar output for the Small simulation
-* [test2_lcastar.txt](lca_star_data/test2_lcastar.txt): LCAStar output for the Large simulation
-* [GEBA_SAG_all_lcastar.txt](lca_star_data/GEBA_SAG_all_lcastar.txt): LCAStar output for the 201 GEBA SAGs
+* `test1_lcastar.txt`: LCAStar output for the Small simulation
+* `test2_lcastar.txt`: LCAStar output for the Large simulation
+* `GEBA_SAG_all_lcastar.txt`: LCAStar output for the 201 GEBA SAGs
 
 # Analysis of LCAStar Results
 
@@ -199,12 +205,12 @@ dev.off()
 
 Notes:
 
-* all three samples exhibit the same pattern, suggesting that the simulation procecture is producing representative results at least in terms of the LCA* and Majority summary statistics 
-* in many cases the simple Majority and LCA* solutions are the same, as shown by the strong linear trend
-* when in disagreement LCA* has more favorable (lower) p-values than the simple majority, in many cases the p-value of the LCA* solution is significantly smaller than the simple majority one
-* disagreements where $p_{Majority} < p_{LCA^*}$ occur when the LCA* transformation widens the difference between the first and second place leaders, although this is a bit of a corner case, and happens fairly infrequently
-* the majority has a degenerate case where there is as tie in the $M = X_n$, which is a degenerate case, meaning that the Simple majority had to make an arbitary choise between two or more taxonomic candidates
-* Suggests that if you subscribe to the p-value argument, LCA* produces more reliable results, although one can argue that his happens by construction.
+* All three samples exhibit the general distribution pattern, suggesting that the simulation procecture is producing representative results at least in terms of the LCA* and Majority summary statistics 
+* In many cases the simple Majority and LCA* solutions are the same, many values are along a perfect diagonal
+* When LCA* and simple Majority disagree, LCA* has more favorable (lower) p-values than the simple majority and in many cases the p-value of the LCA* solution is significantly smaller than the simple Majority one
+* Disagreements where $p_{Majority} < p_{LCA^*}$ occur when the LCA* transformation widens the difference between the first and second place leaders (this is a bit of a corner case and happens infrequently)
+* The Majority method has a degenerate case where there is as tie in the $M = X_n$ meaning that the Simple majority had to make an arbitary choise between two or more taxonomic candidates
+* Results suggest that according to p-value LCA* produces more reliable results
 
 Function to format and reshape data for ggplot:
 
@@ -222,8 +228,9 @@ clean_up_data2 <- function(df) {
 }
 ```
 
+* Reshape data into ggplot form
+
 ```{r}
-# reshape data into ggplot form
 test1_df.m <- clean_up_data2(test1_df)
 test1_df.m<- cbind(test1_df.m, Sample="Small")
 test2_df.m <- clean_up_data2(test2_df)
@@ -234,7 +241,7 @@ geba_df.m <- cbind(geba_df.m, Sample="GEBA MDM")
 all_df.m <- rbind(test1_df.m, test2_df.m, geba_df.m)
 ```
 
-* plot the distribution of distances between predictions and taxonomic origin
+* Plot the distribution of distances between predictions and taxonomic origin
 
 ```{r fig.height=7, fig.width=7}
 # plotting parameters
@@ -427,6 +434,8 @@ dev.off()
 ```
 
 **Figure 5:** p-value distribution of the Majority and LCA* predictions.
+
+Please direct any questions or comments to Dr. Steven J. Hallam (<shallam@mail.ubc.ca>), Department of Microbiology & Immunology, University of British Columbia.
 
 ## References
 
