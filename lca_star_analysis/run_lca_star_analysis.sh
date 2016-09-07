@@ -15,7 +15,7 @@ mp_out=${lca_star_data}/assemblies/GEBA_SAGs_out/
 # Creating contig_maps for the Small (test1) and Large (test2) simulations
 
 lca_star_test=${lca_star_data}/mp_data/lca_star_simulations
-python2.7 contig_to_taxa_map.py -i ${lca_star_test}/mp_out/lca_star_test1/preprocessed/lca_star_test1.mapping.txt \
+echo python2.7 contig_to_taxa_map.py -i ${lca_star_test}/mp_out/lca_star_test1/preprocessed/lca_star_test1.mapping.txt \
                                 -n ${lca_star_data}/ncbi_bacteria_genomes/ncbi/summary.txt \
                                 -o ${lca_star_test}/lca_star_test1_contigmap.txt
 echo python2.7 contig_to_taxa_map.py -i ${lca_star_test}/mp_out/lca_star_test2/preprocessed/lca_star_test2.mapping.txt \
@@ -44,6 +44,25 @@ do
                -o ${lca_star_out}/${sample}_lcastar.txt
 done
 
+# Run Small and Large simluations
+# for sample in test1 test2
+# do
+#     blast_result=${mp_out}/lca_star_${sample}/blast_results/lca_star_${sample}.refseq.lastout.parsed.txt
+#     mapping_file=${mp_out}/lca_star_${sample}/preprocessed/lca_star_${sample}.mapping.txt
+#     contig_ref=${lca_star_test}/lca_star_${sample}_contigmap.txt
+#     output=${lca_star}/lca_star_geba_analysis/
+#     python ${lca_star}/Compute_LCAStar.py \
+#                -i $blast_result \
+#                -m $mapping_file \
+#                --ncbi_tree ${ncbi_tree_dir}/ncbi_taxonomy_tree.txt \
+#                --ncbi_megan_map ${ncbi_tree_dir}/ncbi.map \
+#                --orf_summary besthit \
+#                --contig_taxa_ref ${contig_ref} \
+#                --all_methods \
+#                -o ${lca_star_out}/${sample}_besthit_lcastar.txt
+# done
+
+exit()
 
 # Run GEBA MDM SAG analysis
 mdm_sag_contigmap=${lca_star_data}/mp_data/mdm_sag_assemblies/mdm_sag_contigmap.txt

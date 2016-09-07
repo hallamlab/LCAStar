@@ -32,12 +32,21 @@ LCA\* is released as as Python library, requiring Python 2.6 or greater. More in
     
     where,
     
-        * `-i`: is a MetaPathways `parsed.txt` annotation file
-        * `-m`: is a MetaPathways mapping file `.mapping.txt`
-        * `--ncbi_tree`: the MetaPathways `ncbi_taxonomy_tree.txt`
-        * `-a`: computes all methods Majority, LCAStar, and LCA^2
-        * `-v`: verbose mode
-        * `--contig_taxa_ref`: calculat
-        * `-o`: output text file
+    * `-i`: is a MetaPathways `parsed.txt` annotation file
+    * `-m`: is a MetaPathways mapping file `.mapping.txt`
+    * `--ncbi_tree`: the MetaPathways `ncbi_taxonomy_tree.txt`
+    * `-a`: computes all methods Majority, LCAStar, and LCA^2
+    * `-v`: verbose mode
+    * `--contig_taxa_ref`: file specificing the original taxonomy of input contigs as a tab-delimited file -
+    * `-o`: output text file
+* [lca_star_analysis/](lca_star_analysis/): contains analysis code for the validation experiments found in the text. The main RMarkdown document can be found [here](lca_star_analysis/LCAStar.md).
+* [python_resources/](python_resources/): contains the LCAStar Python library as well as other Python libraries required to perform the analysis.
+* [resources/](resources/): other resource files required for the analysis
+
+## Downloads
+
+Some required files are too large to fit into a GitHub repository and can be found at the following links:
+
+* [lca_star_data.zip](lca_star_data.zip): contains MetaPathways output and NCBI genome files used for the validation experiments
 
 
