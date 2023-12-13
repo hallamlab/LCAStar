@@ -1,6 +1,19 @@
+# folders
 /data
 /secrets
+/scratch
 
+# temp files and caches
 cache
 __pycache__
 .ipynb_checkpoints
+*.sif
+*.egg-info
+
+# conda package build
+/dist
+/build
+/conda_build
+/conda_recipe/*
+!/conda_recipe/compile_recipe.py
+!/conda_recipe/meta_template.yaml

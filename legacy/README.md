@@ -1,9 +1,9 @@
 LCAStar: an entropy-based measure for taxonomic assignment within assembled metagenomes
 =======
 
-Niels W. Hanson, Kishori M. Konwar, Tony X. Liu, Steven J. Hallam
+Niels W. Hanson, Kishori M. Konwar, Steven J. Hallam
 
-![lca_star_logo.png](legacy/lca_star_logo.png)
+![lca_star_logo.png](lca_star_logo.png)
 
 ## Abstract
 
@@ -15,7 +15,7 @@ LCA\* is released as as Python library, requiring Python 2.6 or greater. More in
 
 ## Contents
 
-* [Compute_LCAStar.py](legacy/Compute_LCAStar.py): Driver script for running LCAStar.py
+* [Compute_LCAStar.py](Compute_LCAStar.py): Driver script for running LCAStar.py
 
     * Usage: 
     
@@ -39,9 +39,9 @@ LCA\* is released as as Python library, requiring Python 2.6 or greater. More in
     * `-v`: verbose mode
     * `--contig_taxa_ref`: file specificing the original taxonomy of input contigs as a tab-delimited file -
     * `-o`: output text file
-* [lca_star_analysis/](legacy/lca_star_analysis/): contains analysis code for the validation experiments found in the text. The main RMarkdown document can be found [here](legacy/lca_star_analysis/LCAStar.md).
-* [python_resources/](legacy/python_resources/): contains the LCAStar Python library as well as other Python libraries required to perform the analysis.
-* [resources/](legacy/resources/): other resource files required for the analysis
+* [lca_star_analysis/](lca_star_analysis/): contains analysis code for the validation experiments found in the text. The main RMarkdown document can be found [here](lca_star_analysis/LCAStar.md).
+* [python_resources/](python_resources/): contains the LCAStar Python library as well as other Python libraries required to perform the analysis.
+* [resources/](resources/): other resource files required for the analysis
 
 ## Downloads
 
@@ -49,5 +49,4 @@ Some required files are too large to fit into a GitHub repository and can be fou
 
 * [lca_star_data.zip](lca_star_data.zip): contains MetaPathways output and NCBI genome files used for the validation experiments
 
-## TODO:
-* wait for [ete4](https://github.com/etetoolkit/ete) to be released on conda for python>=3.11 and switch over from pip
+

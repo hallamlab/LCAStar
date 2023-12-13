@@ -1,10 +1,8 @@
 HERE=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 NAME=lcastar
-# UTILS=$HERE/src/$NAME/utils.py
-# DEV_USER=$(python $UTILS USER)
-# VER=$(python $UTILS VERSION)
-DEV_USER=hallamlab
-VER=2.0.0
+UTILS=$HERE/src/$NAME/utils.py
+DEV_USER=$(python $UTILS USER)
+VER=$(python $UTILS VERSION)
 DOCKER_IMAGE=quay.io/$USER/$NAME
 
 # CONDA=conda
@@ -65,7 +63,7 @@ case $1 in
         python -m build
     ;;
     -bpi) # pip - test install
-        python setup.py install
+        pip install $HERE/dist/$NAME-$VER-py3-none-any.whl
     ;;
     -bpx) # pip - remove package
         pip uninstall -y $NAME

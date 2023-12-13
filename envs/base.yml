@@ -1,0 +1,13 @@
+channels:
+  - defaults
+dependencies:
+  - python=3.11
+  - packaging
+  - cython
+  - scipy
+  - bottle
+  - brotli
+  - requests
+  - pip
+  - pip:
+      - https://github.com/etetoolkit/ete/archive/ete4.zip

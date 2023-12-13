@@ -1,0 +1,11 @@
+channels:
+  - conda-forge
+  - anaconda
+dependencies:
+  - conda-build>=3.28
+  - boa
+  - anaconda-client
+  - pip
+  - pip:
+    - twine
+    - build
