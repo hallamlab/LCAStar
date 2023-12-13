@@ -1,7 +1,7 @@
 LCAStar: an entropy-based measure for taxonomic assignment within assembled metagenomes
 =======
 
-Niels W. Hanson, Kishori M. Konwar, Tony X. Liu, Steven J. Hallam
+Niels W. Hanson, Kishori M. Konwar, Steven J. Hallam
 
 ![lca_star_logo.png](legacy/lca_star_logo.png)
 
