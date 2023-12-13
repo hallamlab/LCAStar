@@ -3,7 +3,7 @@ LCAStar: an entropy-based measure for taxonomic assignment within assembled meta
 
 Niels W. Hanson, Kishori M. Konwar, Steven J. Hallam
 
-![lca_star_logo.png](lca_star_logo.png)
+![lca_star_logo.png](legacy/lca_star_logo.png)
 
 ## Abstract
 
@@ -11,42 +11,69 @@ A perennial problem in the analyses of large meta'omic datasets is the taxonomic
 
 ## Installation
 
-LCA\* is released as as Python library, requiring Python 2.6 or greater. More installation and useage information can be found on the wiki.
+LCA\* is released as as a Python library on [anaconda](https://www.anaconda.com/download)
 
-## Contents
+```bash
+conda install -c hallamlab lcastar
+```
 
-* [Compute_LCAStar.py](Compute_LCAStar.py): Driver script for running LCAStar.py
+## Usage
 
-    * Usage: 
-    
-    ```
-    python Compute_LCAStar.py -i blast_results/refseq.*.parsed.txt \
-                              -m preprocessed/*.mapping.txt \
-                              --ncbi_tree resources/ncbi_taxonomy_tree.txt \
-                              --ncbi_megan_map resources/ncbi.map \
-                              -a \
-                              -v \
-                              --contig_taxa_ref ...contigmap.txt \
-                              -o LCAStar.output.txt
-    ```
-    
-    where,
-    
-    * `-i`: is a MetaPathways `parsed.txt` annotation file
-    * `-m`: is a MetaPathways mapping file `.mapping.txt`
-    * `--ncbi_tree`: the MetaPathways `ncbi_taxonomy_tree.txt`
-    * `-a`: computes all methods Majority, LCAStar, and LCA^2
-    * `-v`: verbose mode
-    * `--contig_taxa_ref`: file specificing the original taxonomy of input contigs as a tab-delimited file -
-    * `-o`: output text file
-* [lca_star_analysis/](lca_star_analysis/): contains analysis code for the validation experiments found in the text. The main RMarkdown document can be found [here](lca_star_analysis/LCAStar.md).
-* [python_resources/](python_resources/): contains the LCAStar Python library as well as other Python libraries required to perform the analysis.
-* [resources/](resources/): other resource files required for the analysis
+```python
+from lcastar import LcaStar, Lineage
+```
 
-## Downloads
+### *with scientific name (genus species)*
+```python
+orf_hits = [
+    "Muribaculaceae bacterium",
+    "Muribaculaceae bacterium",
+    "Bacteroidales bacterium",
+    "Muribaculaceae bacterium",
+    "Alistipes senegalensis",
+]
 
-Some required files are too large to fit into a GitHub repository and can be found at the following links:
+tree = LcaStar()
+for sci_name in orf_hits:
+    lin = Lineage.FromSciName(sci_name)
+    assert lin is not None
+    tree.NewObservation(lin)
 
-* [lca_star_data.zip](lca_star_data.zip): contains MetaPathways output and NCBI genome files used for the validation experiments
+for node in tree.BestLineage():
+    print(node.level, node.name, node.fraction_votes, node.p_value)
+```
 
+### *with NCBI taxonomy ID*
+```python
+orf_hits = [
+    2498093,
+    2498093,
+    2030927,
+    2498093,
+    1288121,
+]
 
+tree = LcaStar()
+for tax_id in orf_hits:
+    lin = Lineage.FromTaxID(tax_id)
+    assert lin is not None
+    tree.NewObservation(lin)
+```
+
+### *output:*
+```python
+for node in tree.BestLineage():
+    print(node.level, node.name, node.fraction_votes, node.p_value, )
+```
+```
+superkingdom Bacteria 1.0 0.08273697918531309
+clade FCB group 1.0 0.08273697918531309
+clade Bacteroidota/Chlorobiota group 1.0 0.08273697918531309
+phylum Bacteroidota 1.0 0.08273697918531309
+class Bacteroidia 1.0 0.08273697918531309
+order Bacteroidales 1.0 0.08273697918531309
+species Bacteroidales bacterium 0.2 1.0
+```
+
+## TODO:
+* wait for [ete4](https://github.com/etetoolkit/ete) to be released on conda for python>=3.11 and switch over from pip
