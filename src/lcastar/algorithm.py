@@ -87,6 +87,10 @@ class LcaStar:
         self.sum = 0
         self.counts = set()
 
+    def AddPlacementsAtRoot(self, count: int):
+        """decrease confidence to take into account, for example, unannotated ORFs on the contig"""
+        self.root.count += count
+
     def NewObservation(self, lineage: Lineage):
         self.sum += 1
         parent = self.root
