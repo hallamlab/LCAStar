@@ -5,8 +5,8 @@ DEV_USER=$(python $UTILS USER)
 VER=$(python $UTILS VERSION)
 DOCKER_IMAGE=quay.io/$USER/$NAME
 
-# CONDA=conda
-CONDA=mamba # https://mamba.readthedocs.io/en/latest/mamba-installation.html#mamba-install
+CONDA=conda
+# CONDA=mamba # https://mamba.readthedocs.io/en/latest/mamba-installation.html#mamba-install
 echo image: $DOCKER_IMAGE:$VER
 echo ""
 
@@ -63,7 +63,7 @@ case $1 in
         python -m build
     ;;
     -bpi) # pip - test install
-        pip install $HERE/dist/$NAME-$VER-py3-none-any.whl
+        pip instalconda l $HERE/dist/$NAME-$VER-py3-none-any.whl
     ;;
     -bpx) # pip - remove package
         pip uninstall -y $NAME

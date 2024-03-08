@@ -172,8 +172,9 @@ class LcaStar:
         # find best lineage
 
         lineage: list[ResultNode] = []
-        node = self.root
-        children = all_children[node.name]
+        if self.root.name not in all_children: return lineage
+        
+        children = all_children[self.root.name]
         while True:
             entropy_ordered = sorted(children, key=lambda x: x.sum_entropy)
             best = entropy_ordered[0]
