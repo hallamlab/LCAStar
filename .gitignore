@@ -18,6 +18,8 @@ develop-eggs
 lib
 lib64
 __pycache__
+conda_*
+notebooks
 
 # Installer logs
 pip-log.txt
@@ -51,3 +53,4 @@ data
 LCAStar_data
 lca_star_data
 .Rproj.user
+secrets
