@@ -6,7 +6,7 @@ dependencies:
   - boa
   - anaconda-client
   - sphinx
-  - sphinx_rtd_theme
+  - sphinx_rtd_theme==2.0.0
   - pip
   - pip:
     - twine
