@@ -2,6 +2,7 @@
 /data
 /secrets
 /scratch
+/notebooks
 
 # temp files and caches
 cache
@@ -17,3 +18,36 @@ __pycache__
 /conda_recipe/*
 !/conda_recipe/compile_recipe.py
 !/conda_recipe/meta_template.yaml
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
+
+# Translations
+*.mo
+
+# Mr Developer
+.mr.developer.cfg
+.project
+.pydevproject
+
+ncbi_taxonomy_tree.txt
+ncbi_taxonomy_tree*
+test.out.txt
+lca_star_test2*
+
+# r hidden files
+.DS_Store
+.Rapp.history
+.Rhistory
+.idea/
+
+# data
+data
+LCAStar_data
+lca_star_data
+.Rproj.user
