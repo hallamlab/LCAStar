@@ -1,23 +1,23 @@
-# folders
-/data
-/secrets
-/scratch
-/notebooks
+*.py[cod]
 
-# temp files and caches
-cache
-__pycache__
-.ipynb_checkpoints
-*.sif
+# C extensions
+*.so
+
+# Packages
+*.egg
 *.egg-info
-
-# conda package build
-/dist
-/build
-/conda_build
-/conda_recipe/*
-!/conda_recipe/compile_recipe.py
-!/conda_recipe/meta_template.yaml
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+lib
+lib64
+__pycache__
 
 # Installer logs
 pip-log.txt

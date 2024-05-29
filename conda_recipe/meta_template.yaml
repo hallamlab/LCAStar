@@ -1,0 +1,37 @@
+package:
+  name: <NAME>
+  version: <VERSION>
+
+source:
+  url: <TAR>
+  
+build:
+  noarch: python
+  number: 0
+  script: {{ PYTHON }} -m pip install https://github.com/etetoolkit/ete/archive/ete4.zip && {{ PYTHON }} -m pip install . -v
+  entry_points:
+<ENTRY>
+
+test:
+  imports:
+    - <NAME>
+  commands:
+    - pip check
+    - python -c "from lcastar import LcaStar, Lineage"
+  requires:
+    - pip
+
+requirements:
+  host:
+    - pip
+    - cython
+<PYTHON>
+
+  run:
+<REQUIREMENTS>
+
+about:
+  home: https://github.com/<USER>/<NAME>
+  summary: <SHORT_SUMMARY>
+  license: 'gpl-v3'
+  license_file: ../LICENSE
