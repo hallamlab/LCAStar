@@ -26,6 +26,7 @@ from typing import Iterable, Sequence
 USER = "hallamlab" # github id
 MODULE_ROOT = Path("/".join(os.path.realpath(__file__).split('/')[:-1]))
 NAME = MODULE_ROOT.name.lower()
+SHORT_SUMMARY = "entropy-based taxonomic assignment"
 # ENTRY_POINTS = [NAME]
 ENTRY_POINTS = []
 
@@ -65,7 +66,6 @@ if __name__ == "__main__":
     sys.path = [str(p) for p in set([
         MODULE_ROOT.parents[1]
     ]+sys.path)]
-    from setup import SHORT_SUMMARY
     if len(sys.argv)>1:
         k = sys.argv[1]
         meta = dict(

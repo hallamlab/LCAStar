@@ -5,8 +5,7 @@ sys.path = [str(p) for p in set([
     HERE.joinpath("src")
 ]+sys.path)]
 import setuptools
-from lcastar.utils import USER, NAME, ENTRY_POINTS, VERSION
-SHORT_SUMMARY = "entropy-based taxonomic assignment"
+from lcastar.utils import USER, NAME, SHORT_SUMMARY, ENTRY_POINTS, VERSION
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 

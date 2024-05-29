@@ -1,10 +1,12 @@
 channels:
   - conda-forge
-  - anaconda
+  - defaults
 dependencies:
   - conda-build>=3.28
   - boa
   - anaconda-client
+  - sphinx
+  - sphinx_rtd_theme
   - pip
   - pip:
     - twine

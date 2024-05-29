@@ -1,18 +1,19 @@
 HERE=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 NAME=lcastar
 UTILS=$HERE/src/$NAME/utils.py
-DEV_USER=$(python $UTILS USER)
+python --version || exit 1
+USER=$(python $UTILS USER)
 VER=$(python $UTILS VERSION)
 DOCKER_IMAGE=quay.io/$USER/$NAME
 
 CONDA=conda
 # CONDA=mamba # https://mamba.readthedocs.io/en/latest/mamba-installation.html#mamba-install
-echo image: $DOCKER_IMAGE:$VER
+echo "$NAME:$VER"
 echo ""
 
 # this file contains a list of commands useful for dev,
 # providing automation for some build tasks
-#
+
 # example workflow 1, pip:
 # dev.sh --idev # create a local conda dev env
 # # add pypi api token as file to ./secrets [https://pypi.org/help/#apitoken]
@@ -21,13 +22,13 @@ echo ""
 # dev.sh -bp # build the pip package
 # dev.sh -up # test upload to testpypi
 # dev.sh -upload-pypi # release to pypi index for pip install
-#
+
 # example workflow 2, conda:
 # dev.sh --idev # create a local conda dev env
 # dev.sh -bp # build the pip package
 # dev.sh -bc # build conda package from pip package
 # dev.sh -uc # publish to conda index
-#
+
 # example workflow 3, containerization:
 # dev.sh --idev # create a local conda dev env
 # dev.sh -bd # build docker image
@@ -39,18 +40,20 @@ case $1 in
     # environments
 
     --idev) # with dev tools for packaging
+        env_name=${NAME}_dev
         cd $HERE/envs
-        echo "creating new conda env: $NAME"
+        echo "creating new conda env: $env_name"
         echo "WARNING: you will need to install docker and apptainer individually"
         sleep 2
-        $CONDA env create --no-default-packages -n $NAME -f ./base.yml \
-        && $CONDA env update -n $NAME -f ./dev.yml
+        $CONDA env create --no-default-packages -n $env_name -f ./base.yml \
+        && $CONDA env update -n $env_name -f ./dev.yml
     ;;
     --ibase) # base only
+        env_name=${NAME}
         cd $HERE/envs
-        echo "creating new conda env: $NAME"
+        echo "creating new conda env: $env_name"
         sleep 2
-        $CONDA env create --no-default-packages -n $NAME -f ./base.yml
+        $CONDA env create --no-default-packages -n $env_name -f ./base.yml
     ;;
 
     ###################################################
@@ -75,9 +78,11 @@ case $1 in
         $HERE/conda_recipe/call_build.sh
     ;;
     -bd) # docker
+        echo "$DOCKER_IMAGE"
         docker build -t $DOCKER_IMAGE:$VER .
     ;;
     -bs) # apptainer image *from docker*
+        echo "$DOCKER_IMAGE"
         apptainer build $NAME.sif docker-daemon://$DOCKER_IMAGE:$VER
     ;;
 
@@ -100,6 +105,7 @@ case $1 in
         find ./conda_build -name *.tar.bz2 | xargs -I % anaconda upload -u $DEV_USER %
     ;;
     -ud) # docker
+        echo "$DOCKER_IMAGE"
         # login and push image to quay.io
         # sudo docker login quay.io
 	    docker push $DOCKER_IMAGE:$VER
@@ -118,6 +124,7 @@ case $1 in
     ;;
     -rd) # docker
             # -e XDG_CACHE_HOME="/ws"\
+        echo "$DOCKER_IMAGE"
         shift
         docker run -it --rm \
             -u $(id -u):$(id -g) \
@@ -134,6 +141,13 @@ case $1 in
             $HERE/$NAME.sif fabfos /bin/bash
     ;;
 
+    ###################################################
+    # docs
+
+    -d)
+        sphinx-build -M html ./docs/src ./docs/build
+    ;;
+    
     ###################################################
     # test
 
