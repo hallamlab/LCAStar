@@ -3,7 +3,7 @@ LCAStar: an entropy-based measure for taxonomic assignment within assembled meta
 
 Niels W. Hanson, Kishori M. Konwar, Steven J. Hallam
 
-![lca_star_logo.png](legacy/lca_star_logo.png)
+![lca_star_logo.png](docs/src/static/lca_star_logo.png)
 
 ## Abstract
 

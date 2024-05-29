@@ -19,6 +19,9 @@ __pycache__
 !/conda_recipe/compile_recipe.py
 !/conda_recipe/meta_template.yaml
 
+# sphinx documentation
+/docs/build
+
 # Installer logs
 pip-log.txt
 
